@@ -1,0 +1,53 @@
+import { NextRequest, NextResponse } from 'next/server'
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080'
+
+/**
+ * POST /api/2fa/backup-codes/regenerate
+ * Generate new backup codes (invalidates old ones)
+ */
+export async function POST(req: NextRequest) {
+  try {
+    // Get auth token from cookie or Authorization header
+    const authToken = req.cookies.get('session')?.value || 
+                     req.headers.get('authorization')?.replace('Bearer ', '')
+    
+    if (!authToken) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
+    // Forward request to backend
+    const response = await fetch(`${BACKEND_URL}/api/v1/2fa/backup-codes/regenerate`, {
+      method: 'POST',
+      headers: {
+        'Cookie': `session=${authToken}`,
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({ error: 'Failed to regenerate backup codes' }))
+      return NextResponse.json(
+        { error: error.error || 'Failed to regenerate backup codes' },
+        { status: response.status }
+      )
+    }
+
+    const data = await response.json()
+    
+    return NextResponse.json({
+      backupCodes: data.backupCodes || data.backup_codes || [],
+      message: 'Backup codes regenerated successfully'
+    })
+  } catch (error) {
+    console.error('Backup codes regeneration error:', error)
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
