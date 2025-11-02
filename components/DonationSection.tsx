@@ -28,13 +28,13 @@ export function DonationSection() {
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Support FairCoin</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
-              🌍 Support Faircoin by{' '}
+              🌍 Support FairCoin by{' '}
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 JacobYellowBridge
               </span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              Faircoin is a community fairness and peace-building initiative under the mission of{' '}
+              FairCoin is a community fairness and peace-building initiative under the mission of{' '}
               <a 
                 href="https://jacobyellowbridge.com" 
                 target="_blank" 
@@ -93,7 +93,7 @@ export function DonationSection() {
                 <Shield className="w-6 h-6 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-1" />
                 <div className="space-y-2">
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    🔒 All contributions go toward developing Faircoin's community fairness tools 
+                    🔒 All contributions go toward developing FairCoin's community fairness tools 
                     (TFI★, PFI★, Fairchain) and maintaining JesusBot to spread truth and peace through technology.
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export function DonationSection() {
             <div className="text-center space-y-3 pt-4">
               <div className="inline-block">
                 <p className="text-lg md:text-xl italic text-gray-700 dark:text-gray-300 leading-relaxed">
-                  "Let justice roll on like a river,<br />
+                  "Let justice roll on like a river,{' '}
                   righteousness like a never-failing stream."
                 </p>
                 <p className="text-sm font-semibold text-purple-600 dark:text-purple-400 mt-2">
