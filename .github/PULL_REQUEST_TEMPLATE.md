@@ -64,7 +64,7 @@ Related to #
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published
 - [ ] I have checked my code and corrected any misspellings
-- [ ] I have read the [CONTRIBUTING.md](../CONTRIBUTING.md) guidelines
+- [ ] I have read the [CONTRIBUTING.md](CONTRIBUTING.md) guidelines
 
 ## Breaking Changes
 <!-- If this PR introduces breaking changes, describe them here -->
