@@ -1,0 +1,66 @@
+# GitHub Discussions Categories Configuration
+# This file defines the discussion categories for the FairCoin community
+# Reference: https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions
+
+# 📢 Announcements - Official project updates and news
+# Maintainers only can post, everyone can comment
+- name: Announcements
+  emoji: "📢"
+  description: Official project news, updates, and important announcements
+  is_answerable: false
+  
+# 💡 Ideas & Feature Requests - Community suggestions
+# Anyone can post, open discussion format
+- name: Ideas
+  emoji: "💡"
+  description: Share ideas and feature requests for FairCoin
+  is_answerable: false
+
+# 🙏 Q&A - Questions and Answers
+# Anyone can post, marked as answered format
+- name: Q&A
+  emoji: "🙏"
+  description: Ask questions about FairCoin and get help from the community
+  is_answerable: true
+
+# 🏗️ Development - Technical discussions
+# Discussions about code, architecture, and development
+- name: Development
+  emoji: "🏗️"
+  description: Technical discussions about code, architecture, and implementation
+  is_answerable: false
+
+# 🎨 Design & UX - Design discussions
+# UI/UX design proposals and feedback
+- name: Design & UX
+  emoji: "🎨"
+  description: Discuss user interface, user experience, and design improvements
+  is_answerable: false
+
+# 📊 Governance & Economics - Community governance
+# Discussions about fairness metrics, governance, and economic models
+- name: Governance & Economics
+  emoji: "📊"
+  description: Discuss PFI★, TFI★, governance models, and economic fairness
+  is_answerable: false
+
+# 💬 General - General discussions
+# Catch-all for discussions that don't fit other categories
+- name: General
+  emoji: "💬"
+  description: General discussions about FairCoin and the community
+  is_answerable: false
+
+# 🎉 Show and Tell - Community showcases
+# Share what you've built with or for FairCoin
+- name: Show and Tell
+  emoji: "🎉"
+  description: Show off what you've built with FairCoin or share your contributions
+  is_answerable: false
+
+# 🔐 Security - Security-related discussions
+# Public security discussions (NOT for reporting vulnerabilities)
+- name: Security
+  emoji: "🔐"
+  description: Public discussions about security best practices (use private advisories for vulnerabilities)
+  is_answerable: false
