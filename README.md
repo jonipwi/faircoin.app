@@ -311,6 +311,7 @@ Detailed documentation is available:
 - [SECURITY.md](./SECURITY.md) - Security policy and legitimacy verification
 - [STAGING.md](./STAGING.md) - Staging environment explanation
 - [GOOGLE_SAFE_BROWSING_REPORT.md](./GOOGLE_SAFE_BROWSING_REPORT.md) - Guide for reporting false positives
+- [SPONSORS_GUIDE.md](./SPONSORS_GUIDE.md) - GitHub Sponsors setup and visibility guide
 
 ### Feature Documentation
 - [2FA Implementation Guide](./docs/2FA_IMPLEMENTATION.md)
@@ -380,6 +381,8 @@ FairCoin is an open-source, community-driven project. Your sponsorship helps us:
 - 🌍 Build a fairer economic system for everyone
 
 [Become a sponsor](https://github.com/sponsors/jonipwi) to support the project and get recognition in our community!
+
+> **📘 Repository Owners:** See [SPONSORS_GUIDE.md](./SPONSORS_GUIDE.md) for instructions on making this repository discoverable to sponsors. GitHub Sponsors requires **public** repositories.
 
 ---
 
