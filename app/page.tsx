@@ -8,6 +8,7 @@ import { MerchantsSection } from '@/components/MerchantsSection'
 import { FairnessSection } from '@/components/FairnessSection'
 import { GovernanceSection } from '@/components/GovernanceSection'
 import { CommunitySection } from '@/components/CommunitySection'
+import { DonationSection } from '@/components/DonationSection'
 import { Sparkles, Heart, Scale, Users } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 
@@ -135,6 +136,9 @@ export default function Home() {
 
       {/* Community Section */}
       <CommunitySection />
+
+      {/* Donation Section */}
+      <DonationSection />
 
       {/* Footer */}
       <footer className="section bg-gray-900 dark:bg-black text-white">
