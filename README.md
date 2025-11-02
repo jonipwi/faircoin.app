@@ -6,6 +6,7 @@ A community-driven fair transaction system built on principles of transparency, 
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+[![Sponsor](https://img.shields.io/badge/Sponsor-❤️-ff69b4?style=for-the-badge)](https://github.com/sponsors/jonipwi)
 
 > ⚠️ **STAGING PROJECT - NOT FOR COMMERCIAL USE**
 > 
@@ -363,11 +364,22 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 💖 Support
 
 If you find FairCoin valuable, please consider:
+- 💝 **[Sponsor this project on GitHub](https://github.com/sponsors/jonipwi)** - Support ongoing development
 - ⭐ Starring the repository
 - 🐛 Reporting bugs
 - 💡 Suggesting new features
 - 📝 Contributing to documentation
 - 🤝 Sharing with others
+
+### Sponsorship
+
+FairCoin is an open-source, community-driven project. Your sponsorship helps us:
+- 🚀 Continue development of new features
+- 🔒 Maintain security and reliability
+- 📚 Improve documentation and tutorials
+- 🌍 Build a fairer economic system for everyone
+
+[Become a sponsor](https://github.com/sponsors/jonipwi) to support the project and get recognition in our community!
 
 ---
 
