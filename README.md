@@ -277,30 +277,25 @@ NEXT_PUBLIC_DEV_MODE=production
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Please follow these guidelines:
+We welcome all forms of contribution to FairCoin! Whether you're a developer, designer, marketer, writer, or simply passionate about building a fairer economic system, there's a place for you in our community.
 
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
+### Ways to Contribute
 
-### Code Style
-- Use TypeScript for all new code
-- Follow ESLint and Prettier configurations
-- Write tests for new features
-- Update documentation as needed
+- 💻 **Code**: Frontend, backend, testing, and bug fixes
+- 🎨 **Design**: UI/UX improvements and visual assets
+- 📝 **Documentation**: Technical docs, tutorials, and translations
+- 📢 **Marketing**: Content creation, social media, and community outreach
+- 🔍 **Research**: Economic models, security audits, and data analysis
+- 🤝 **Community**: Support users, organize events, and spread the word
 
-### Commit Message Convention
-```
-feat: Add new feature
-fix: Fix bug
-docs: Update documentation
-style: Format code
-refactor: Refactor code
-test: Add tests
-chore: Update dependencies
-```
+### Quick Start for Contributors
+
+1. **Read our [Contributing Guide](./CONTRIBUTING.md)** - Comprehensive guide for all contribution types
+2. **Check [Good First Issues](https://github.com/jonipwi/faircoin.app/labels/good%20first%20issue)** - Perfect for newcomers
+3. **Join as a Collaborator** - [Express your interest](https://github.com/jonipwi/faircoin.app/issues/new?template=collaboration.yml)
+4. **Fork & Code** - Fork the repo, make changes, and submit a PR
+
+For detailed contribution guidelines, code standards, and development workflow, please see our **[CONTRIBUTING.md](./CONTRIBUTING.md)** guide.
 
 ## 📖 Documentation
 

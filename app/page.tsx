@@ -8,7 +8,7 @@ import { MerchantsSection } from '@/components/MerchantsSection'
 import { FairnessSection } from '@/components/FairnessSection'
 import { GovernanceSection } from '@/components/GovernanceSection'
 import { CommunitySection } from '@/components/CommunitySection'
-import { Sparkles, Heart, Scale } from 'lucide-react'
+import { Sparkles, Heart, Scale, Users } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 
 export default function Home() {
@@ -106,6 +106,15 @@ export default function Home() {
               </a>
               <a href="#community" className="btn btn-outline btn-lg border-white text-white hover:bg-white hover:text-primary-600">
                 Explore Community
+              </a>
+              <a 
+                href="https://github.com/jonipwi/faircoin.app/issues/new?template=collaboration.yml" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 hover:from-purple-700 hover:to-pink-700 hover:shadow-2xl group"
+              >
+                <Users className="w-5 h-5 group-hover:scale-110 transition-transform inline-block" />
+                <span className="ml-2">Become a Collaborator</span>
               </a>
             </div>
           </div>
