@@ -35,7 +35,7 @@ Your FairCoin repository already has:
 
 ## 🔧 How to Make Your Repository Public
 
-Since this repository appears to be **private**, you need to change its visibility to **public** on GitHub:
+If your repository is currently **private**, you need to change its visibility to **public** on GitHub:
 
 ### Step-by-Step Instructions:
 
@@ -55,7 +55,7 @@ Since this repository appears to be **private**, you need to change its visibili
 4. **Click "Change visibility"**
    - Select "Make public"
    - GitHub will ask you to type the repository name to confirm
-   - Type: `jonipwi/faircoin.app` or just `faircoin.app`
+   - Type: `jonipwi/faircoin.app` (or your repository name)
    - Click "I understand, change repository visibility"
 
 5. **Confirm the change**
@@ -146,7 +146,7 @@ To maximize sponsor discoverability after making your repository public:
 
 5. **Add a website URL**
    - Settings → General → Website
-   - Use: https://faircoin.bixio.xyz (your staging site)
+   - Add your project URL (e.g., staging site, documentation site, or landing page)
 
 ## ❓ Frequently Asked Questions
 
