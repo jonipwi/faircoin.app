@@ -1,2 +1,12 @@
+# FairCoin - Staging Environment
+# This is a LEGITIMATE development/testing site
+# NOT a phishing or malicious site
+
+# Disallow indexing for staging environment
 User-agent: *
 Disallow: /
+
+# Links for verification
+# Security: /.well-known/security.txt
+# Repository: https://github.com/jonipwi/faircoin.app
+# Documentation: https://github.com/jonipwi/faircoin.app/blob/main/SECURITY.md

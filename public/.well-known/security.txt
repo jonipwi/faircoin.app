@@ -1,0 +1,25 @@
+Contact: https://github.com/jonipwi/faircoin.app/security/advisories/new
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://faircoin.bixio.xyz/.well-known/security.txt
+
+# FairCoin - Staging Environment
+# This is a LEGITIMATE development and testing environment
+# NOT a phishing or malicious site
+
+# Project Information
+Policy: https://github.com/jonipwi/faircoin.app/blob/main/SECURITY.md
+Acknowledgments: https://github.com/jonipwi/faircoin.app/blob/main/README.md#-support
+
+# Purpose
+# faircoin.bixio.xyz - Primary staging server for development and testing
+# faircoin-app.vercel.app - Secondary Vercel deployment for testing
+# These are NOT production sites and NOT intended for commercial use
+
+# GitHub Repository
+# https://github.com/jonipwi/faircoin.app
+
+# About FairCoin
+# FairCoin is a community-driven fair transaction system built on principles 
+# of transparency, compassion, and equity. This staging environment is used
+# for development, testing, and demonstration purposes only.
