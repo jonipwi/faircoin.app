@@ -304,7 +304,8 @@ Detailed documentation is available:
 ### Core Documentation
 - [README](./README.md) - Project overview and quick start
 - [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guidelines for all types of contributors
-- [DISCUSSIONS_SETUP.md](./DISCUSSIONS_SETUP.md) - Guide to enabling GitHub Discussions
+- [DISCUSSIONS_ACTION_REQUIRED.md](./DISCUSSIONS_ACTION_REQUIRED.md) - ⚡ **Quick action**: Enable GitHub Discussions (60 seconds)
+- [DISCUSSIONS_SETUP.md](./DISCUSSIONS_SETUP.md) - Complete guide to GitHub Discussions setup
 - [SECURITY.md](./SECURITY.md) - Security policy and legitimacy verification
 - [STAGING.md](./STAGING.md) - Staging environment explanation
 - [GOOGLE_SAFE_BROWSING_REPORT.md](./GOOGLE_SAFE_BROWSING_REPORT.md) - Guide for reporting false positives
@@ -349,6 +350,8 @@ For production deployment, ensure proper SSL certificates are configured in your
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🌍 Community
+
+> ⚡ **Repository Admin**: GitHub Discussions is ready to enable! See [`DISCUSSIONS_ACTION_REQUIRED.md`](./DISCUSSIONS_ACTION_REQUIRED.md) for 60-second setup instructions.
 
 ### Connect With Us
 
