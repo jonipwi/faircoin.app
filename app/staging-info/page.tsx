@@ -197,9 +197,9 @@ export default function StagingInfoPage() {
           
           <ol className="space-y-3 text-gray-700 dark:text-gray-300 mb-6 list-decimal list-inside">
             <li>Visit <a href="https://safebrowsing.google.com/safebrowsing/report_error/" target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">Google Safe Browsing Report Page</a></li>
-            <li>Select &quot;This page is safe&quot;</li>
+            <li>Select &ldquo;This page is safe&rdquo;</li>
             <li>Enter the URL: <code className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">https://faircoin.bixio.xyz</code></li>
-            <li>Explain that it&apos;s a legitimate open-source staging environment</li>
+            <li>Explain that it&rsquo;s a legitimate open-source staging environment</li>
           </ol>
           
           <div className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
@@ -222,7 +222,7 @@ export default function StagingInfoPage() {
           
           <p className="text-gray-700 dark:text-gray-300 mb-4">
             FairCoin is a community-driven fair transaction system built on principles of transparency, 
-            compassion, and equity. We&apos;re developing an alternative economic system based on fairness metrics 
+            compassion, and equity. We&rsquo;re developing an alternative economic system based on fairness metrics 
             (PFI★ and TFI★) rather than traditional monetary systems.
           </p>
           
