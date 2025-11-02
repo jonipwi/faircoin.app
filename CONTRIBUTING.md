@@ -252,11 +252,26 @@ FairCoin is built on:
 
 ## 💬 Communication Channels
 
-- **GitHub Issues**: Bug reports, feature requests
-- **GitHub Discussions**: General questions, ideas, showcases
-- **Pull Requests**: Code contributions and reviews
-- **Discord**: Real-time community chat (link to be added)
-- **Twitter**: Updates and announcements (link to be added)
+### Primary Channels
+
+- **[GitHub Discussions](https://github.com/jonipwi/faircoin.app/discussions)** - **Start here!** Ask questions, share ideas, and engage with the community
+  - 💡 Ideas & Feature Requests
+  - 🙏 Q&A - Get help and answers
+  - 🏗️ Development discussions
+  - 🎨 Design & UX feedback
+  - 🎉 Show and Tell
+  - 💬 General community discussions
+
+- **[GitHub Issues](https://github.com/jonipwi/faircoin.app/issues)** - Bug reports and approved feature requests
+  - Use for specific, actionable tasks
+  - Link related discussions for context
+
+- **Pull Requests** - Code contributions and reviews
+  - See our [PR Guidelines](#-pull-request-guidelines)
+
+### Coming Soon
+- **Discord**: Real-time community chat
+- **Twitter**: Updates and announcements
 
 ## 🎯 Finding Something to Work On
 
@@ -283,6 +298,7 @@ We value all contributions! Contributors will be:
 ## 📚 Additional Resources
 
 - [README](./README.md) - Project overview
+- [Discussions Setup](./DISCUSSIONS_SETUP.md) - Guide to enabling GitHub Discussions
 - [Security Policy](./SECURITY.md) - Security guidelines
 - [Staging Guide](./STAGING.md) - Development environment info
 - [2FA Documentation](./docs/2FA_IMPLEMENTATION.md) - Authentication system

@@ -303,6 +303,8 @@ Detailed documentation is available:
 
 ### Core Documentation
 - [README](./README.md) - Project overview and quick start
+- [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guidelines for all types of contributors
+- [DISCUSSIONS_SETUP.md](./DISCUSSIONS_SETUP.md) - Guide to enabling GitHub Discussions
 - [SECURITY.md](./SECURITY.md) - Security policy and legitimacy verification
 - [STAGING.md](./STAGING.md) - Staging environment explanation
 - [GOOGLE_SAFE_BROWSING_REPORT.md](./GOOGLE_SAFE_BROWSING_REPORT.md) - Guide for reporting false positives
@@ -348,12 +350,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🌍 Community
 
-- **Staging Sites (Development Only - Not for Commercial Use)**:
-  - [https://faircoin.bixio.xyz](https://faircoin.bixio.xyz) - Primary staging server
-  - [https://faircoin-app.vercel.app](https://faircoin-app.vercel.app) - Vercel deployment
-- **GitHub**: [https://github.com/jonipwi/faircoin.app](https://github.com/jonipwi/faircoin.app)
-- **Discord**: Join our community (link)
-- **Twitter**: Follow us @FairCoin (link)
+### Connect With Us
+
+- 💬 **[GitHub Discussions](https://github.com/jonipwi/faircoin.app/discussions)** - Ask questions, share ideas, and connect with the community
+- 📝 **[GitHub Issues](https://github.com/jonipwi/faircoin.app/issues)** - Report bugs and request features
+- 🤝 **[GitHub](https://github.com/jonipwi/faircoin.app)** - Source code and contributions
+- 💬 **Discord**: Join our community (coming soon)
+- 🐦 **Twitter**: Follow us @FairCoin (coming soon)
+
+### Staging Sites (Development Only - Not for Commercial Use)
+
+- [https://faircoin.bixio.xyz](https://faircoin.bixio.xyz) - Primary staging server
+- [https://faircoin-app.vercel.app](https://faircoin-app.vercel.app) - Vercel deployment
 
 > **Note**: The staging sites listed above are for **development and testing purposes only**. They are not production-ready and should not be used for any commercial transactions or real-world financial activities.
 
