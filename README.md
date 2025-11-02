@@ -1,0 +1,363 @@
+# FairCoin — Light & Truth, Love & Mercy, Just & Peace
+
+A community-driven fair transaction system built on principles of transparency, compassion, and equity. FairCoin introduces **PFI★** (Personal Fairness Index) and **TFI★** (Transaction Fairness Index) as the foundation for a more just economic system.
+
+![FairCoin Banner](https://img.shields.io/badge/FairCoin-Community_Driven-blue?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+> ⚠️ **STAGING PROJECT - NOT FOR COMMERCIAL USE**
+> 
+> This project is currently in **staging/development mode** and is **NOT intended for commercial use or production deployment**. 
+> 
+> **Live Staging Sites:**
+> - 🔗 [https://faircoin.bixio.xyz](https://faircoin.bixio.xyz) - Primary staging server
+> - 🔗 [https://faircoin-app.vercel.app](https://faircoin-app.vercel.app) - Vercel deployment
+> 
+> These are **development and testing environments only**. Features may be incomplete, unstable, or subject to change without notice. Do not use for real financial transactions.
+
+## 🌟 Core Principles
+
+### Light & Truth
+Complete transparency in all transactions and governance decisions. Every action is recorded and visible to the community.
+
+### Love & Mercy
+Compassionate community support and second chances for all. We believe in rehabilitation and growth.
+
+### Just & Peace
+Fair resource distribution and equitable economic opportunities for everyone.
+
+## ✨ Features
+
+- 🔐 **Secure Authentication** - GitHub OAuth integration with 2FA support
+- 💰 **Multi-Currency Support** - Real-time exchange rates for USD, IDR, SGD, and more
+- 🏛️ **Community Governance** - Democratic voting system for platform decisions
+- 📊 **Fairness Metrics** - PFI★ and TFI★ tracking for all users and transactions
+- 🌓 **Dark Mode** - Beautiful UI with system-synchronized theme switching
+- 📱 **Responsive Design** - Mobile-first approach for accessibility
+- 🔒 **2FA Security** - TOTP-based two-factor authentication
+- 🌐 **Exchange Integration** - Live cryptocurrency and fiat exchange rates
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Node.js** 18.x or higher
+- **npm** or **yarn** package manager
+- **Git** for version control
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/jonipwi/faircoin.app.git
+   cd faircoin/faircoin.app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   
+   Copy `.env.example` to `.env` and configure:
+   ```bash
+   cp .env.example .env
+   ```
+
+   Required environment variables:
+   ```properties
+   # Environment Mode
+   NEXT_PUBLIC_DEV_MODE=development
+   NEXT_PUBLIC_DEV_MODE_MESSAGE="Development Environment"
+
+   # API Endpoints
+   NEXT_PUBLIC_EXCHANGE_API_URL=https://bixio.xyz/exchangev2
+   NEXT_PUBLIC_API_BASE=https://bixio.xyz/faircoin/api/v1
+   BACKEND_URL=https://bixio.xyz/faircoin
+
+   ```
+
+4. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🏗️ Build & Deploy
+
+### Development Build
+```bash
+npm run dev
+```
+
+### Production Build
+```bash
+npm run build
+npm start
+```
+
+### Export Static Site
+```bash
+npm run build
+npm run export
+```
+
+### PowerShell Build Scripts
+Windows users can use the included PowerShell scripts:
+```powershell
+# Development build
+.\build.ps1
+
+```
+
+## 📁 Project Structure
+
+```
+faircoin.app/
+├── app/                          # Next.js App Router
+│   ├── api/                      # API routes
+│   │   ├── auth/                 # Authentication endpoints
+│   │   ├── 2fa/                  # Two-factor auth
+│   │   ├── dashboard/            # Dashboard data
+│   │   └── settings/             # User settings
+│   ├── auth/                     # Authentication pages
+│   ├── dashboard/                # User dashboard
+│   ├── settings/                 # Settings pages
+│   ├── layout.tsx                # Root layout
+│   └── page.tsx                  # Landing page
+├── components/                   # React components
+│   ├── CommunitySection.tsx      # Community features
+│   ├── GovernanceSection.tsx     # Governance voting
+│   ├── WalletSection.tsx         # Wallet management
+│   ├── Navbar.tsx                # Navigation
+│   ├── ThemeProvider.tsx         # Theme context
+│   └── 2fa/                      # 2FA components
+├── contexts/                     # React contexts
+│   ├── AuthContext.tsx           # Authentication state
+│   └── ExchangeContext.tsx       # Exchange rate state
+├── hooks/                        # Custom React hooks
+│   ├── useExchange.ts            # Exchange rate hook
+│   └── useStats.ts               # Statistics hook
+├── lib/                          # Utility libraries
+│   ├── api.ts                    # API client
+│   ├── exchange-api.ts           # Exchange API
+│   └── community-debug.ts        # Debug utilities
+├── tests/                        # Test files
+│   ├── 2fa-integration.test.ts   # 2FA tests
+│   └── frontend-api-2fa.test.ts  # API tests
+├── public/                       # Static assets
+├── .env                          # Environment variables
+├── next.config.js                # Next.js configuration
+├── tailwind.config.ts            # Tailwind CSS config
+└── tsconfig.json                 # TypeScript config
+```
+
+## 🔐 Security Features
+
+### Two-Factor Authentication (2FA)
+- TOTP-based authentication using Google Authenticator or similar apps
+- QR code generation for easy setup
+- Backup codes for account recovery
+- Session management with secure tokens
+
+### Authentication Flow
+1. GitHub OAuth login
+2. Terms of Service acceptance
+3. Optional 2FA setup
+4. Secure session creation
+5. Dashboard access with protected routes
+
+### Security Best Practices
+- All API calls use HTTPS
+- JWT tokens for session management
+- CORS protection
+- Input validation and sanitization
+- Rate limiting on sensitive endpoints
+
+## 🌐 API Integration
+
+### Exchange API
+Real-time exchange rates for multiple currencies:
+```typescript
+import { useExchange } from '@/hooks/useExchange'
+
+const { convertCurrency, rates, loading } = useExchange()
+
+// Convert amounts
+const usdAmount = convertCurrency(100, 'IDR', 'USD')
+```
+
+### Authentication API
+```typescript
+import { api } from '@/lib/api'
+
+// Initialize OAuth
+const { auth_url } = await api.auth.init()
+
+// Accept terms
+await api.auth.acceptTerms({
+  user_id: 123,
+  version: '1.0',
+  session_id: 'session_token'
+})
+```
+
+## 🎨 UI Components
+
+### Theme System
+FairCoin supports light and dark themes with automatic system detection:
+```tsx
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
+
+<ThemeSwitcher />
+```
+
+### Currency Display
+Multi-currency balance display with real-time conversion:
+```tsx
+import { MultiCurrencyBalance } from '@/components/MultiCurrencyBalance'
+
+<MultiCurrencyBalance 
+  amount={1000} 
+  baseCurrency="USD"
+  displayCurrencies={['USD', 'IDR', 'SGD']} 
+/>
+```
+
+## 🧪 Testing
+
+### Run Tests
+```bash
+# Run all tests
+npm test
+
+# Run specific test file
+npm test -- 2fa-integration.test.ts
+
+# Watch mode
+npm test -- --watch
+```
+
+### Test Coverage
+- Authentication flow tests
+- 2FA integration tests
+- API endpoint tests
+- Component rendering tests
+
+## 📊 Environment Modes
+
+FairCoin supports multiple environment modes with visual indicators:
+
+### Development Mode
+Shows a prominent warning banner:
+```properties
+NEXT_PUBLIC_DEV_MODE=development
+NEXT_PUBLIC_DEV_MODE_MESSAGE="Development Environment - Testing Only"
+```
+
+### Staging Mode
+Shows warning for staging sites:
+```properties
+NEXT_PUBLIC_DEV_MODE=staging
+NEXT_PUBLIC_DEV_MODE_MESSAGE="Staging Site - Not a Phishing Page"
+```
+
+### Production Mode
+No banner shown:
+```properties
+NEXT_PUBLIC_DEV_MODE=production
+```
+
+## 🤝 Contributing
+
+We welcome contributions from the community! Please follow these guidelines:
+
+1. **Fork the repository**
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
+
+### Code Style
+- Use TypeScript for all new code
+- Follow ESLint and Prettier configurations
+- Write tests for new features
+- Update documentation as needed
+
+### Commit Message Convention
+```
+feat: Add new feature
+fix: Fix bug
+docs: Update documentation
+style: Format code
+refactor: Refactor code
+test: Add tests
+chore: Update dependencies
+```
+
+## 📖 Documentation
+
+Detailed documentation is available in the `/docs` folder:
+
+- [2FA Implementation Guide](./docs/2FA_IMPLEMENTATION.md)
+- [2FA Integration Summary](./docs/2FA_INTEGRATION_SUMMARY.md)
+- [Test Architecture](./tests/2FA-ARCHITECTURE.md)
+- [Quick Reference](./tests/2FA-QUICK-REFERENCE.md)
+
+## 🛠️ Troubleshooting
+
+### Port Already in Use
+If port 3000 is in use, Next.js will automatically try 3001:
+```bash
+# Or specify a custom port
+PORT=3002 npm run dev
+```
+
+### Build Errors
+Clear Next.js cache:
+```bash
+# Windows PowerShell
+Remove-Item -Recurse -Force .next
+npm run build
+
+# Linux/Mac
+rm -rf .next
+npm run build
+```
+
+### SSL Certificate Issues
+For production deployment, ensure proper SSL certificates are configured in your web server (Apache/Nginx).
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🌍 Community
+
+- **Staging Sites (Development Only - Not for Commercial Use)**:
+  - [https://faircoin.bixio.xyz](https://faircoin.bixio.xyz) - Primary staging server
+  - [https://faircoin-app.vercel.app](https://faircoin-app.vercel.app) - Vercel deployment
+- **GitHub**: [https://github.com/jonipwi/faircoin.app](https://github.com/jonipwi/faircoin.app)
+- **Discord**: Join our community (link)
+- **Twitter**: Follow us @FairCoin (link)
+
+> **Note**: The staging sites listed above are for **development and testing purposes only**. They are not production-ready and should not be used for any commercial transactions or real-world financial activities.
+
+## 💖 Support
+
+If you find FairCoin valuable, please consider:
+- ⭐ Starring the repository
+- 🐛 Reporting bugs
+- 💡 Suggesting new features
+- 📝 Contributing to documentation
+- 🤝 Sharing with others
+
+---
+
+**Built with ❤️ by the FairCoin Community**
+
+*Light & Truth • Love & Mercy • Just & Peace*
