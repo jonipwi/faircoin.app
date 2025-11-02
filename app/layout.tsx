@@ -21,13 +21,22 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'FairCoin — Light & Truth, Love & Mercy, Just & Peace',
-  description: 'Community-driven fair transaction system with PFI★ and TFI★ at the core. Breaking free from inequality and inflation with a fairness-first monetary system.',
-  keywords: ['FairCoin', 'cryptocurrency', 'fairness', 'community', 'PFI', 'TFI', 'blockchain'],
+  description: 'Community-driven fair transaction system with PFI★ and TFI★ at the core. Breaking free from inequality and inflation with a fairness-first monetary system. [STAGING ENVIRONMENT - Development & Testing Only]',
+  keywords: ['FairCoin', 'cryptocurrency', 'fairness', 'community', 'PFI', 'TFI', 'blockchain', 'staging', 'development'],
   authors: [{ name: 'FairCoin Community' }],
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'FairCoin — Light & Truth, Love & Mercy, Just & Peace',
-    description: 'Community-driven fair transaction system with PFI★ and TFI★',
+    description: 'Community-driven fair transaction system with PFI★ and TFI★ [STAGING]',
     type: 'website',
+  },
+  other: {
+    'project-repository': 'https://github.com/jonipwi/faircoin.app',
+    'security-policy': 'https://github.com/jonipwi/faircoin.app/blob/main/SECURITY.md',
+    'staging-environment': 'true',
   },
 }
 
