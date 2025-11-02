@@ -41,7 +41,10 @@ class ExchangeAPIError extends Error {
 
 async function exchangeRequest<T>(path: string, init?: RequestInit): Promise<T> {
   try {
-    const res = await fetch(`${EXCHANGE_API_BASE}${path}`, {
+    const url = `${EXCHANGE_API_BASE}${path}`
+    console.log('[Exchange API] Request URL:', url)
+    console.log('[Exchange API] Base URL:', EXCHANGE_API_BASE)
+    const res = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',
         ...(init?.headers || {}),
