@@ -2,10 +2,12 @@
 
 import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Github, Shield, CheckCircle, ExternalLink, ArrowLeft, Sparkles } from 'lucide-react'
+import { Github, Shield, CheckCircle, ExternalLink, ArrowLeft, Sparkles, AlertTriangle } from 'lucide-react'
 import { api, type AuthSession, type TermsResponse } from '@/lib/api'
 
 function AuthPageContent() {
+  const devMode = process.env.NEXT_PUBLIC_DEV_MODE || process.env.DEV_MODE
+  const devModeMessage = process.env.NEXT_PUBLIC_DEV_MODE_MESSAGE || process.env.DEV_MODE_MESSAGE
   const router = useRouter()
   const searchParams = useSearchParams()
   const [loading, setLoading] = useState(false)
@@ -376,6 +378,26 @@ function AuthPageContent() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      {/* Staging/Development Environment Warning Banner */}
+      {devMode && devMode !== 'production' && (
+        <div className="sticky top-0 z-50 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 shadow-lg">
+          <div className="container py-4">
+            <div className="flex items-center justify-center gap-3 text-white">
+              <AlertTriangle className="w-5 h-5 animate-pulse" />
+              <div className="text-center">
+                <p className="font-bold uppercase tracking-wide text-sm">
+                  {devMode.toUpperCase()} ENVIRONMENT - NOT A PHISHING SITE
+                </p>
+                <p className="text-sm font-medium">
+                  {devModeMessage?.replace(/"/g, '') || 'This is a development/testing environment'}
+                </p>
+              </div>
+              <AlertTriangle className="w-5 h-5 animate-pulse" />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Background Elements */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-1/4 -left-48 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse-slow" />
