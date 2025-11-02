@@ -1,0 +1,164 @@
+name: 🤝 Join as Collaborator
+description: Express interest in collaborating on FairCoin
+title: "[Collaboration]: "
+labels: ["collaboration", "welcome"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Welcome to FairCoin! 🎉
+        
+        We're excited that you want to collaborate with us! FairCoin is built on the principles of **Light & Truth**, **Love & Mercy**, and **Just & Peace**, and we welcome contributors from all backgrounds.
+        
+        Please fill out this form to let us know how you'd like to contribute.
+
+  - type: input
+    id: name
+    attributes:
+      label: Your Name
+      description: What should we call you?
+      placeholder: e.g., John Doe
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution-areas
+    attributes:
+      label: Areas of Interest
+      description: What would you like to contribute to? (Select all that apply)
+      options:
+        - label: 💻 Software Development (Frontend)
+        - label: 💻 Software Development (Backend)
+        - label: 💻 Software Development (Full Stack)
+        - label: 🧪 Testing & QA
+        - label: 🎨 UI/UX Design
+        - label: 📝 Technical Documentation
+        - label: 📝 Content Writing
+        - label: 📢 Marketing & Social Media
+        - label: 🌍 Community Management
+        - label: 🔍 Research & Analysis
+        - label: 🔒 Security Auditing
+        - label: 🌐 Translation
+        - label: 💡 Product Management
+        - label: 📊 Data Analysis
+        - label: Other (please specify below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: skills
+    attributes:
+      label: Your Skills & Experience
+      description: Tell us about your relevant skills, experience, or expertise
+      placeholder: |
+        e.g., 
+        - 5 years of React development
+        - Experience with TypeScript and Next.js
+        - Background in financial systems
+        - Social media marketing experience
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why FairCoin?
+      description: What motivates you to contribute to FairCoin?
+      placeholder: I'm passionate about creating a fairer economic system because...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: availability
+    attributes:
+      label: Availability
+      description: How much time can you dedicate to FairCoin?
+      options:
+        - A few hours per week
+        - 5-10 hours per week
+        - 10-20 hours per week
+        - 20+ hours per week
+        - Full-time collaboration
+        - Flexible/Project-based
+    validations:
+      required: true
+
+  - type: input
+    id: github
+    attributes:
+      label: GitHub Username
+      description: Your GitHub username (if different from current)
+      placeholder: e.g., @johndoe
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: LinkedIn Profile
+      description: Your LinkedIn profile (optional)
+      placeholder: https://linkedin.com/in/johndoe
+
+  - type: input
+    id: twitter
+    attributes:
+      label: Twitter/X Handle
+      description: Your Twitter/X handle (optional)
+      placeholder: e.g., @johndoe
+
+  - type: input
+    id: portfolio
+    attributes:
+      label: Portfolio/Website
+      description: Link to your portfolio or personal website (optional)
+      placeholder: https://johndoe.com
+
+  - type: textarea
+    id: ideas
+    attributes:
+      label: Initial Ideas or Contributions
+      description: Do you have any specific ideas or contributions in mind?
+      placeholder: I'd like to start by working on...
+
+  - type: dropdown
+    id: timezone
+    attributes:
+      label: Timezone
+      description: What's your timezone? (Helps with coordination)
+      options:
+        - UTC-12 to UTC-8 (Pacific)
+        - UTC-7 to UTC-5 (Americas)
+        - UTC-4 to UTC-1 (Atlantic/South America)
+        - UTC+0 to UTC+3 (Europe/Africa)
+        - UTC+4 to UTC+6 (Middle East/Central Asia)
+        - UTC+7 to UTC+9 (East/Southeast Asia)
+        - UTC+10 to UTC+12 (Pacific/Oceania)
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this form, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow FairCoin's Code of Conduct and contribute in alignment with our principles of Light & Truth, Love & Mercy, and Just & Peace
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ## What's Next?
+        
+        After you submit this form:
+        1. A maintainer will review your submission
+        2. We'll reach out to you with next steps
+        3. You'll be invited to our contributor community
+        4. We'll help you get started with your first contribution!
+        
+        **Resources to get started:**
+        - 📖 [Contributing Guide](../CONTRIBUTING.md)
+        - 🚀 [Quick Start Guide](../README.md#-quick-start)
+        - 💬 Join our Discord (link coming soon)
+        
+        Thank you for your interest in making the world fairer! 🌟

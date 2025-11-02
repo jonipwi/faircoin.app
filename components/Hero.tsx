@@ -77,6 +77,15 @@ export function Hero() {
               <a href="#fairness" className="btn btn-outline btn-lg backdrop-blur-sm bg-white/10 dark:bg-gray-800/50 border-white/30 dark:border-gray-600 text-white hover:bg-white hover:text-primary-600 dark:hover:bg-white dark:hover:text-primary-600">
                 Learn More
               </a>
+              <a 
+                href="https://github.com/jonipwi/faircoin.app/issues/new?template=collaboration.yml" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-lg backdrop-blur-sm bg-gradient-to-r from-purple-500/90 to-pink-500/90 dark:from-purple-600/90 dark:to-pink-600/90 border-0 text-white hover:from-purple-600 hover:to-pink-600 dark:hover:from-purple-700 dark:hover:to-pink-700 shadow-lg hover:shadow-xl group"
+              >
+                <Users className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Join as Collaborator
+              </a>
             </div>
 
             {/* Stats Grid */}

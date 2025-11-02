@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/jonipwi/faircoin.app/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 🔒 Security Vulnerability
+    url: https://github.com/jonipwi/faircoin.app/security/advisories/new
+    about: Report security vulnerabilities privately
+  - name: 💖 Sponsor This Project
+    url: https://github.com/sponsors/jonipwi
+    about: Support FairCoin development through GitHub Sponsors
