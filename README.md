@@ -16,6 +16,8 @@ A community-driven fair transaction system built on principles of transparency, 
 > - 🔗 [https://faircoin-app.vercel.app](https://faircoin-app.vercel.app) - Vercel deployment
 > 
 > These are **development and testing environments only**. Features may be incomplete, unstable, or subject to change without notice. Do not use for real financial transactions.
+>
+> **🛡️ Important Security Notice:** If you encounter a Google Safe Browsing warning on our staging domains, this is a false positive. These are legitimate development environments. See our [Security Policy](./SECURITY.md) and [Staging Guide](./STAGING.md) for verification, or visit our [Google Safe Browsing Reporting Guide](./GOOGLE_SAFE_BROWSING_REPORT.md) to help us resolve this issue.
 
 ## 🌟 Core Principles
 
@@ -301,12 +303,23 @@ chore: Update dependencies
 
 ## 📖 Documentation
 
-Detailed documentation is available in the `/docs` folder:
+Detailed documentation is available:
 
+### Core Documentation
+- [README](./README.md) - Project overview and quick start
+- [SECURITY.md](./SECURITY.md) - Security policy and legitimacy verification
+- [STAGING.md](./STAGING.md) - Staging environment explanation
+- [GOOGLE_SAFE_BROWSING_REPORT.md](./GOOGLE_SAFE_BROWSING_REPORT.md) - Guide for reporting false positives
+
+### Feature Documentation
 - [2FA Implementation Guide](./docs/2FA_IMPLEMENTATION.md)
 - [2FA Integration Summary](./docs/2FA_INTEGRATION_SUMMARY.md)
 - [Test Architecture](./tests/2FA-ARCHITECTURE.md)
 - [Quick Reference](./tests/2FA-QUICK-REFERENCE.md)
+
+### Security Resources
+- [security.txt](/.well-known/security.txt) - RFC 9116 security contact file
+- [Staging Info Page](/staging-info) - Web-based explanation for users
 
 ## 🛠️ Troubleshooting
 
