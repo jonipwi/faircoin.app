@@ -34,7 +34,7 @@ export function DonationSection() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              FairCoin is a community fairness and peace-building initiative under the mission of{' '}
+              FairCoin is an <strong className="text-purple-600 dark:text-purple-400">ethical and peace-building initiative</strong> under the mission of{' '}
               <a 
                 href="https://jacobyellowbridge.com" 
                 target="_blank" 
@@ -44,7 +44,7 @@ export function DonationSection() {
                 JacobYellowBridge.com
                 <ExternalLink className="w-3 h-3" />
               </a>
-              , working to promote ethical exchange, compassion, and justice.
+              , working to promote ethical exchange, compassion, and justice for those affected by corruption, human trafficking, and scamming.
             </p>
           </div>
 

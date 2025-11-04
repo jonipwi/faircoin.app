@@ -2,6 +2,8 @@
 
 A community-driven fair transaction system built on principles of transparency, compassion, and equity. FairCoin introduces **PFI★** (Personal Fairness Index) and **TFI★** (Transaction Fairness Index) as the foundation for a more just economic system.
 
+**FairCoin is not a finance project—it is an ethical and peace-building initiative.** Born from the mission of [JacobYellowBridge](https://jacobyellowbridge.com), FairCoin exists to help those affected by corruption, human trafficking, and scamming, addressing the non-balance between wealthy and poor through fairness in trade and personal index improvement.
+
 ![FairCoin Banner](https://img.shields.io/badge/FairCoin-Community_Driven-blue?style=for-the-badge)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
@@ -30,6 +32,22 @@ Compassionate community support and second chances for all. We believe in rehabi
 
 ### Just & Peace
 Fair resource distribution and equitable economic opportunities for everyone.
+
+## 🕊️ Our Sacred Mission
+
+**FairCoin** was born from [jacobyellowbridge.com](https://jacobyellowbridge.com) with a holy purpose: to bring **light, fair peace, and truth** to a world burdened by corruption and inequality.
+
+### Why FairCoin Exists
+
+- **Fighting Corruption**: This world has a lot of corruption, and FairCoin provides a transparent, fair system that cannot be manipulated by those seeking to exploit others.
+
+- **Helping Victims**: We specifically help people affected by **human trafficking** and **scamming**—providing a fair economic foundation for recovery and dignity.
+
+- **Balancing Wealth & Poverty**: The non-balance between wealthy and poor is a fundamental injustice. FairCoin exists to mitigate this through fairness metrics (PFI★ and TFI★) that reward contribution over concentration.
+
+- **Personal Index Improvement**: Through fairness in trade and transparent metrics, every individual can improve their Personal Fairness Index (PFI★) and contribute to a better world.
+
+**JacobYellowBridge brings a light of fair peace and truth** because FairCoin can. This is not about profit—it's about creating an ethical bridge that helps the community and world maintain its good.
 
 ## ✨ Features
 
