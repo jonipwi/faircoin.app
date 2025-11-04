@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, X, Coins, LogIn, UserPlus, User, LogOut, LayoutDashboard, MessageCircle } from 'lucide-react'
+import { Menu, X, Coins, LogIn, UserPlus, User, LogOut, LayoutDashboard } from 'lucide-react'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
 
@@ -22,7 +22,6 @@ export function Navbar() {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'Whitepaper', href: '/whitepaper' },
-    { label: 'Chat', href: '/xdiscord' },
     { label: 'Wallet', href: '#wallet' },
     { label: 'Merchants', href: '#merchants' },
     { label: 'Fairness', href: '#fairness' },

@@ -424,8 +424,10 @@ export function CommunitySection() {
               Together, we&apos;re building a better financial future.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/xdiscord" className="btn btn-primary">
-                Join Chat
+              <Link href="https://discord.gg/faircoin" target="_blank" rel="noopener noreferrer">
+                <button className="btn btn-primary">
+                  Join Community
+                </button>
               </Link>
               <button className="btn btn-outline">
                 View All Events
