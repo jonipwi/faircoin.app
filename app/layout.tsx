@@ -3,6 +3,7 @@ import { Inter, Poppins } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { ExchangeProvider } from '@/contexts/ExchangeContext'
 import { AuthProvider } from '@/contexts/AuthContext'
+import { FloatingChatWidget } from '@/components/FloatingChatWidget'
 import { AlertTriangle } from 'lucide-react'
 import './globals.css'
 
@@ -76,6 +77,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               )}
               
               {children}
+              
+              {/* Floating Chat Widget */}
+              <FloatingChatWidget 
+                defaultRoom="general"
+                defaultUsername="guest"
+              />
             </ExchangeProvider>
           </AuthProvider>
         </ThemeProvider>

@@ -21,7 +21,6 @@ export function Navbar() {
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Whitepaper', href: '/whitepaper' },
     { label: 'Wallet', href: '#wallet' },
     { label: 'Merchants', href: '#merchants' },
     { label: 'Fairness', href: '#fairness' },

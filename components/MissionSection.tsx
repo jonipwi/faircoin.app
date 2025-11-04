@@ -1,6 +1,7 @@
 "use client"
 
-import { Heart, Shield, Users, Scale, Sparkles, HandHeart } from 'lucide-react'
+import Link from 'next/link'
+import { Heart, Shield, Users, Scale, Sparkles, HandHeart, FileText } from 'lucide-react'
 import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
 
 export function MissionSection() {
@@ -23,6 +24,17 @@ export function MissionSection() {
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
               FairCoin is not a finance project—it is an <strong className="text-purple-600 dark:text-purple-400">ethical and peace-building initiative</strong> born from the mission of JacobYellowBridge to bring light, fair peace, and truth to a world burdened by corruption and inequality.
             </p>
+            
+            {/* Whitepaper Button */}
+            <div className="pt-4">
+              <Link 
+                href="/whitepaper"
+                className="inline-flex items-center gap-2 btn btn-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-0 shadow-lg hover:shadow-xl transition-all group"
+              >
+                <FileText className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Read Our Vision & Whitepaper</span>
+              </Link>
+            </div>
           </div>
 
           {/* Mission Statement Card */}

@@ -6,11 +6,31 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
+    
+    /* Chat Widget Theme Variables */
+    --chat-bg-primary: #ffffff;
+    --chat-bg-secondary: #f8f9fa;
+    --chat-text-primary: #212529;
+    --chat-text-secondary: #6c757d;
+    --chat-accent: #5865f2;
+    --chat-accent-hover: #4752c4;
+    --chat-shadow: rgba(0, 0, 0, 0.15);
+    --chat-modal-overlay: rgba(0, 0, 0, 0.5);
   }
 
-  .dark {
+  .dark, [data-chat-theme="dark"] {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
+    
+    /* Chat Widget Dark Theme */
+    --chat-bg-primary: #1e1f22;
+    --chat-bg-secondary: #2b2d31;
+    --chat-text-primary: #f2f3f5;
+    --chat-text-secondary: #b5bac1;
+    --chat-accent: #5865f2;
+    --chat-accent-hover: #4752c4;
+    --chat-shadow: rgba(0, 0, 0, 0.4);
+    --chat-modal-overlay: rgba(0, 0, 0, 0.7);
   }
 
   body {
