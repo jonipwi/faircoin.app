@@ -94,7 +94,7 @@ export function DonationSection() {
                 <Shield className="w-6 h-6 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-1" />
                 <div className="space-y-2">
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    🔒 All contributions go toward developing FairCoin's community fairness tools 
+                    🔒 All contributions go toward developing FairCoin&apos;s community fairness tools 
                     (TFI★, PFI★, Fairchain) and maintaining JesusBot to spread truth and peace through technology.
                   </p>
                 </div>
@@ -105,8 +105,8 @@ export function DonationSection() {
             <div className="text-center space-y-3 pt-4">
               <div className="inline-block">
                 <p className="text-lg md:text-xl italic text-gray-700 dark:text-gray-300 leading-relaxed">
-                  "Let justice roll on like a river,{' '}
-                  righteousness like a never-failing stream."
+                  &ldquo;Let justice roll on like a river,{' '}
+                  righteousness like a never-failing stream.&rdquo;
                 </p>
                 <p className="text-sm font-semibold text-purple-600 dark:text-purple-400 mt-2">
                   — Amos 5:24

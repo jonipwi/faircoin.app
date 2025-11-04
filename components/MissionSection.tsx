@@ -43,7 +43,7 @@ export function MissionSection() {
 
             <div className="bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-xl p-6 border border-purple-200 dark:border-purple-700">
               <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-center italic text-lg">
-                "Because this world has a lot of corruption and non-balance between wealthy and poor, FairCoin exists to mitigate these injustices and help the community and world maintain its good."
+                &ldquo;Because this world has a lot of corruption and non-balance between wealthy and poor, FairCoin exists to mitigate these injustices and help the community and world maintain its good.&rdquo;
               </p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export function MissionSection() {
                 JacobYellowBridge: A Light of Truth
               </h3>
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                <strong className="text-amber-700 dark:text-amber-400">JacobYellowBridge</strong> brings a light of fair peace and truth because the FairCoin project can. This is not about profit—it's about creating an ethical bridge that spans the gap between corruption and justice, between poverty and dignity, between darkness and light.
+                <strong className="text-amber-700 dark:text-amber-400">JacobYellowBridge</strong> brings a light of fair peace and truth because the FairCoin project can. This is not about profit—it&apos;s about creating an ethical bridge that spans the gap between corruption and justice, between poverty and dignity, between darkness and light.
               </p>
               <div className="pt-4">
                 <a 

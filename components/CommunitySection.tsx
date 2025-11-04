@@ -420,7 +420,7 @@ export function CommunitySection() {
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
               Connect with like-minded individuals who believe in fairness, transparency, and economic justice. 
-              Together, we're building a better financial future.
+              Together, we&apos;re building a better financial future.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <button className="btn btn-primary">

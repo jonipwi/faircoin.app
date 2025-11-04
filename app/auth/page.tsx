@@ -245,6 +245,7 @@ function AuthPageContent() {
         
         {session && (
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={session.avatar_url}
               alt={session.username}
@@ -298,7 +299,7 @@ function AuthPageContent() {
                     I have read and agree to the Terms of Service
                   </span>
                   <p className="text-gray-600 dark:text-gray-400 mt-1">
-                    By accepting, you commit to uphold FairCoin's principles of Light & Truth, Love & Mercy, and Just & Peace.
+                    By accepting, you commit to uphold FairCoin&apos;s principles of Light & Truth, Love & Mercy, and Just & Peace.
                   </p>
                 </div>
               </label>
@@ -344,14 +345,14 @@ function AuthPageContent() {
         </h1>
         
         <p className="text-lg text-gray-600 dark:text-gray-400">
-          Your account has been created successfully. You're now part of the FairCoin community.
+          Your account has been created successfully. You&apos;re now part of the FairCoin community.
         </p>
       </div>
 
       <div className="card p-6 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950/50 dark:to-accent-950/50 border border-primary-200 dark:border-primary-800">
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-            What's Next?
+            What&apos;s Next?
           </h2>
           <ul className="space-y-2 text-left">
             <li className="flex items-center gap-2">

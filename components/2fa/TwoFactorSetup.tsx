@@ -95,6 +95,7 @@ export default function TwoFactorSetup({
 
           <div className="flex flex-col items-center gap-4">
             <div className="p-4 bg-white rounded-lg border-2 border-gray-200 dark:border-gray-600">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={qrCode} alt="2FA QR Code" className="w-48 h-48" />
             </div>
 

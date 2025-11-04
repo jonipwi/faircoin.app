@@ -270,7 +270,7 @@ export function GovernanceSection() {
                   </p>
                   {vote.reason && (
                     <p className="text-xs text-gray-500 italic line-clamp-2">
-                      "{vote.reason}"
+                      &ldquo;{vote.reason}&rdquo;
                     </p>
                   )}
                 </div>
@@ -310,8 +310,8 @@ export function GovernanceSection() {
               Your Voice Matters
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-              Higher PFI gives you more voting power, but every community member's voice is heard. 
-              Participate in governance to shape FairCoin's future.
+              Higher PFI gives you more voting power, but every community member&apos;s voice is heard. 
+              Participate in governance to shape FairCoin&apos;s future.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <button className="btn btn-primary">

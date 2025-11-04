@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { 
@@ -70,24 +70,7 @@ export default function SettingsPage() {
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
 
-  useEffect(() => {
-    if (!loading && !isAuthenticated) {
-      router.push('/auth')
-      return
-    }
-
-    if (isAuthenticated && user) {
-      loadUserDashboardData()
-    }
-
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system'
-    if (savedTheme) {
-      setTheme(savedTheme)
-    }
-  }, [user, isAuthenticated, loading, router])
-
-  const loadUserDashboardData = async () => {
+  const loadUserDashboardData = useCallback(async () => {
     try {
       // Get the auth token
       const token = localStorage.getItem('auth_token') || 
@@ -200,7 +183,24 @@ export default function SettingsPage() {
         await loadUserSettingsFallback(token)
       }
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      router.push('/auth')
+      return
+    }
+
+    if (isAuthenticated && user) {
+      loadUserDashboardData()
+    }
+
+    // Load theme from localStorage
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system'
+    if (savedTheme) {
+      setTheme(savedTheme)
+    }
+  }, [user, isAuthenticated, loading, router, loadUserDashboardData])
 
   const loadUserSettingsFallback = async (token: string) => {
     try {
@@ -868,7 +868,7 @@ export default function SettingsPage() {
                               Enhanced Security
                             </h4>
                             <p className="text-sm text-blue-700 dark:text-blue-300">
-                              Two-factor authentication adds an extra layer of security to your account. You'll need to provide a code from your authenticator app when signing in.
+                              Two-factor authentication adds an extra layer of security to your account. You&apos;ll need to provide a code from your authenticator app when signing in.
                             </p>
                           </div>
                         </div>
@@ -901,6 +901,7 @@ export default function SettingsPage() {
                           </p>
                           {twoFactorAuth.qrCode && (
                             <div className="p-4 bg-white rounded-lg border-2 border-gray-200 dark:border-gray-600 inline-block">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img src={twoFactorAuth.qrCode} alt="2FA QR Code" className="w-48 h-48" />
                             </div>
                           )}
@@ -956,7 +957,7 @@ export default function SettingsPage() {
                               Two-Factor Authentication Enabled
                             </h4>
                             <p className="text-sm text-green-700 dark:text-green-300">
-                              Your account is now protected with Google Authenticator. You'll need to provide a code when signing in.
+                              Your account is now protected with Google Authenticator. You&apos;ll need to provide a code when signing in.
                             </p>
                           </div>
                         </div>

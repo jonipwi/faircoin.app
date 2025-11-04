@@ -157,7 +157,7 @@ export default function StagingInfoPage() {
               <h3 className="font-semibold mb-2">1. New/Unverified Domain</h3>
               <p className="text-sm">
                 The domain <code className="px-2 py-1 bg-gray-200 dark:bg-gray-700 rounded">bixio.xyz</code> may be 
-                relatively new and not yet established in Google's trust database.
+                relatively new and not yet established in Google&apos;s trust database.
               </p>
             </div>
             

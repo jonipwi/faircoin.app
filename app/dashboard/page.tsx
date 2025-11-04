@@ -62,6 +62,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
         <div className="flex items-center justify-between">
           {/* Left side - User Info */}
           <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={profile.avatar_url}
               alt={user.username}
