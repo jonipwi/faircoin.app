@@ -3,6 +3,7 @@
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/Hero'
 import { Features } from '@/components/Features'
+import { MissionSection } from '@/components/MissionSection'
 import { WalletSection } from '@/components/WalletSection'
 import { MerchantsSection } from '@/components/MerchantsSection'
 import { FairnessSection } from '@/components/FairnessSection'
@@ -121,6 +122,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Mission & Purpose Section */}
+      <MissionSection />
 
       {/* Wallet Section */}
       <WalletSection />
