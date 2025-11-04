@@ -1,6 +1,7 @@
 "use client"
 
 import { Heart, Shield, Users, Scale, Sparkles, HandHeart } from 'lucide-react'
+import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
 
 export function MissionSection() {
   return (
@@ -35,7 +36,7 @@ export function MissionSection() {
                   The Holy Purpose of Fairness
                 </h3>
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  FairCoin was born from <strong className="text-purple-600 dark:text-purple-400">jacobyellowbridge.com</strong> to help those in need, especially people affected by human trafficking, scamming, and other outrageous injustices. We seek to achieve the holy purpose of truth and justice through fairness in trade and personal index improvement.
+                  FairCoin was born from <strong className="text-purple-600 dark:text-purple-400">{JACOB_YELLOW_BRIDGE_URL.replace('https://', '')}</strong> to help those in need, especially people affected by human trafficking, scamming, and other outrageous injustices. We seek to achieve the holy purpose of truth and justice through fairness in trade and personal index improvement.
                 </p>
               </div>
             </div>
@@ -128,12 +129,12 @@ export function MissionSection() {
               </p>
               <div className="pt-4">
                 <a 
-                  href="https://jacobyellowbridge.com" 
+                  href={JACOB_YELLOW_BRIDGE_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-lg bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white border-0 shadow-lg hover:shadow-xl transition-all"
                 >
-                  Learn More at JacobYellowBridge.com
+                  Learn More at {JACOB_YELLOW_BRIDGE_URL.replace('https://', '')}
                 </a>
               </div>
             </div>
@@ -142,11 +143,11 @@ export function MissionSection() {
           {/* Biblical Foundation */}
           <div className="mt-12 text-center">
             <div className="inline-block bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-purple-200 dark:border-purple-800">
-              <p className="text-xl md:text-2xl italic text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                "Speak up for those who cannot speak for themselves,<br />
-                for the rights of all who are destitute.<br />
-                Speak up and judge fairly;<br />
-                defend the rights of the poor and needy."
+              <p className="text-xl md:text-2xl italic text-gray-700 dark:text-gray-300 leading-relaxed mb-4" style={{ whiteSpace: 'pre-line' }}>
+                {`"Speak up for those who cannot speak for themselves,
+for the rights of all who are destitute.
+Speak up and judge fairly;
+defend the rights of the poor and needy."`}
               </p>
               <p className="text-base font-semibold text-purple-600 dark:text-purple-400">
                 — Proverbs 31:8-9

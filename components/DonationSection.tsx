@@ -2,6 +2,7 @@
 
 import { Heart, Shield, Copy, CheckCircle2, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
+import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
 
 export function DonationSection() {
   const [copied, setCopied] = useState(false)
@@ -36,12 +37,12 @@ export function DonationSection() {
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
               FairCoin is an <strong className="text-purple-600 dark:text-purple-400">ethical and peace-building initiative</strong> under the mission of{' '}
               <a 
-                href="https://jacobyellowbridge.com" 
+                href={JACOB_YELLOW_BRIDGE_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-purple-600 dark:text-purple-400 hover:underline font-semibold inline-flex items-center gap-1"
               >
-                JacobYellowBridge.com
+                {JACOB_YELLOW_BRIDGE_URL.replace('https://', '')}
                 <ExternalLink className="w-3 h-3" />
               </a>
               , working to promote ethical exchange, compassion, and justice for those affected by corruption, human trafficking, and scamming.
