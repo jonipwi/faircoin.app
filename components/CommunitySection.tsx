@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Heart, Users, Calendar, Trophy, Star, MapPin, Clock, UserCheck } from 'lucide-react'
 import { api, type CommunityFeedItem, type CommunityAchievement, type CommunityEvent } from '@/lib/api'
 import { communityDebug } from '@/lib/community-debug'
@@ -423,9 +424,9 @@ export function CommunitySection() {
               Together, we&apos;re building a better financial future.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <button className="btn btn-primary">
-                Join Discord
-              </button>
+              <Link href="/xdiscord" className="btn btn-primary">
+                Join Chat
+              </Link>
               <button className="btn btn-outline">
                 View All Events
               </button>
