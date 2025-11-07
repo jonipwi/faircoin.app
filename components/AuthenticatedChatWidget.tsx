@@ -22,8 +22,9 @@ export function AuthenticatedChatWidget() {
   const { user, isAuthenticated } = useAuth()
 
   // Determine username based on authentication status
+  // Prefer username, fallback to email prefix (before @), or generate one
   const username = isAuthenticated 
-    ? user?.username || user?.email || 'user'
+    ? user?.username || user?.email?.split('@')[0] || `user_${user?.user_id || 'guest'}`
     : 'guest'
 
   return (

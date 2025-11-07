@@ -157,7 +157,7 @@ To customize how usernames are determined, modify `AuthenticatedChatWidget.tsx`:
 
 ```typescript
 const username = isAuthenticated 
-  ? user?.username || user?.email || user?.name || 'user'
+  ? user?.username || user?.email?.split('@')[0] || `user_${user?.user_id || 'guest'}`
   : 'guest'
 ```
 
@@ -239,7 +239,7 @@ Potential improvements for the chat integration:
 ## Resources
 
 - **xdiscord Repository**: https://github.com/jonipwi/xdiscord
-- **xdiscord Embedding Guide**: https://github.com/jonipwi/xdiscord/blob/master/EMBEDDING_GUIDE.md
+- **xdiscord Embedding Guide**: https://github.com/jonipwi/xdiscord/blob/main/EMBEDDING_GUIDE.md
 - **FairCoin Repository**: https://github.com/jonipwi/faircoin.app
 - **FairCoin README**: https://github.com/jonipwi/faircoin.app/blob/main/README.md
 
