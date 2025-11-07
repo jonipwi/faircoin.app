@@ -1,8 +1,22 @@
 # Security Policy
 
+> 🚨 **CRITICAL SECURITY ALERT**: The domains `jacobyellowbridge.com` and `sobatam.com` have been **HIJACKED**. 
+> **DO NOT VISIT THESE DOMAINS.** See **[NOTICE.md](./NOTICE.md)** for complete details and safety information.
+
 ## 🔒 About This Project
 
 **FairCoin** is a legitimate, open-source community-driven fair transaction system. This repository contains the official staging and development environments for the FairCoin project.
+
+### ⚠️ HIJACKED DOMAINS (DO NOT VISIT)
+
+The following domains have been **HIJACKED** and are **NO LONGER LEGITIMATE**:
+
+- **❌ jacobyellowbridge.com** - HIJACKED - DO NOT VISIT
+- **❌ sobatam.com** - HIJACKED - DO NOT VISIT
+
+**These domains may now be used for phishing, malware, or fraud.**
+
+We have filed abuse reports and are working on recovery. For complete information, see **[NOTICE.md](./NOTICE.md)**.
 
 ### Staging Environments (NOT Phishing Sites)
 
