@@ -71,6 +71,7 @@ Fair resource distribution and equitable economic opportunities for everyone.
 - 💰 **Multi-Currency Support** - Real-time exchange rates for USD, IDR, SGD, and more
 - 🏛️ **Community Governance** - Democratic voting system for platform decisions
 - 📊 **Fairness Metrics** - PFI★ and TFI★ tracking for all users and transactions
+- 💬 **Real-time Chat** - Integrated xdiscord open source chat for community support
 - 🌓 **Dark Mode** - Beautiful UI with system-synchronized theme switching
 - 📱 **Responsive Design** - Mobile-first approach for accessibility
 - 🔒 **2FA Security** - TOTP-based two-factor authentication
@@ -264,6 +265,57 @@ import { MultiCurrencyBalance } from '@/components/MultiCurrencyBalance'
   displayCurrencies={['USD', 'IDR', 'SGD']} 
 />
 ```
+
+## 💬 Chat Integration (xdiscord)
+
+FairCoin integrates [xdiscord](https://github.com/jonipwi/xdiscord), an open-source real-time chat application for community support and discussions.
+
+### Features
+
+- **Floating Chat Widget**: Bottom-right corner button opens a resizable modal chat
+- **Authentication Integration**: Automatically uses your username when logged in
+- **Theme Synchronization**: Chat theme matches FairCoin's light/dark mode
+- **Mobile Friendly**: Responsive design with mobile optimizations
+- **Resizable Modal**: Drag edges and corners to resize (desktop only)
+- **Fullscreen Mode**: Maximize for distraction-free chatting
+
+### Setup for Development
+
+1. **Clone xdiscord repository**
+   ```bash
+   git clone https://github.com/jonipwi/xdiscord.git
+   cd xdiscord
+   npm install
+   ```
+
+2. **Run xdiscord on port 3031**
+   ```bash
+   npm run dev -- -p 3031
+   ```
+
+3. **Configure FairCoin**
+   
+   Add to your `.env` file:
+   ```properties
+   NEXT_PUBLIC_CHAT_URL=http://localhost:3031
+   ```
+
+4. **Run FairCoin**
+   ```bash
+   npm run dev
+   ```
+
+The chat widget will appear in the bottom-right corner of the FairCoin application.
+
+### Production Deployment
+
+For production, deploy xdiscord separately and update the chat URL:
+
+```properties
+NEXT_PUBLIC_CHAT_URL=https://chat.faircoin.app
+```
+
+See the [xdiscord repository](https://github.com/jonipwi/xdiscord) for deployment instructions and the [EMBEDDING_GUIDE.md](https://github.com/jonipwi/xdiscord/blob/master/EMBEDDING_GUIDE.md) for advanced integration options.
 
 ## 🧪 Testing
 
