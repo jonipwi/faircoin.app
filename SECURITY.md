@@ -1,27 +1,34 @@
 # Security Policy
 
-> 🚨 **CRITICAL SECURITY ALERT**: The domains `jacobyellowbridge.com` and `sobatam.com` have been **HIJACKED**. 
-> **DO NOT VISIT THESE DOMAINS.** See **[NOTICE.md](./NOTICE.md)** for complete details and safety information.
+> ✅ **DOMAIN RECOVERY UPDATE**: The domain **jacobyellowbridge.com** has been **RECOVERED** as of November 7, 2025 and is now safe to visit. 
+> The domain **sobatam.com** recovery is in progress (expected completion: ~November 14, 2025). 
+> See **[NOTICE.md](./NOTICE.md)** for complete details and verified ownership information.
 
 ## 🔒 About This Project
 
 **FairCoin** is a legitimate, open-source community-driven fair transaction system. This repository contains the official staging and development environments for the FairCoin project.
 
-### ⚠️ HIJACKED DOMAINS (DO NOT VISIT)
+### Domain Status
 
-The following domains have been **HIJACKED** and are **NO LONGER LEGITIMATE**:
+#### Recovered and Verified ✅
+- **✅ jacobyellowbridge.com** - RECOVERED (November 7, 2025) - SAFE TO VISIT
+  - Domain ownership verified
+  - Under legitimate control
+  - Affiliated with FairCoin project
 
-- **❌ jacobyellowbridge.com** - HIJACKED - DO NOT VISIT
-- **❌ sobatam.com** - HIJACKED - DO NOT VISIT
+#### Recovery In Progress ⚠️
+- **⚠️ sobatam.com** - Recovery in progress with idwebhost.com
+  - Expected completion: ~November 14, 2025
+  - Avoid visiting until recovery is confirmed
+  - Check [NOTICE.md](./NOTICE.md) for updates
 
-**These domains may now be used for phishing, malware, or fraud.**
+For complete domain recovery information and verified ownership details, see **[NOTICE.md](./NOTICE.md)**.
 
-We have filed abuse reports and are working on recovery. For complete information, see **[NOTICE.md](./NOTICE.md)**.
-
-### Staging Environments (NOT Phishing Sites)
+### Staging Environments (Legitimate Development Sites)
 
 The following domains are **LEGITIMATE** development and testing environments:
 
+- **https://jacobyellowbridge.com** - RECOVERED domain (November 7, 2025)
 - **https://faircoin.bixio.xyz** - Primary staging server
 - **https://faircoin-app.vercel.app** - Vercel deployment
 
@@ -162,7 +169,7 @@ Please respect rate limits and do not perform DoS attacks or disruptive testing.
 
 ---
 
-**Last Updated**: November 2025
+**Last Updated**: November 7, 2025
 
 **Contact**: https://github.com/jonipwi/faircoin.app/security/advisories/new
 
