@@ -400,6 +400,7 @@ Detailed documentation is available:
 - [SPONSORS_GUIDE.md](./SPONSORS_GUIDE.md) - GitHub Sponsors setup and visibility guide
 
 ### Feature Documentation
+- [Chat Integration Guide](./docs/CHAT_INTEGRATION.md) - xdiscord integration and configuration
 - [2FA Implementation Guide](./docs/2FA_IMPLEMENTATION.md)
 - [2FA Integration Summary](./docs/2FA_INTEGRATION_SUMMARY.md)
 - [Test Architecture](./tests/2FA-ARCHITECTURE.md)
