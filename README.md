@@ -10,15 +10,18 @@ A community-driven fair transaction system built on principles of transparency, 
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 [![Sponsor](https://img.shields.io/badge/Sponsor-❤️-ff69b4?style=for-the-badge)](https://github.com/sponsors/jonipwi)
 
-> 🚨 **CRITICAL SECURITY ALERT - DOMAIN HIJACKING**
+> 🎉 **DOMAIN RECOVERY UPDATE - jacobyellowbridge.com RECOVERED**
 > 
-> **The domains `jacobyellowbridge.com` and `sobatam.com` have been HIJACKED and are NO LONGER under our control.**
+> **Good News**: The domain **jacobyellowbridge.com** has been **RECOVERED** and is now back under legitimate control as of November 7, 2025.
 > 
-> **DO NOT VISIT THESE DOMAINS.** They may be used for phishing, malware distribution, or fraud.
+> **Domain Status**:
+> - ✅ **jacobyellowbridge.com** - RECOVERED and verified - Safe to visit
+> - ⚠️ **sobatam.com** - Recovery in progress (expected completion: ~November 14, 2025) - Avoid visiting until confirmed
 > 
-> We have filed abuse reports with relevant registrars and are working on recovery. See **[NOTICE.md](./NOTICE.md)** for full details.
+> See **[NOTICE.md](./NOTICE.md)** for complete details including verified domain ownership information.
 > 
-> **ONLY USE OFFICIAL DOMAINS**: 
+> **OFFICIAL DOMAINS**: 
+> - ✅ https://jacobyellowbridge.com (RECOVERED - November 7, 2025)
 > - ✅ https://faircoin.bixio.xyz (staging)
 > - ✅ https://faircoin-app.vercel.app (staging)
 > - ✅ https://github.com/jonipwi/faircoin.app (repository)
@@ -48,7 +51,7 @@ Fair resource distribution and equitable economic opportunities for everyone.
 
 ## 🕊️ Our Sacred Mission
 
-**FairCoin** was born from the mission of JacobYellowBridge (**Note**: The jacobyellowbridge.com domain has been hijacked - see [NOTICE.md](./NOTICE.md)) with a holy purpose: to bring **light, fair peace, and truth** to a world burdened by corruption and inequality.
+**FairCoin** was born from the mission of JacobYellowBridge (domain **recovered** November 7, 2025 - see [NOTICE.md](./NOTICE.md)) with a holy purpose: to bring **light, fair peace, and truth** to a world burdened by corruption and inequality.
 
 ### Why FairCoin Exists
 
@@ -334,7 +337,7 @@ Detailed documentation is available:
 
 ### Core Documentation
 - [README](./README.md) - Project overview and quick start
-- [NOTICE.md](./NOTICE.md) - 🚨 **CRITICAL**: Domain hijacking alert for jacobyellowbridge.com and sobatam.com
+- [NOTICE.md](./NOTICE.md) - ✅ Domain status: jacobyellowbridge.com recovered, sobatam.com recovery in progress
 - [WHITEPAPER](./docs/WHITEPAPER.md) - Official FairCoin Whitepaper by JacobYellowBridge
 - [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guidelines for all types of contributors
 - [DISCUSSIONS_ACTION_REQUIRED.md](./DISCUSSIONS_ACTION_REQUIRED.md) - ⚡ **Quick action**: Enable GitHub Discussions (60 seconds)

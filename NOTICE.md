@@ -1,77 +1,103 @@
-# NOTICE: Domain Hijacking Alert
+# NOTICE: Domain Status Update
 
 **Date Issued**: November 7, 2025  
-**Status**: ACTIVE SECURITY INCIDENT  
-**Severity**: HIGH
+**Last Updated**: November 7, 2025  
+**Status**: PARTIALLY RESOLVED
 
 ---
 
-## ⚠️ DOMAIN HIJACKING ALERT
+## ✅ DOMAIN RECOVERY UPDATE
 
-The following domains have been **HIJACKED** and are **NO LONGER UNDER OUR CONTROL**:
+### jacobyellowbridge.com - RECOVERED ✅
 
-### Affected Domains
+**Good News**: The domain **jacobyellowbridge.com** has been **RECOVERED** and is now back under correct ownership.
 
-1. **jacobyellowbridge.com**
-   - Status: HIJACKED
-   - Previous Owner: JacobYellowBridge / FairCoin Project
-   - Current Control: UNAUTHORIZED
+#### Verified Domain Information
+```
+Name: JACOBYELLOWBRIDGE.COM
+Registry Domain ID: 2945866060_DOMAIN_COM-VRSN
+Domain Status: clientTransferProhibited
 
-2. **sobatam.com**
-   - Status: HIJACKED  
-   - Previous Owner: JacobYellowBridge / FairCoin Project
-   - Current Control: UNAUTHORIZED
+Nameservers:
+  PIERS.NS.CLOUDFLARE.COM
+  SOFIA.NS.CLOUDFLARE.COM
 
-## 🚨 WARNING TO USERS
+Dates:
+  Registry Expiration: 2026-12-28 10:08:58 UTC
+  Updated: 2025-11-07 13:32:23 UTC
+  Created: 2024-12-28 10:08:58 UTC
 
-**DO NOT VISIT THESE DOMAINS**
+Registrant Information:
+  Name: Joni Joni
+  Organization: N/A
+  Email: joni.pwi@gmail.com
+  Status: active
+  Phone: tel:+62.085765565282
+  Kind: individual
+  Mailing Address: Tiban Indah, Sandona Carissa I No 11, Batam, Riau, 29400
+  ISO-3166 Code: ID
+```
 
-These domains may now be used for:
-- ❌ Phishing attacks
-- ❌ Malware distribution
-- ❌ Identity theft
-- ❌ Scam operations
-- ❌ Fraudulent activities
+**Status**: The domain is now under legitimate control and ownership has been verified.
 
-Any content or services on these domains are **NOT AFFILIATED** with the FairCoin project or JacobYellowBridge.
+### sobatam.com - RECOVERY IN PROGRESS 🔄
 
-## 📋 Abuse Reports Filed
+**Status**: Domain recovery is **IN PROGRESS**  
+**Timeline**: 5 business days (as reported by idwebhost.com)  
+**Last Update**: November 7, 2025
 
-We have filed abuse reports with the following organizations:
+The domain **sobatam.com** is currently undergoing recovery procedures with idwebhost.com. We expect resolution within the stated timeline.
 
-### Domain Registrars & Hosting Providers
+## 🛡️ SECURITY STATUS
 
-1. **Metaregistrar**
-   - Contact: abuse@metaregistrar.com
-   - Report Date: November 2025
-   - Status: Pending Investigation
+### jacobyellowbridge.com ✅
+- **Status**: SAFE - Domain recovered and under legitimate control
+- **Ownership**: Verified as correct
+- **Safe to Visit**: Yes - Domain is now legitimate
 
-2. **IDWebHost**
-   - Contacts:
-     - Support: support@idwebhost.com
-     - Abuse: abuse@idwebhost.com
-     - Customer Service: cs@idwebhost.com
-   - Report Date: November 2025
-   - Status: Pending Investigation
+### sobatam.com ⚠️
+- **Status**: RECOVERY IN PROGRESS
+- **Safe to Visit**: No - Please wait for recovery completion
+- **Timeline**: 5 business days from November 7, 2025
 
-3. **Realtimeregister**
-   - Contact: abuse@realtimeregister.com
-   - Report Date: November 2025
-   - Status: Pending Investigation
+**Important**: Until sobatam.com recovery is complete, please avoid visiting the domain. Once recovered, we will update this notice.
 
-4. **PublicDomainRegistry.com**
-   - Contact: abuse@publicdomainregistry.com
-   - Report Date: November 2025
-   - Status: Pending Investigation
+## 📋 Recovery Progress
+
+### Completed Actions ✅
+
+1. ✅ **jacobyellowbridge.com RECOVERED** (November 7, 2025)
+   - Domain ownership verified and restored
+   - Nameservers configured correctly (Cloudflare)
+   - Contact information verified
+   - Domain status: Active and secure
+
+### In Progress 🔄
+
+1. 🔄 **sobatam.com recovery** with idwebhost.com
+   - Timeline: 5 business days from November 7, 2025
+   - Status: Under review by registrar
+   - Expected completion: ~November 14, 2025
+
+### Historical Actions Taken
+
+1. ✅ Filed abuse reports with all relevant registrars and hosting providers
+2. ✅ Documented the hijacking incident
+3. ✅ Updated repository documentation
+4. ✅ Notified the community via GitHub
+5. ✅ Successfully recovered jacobyellowbridge.com domain
 
 ## ✅ LEGITIMATE DOMAINS
 
 ### Official FairCoin Domains
 
-The following are the **ONLY LEGITIMATE** domains associated with FairCoin:
+The following are the **LEGITIMATE** domains associated with FairCoin:
 
-#### Production (Future)
-- *No production domain currently active*
+#### Recovered Domain ✅
+- **https://jacobyellowbridge.com** - RECOVERED and verified (November 7, 2025)
+  - Domain is now safe to visit
+  - Ownership verified and correct
+  - Under legitimate control of the FairCoin project
 
 #### Staging/Development Environments
 - **https://faircoin.bixio.xyz** - Primary staging server
@@ -79,6 +105,10 @@ The following are the **ONLY LEGITIMATE** domains associated with FairCoin:
 
 #### Official Repository
 - **https://github.com/jonipwi/faircoin.app** - Source code and documentation
+
+#### Domain Under Recovery 🔄
+- **sobatam.com** - Recovery in progress (expected completion: ~November 14, 2025)
+  - Please avoid visiting until recovery is confirmed
 
 ### How to Verify Legitimacy
 
@@ -93,98 +123,135 @@ Always verify domain legitimacy by:
 
 ### Immediate Actions Taken
 
-1. ✅ Filed abuse reports with all relevant registrars and hosting providers
-2. ✅ Documented the hijacking in this NOTICE
-3. ✅ Updated repository documentation
-4. ✅ Notified the community via GitHub
+1. ✅ Successfully recovered jacobyellowbridge.com domain
+2. ✅ Verified domain ownership and configuration
+3. ✅ Updated documentation to reflect recovery status
+4. ✅ Continuing recovery efforts for sobatam.com
 
 ### Ongoing Actions
 
-1. 🔄 Monitoring abuse report responses
-2. 🔄 Working with registrars to recover domains
-3. 🔄 Investigating the hijacking incident
-4. 🔄 Implementing additional security measures
-
-### Future Actions
-
-1. 📋 Legal action if necessary
-2. 📋 Domain recovery procedures
-3. 📋 Enhanced domain security protocols
-4. 📋 Community notification system
+1. 🔄 Monitoring sobatam.com recovery with idwebhost.com (5 business days)
+2. 🔄 Ensuring domain security measures are in place
+3. 🔄 Updating community on recovery progress
+4. 🔄 Implementing enhanced domain protection protocols
 
 ## 🛡️ Protecting Yourself
+
+### Current Status
+
+✅ **jacobyellowbridge.com**:
+- Safe to visit - domain has been recovered
+- Under legitimate control
+- Ownership verified
+
+⚠️ **sobatam.com**:
+- Avoid visiting until recovery is complete
+- Recovery in progress (5 business days from Nov 7, 2025)
+- Will update when safe
 
 ### What You Should Do
 
 ✅ **DO**:
-- Only use official FairCoin staging domains listed above
+- Use jacobyellowbridge.com safely - domain is recovered and legitimate
+- Use official FairCoin staging domains listed above
 - Verify all domains through our GitHub repository
-- Report suspicious domains to us immediately
+- Report suspicious activity to us immediately
 - Check for HTTPS and valid SSL certificates
 - Look for staging environment warnings on legitimate sites
 
-❌ **DO NOT**:
-- Visit jacobyellowbridge.com or sobatam.com
-- Enter credentials on hijacked domains
-- Download files from hijacked domains
-- Trust emails or communications from hijacked domains
-- Send money or cryptocurrency to addresses on hijacked domains
+❌ **DO NOT** (for sobatam.com until recovery complete):
+- Visit sobatam.com until we confirm recovery
+- Enter credentials on any unverified domains
+- Download files from unverified sources
+- Trust emails or communications from unverified domains
+- Send money or cryptocurrency to unverified addresses
 
-### If You Visited a Hijacked Domain
+### If You Have Concerns About Domain Safety
 
-If you accidentally visited one of the hijacked domains:
+For jacobyellowbridge.com (recovered):
+- The domain is now safe and under legitimate control
+- Ownership has been verified (see domain information above)
+- You can safely visit the domain
 
-1. **Do not enter any credentials or personal information**
-2. **Clear your browser cache and cookies**
-3. **Run a malware scan on your device**
-4. **Change passwords if you entered any credentials**
-5. **Monitor your accounts for suspicious activity**
-6. **Report the incident**: https://github.com/jonipwi/faircoin.app/security/advisories/new
+For sobatam.com (recovery in progress):
+- Avoid visiting until we confirm recovery is complete
+- Wait for official announcement in this document
+- Check back after ~November 14, 2025 for updates
+
+If you encounter any issues:
+1. **Report security concerns**: https://github.com/jonipwi/faircoin.app/security/advisories/new
+2. **Clear your browser cache** if you visited sobatam.com before recovery
+3. **Monitor your accounts** for any suspicious activity
+4. **Check this notice regularly** for updates on sobatam.com recovery
 
 ## 📞 Contact & Reporting
 
 ### Report Security Issues
 
-If you encounter the hijacked domains or suspicious activity:
+If you encounter security issues or suspicious activity:
 
 - **GitHub Security Advisory**: https://github.com/jonipwi/faircoin.app/security/advisories/new
 - **GitHub Issues**: https://github.com/jonipwi/faircoin.app/issues
 
-### Help Us Recover the Domains
+### Domain Recovery Updates
 
-If you have information about the domain hijacking or can help with recovery:
+For the latest information on domain recovery:
+
+1. Check this NOTICE.md file regularly
+2. Follow updates in the GitHub repository
+3. Monitor our official communications channels
+
+### Help Us
+
+If you have information that can help with sobatam.com recovery:
 
 1. Open a security advisory on GitHub
-2. Contact the abuse departments listed above
-3. Provide any evidence of the hijacking
+2. Contact the relevant registrar abuse departments
+3. Provide any evidence or information you have
 
 ## 📜 Legal Notice
 
-### Unauthorized Use
+### Domain Status
 
-Any use of the hijacked domains (jacobyellowbridge.com and sobatam.com) is **UNAUTHORIZED** and **NOT AFFILIATED** with:
+**jacobyellowbridge.com** - RECOVERED ✅
+- Legitimate and authorized use
+- Under correct ownership
+- Affiliated with the FairCoin project
 
+**sobatam.com** - RECOVERY IN PROGRESS ⚠️
+- Avoid use until recovery is complete
+- Not currently affiliated with FairCoin project
+- Recovery expected by ~November 14, 2025
+
+### Authorized Use
+
+Use of **jacobyellowbridge.com** is now **AUTHORIZED** and **AFFILIATED** with:
 - The FairCoin project
 - JacobYellowBridge
-- Any FairCoin contributors or community members
+- FairCoin contributors and community members
 
-### Liability Disclaimer
+### Liability
 
 The FairCoin project and its contributors are **NOT LIABLE** for:
-
-- Any content on hijacked domains
-- Any damages from visiting hijacked domains
-- Any scams or fraud perpetrated through hijacked domains
-- Any malware distributed through hijacked domains
+- Any issues related to sobatam.com until recovery is complete
+- Any historical issues during the hijacking period
+- Any unauthorized use of domains during hijacking
 
 ## 🔄 Updates
 
-This notice will be updated as the situation develops.
+This notice is updated as the domain recovery situation develops.
 
 ### Update Log
 
-- **November 7, 2025**: Initial notice published
-  - Domains identified as hijacked
+- **November 7, 2025 - 16:00 UTC**: ✅ **jacobyellowbridge.com RECOVERED**
+  - Domain successfully recovered and verified
+  - Ownership confirmed with registrar information
+  - Domain now safe to use
+  - sobatam.com recovery in progress (5 business days with idwebhost.com)
+  - Updated documentation to reflect current status
+
+- **November 7, 2025 - Initial**: Domain hijacking incident reported
+  - Both domains identified as hijacked
   - Abuse reports filed
   - Community notification initiated
 
@@ -198,9 +265,9 @@ This notice will be updated as the situation develops.
 
 ---
 
-**Last Updated**: November 7, 2025
+**Last Updated**: November 7, 2025 16:00 UTC
 
-**Status**: Active security incident - Domain recovery in progress
+**Status**: jacobyellowbridge.com RECOVERED ✅ | sobatam.com recovery in progress 🔄
 
 *Light & Truth • Love & Mercy • Just & Peace*
 
