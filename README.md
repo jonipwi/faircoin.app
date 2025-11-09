@@ -10,18 +10,19 @@ A community-driven fair transaction system built on principles of transparency, 
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 [![Sponsor](https://img.shields.io/badge/Sponsor-❤️-ff69b4?style=for-the-badge)](https://github.com/sponsors/jonipwi)
 
-> 🎉 **DOMAIN RECOVERY UPDATE - jacobyellowbridge.com RECOVERED**
+> 🎉 **DOMAIN RECOVERY UPDATE - BOTH DOMAINS RECOVERED**
 > 
-> **Good News**: The domain **jacobyellowbridge.com** has been **RECOVERED** and is now back under legitimate control as of November 7, 2025.
+> **Good News**: Both domains **jacobyellowbridge.com** and **sobatam.com** have been **RECOVERED** and are now back under legitimate control.
 > 
 > **Domain Status**:
-> - ✅ **jacobyellowbridge.com** - RECOVERED and verified - Safe to visit
-> - ⚠️ **sobatam.com** - Recovery in progress (expected completion: ~November 14, 2025) - Avoid visiting until confirmed
+> - ✅ **jacobyellowbridge.com** - RECOVERED and verified (November 7, 2025) - Safe to visit
+> - ✅ **sobatam.com** - RECOVERED and verified (November 9, 2025) - Safe to visit
 > 
 > See **[NOTICE.md](./NOTICE.md)** for complete details including verified domain ownership information.
 > 
 > **OFFICIAL DOMAINS**: 
 > - ✅ https://jacobyellowbridge.com (RECOVERED - November 7, 2025)
+> - ✅ https://sobatam.com (RECOVERED - November 9, 2025)
 > - ✅ https://faircoin.bixio.xyz (staging)
 > - ✅ https://faircoin-app.vercel.app (staging)
 > - ✅ https://github.com/jonipwi/faircoin.app (repository)
