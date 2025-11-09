@@ -390,7 +390,7 @@ Detailed documentation is available:
 
 ### Core Documentation
 - [README](./README.md) - Project overview and quick start
-- [NOTICE.md](./NOTICE.md) - ✅ Domain status: jacobyellowbridge.com recovered, sobatam.com recovery in progress
+- [NOTICE.md](./NOTICE.md) - ✅ Domain status: Both jacobyellowbridge.com and sobatam.com fully recovered
 - [WHITEPAPER](./docs/WHITEPAPER.md) - Official FairCoin Whitepaper by JacobYellowBridge
 - [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guidelines for all types of contributors
 - [DISCUSSIONS_ACTION_REQUIRED.md](./DISCUSSIONS_ACTION_REQUIRED.md) - ⚡ **Quick action**: Enable GitHub Discussions (60 seconds)
