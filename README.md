@@ -384,6 +384,18 @@ We welcome all forms of contribution to FairCoin! Whether you're a developer, de
 
 For detailed contribution guidelines, code standards, and development workflow, please see our **[CONTRIBUTING.md](./CONTRIBUTING.md)** guide.
 
+### 🌟 Volunteer Leadership Program
+
+We are seeking leadership within FairCoin members to help guide our community and project forward. **All volunteers are required to complete a preparation quiz** before joining our leadership team.
+
+**📝 For Volunteer Candidates:**
+
+> Hi candidate of Volunteers: "Please fill-in the quiz for preparation tomorrow meeting."
+> 
+> 🔗 **Quiz URL**: [https://quiz.bixio.xyz](https://quiz.bixio.xyz)
+
+This quiz helps ensure that all volunteers have a solid understanding of FairCoin's mission, values, and technical foundations before taking on leadership responsibilities.
+
 ## 📖 Documentation
 
 Detailed documentation is available:
