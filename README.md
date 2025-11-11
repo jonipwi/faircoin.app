@@ -114,46 +114,23 @@ Where:
 - Highest PFI-Score in community: 10,000
 - Your PFI-Index: 1,000 / 10,000 = **0.1** (10%)
 
-### PFI-Index → PFI-Shares: The Hybrid Formula
+### How PFI-Index is Used
 
-Your **PFI-Shares** determine your actual voting power and resource distribution in the FairCoin community. PFI-Shares are calculated using the **Hybrid Formula** that balances justice and mercy:
-
-```
-PFI-Shares = PFI-Index / √(TotalPopulation)
-```
-
-Where:
-- **PFI-Shares** = Your proportional voting power and resource share
-- **PFI-Index** = Your normalized contribution score (from above)
-- **TotalPopulation** = Total number of active members in the community
-- **√** = Square root (dampening factor that protects minority voices)
-
-📊 **[Read: Why the Hybrid Formula?](docs/PFI_FORMULA_ANALYSIS.md)** - Mathematical and ethical analysis
-
-**Example**:
-- Your PFI-Index: 0.5
-- Community size: 400 members (√400 = 20)
-- Your PFI-Shares: 0.5 / 20 = **0.025**
+Your PFI-Index determines your influence in the FairCoin community:
 
 #### 🗳️ Voting Power
+Your vote weight in governance decisions is proportional to your PFI-Index. Higher PFI-Index = more voting power.
 
-Your vote weight in governance decisions is determined by your PFI-Shares. The Hybrid Formula ensures:
-- **Justice**: Contributors with higher PFI-Index have more influence
-- **Mercy**: Power is dampened as community grows, protecting minority voices
-- **Balance**: No single member can dominate, even with maximum PFI-Index
+**Example**: If your PFI-Index is 0.1, your vote carries 10% the weight of the top contributor.
 
 #### 💰 Share Distribution
-
-Community rewards and benefits are distributed based on your proportion of total PFI-Shares:
+Community rewards and benefits are distributed based on PFI-Index. Your share is calculated as:
 
 ```
-Your Distribution = (Your PFI-Shares / Total PFI-Shares) × Total Distribution
+Your Share = PFI-Index × Total Distribution
 ```
 
-**Example**: If the community distributes 1,000 tokens:
-- Your PFI-Shares: 0.025
-- Total community PFI-Shares: 2.0
-- Your distribution: (0.025 / 2.0) × 1,000 = **12.5 tokens**
+**Example**: If the community distributes 1,000 tokens and your PFI-Index is 0.1, you receive 100 tokens.
 
 ### Getting Started with PFI
 
@@ -589,3 +566,20 @@ FairCoin is an open-source, community-driven project. Your sponsorship helps us:
 **Built with ❤️ by the FairCoin Community**
 
 *Light & Truth • Love & Mercy • Just & Peace*
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License** with ethical commitments.
+
+See [LICENSE.md](LICENSE.md) for the full license text and our ethical guidelines.
+
+**In short:**
+- ✅ Free to use, modify, and distribute
+- 🕊️ Encouraged for fair and ethical purposes
+- ❤️ Discouraged for exploitation or oppression
+- ✝️ Rooted in biblical principles of justice and mercy
+
+*"Let justice roll down like waters, and righteousness like an ever-flowing stream." — Amos 5:24*
+
