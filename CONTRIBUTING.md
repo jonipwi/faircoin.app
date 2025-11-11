@@ -2,6 +2,122 @@
 
 Welcome! 🎉 We're thrilled that you're interested in contributing to FairCoin. This project is built on the principles of **Light & Truth**, **Love & Mercy**, and **Just & Peace**, and we welcome all forms of contribution from our community.
 
+---
+
+## 🪙 Faircoin Community Guide: How to Contribute via GitHub
+
+**Welcome, Faircoin Volunteers! 🌍**
+
+This guide will help you learn how to fork, pull, push, and make a Pull Request (PR) — so your work can be merged into the main project.
+
+### 🧭 Step 1 — Fork the Repository
+
+Go to the Faircoin GitHub project:
+👉 https://github.com/jonipwi/faircoin.app
+
+Click "Fork" (top-right corner).
+This will create a personal copy of the project under your own GitHub account.
+
+### 💻 Step 2 — Clone Your Fork
+
+Open your terminal (or Git Bash), and run:
+
+```bash
+git clone https://github.com/<your-username>/faircoin.app.git
+```
+
+Then enter the folder:
+
+```bash
+cd faircoin.app
+```
+
+### 🔄 Step 3 — Set the Upstream (Original Repository)
+
+This step connects your fork with the main Faircoin repo, so you can get the latest updates.
+
+```bash
+git remote add upstream https://github.com/jonipwi/faircoin.app.git
+```
+
+You can check your remotes with:
+
+```bash
+git remote -v
+```
+
+### 🌿 Step 4 — Create a New Branch for Your Work
+
+Each new feature or fix should be on its own branch:
+
+```bash
+git checkout -b feature/my-new-feature
+```
+
+Example:
+
+```bash
+git checkout -b docs/update-github-guide
+```
+
+### ✏️ Step 5 — Make Your Changes
+
+Edit or add files using your code editor (like VS Code).
+When finished, check what changed:
+
+```bash
+git status
+```
+
+Then stage and commit your work:
+
+```bash
+git add .
+git commit -m "Add: updated contribution guide for volunteers"
+```
+
+### ⬆️ Step 6 — Push Changes to Your Fork
+
+Push your branch to your forked GitHub repository:
+
+```bash
+git push origin feature/my-new-feature
+```
+
+### 🔁 Step 7 — Keep Your Fork Updated (Optional but Important)
+
+Before starting new work, always pull the latest updates from the main repo:
+
+```bash
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
+### 🚀 Step 8 — Create a Pull Request (PR)
+
+1. Go to your fork on GitHub.
+
+2. You'll see a message:
+   **"Compare & pull request"** — click it.
+
+3. Write a short description of your change.
+
+4. Click **"Create pull request"**.
+
+Once approved, your change will be merged into the main Faircoin project! 🎉
+
+### 💡 Tips for Volunteers
+
+💬 **Ask freely in Discord if you get errors** — no one is left behind.
+
+💻 **Don't worry about mistakes** — we can always fix or revert changes.
+
+🕊️ **Everyone learns together** — coding, justice, and fairness grow by sharing.
+
+---
+
 ## 🌟 Ways to Contribute
 
 FairCoin welcomes contributions in many forms:
