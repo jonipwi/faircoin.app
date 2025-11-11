@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 
 interface FairnessIndex {
@@ -47,13 +47,7 @@ export default function FairnessIndexPage() {
     evidence_url: '',
   })
 
-  // Fetch user's fairness index on mount
-  useEffect(() => {
-    fetchUserIndex()
-    fetchMySubmissions()
-  }, [])
-
-  const fetchUserIndex = async () => {
+  const fetchUserIndex = useCallback(async () => {
     try {
       setLoading(true)
       const response = await fetch('/api/fairness/indexes')
@@ -78,9 +72,9 @@ export default function FairnessIndexPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [router])
 
-  const fetchMySubmissions = async () => {
+  const fetchMySubmissions = useCallback(async () => {
     try {
       const response = await fetch('/api/fairness/submissions')
       
@@ -96,7 +90,13 @@ export default function FairnessIndexPage() {
     } catch (err) {
       console.error('Error fetching submissions:', err)
     }
-  }
+  }, [])
+
+  // Fetch user's fairness index on mount
+  useEffect(() => {
+    fetchUserIndex()
+    fetchMySubmissions()
+  }, [fetchUserIndex, fetchMySubmissions])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -189,7 +189,7 @@ export default function FairnessIndexPage() {
             PFI ★ – TFI ★ – CBI ★ : The Indexes of Fairness
           </p>
           <p className="text-sm italic text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
-            "A community that implements fairness in personal, trade, and merchant life — producing peace through ethical economics."
+            &ldquo;A community that implements fairness in personal, trade, and merchant life — producing peace through ethical economics.&rdquo;
             <br />— Faircoin Manifesto
           </p>
         </div>
@@ -466,9 +466,9 @@ export default function FairnessIndexPage() {
             🕊️ The Philosophy Behind Faircoin
           </h3>
           <p className="text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Faircoin's indexes are not about competition, but cooperation under conscience.
+            Faircoin&apos;s indexes are not about competition, but cooperation under conscience.
             <br />
-            <em>"Blessed are the peacemakers, for they shall be called the children of God." — Matthew 5:9</em>
+            <em>&ldquo;Blessed are the peacemakers, for they shall be called the children of God.&rdquo; — Matthew 5:9</em>
             <br />
             <br />
             Each fairness act — personal, trade, or communal — becomes a light that strengthens peace in society.
