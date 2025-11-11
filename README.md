@@ -78,6 +78,74 @@ Fair resource distribution and equitable economic opportunities for everyone.
 - 🔒 **2FA Security** - TOTP-based two-factor authentication
 - 🌐 **Exchange Integration** - Live cryptocurrency and fiat exchange rates
 
+## 📈 How to Earn PFI-Score & PFI-Index
+
+### What is PFI-Score?
+
+**PFI-Score** (Personal Fairness Index Score) is automatically earned through your contributions to the FairCoin ecosystem. Every meaningful contribution you make—whether it's code, documentation, or community support—increases your PFI-score.
+
+### How to Earn PFI-Score
+
+The primary way to earn PFI-score is through **GitHub contributions**:
+
+1. **Configure Webhook** - Add the FairCoin webhook to your GitHub repository (one-time setup)
+2. **Push Your Code** - Every time you push code, the system automatically analyzes your contributions
+3. **Earn Points** - You earn **+1 PFI per 1,000 meaningful words** contributed (code, comments, documentation)
+4. **Watch It Grow** - Your PFI-score updates automatically in real-time
+
+**Example**: If you contribute 5,000 words in a commit, you earn **+5.000 PFI-score**.
+
+> 💡 **Note**: Only meaningful contributions count—variable names, function names, comments, documentation, and new code. Language keywords and syntax are excluded.
+
+### PFI-Score → PFI-Index Conversion
+
+Your **PFI-Index** is calculated from your PFI-score using this formula:
+
+```
+PFI-Index = PFI-Score / MAX(PFI-Score)
+```
+
+Where:
+- **PFI-Score** = Your accumulated contribution points
+- **MAX(PFI-Score)** = The highest PFI-score in the entire community
+
+**Example**:
+- Your PFI-Score: 1,000
+- Highest PFI-Score in community: 10,000
+- Your PFI-Index: 1,000 / 10,000 = **0.1** (10%)
+
+### How PFI-Index is Used
+
+Your PFI-Index determines your influence in the FairCoin community:
+
+#### 🗳️ Voting Power
+Your vote weight in governance decisions is proportional to your PFI-Index. Higher PFI-Index = more voting power.
+
+**Example**: If your PFI-Index is 0.1, your vote carries 10% the weight of the top contributor.
+
+#### 💰 Share Distribution
+Community rewards and benefits are distributed based on PFI-Index. Your share is calculated as:
+
+```
+Your Share = PFI-Index × Total Distribution
+```
+
+**Example**: If the community distributes 1,000 tokens and your PFI-Index is 0.1, you receive 100 tokens.
+
+### Getting Started with PFI
+
+1. **Set Up Webhook**: Configure your GitHub repository with the FairCoin webhook
+   - Webhook URL: `https://bixio.xyz/github/webhook`
+   - See detailed setup in [PFI-Score Documentation](./docs/PFI-Score.md)
+
+2. **Start Contributing**: Push code, write documentation, help the community
+
+3. **Track Your Progress**: View your PFI-score and PFI-Index in your dashboard
+
+4. **Participate in Governance**: Use your earned influence to vote on community decisions
+
+> 📚 **Learn More**: For detailed information about earning PFI-score, see the [PFI-Score Documentation](./docs/PFI-Score.md). For the philosophy behind fairness indexes, see [Fairness Indexes Guide](./docs/FAIRNESS_INDEXES.md).
+
 ## 🚀 Quick Start
 
 ### Prerequisites
