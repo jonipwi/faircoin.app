@@ -15,8 +15,6 @@ Each participant earns **Fairness Index points** based on their answers and cont
 - **TFI (Trade Fairness Index):** How one practices honesty, equality, and mutual respect in exchange and work.  
 - **CFI (Community Fairness Index):** How one treats and uplifts others as part of a shared mission for peace.
 
-**📝 Volunteer Quiz:** All data in this report is collected from the volunteer preparation quiz at [https://quiz.bixio.xyz](https://quiz.bixio.xyz). This quiz helps ensure volunteers understand FairCoin's mission, values, and technical foundations before joining the leadership team.
-
 ---
 
 ## 📊 Submission Summary

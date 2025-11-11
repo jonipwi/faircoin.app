@@ -1,5 +1,4 @@
-# How Git Push Gives PFI to Users 
-[TESTING WEBHOOK for Word Counting]
+# How Git Push Gives PFI to Users
 
 ## Overview
 
@@ -173,7 +172,4 @@ Your Total PFI = Sum of all commits
 
 **Start earning PFI today!** Just push your code and watch your Personal Fairness Index grow. 🌟
 
-
 **Light & Truth, Love & Mercy, Just & Peace**
-
-
