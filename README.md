@@ -132,6 +132,24 @@ Your Share = PFI-Index × Total Distribution
 
 **Example**: If the community distributes 1,000 tokens and your PFI-Index is 0.1, you receive 100 tokens.
 
+#### 📊 Understanding PFI-Shares
+Your **PFI-Shares** represent your proportional stake in the FairCoin community, normalized by the total population:
+
+```
+PFI-Shares = PFI-Index / Total Population
+```
+
+Where:
+- **PFI-Index** = Your normalized contribution score (PFI-Score / MAX(PFI-Score))
+- **Total Population** = Total number of active community members
+
+**Example**:
+- Your PFI-Index: 0.1 (10% of top contributor)
+- Total Population: 1,000 active members
+- Your PFI-Shares: 0.1 / 1,000 = **0.0001** (0.01% of total community stake)
+
+This ensures fair distribution across the entire community, where each member's influence is proportional to both their contribution and the community size.
+
 ### Getting Started with PFI
 
 1. **Set Up Webhook**: Configure your GitHub repository with the FairCoin webhook
