@@ -157,15 +157,58 @@ The more quality code you write, the higher your PFI score:
 - 🤝 **Community:** Compare with other developers
 - ⚡ **Real-time:** Instant updates on every push
 
+## The Complete Formula Chain
+
+Your contributions go through three transformations to determine your actual voting power and resource distribution:
+
+### Step 1: Words → PFI-Score
+```
+PFI-Score = (1/1000) × words_contribution
+
+Example:
+5,000 words → PFI-Score = 5,000 / 1,000 = 5.000
+```
+
+### Step 2: PFI-Score → PFI-Index (Normalization)
+```
+PFI-Index = PFI-Score / Max(PFI-Score)
+
+Example:
+Your PFI-Score: 5,000
+Top contributor's PFI-Score: 10,000
+Your PFI-Index: 5,000 / 10,000 = 0.5
+```
+
+### Step 3: PFI-Index → PFI-Shares (Hybrid Formula)
+```
+PFI-Shares = PFI-Index / √(TotalPopulation)
+
+Example:
+Your PFI-Index: 0.5
+Total community members: 400
+Dampening factor: √400 = 20
+Your PFI-Shares: 0.5 / 20 = 0.025 (2.5% voting power)
+```
+
+### Why This Matters
+
+**PFI-Shares** (not PFI-Score) determine your actual influence:
+- **Governance**: Your vote is weighted by your PFI-Shares
+- **Distribution**: Community benefits are allocated proportional to PFI-Shares
+- **Balance**: The Hybrid Formula prevents dominance while rewarding contribution
+
+📊 **[Learn More](../docs/PFI_FORMULA_ANALYSIS.md)** - Complete mathematical and ethical analysis
+
 ## Formula Summary
 
 ```
-Every Git Push → Word Count → PFI Score
+Every Git Push → Word Count → PFI-Score → PFI-Index → PFI-Shares
 
-1 word = +1/1000 PFI
-1000 words = +1.000 PFI
+1 word = +1/1000 PFI-Score
+1000 words = +1.000 PFI-Score
 
-Your Total PFI = Sum of all commits
+Your Total PFI-Score = Sum of all commits
+Your PFI-Shares = PFI-Index / √(TotalPopulation)
 ```
 
 ---
