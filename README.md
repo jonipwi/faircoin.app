@@ -114,23 +114,57 @@ Where:
 - Highest PFI-Score in community: 10,000
 - Your PFI-Index: 1,000 / 10,000 = **0.1** (10%)
 
-### How PFI-Index is Used
+### PFI-Index → PFI-Shares Conversion
 
-Your PFI-Index determines your influence in the FairCoin community:
+Your **PFI-Shares** represent your actual voting power and resource distribution weight in the FairCoin community. They are calculated using the **Hybrid Formula**:
+
+```
+PFI-Shares = PFI-Index / √(TotalPopulation)
+```
+
+Where:
+- **PFI-Index** = Your normalized contribution score (from previous step)
+- **TotalPopulation** = Total number of active members in the FairCoin community
+- **√** = Square root function (dampening factor)
+
+**Example**:
+- Your PFI-Index: 0.5
+- Total community members: 400
+- Dampening factor: √400 = 20
+- Your PFI-Shares: 0.5 / 20 = **0.025** (2.5% voting power)
+
+### Why the Hybrid Formula?
+
+The Hybrid Formula balances **justice** (rewarding contribution) with **mercy** (protecting minority voices):
+
+1. **Justice**: Contributors earn proportional influence based on their work (PFI-Index)
+2. **Mercy**: The square root dampening ensures no single member can dominate as the community grows
+3. **Humility**: Even top contributors' power diminishes as the community scales
+4. **Community**: Collective voice is protected and empowered
+
+📊 **[Read the Full Analysis](./docs/PFI_FORMULA_ANALYSIS.md)** - Discover the mathematical and ethical reasoning behind the Hybrid Formula
+
+### How PFI-Shares are Used
+
+Your PFI-Shares determine your influence in the FairCoin community:
 
 #### 🗳️ Voting Power
-Your vote weight in governance decisions is proportional to your PFI-Index. Higher PFI-Index = more voting power.
+Your vote weight in governance decisions is proportional to your PFI-Shares. The Hybrid Formula ensures balanced, fair representation.
 
-**Example**: If your PFI-Index is 0.1, your vote carries 10% the weight of the top contributor.
+**Example**: In a 400-member community with your PFI-Index of 0.5:
+- Your PFI-Shares: 0.025
+- Your voting influence: Proportional to your contribution while preventing dominance
 
-#### 💰 Share Distribution
-Community rewards and benefits are distributed based on PFI-Index. Your share is calculated as:
+#### 💰 Resource Distribution
+Community rewards and benefits are distributed based on PFI-Shares. Your share is calculated as:
 
 ```
-Your Share = PFI-Index × Total Distribution
+Your Distribution = (Your PFI-Shares / Total PFI-Shares) × Total Resources
 ```
 
-**Example**: If the community distributes 1,000 tokens and your PFI-Index is 0.1, you receive 100 tokens.
+**Example**: If total PFI-Shares = 2.0 and community distributes 1,000 tokens:
+- Your PFI-Shares: 0.025
+- Your distribution: (0.025 / 2.0) × 1,000 = **12.5 tokens**
 
 ### Getting Started with PFI
 
