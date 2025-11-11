@@ -32,7 +32,7 @@ While this software is licensed under the MIT License (permissive open-source), 
 > — Amos 5:24
 
 This software is created to serve:
-- 🌍 **The Common Good** - Building fair, transparent systems
+- 🌍 **Light & Truth** - Building fair, transparent systems
 - 🕊️ **Peace & Justice** - Reflecting God's fairness in technology
 - ❤️ **Love & Mercy** - Prioritizing the vulnerable and oppressed
 - ✝️ **Biblical Truth** - Aligning with Christ's teachings
@@ -107,3 +107,4 @@ Amen.*
 **Light & Truth, Love & Mercy, Just & Peace** 🕊️
 
 *Last Updated: November 12, 2025*
+
