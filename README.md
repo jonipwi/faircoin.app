@@ -1,6 +1,6 @@
 # FairCoin — Light & Truth, Love & Mercy, Just & Peace
 
-A community-driven fair transaction system built on principles of transparency, compassion, and equity. FairCoin introduces **PFI★** (Personal Fairness Index) and **TFI★** (Transaction Fairness Index) as the foundation for a more just economic system.
+A community-driven fair transaction system built on principles of transparency, compassion, and equity. FairCoin introduces **PFI★** (Personal Fairness Index), **TFI★** (Trade Fairness Index), and **CBI★** (Community Fairness Index) as the foundation for a more just economic system.
 
 **FairCoin is not a finance project—it is an ethical and peace-building initiative.** Born from the mission of JacobYellowBridge, FairCoin exists to help those affected by corruption, human trafficking, and scamming, addressing the non-balance between wealthy and poor through fairness in trade and personal index improvement.
 
@@ -60,7 +60,7 @@ Fair resource distribution and equitable economic opportunities for everyone.
 
 - **Helping Victims**: We specifically help people affected by **human trafficking** and **scamming**—providing a fair economic foundation for recovery and dignity.
 
-- **Balancing Wealth & Poverty**: The non-balance between wealthy and poor is a fundamental injustice. FairCoin exists to mitigate this through fairness metrics (PFI★ and TFI★) that reward contribution over concentration.
+- **Balancing Wealth & Poverty**: The non-balance between wealthy and poor is a fundamental injustice. FairCoin exists to mitigate this through fairness metrics (PFI★, TFI★, and CBI★) that reward contribution over concentration.
 
 - **Personal Index Improvement**: Through fairness in trade and transparent metrics, every individual can improve their Personal Fairness Index (PFI★) and contribute to a better world.
 
@@ -71,7 +71,7 @@ Fair resource distribution and equitable economic opportunities for everyone.
 - 🔐 **Secure Authentication** - GitHub OAuth integration with 2FA support
 - 💰 **Multi-Currency Support** - Real-time exchange rates for USD, IDR, SGD, and more
 - 🏛️ **Community Governance** - Democratic voting system for platform decisions
-- 📊 **Fairness Metrics** - PFI★ and TFI★ tracking for all users and transactions
+- 📊 **Fairness Metrics** - PFI★, TFI★, and CBI★ tracking for all users and transactions (see [Fairness Indexes Guide](./docs/FAIRNESS_INDEXES.md))
 - 💬 **Real-time Chat** - Integrated xdiscord open source chat for community support
 - 🌓 **Dark Mode** - Beautiful UI with system-synchronized theme switching
 - 📱 **Responsive Design** - Mobile-first approach for accessibility
@@ -404,6 +404,7 @@ Detailed documentation is available:
 - [README](./README.md) - Project overview and quick start
 - [NOTICE.md](./NOTICE.md) - ✅ Domain status: Both jacobyellowbridge.com and sobatam.com fully recovered
 - [WHITEPAPER](./docs/WHITEPAPER.md) - Official FairCoin Whitepaper by JacobYellowBridge
+- [FAIRNESS INDEXES](./docs/FAIRNESS_INDEXES.md) - Complete guide to PFI★, TFI★, and CBI★
 - [CONTRIBUTING.md](./CONTRIBUTING.md) - Contribution guidelines for all types of contributors
 - [DISCUSSIONS_ACTION_REQUIRED.md](./DISCUSSIONS_ACTION_REQUIRED.md) - ⚡ **Quick action**: Enable GitHub Discussions (60 seconds)
 - [DISCUSSIONS_SETUP.md](./DISCUSSIONS_SETUP.md) - Complete guide to GitHub Discussions setup
