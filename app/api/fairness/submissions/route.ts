@@ -1,11 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const FRONTEND_API_URL = process.env.FRONTEND_API_URL || 'http://localhost:8090'
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8100'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
+    // Get session token from cookies or headers
+    const sessionToken = request.cookies.get('session')?.value || 
+                        request.headers.get('authorization')?.replace('Bearer ', '') ||
+                        request.headers.get('Authorization')?.replace('Bearer ', '')
+
+    if (!sessionToken) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      )
+    }
+
     // Get query parameters
     const { searchParams } = new URL(request.url)
     const actorId = searchParams.get('actor_id')
@@ -19,13 +31,14 @@ export async function GET(request: NextRequest) {
     if (status) params.append('status', status)
     if (limit) params.append('limit', limit)
 
-    const url = `${FRONTEND_API_URL}/api/v1/fairness/submissions${params.toString() ? '?' + params.toString() : ''}`
+    const url = `${BACKEND_URL}/api/v1/fairness/submissions${params.toString() ? '?' + params.toString() : ''}`
     console.log('Fetching fairness submissions from:', url)
 
     // Fetch from backend API
     const response = await fetch(url, {
       method: 'GET',
       headers: {
+        'Authorization': `Bearer ${sessionToken}`,
         'Content-Type': 'application/json',
       },
     })

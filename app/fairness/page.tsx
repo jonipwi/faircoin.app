@@ -50,7 +50,9 @@ export default function FairnessIndexPage() {
   const fetchUserIndex = useCallback(async () => {
     try {
       setLoading(true)
-      const response = await fetch('/api/fairness/indexes')
+      const response = await fetch('/api/fairness/indexes', {
+        credentials: 'include',
+      })
       
       if (response.status === 401) {
         router.push('/auth')
@@ -76,7 +78,9 @@ export default function FairnessIndexPage() {
 
   const fetchMySubmissions = useCallback(async () => {
     try {
-      const response = await fetch('/api/fairness/submissions')
+      const response = await fetch('/api/fairness/submissions', {
+        credentials: 'include',
+      })
       
       if (!response.ok) {
         throw new Error('Failed to fetch submissions')
@@ -107,6 +111,7 @@ export default function FairnessIndexPage() {
     try {
       const response = await fetch('/api/fairness/submit', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },

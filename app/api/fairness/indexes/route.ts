@@ -1,17 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const FRONTEND_API_URL = process.env.FRONTEND_API_URL || 'http://localhost:8090'
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8100'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
+    // Get session token from cookies or headers
+    const sessionToken = request.cookies.get('session')?.value || 
+                        request.headers.get('authorization')?.replace('Bearer ', '') ||
+                        request.headers.get('Authorization')?.replace('Bearer ', '')
+
+    if (!sessionToken) {
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      )
+    }
+
     // Get query parameters
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('user_id')
     const username = searchParams.get('username')
 
-    let url = `${FRONTEND_API_URL}/api/v1/fairness/indexes`
+    let url = `${BACKEND_URL}/api/v1/fairness/indexes`
     if (userId) {
       url += `?user_id=${userId}`
     } else if (username) {
@@ -24,6 +36,7 @@ export async function GET(request: NextRequest) {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
+        'Authorization': `Bearer ${sessionToken}`,
         'Content-Type': 'application/json',
       },
     })

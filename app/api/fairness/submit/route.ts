@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const FRONTEND_API_URL = process.env.FRONTEND_API_URL || 'http://localhost:8090'
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8100'
 
 export const dynamic = 'force-dynamic'
 
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     console.log('Submitting fairness action:', body)
 
     // Forward request to backend API
-    const response = await fetch(`${FRONTEND_API_URL}/api/v1/fairness/submit`, {
+    const response = await fetch(`${BACKEND_URL}/api/v1/fairness/submit`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${sessionToken}`,
