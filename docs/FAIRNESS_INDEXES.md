@@ -35,6 +35,11 @@ Every community member earns Fairness Index Points based on ethical behavior, no
 
 The **Personal Fairness Index** measures an individual's ethical conduct and contributions to fairness in their daily life. It reflects personal integrity, kindness, empathy, and truthfulness.
 
+In the FairCoin ecosystem, your PFI can be earned through:
+- **Code contributions** via GitHub (automatically tracked as PFI-Score)
+- **Acts of kindness and service** (community-validated submissions)
+- **Ethical behavior** in daily life and trade
+
 ### How to Earn PFI Points
 
 - **Acts of Kindness**: Helping neighbors, supporting friends in need, showing compassion
@@ -42,6 +47,7 @@ The **Personal Fairness Index** measures an individual's ethical conduct and con
 - **Empathy & Respect**: Treating others with dignity regardless of their background
 - **Conflict Resolution**: Mediating disputes, promoting peace and understanding
 - **Community Service**: Volunteering time or skills for the common good
+- **Code Contributions**: Contributing to open-source projects (see [PFI-Score Guide](./PFI-SCORE.md))
 
 ### Example Scenarios
 
@@ -50,6 +56,19 @@ The **Personal Fairness Index** measures an individual's ethical conduct and con
 | Helped reconcile two neighbors in dispute | +5 PFI | Gained community trust and moral standing |
 | Spoke truthfully despite personal cost | +3 PFI | Enhanced reputation for integrity |
 | Volunteered at community food bank | +4 PFI | Recognized as compassionate contributor |
+| Contributed 1,000 words of code | +1.000 PFI-Score | Built technical reputation |
+
+### PFI-Shares: Your Voice in Governance
+
+Your accumulated PFI is converted to **PFI-Shares** using the Hybrid Formula:
+
+```
+PFI-Shares = PFI-Index / √(TotalPopulation)
+```
+
+PFI-Shares determine your voting power in community governance, balancing **justice** (rewarding contribution) with **mercy** (protecting minority voices).
+
+📊 **[Learn about the Hybrid Formula](./PFI_FORMULA_ANALYSIS.md)** - Mathematical and ethical analysis
 
 ---
 
@@ -125,16 +144,32 @@ The **Community Fairness Index** measures the collective fairness culture of org
 
 | Aspect | Description |
 |--------|-------------|
-| 🗳️ **Voting Power** | Determined by combined Fairness Index (PFI + TFI + CBI) |
-| 💬 **Proposal Influence** | Members with consistent fairness records can propose community improvements |
-| 🤝 **Shared Benefits** | Projects or profits from community efforts are shared proportionally based on fairness contribution, not rank or wealth |
-| 🕊️ **Moral Priority** | A person with less index but pure intent still holds voice — fairness always has a moral dimension beyond numbers |
+| 🗳️ **Voting Power** | Determined by PFI-Shares using the Hybrid Formula: `PFI-Shares = PFI-Index / √(TotalPopulation)` |
+| 💬 **Proposal Influence** | Members with minimum fairness threshold can propose community improvements |
+| 🤝 **Shared Benefits** | Resources distributed proportionally based on PFI-Shares, balancing justice and mercy |
+| 🕊️ **Moral Priority** | The Hybrid Formula protects minority voices while rewarding contribution |
+
+📊 **[Understanding PFI-Shares](./PFI_FORMULA_ANALYSIS.md)** - Learn how the Hybrid Formula balances justice and mercy
+
+### The Hybrid Formula: Justice + Mercy
+
+FairCoin uses a unique **Hybrid Formula** for governance that embodies biblical principles:
+
+- **Justice Component (PFI-Index)**: Rewards those who contribute more to the community
+- **Mercy Component (√TotalPopulation)**: Dampens power concentration and protects minority voices
+- **Result**: No single member can dominate, yet contribution is still honored
+
+**Example:** In a 400-member community:
+- Member with PFI-Index 1.0 → PFI-Shares = 1.0 / √400 = 0.05 (5% individual influence)
+- 100 members with PFI-Index 0.1 → Combined PFI-Shares = 10 / 20 = 0.5 (50% collective influence)
+
+This ensures healthy balance between individual merit and collective voice.
 
 ### Decision Making Process
 
 1. **Proposal Submission**: Members with minimum fairness threshold can submit proposals
 2. **Community Discussion**: Open dialogue about proposed changes
-3. **Fairness-Weighted Voting**: Votes weighted by combined fairness indexes
+3. **Fairness-Weighted Voting**: Votes weighted by PFI-Shares (combining justice and mercy)
 4. **Moral Review**: Proposals reviewed for alignment with fairness principles
 5. **Implementation**: Approved proposals implemented with community oversight
 
