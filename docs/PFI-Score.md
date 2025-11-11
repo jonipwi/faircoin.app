@@ -22,23 +22,23 @@ Your PFI score is **automatically updated** when you push code to GitHub:
 ## 📐 PFI Score Formula
 
 ```
-PFI Score = +1 per 1,000 words
+PFI-Score = 1/1000 * words
 
 In other words:
-1 word = +1/1000 PFI
-1,000 words = +1.000 PFI
+1 word = 1/1000 PFI-Score = 0.001 PFI-Score
+1,000 words = 1/1000 * 1,000 = 1.000 PFI-Score
 ```
 
 ### Calculation Examples
 
-| Words Contributed | PFI Earned |
-|------------------|-----------|
-| 100 words | +0.100 PFI |
-| 500 words | +0.500 PFI |
-| 1,000 words | +1.000 PFI |
-| 2,500 words | +2.500 PFI |
-| 5,000 words | +5.000 PFI |
-| 10,000 words | +10.000 PFI |
+| Words Contributed | PFI-Score Earned | Calculation |
+|------------------|------------------|-------------|
+| 100 words | 0.100 PFI-Score | 1/1000 * 100 = 0.100 |
+| 500 words | 0.500 PFI-Score | 1/1000 * 500 = 0.500 |
+| 1,000 words | 1.000 PFI-Score | 1/1000 * 1,000 = 1.000 |
+| 2,500 words | 2.500 PFI-Score | 1/1000 * 2,500 = 2.500 |
+| 5,000 words | 5.000 PFI-Score | 1/1000 * 5,000 = 5.000 |
+| 10,000 words | 10.000 PFI-Score | 1/1000 * 10,000 = 10.000 |
 
 ## 📝 What Words Are Counted?
 
@@ -148,7 +148,7 @@ function calculateSubscriptionTotal(userId, planType) {
 - Parameters: `userId`, `planType` = 2 words
 - Variables: `basePlan`, `getPlanPrice`, `userDiscount`, `getUserDiscount`, `finalTotal` = 5 words
 
-**Total**: ~12 meaningful words → **+0.012 PFI**
+**Total**: ~12 meaningful words → **0.012 PFI-Score** (calculated as: 1/1000 * 12 = 0.012)
 
 ## 🏆 Benefits of Automatic PFI Tracking
 
@@ -277,7 +277,7 @@ The PFI scoring system is designed to be:
 Every meaningful line of code you write contributes to your Personal Fairness Index. Push your code and watch your PFI grow automatically!
 
 ```
-1 word = +1/1000 PFI
+PFI-Score = 1/1000 * words
 Every push counts. Every contribution matters.
 ```
 

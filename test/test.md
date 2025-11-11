@@ -49,14 +49,15 @@ The API analyzes your git diff and counts only **meaningful words**:
 
 ### 4. **PFI Calculation**
 ```
-PFI Score = Total Words ÷ 1,000
+PFI-Score = 1/1000 * words
 ```
 
 **Examples:**
-- 500 words → **+0.500 PFI**
-- 1,000 words → **+1.000 PFI**
-- 5,000 words → **+5.000 PFI**
-- 10,000 words → **+10.000 PFI**
+- 100 words → PFI-Score = 1/1000 * 100 = **0.100 PFI-Score**
+- 500 words → PFI-Score = 1/1000 * 500 = **0.500 PFI-Score**
+- 1,000 words → PFI-Score = 1/1000 * 1,000 = **1.000 PFI-Score**
+- 5,000 words → PFI-Score = 1/1000 * 5,000 = **5.000 PFI-Score**
+- 10,000 words → PFI-Score = 1/1000 * 10,000 = **10.000 PFI-Score**
 
 ### 5. **Database Update**
 The API automatically:
@@ -86,7 +87,7 @@ function authenticateUser(username, password) {
 - `database` = 1 word
 - `findUser` = 1 word
 
-**Total:** ~10 meaningful words = **+0.010 PFI**
+**Total:** ~10 meaningful words = **0.010 PFI-Score** (calculated as: 1/1000 * 10 = 0.010)
 
 ## View Your PFI
 
@@ -162,8 +163,10 @@ The more quality code you write, the higher your PFI score:
 ```
 Every Git Push → Word Count → PFI Score
 
-1 word = +1/1000 PFI
-1000 words = +1.000 PFI
+PFI-Score = 1/1000 * words
+
+1 word = 1/1000 PFI-Score = 0.001 PFI-Score
+1000 words = 1/1000 * 1,000 = 1.000 PFI-Score
 
 Your Total PFI = Sum of all commits
 ```

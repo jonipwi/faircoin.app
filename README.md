@@ -90,10 +90,10 @@ The primary way to earn PFI-score is through **GitHub contributions**:
 
 1. **Configure Webhook** - Add the FairCoin webhook to your GitHub repository (one-time setup)
 2. **Push Your Code** - Every time you push code, the system automatically analyzes your contributions
-3. **Earn Points** - You earn **+1 PFI per 1,000 meaningful words** contributed (code, comments, documentation)
+3. **Earn Points** - You earn PFI-Score based on the formula: **PFI-Score = 1/1000 * words** (where words = meaningful words contributed: code, comments, documentation)
 4. **Watch It Grow** - Your PFI-score updates automatically in real-time
 
-**Example**: If you contribute 5,000 words in a commit, you earn **+5.000 PFI-score**.
+**Example**: If you contribute 5,000 words in a commit, you earn **5.000 PFI-score** (calculated as: PFI-Score = 1/1000 * 5,000 = 5.000).
 
 > 💡 **Note**: Only meaningful contributions count—variable names, function names, comments, documentation, and new code. Language keywords and syntax are excluded.
 
