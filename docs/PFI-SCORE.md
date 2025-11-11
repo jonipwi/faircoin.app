@@ -163,10 +163,62 @@ function calculateSubscriptionTotal(userId, planType) {
 
 Your PFI score represents your contribution to the FairCoin ecosystem and can be used for:
 
-- **Governance Weight**: Higher PFI = more influence in community decisions
+- **Governance Weight**: Higher PFI = more influence in community decisions (via PFI-Shares)
 - **Reputation Building**: Showcase your commitment to fair development
 - **Community Recognition**: Top contributors get visibility
 - **Future Benefits**: Potential rewards and recognition programs
+
+### PFI-Score → PFI-Index → PFI-Shares
+
+Your raw **PFI-Score** goes through two transformations to determine your actual voting power:
+
+#### Step 1: PFI-Score → PFI-Index (Normalization)
+
+```
+PFI-Index = PFI-Score / MAX(PFI-Score)
+```
+
+This normalizes your score relative to the top contributor (value between 0 and 1).
+
+**Example:**
+- Your PFI-Score: 5,000
+- Top contributor's PFI-Score: 10,000
+- Your PFI-Index: 5,000 / 10,000 = **0.5**
+
+#### Step 2: PFI-Index → PFI-Shares (Hybrid Formula)
+
+```
+PFI-Shares = PFI-Index / √(TotalPopulation)
+```
+
+This applies the Hybrid Formula that balances **justice** (rewarding contribution) with **mercy** (protecting minority voices).
+
+**Example:**
+- Your PFI-Index: 0.5
+- Total community members: 400
+- Dampening factor: √400 = 20
+- Your PFI-Shares: 0.5 / 20 = **0.025**
+
+#### What are PFI-Shares?
+
+**PFI-Shares** represent your actual voting power and resource distribution weight in the FairCoin community:
+
+- **Governance**: Your vote is weighted by your PFI-Shares
+- **Distribution**: Community benefits are allocated proportional to PFI-Shares
+- **Balanced Power**: The square root dampening ensures no single member can dominate
+
+📊 **[Read the Full Analysis](./PFI_FORMULA_ANALYSIS.md)** - Discover the mathematical and ethical reasoning behind the Hybrid Formula
+
+### Why the Hybrid Formula?
+
+The Hybrid Formula ensures:
+
+1. **Justice**: Contributors earn proportional influence based on their work
+2. **Mercy**: Minority voices are protected as the community grows
+3. **Humility**: Even top contributors' power diminishes as the community scales
+4. **Community**: No individual can control decisions alone
+
+> "To act justly and to love mercy and to walk humbly with your God." — Micah 6:8
 
 ## 🔐 Security & Privacy
 
