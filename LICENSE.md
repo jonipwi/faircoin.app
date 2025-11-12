@@ -22,6 +22,14 @@ SOFTWARE.
 
 ---
 
+## ⚠️ Project Identity
+
+**Important:** This license applies to **Faircoin.app Indonesia** — an independent project that is **NOT officially affiliated** with the European FairChain Foundation or the European Faircoin cryptocurrency project.
+
+While we share values of fairness with other fair-economy movements, our project was independently conceived through spiritual inspiration and AI-human collaboration. See [INDONESIA_MISSION.md](./INDONESIA_MISSION.md) for details.
+
+---
+
 ## 🕊️ FairCoin Ethical Commitment
 
 While this software is licensed under the MIT License (permissive open-source), the FairCoin project operates under additional ethical principles:

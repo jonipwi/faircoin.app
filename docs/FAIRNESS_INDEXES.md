@@ -7,6 +7,12 @@
 
 ---
 
+## ⚠️ Independent Project
+
+**Faircoin.app is an independent project** developed in Indonesia and is **NOT officially affiliated** with the European FairChain Foundation or European Faircoin cryptocurrency. Our fairness indexes (PFI★, TFI★, CBI★) were independently conceived through spiritual inspiration and AI-human collaboration. See [INDONESIA_MISSION.md](../INDONESIA_MISSION.md) for details.
+
+---
+
 ## ⚖️ What is Faircoin?
 
 **Faircoin is not a financial token.**

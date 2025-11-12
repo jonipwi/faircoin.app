@@ -4,6 +4,14 @@ Welcome! 🎉 We're thrilled that you're interested in contributing to FairCoin.
 
 ---
 
+## ⚠️ About This Project
+
+**Faircoin.app is an independent project** developed in Indonesia and is **NOT officially affiliated** with the European FairChain Foundation or the European Faircoin cryptocurrency project.
+
+Our project was independently conceived through spiritual inspiration and AI-human collaboration. We have deep respect for all fair-economy movements worldwide and remain open to future collaboration. For full details, see [INDONESIA_MISSION.md](./INDONESIA_MISSION.md).
+
+---
+
 ## 🪙 Faircoin Community Guide: How to Contribute via GitHub
 
 **Welcome, Faircoin Volunteers! 🌍**

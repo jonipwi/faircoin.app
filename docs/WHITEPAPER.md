@@ -4,6 +4,18 @@
 
 ---
 
+## ⚠️ Important Clarification
+
+**This whitepaper describes an independent project** — Faircoin.app Indonesia — which is **NOT officially affiliated** with the European FairChain Foundation or the European Faircoin cryptocurrency project.
+
+Our project was independently conceived through spiritual inspiration and developed through AI-human collaboration. While we share values of fairness and justice with other fair-economy movements worldwide, our origins, technical foundations, and mission are completely independent.
+
+We have deep respect for all who work toward fairness globally. This clarification is made in the spirit of transparency and peace, not competition. We remain open to future collaboration with any fair-economy initiatives that align with our values.
+
+For more details, see [INDONESIA_MISSION.md](../INDONESIA_MISSION.md).
+
+---
+
 ## 🕊️ 1. Vision and Calling
 
 FairCoin is not a financial instrument — it is a spiritual and ethical response to the world's corruption and imbalance.

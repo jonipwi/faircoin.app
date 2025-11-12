@@ -6,6 +6,16 @@
 
 ---
 
+## ⚠️ Project Identity Clarification
+
+**Faircoin.app is an independent project** developed in Indonesia and is **NOT officially affiliated** with the European FairChain Foundation or the European Faircoin cryptocurrency project. 
+
+While we share values of fairness with other fair-economy movements, our project has independent origins through spiritual inspiration and AI-human collaboration. We respect all who work toward fairness globally and remain open to future collaboration in the spirit of peace.
+
+**For full details:** See [INDONESIA_MISSION.md](./INDONESIA_MISSION.md)
+
+---
+
 ## ✅ DOMAIN RECOVERY UPDATE
 
 ### jacobyellowbridge.com - RECOVERED ✅
