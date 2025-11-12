@@ -39,6 +39,29 @@ A community-driven fair transaction system built on principles of transparency, 
 >
 > **🛡️ Important Security Notice:** If you encounter a Google Safe Browsing warning on our staging domains, this is a false positive. These are legitimate development environments. See our [Security Policy](./SECURITY.md) and [Staging Guide](./STAGING.md) for verification, or visit our [Google Safe Browsing Reporting Guide](./GOOGLE_SAFE_BROWSING_REPORT.md) to help us resolve this issue.
 
+## ⚠️ Important: Independent Project Clarification
+
+**Faircoin.app is an independent project** developed in Indonesia through spiritual inspiration and is **NOT officially affiliated** with:
+
+- The European FairChain Foundation
+- The European Faircoin cryptocurrency project  
+- Any other "FairCoin" or "FairChain" initiatives worldwide
+
+### Our Independent Origin
+
+This project was independently conceived through:
+- **Spiritual inspiration** — divine guidance toward fairness and justice
+- **AI-Human collaboration** — developed through conversations with AI (ChatGPT) and human faith
+- **Unique mission** — focused on ethical measurement and peace-building, not cryptocurrency trading
+
+While we share similar values of fairness with other fair-economy movements, our technical foundations, purposes, and operations are completely independent.
+
+### Open to Future Collaboration
+
+We respect all who work toward fairness and justice. If opportunities arise to connect or collaborate with European FairChain, Faircoin community, or other fair-economy initiatives worldwide, we would be open to such possibilities in the spirit of peace and mutual respect.
+
+**📖 Read our full mission statement:** [INDONESIA_MISSION.md](./INDONESIA_MISSION.md)
+
 ## 🌟 Core Principles
 
 ### Light & Truth
@@ -504,6 +527,7 @@ Detailed documentation is available:
 
 ### Core Documentation
 - [README](./README.md) - Project overview and quick start
+- [INDONESIA_MISSION.md](./INDONESIA_MISSION.md) - 🇮🇩 **Our spiritual mission and independent identity**
 - [NOTICE.md](./NOTICE.md) - ✅ Domain status: Both jacobyellowbridge.com and sobatam.com fully recovered
 - [WHITEPAPER](./docs/WHITEPAPER.md) - Official FairCoin Whitepaper by JacobYellowBridge
 - [FAIRNESS INDEXES](./docs/FAIRNESS_INDEXES.md) - Complete guide to PFI★, TFI★, and CBI★
