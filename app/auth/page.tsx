@@ -17,6 +17,7 @@ function AuthPageContent() {
   const [terms, setTerms] = useState<TermsResponse['terms'] | null>(null)
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [fullName, setFullName] = useState('')
+  const [email, setEmail] = useState('')
   const [mnemonic, setMnemonic] = useState('')
   const [showMnemonic, setShowMnemonic] = useState(false)
   const [mnemonicWords, setMnemonicWords] = useState<string[]>([])
