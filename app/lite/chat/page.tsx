@@ -1,10 +1,33 @@
 "use client"
 
 import { MessageCircle, Users, Clock } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 export default function LiteChat() {
   const chatUrl = process.env.NEXT_PUBLIC_CHAT_URL || 'http://localhost:3031'
-  const iframeUrl = `${chatUrl}?modal=false&compact=false&maximized=true&room=friendly-lounge`
+  const [username, setUsername] = useState('guest')
+  const [walletAddress, setWalletAddress] = useState('')
+
+  // Get username and wallet from localStorage
+  useEffect(() => {
+    try {
+      const userStr = localStorage.getItem('user')
+      if (userStr) {
+        const user = JSON.parse(userStr)
+        if (user.username) {
+          setUsername(user.username)
+        }
+        if (user.wallet_address) {
+          setWalletAddress(user.wallet_address)
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load user from localStorage:', e)
+    }
+  }, [])
+
+  // Construct iframe URL with current username and wallet address
+  const iframeUrl = `${chatUrl}?modal=false&compact=false&maximized=true&room=friendly-lounge&username=${username}${walletAddress ? `&wallet=${encodeURIComponent(walletAddress)}` : ''}`
 
   return (
     <div className="fixed inset-0 pt-20 bg-gray-50 dark:bg-gray-900">
@@ -43,6 +66,7 @@ export default function LiteChat() {
         {/* Chat Iframe */}
         <div className="flex-1 bg-white dark:bg-gray-800">
           <iframe
+            key={username}
             src={iframeUrl}
             className="w-full h-full border-0"
             title="FairCoin Community Chat"
