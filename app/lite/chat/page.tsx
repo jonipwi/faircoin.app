@@ -26,8 +26,8 @@ export default function LiteChat() {
     }
   }, [])
 
-  // Construct iframe URL with current username and wallet address
-  const iframeUrl = `${chatUrl}?modal=false&compact=false&maximized=true&room=friendly-lounge&username=${username}${walletAddress ? `&wallet=${encodeURIComponent(walletAddress)}` : ''}`
+  // Construct iframe URL pointing directly to chat room
+  const iframeUrl = `${chatUrl}/lite/chat?room=friendly-lounge&roomId=1&username=${encodeURIComponent(username)}${walletAddress ? `&wallet=${encodeURIComponent(walletAddress)}` : ''}`
 
   return (
     <div className="fixed inset-0 pt-20 bg-gray-50 dark:bg-gray-900">
@@ -66,7 +66,7 @@ export default function LiteChat() {
         {/* Chat Iframe */}
         <div className="flex-1 bg-white dark:bg-gray-800">
           <iframe
-            key={username}
+            key={`${username}-${walletAddress}`}
             src={iframeUrl}
             className="w-full h-full border-0"
             title="FairCoin Community Chat"
