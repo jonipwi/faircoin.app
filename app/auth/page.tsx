@@ -69,6 +69,11 @@ function AuthPageContent() {
       return
     }
 
+    if (!email.trim() || !email.includes('@')) {
+      setError('Please enter a valid email address')
+      return
+    }
+
     setLoading(true)
     setError(null)
 
@@ -76,7 +81,7 @@ function AuthPageContent() {
       const response = await fetch('/api/auth/wallet/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ full_name: fullName.trim() }),
+        body: JSON.stringify({ full_name: fullName.trim(), email: email.trim() }),
       })
 
       const data = await response.json()
@@ -344,7 +349,7 @@ Created: ${new Date().toISOString()}
         </h1>
         
         <p className="text-lg text-gray-600 dark:text-gray-400">
-          Enter your full name to generate a unique username and wallet
+          Enter your details to generate a unique username and wallet
         </p>
       </div>
 
@@ -367,6 +372,23 @@ Created: ${new Date().toISOString()}
             </p>
           </div>
 
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              disabled={loading}
+            />
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+              Required for account recovery and important notifications
+            </p>
+          </div>
+
           <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
             <div className="flex gap-3">
               <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
@@ -384,7 +406,7 @@ Created: ${new Date().toISOString()}
 
           <button
             onClick={handleRegisterWallet}
-            disabled={loading || !fullName.trim()}
+            disabled={loading || !fullName.trim() || !email.trim()}
             className="w-full btn btn-primary btn-lg"
           >
             {loading ? (
