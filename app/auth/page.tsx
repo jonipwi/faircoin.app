@@ -87,10 +87,10 @@ function AuthPageContent() {
 
       const data = await response.json()
 
-      if (data.success && data.data) {
-        setGeneratedUsername(data.data.username)
-        setWalletAddress(data.data.wallet_address)
-        setMnemonicWords(data.data.mnemonic.split(' '))
+      if (data.success) {
+        setGeneratedUsername(data.username)
+        setWalletAddress(data.wallet_address)
+        setMnemonicWords(data.mnemonic.split(' '))
         setStep('mnemonic')
       } else {
         setError(data.error || 'Failed to create wallet')
@@ -121,9 +121,21 @@ function AuthPageContent() {
 
       const data = await response.json()
 
-      if (data.success && data.session) {
-        setSession(data.session)
-        localStorage.setItem('auth_token', data.session.id)
+      if (data.success) {
+        // Store flat response data like PowerShell test
+        const sessionData = {
+          id: data.session_id,
+          user_id: data.user_id,
+          username: data.username,
+          full_name: data.full_name,
+          email: data.email || '',
+          avatar_url: data.avatar_url || '',
+          wallet_address: data.wallet_address,
+          created_at: data.created_at,
+          expires_at: data.expires_at,
+        }
+        setSession(sessionData)
+        localStorage.setItem('auth_token', data.session_id)
         setStep('terms')
       } else {
         setError(data.error || 'Invalid secret phrase')

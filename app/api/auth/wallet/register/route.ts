@@ -68,17 +68,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Return wallet data with mnemonic (only shown once)
-    return NextResponse.json({
-      success: true,
-      data: {
-        username: data.username,
-        full_name: data.full_name,
-        wallet_address: data.wallet_address,
-        mnemonic: data.mnemonic, // 12-word secret phrase
-        created_at: data.created_at,
-      },
-    })
+    // Return exact backend response (flat structure like PowerShell test)
+    return NextResponse.json(data)
   } catch (error) {
     console.error('Wallet registration error:', error)
     return NextResponse.json(

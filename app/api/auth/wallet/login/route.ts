@@ -58,21 +58,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Return session data
-    const sessionResponse = NextResponse.json({
-      success: true,
-      session: {
-        id: data.session_id,
-        user_id: data.user_id,
-        username: data.username,
-        full_name: data.full_name,
-        email: data.email || '',
-        avatar_url: data.avatar_url || '',
-        wallet_address: data.wallet_address,
-        created_at: data.created_at,
-        expires_at: data.expires_at,
-      },
-    })
+    // Return exact backend response (flat structure like PowerShell test)
+    const sessionResponse = NextResponse.json(data)
 
     // Set session cookie
     sessionResponse.cookies.set('session', data.session_id, {
