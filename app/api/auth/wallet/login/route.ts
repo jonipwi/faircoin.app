@@ -18,13 +18,33 @@ export async function POST(request: NextRequest) {
     }
 
     // Call FairCoin API to authenticate with mnemonic
-    const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/login`, {
+    const apiUrl = `${API_BASE_URL}/api/v1/auth/wallet/login`
+    console.log('[WALLET-LOGIN] Calling API:', apiUrl)
+    
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ mnemonic: mnemonic.trim() }),
     })
+
+    console.log('[WALLET-LOGIN] Response status:', response.status)
+    console.log('[WALLET-LOGIN] Response headers:', Object.fromEntries(response.headers.entries()))
+
+    // Check if response is JSON
+    const contentType = response.headers.get('content-type')
+    if (!contentType || !contentType.includes('application/json')) {
+      const text = await response.text()
+      console.error('[WALLET-LOGIN] Non-JSON response:', text.substring(0, 500))
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: `Backend endpoint not available. The wallet authentication endpoints are not yet implemented on the server. Status: ${response.status}` 
+        },
+        { status: 503 }
+      )
+    }
 
     const data = await response.json()
 
