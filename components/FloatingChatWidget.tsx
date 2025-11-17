@@ -213,11 +213,11 @@ export function FloatingChatWidget({
       {/* Chat Modal */}
       {isOpen && (
         <div 
-          className={`fixed inset-0 z-[1001] flex items-center justify-center transition-all duration-300 ${
-            isMaximized ? 'bg-transparent' : 'bg-black/50 backdrop-blur-sm'
+          className={`fixed inset-0 z-[1001] transition-all duration-300 ${
+            isMaximized || isMobile ? 'bg-transparent' : 'bg-black/50 backdrop-blur-sm flex items-center justify-center'
           }`}
           onClick={(e) => {
-            if (e.target === e.currentTarget && !isResizing) {
+            if (e.target === e.currentTarget && !isResizing && !isMobile) {
               setIsOpen(false)
             }
           }}
@@ -225,15 +225,15 @@ export function FloatingChatWidget({
           <div
             ref={modalContentRef}
             className={`relative flex flex-col overflow-hidden transition-all duration-300 ${
-              isMaximized 
-                ? 'fixed inset-0 rounded-none' 
+              isMaximized || isMobile
+                ? 'fixed inset-0 w-full h-full rounded-none' 
                 : 'rounded-2xl shadow-2xl'
             } ${
               theme === 'dark' ? 'bg-gray-900' : 'bg-white'
             }`}
             style={
-              isMaximized 
-                ? undefined 
+              isMaximized || isMobile
+                ? { width: '100%', height: '100%' }
                 : modalSize.width > 0 
                   ? {
                       width: `${modalSize.width}px`,
