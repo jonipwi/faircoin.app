@@ -1,0 +1,77 @@
+import { NextRequest, NextResponse } from 'next/server'
+
+const API_BASE_URL = process.env.FAIRCOIN_API_URL || 'http://localhost:8080'
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const { mnemonic } = body
+
+    if (!mnemonic || mnemonic.trim().split(/\s+/).length !== 12) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'Invalid secret phrase. Must be exactly 12 words' 
+        },
+        { status: 400 }
+      )
+    }
+
+    // Call FairCoin API to authenticate with mnemonic
+    const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ mnemonic: mnemonic.trim() }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: data.error || 'Invalid secret phrase' 
+        },
+        { status: response.status }
+      )
+    }
+
+    // Return session data
+    const sessionResponse = NextResponse.json({
+      success: true,
+      session: {
+        id: data.session_id,
+        user_id: data.user_id,
+        username: data.username,
+        full_name: data.full_name,
+        email: data.email || '',
+        avatar_url: data.avatar_url || '',
+        wallet_address: data.wallet_address,
+        created_at: data.created_at,
+        expires_at: data.expires_at,
+      },
+    })
+
+    // Set session cookie
+    sessionResponse.cookies.set('session', data.session_id, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60, // 24 hours
+      path: '/',
+    })
+
+    return sessionResponse
+  } catch (error) {
+    console.error('Wallet login error:', error)
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Internal server error' 
+      },
+      { status: 500 }
+    )
+  }
+}

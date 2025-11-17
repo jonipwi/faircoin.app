@@ -343,6 +343,19 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data)
     }),
+    // Wallet-based authentication
+    wallet: {
+      register: (fullName: string) => fetch('/api/auth/wallet/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ full_name: fullName })
+      }).then(res => res.json()),
+      login: (mnemonic: string) => fetch('/api/auth/wallet/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mnemonic })
+      }).then(res => res.json()),
+    },
   },
   
   // User Profile & Dashboard APIs

@@ -39,6 +39,13 @@ A community-driven fair transaction system built on principles of transparency, 
 >
 > **🛡️ Important Security Notice:** If you encounter a Google Safe Browsing warning on our staging domains, this is a false positive. These are legitimate development environments. See our [Security Policy](./SECURITY.md) and [Staging Guide](./STAGING.md) for verification, or visit our [Google Safe Browsing Reporting Guide](./GOOGLE_SAFE_BROWSING_REPORT.md) to help us resolve this issue.
 
+## 🪄 FairCoin Lite (elder-friendly preview)
+
+- Visit [`/lite`](https://faircoin.bixio.xyz/lite) on any staging deployment for **faircoin-lite.app-v1**.
+- Chat-first landing page with adjustable text size, high-contrast mode, and oversized quick actions for seniors.
+- Works alongside the primary UI—no features removed; it simply surfaces the calm path for sponsors/caregivers.
+- See [docs/FAIRCOIN_LITE.md](./docs/FAIRCOIN_LITE.md) for the product brief and rollout notes.
+
 ## ⚠️ Important: Independent Project Clarification
 
 **Faircoin.app is an independent project** developed in Indonesia through spiritual inspiration and is **NOT officially affiliated** with:
