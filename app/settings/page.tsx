@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
+import { api } from '@/lib/api'
 import { 
   User, 
   Lock, 
@@ -85,36 +86,19 @@ export default function SettingsPage() {
         return
       }
 
-      console.log('[SETTINGS] 📡 Calling /api/dashboard...')
+      console.log('[SETTINGS] 📡 Calling api.user.dashboard() - direct backend call...')
       const startTime = Date.now()
       
-      // Fetch complete dashboard data which includes user info, profile, and settings
-      const response = await fetch('/api/dashboard', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      })
+      // Use the same API method as dashboard page - direct backend call bypassing Cloudflare issues
+      const dashboardData = await api.user.dashboard(token)
 
       const duration = Date.now() - startTime
-      console.log(`[SETTINGS] ⏱️ Response received in ${duration}ms - Status: ${response.status}`)
-
-      if (response.status === 403 || response.status === 401) {
-        console.error('Session expired or invalid. Redirecting to login...')
-        localStorage.removeItem('auth_token')
-        document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-        router.push('/auth?error=session_expired')
-        return
-      }
-
-      if (response.ok) {
-        const dashboardData = await response.json()
-        console.log('[SETTINGS] ✅ Dashboard data loaded successfully')
-        console.log('[SETTINGS] 📊 Response keys:', Object.keys(dashboardData))
-        console.log('[SETTINGS] 👤 User data:', dashboardData.user)
-        console.log('[SETTINGS] 📝 Profile data:', dashboardData.profile)
-        console.log('[SETTINGS] ⚙️ Settings count:', dashboardData.settings?.length || 0)
+      console.log(`[SETTINGS] ⏱️ Response received in ${duration}ms`)
+      console.log('[SETTINGS] ✅ Dashboard data loaded successfully')
+      console.log('[SETTINGS] 📊 Response keys:', Object.keys(dashboardData))
+      console.log('[SETTINGS] 👤 User data:', dashboardData.user)
+      console.log('[SETTINGS] 📝 Profile data:', dashboardData.profile)
+      console.log('[SETTINGS] ⚙️ Settings count:', dashboardData.settings?.length || 0)
 
         // Update profile information from user data and profile data
         if (dashboardData.user || dashboardData.profile) {
@@ -144,78 +128,81 @@ export default function SettingsPage() {
           console.log('[SETTINGS] ⚠️ No user or profile data in response')
         }
 
-        // Process settings and update state
-        if (dashboardData.settings) {
-          dashboardData.settings.forEach((setting: any) => {
-            switch (setting.setting_key) {
-              case 'notifications':
-                if (setting.setting_value) {
-                  setNotifications({
-                    email: setting.setting_value.email ?? true,
-                    push: setting.setting_value.push ?? false,
-                    sms: setting.setting_value.sms ?? false,
-                    marketing: setting.setting_value.marketing ?? false
-                  })
+      // Process settings and update state
+      if (dashboardData.settings) {
+        dashboardData.settings.forEach((setting: any) => {
+          switch (setting.setting_key) {
+            case 'notifications':
+              if (setting.setting_value) {
+                setNotifications({
+                  email: setting.setting_value.email ?? true,
+                  push: setting.setting_value.push ?? false,
+                  sms: setting.setting_value.sms ?? false,
+                  marketing: setting.setting_value.marketing ?? false
+                })
+              }
+              break
+            case 'security':
+              if (setting.setting_value) {
+                setSecurity({
+                  twoFactor: setting.setting_value.twoFactor ?? false,
+                  loginAlerts: setting.setting_value.loginAlerts ?? true,
+                  sessionTimeout: setting.setting_value.sessionTimeout ?? '30'
+                })
+              }
+              break
+            case 'preferences':
+              if (setting.setting_value) {
+                console.log('🔍 Loading preferences:', setting.setting_value)
+                if (setting.setting_value.theme) {
+                  setTheme(setting.setting_value.theme)
                 }
-                break
-              case 'security':
-                if (setting.setting_value) {
-                  setSecurity({
-                    twoFactor: setting.setting_value.twoFactor ?? false,
-                    loginAlerts: setting.setting_value.loginAlerts ?? true,
-                    sessionTimeout: setting.setting_value.sessionTimeout ?? '30'
-                  })
-                }
-                break
-              case 'preferences':
-                if (setting.setting_value) {
-                  console.log('🔍 Loading preferences:', setting.setting_value)
-                  if (setting.setting_value.theme) {
-                    setTheme(setting.setting_value.theme)
-                  }
-                  setPreferences(prev => ({
-                    language: setting.setting_value.language || prev.language,
-                    currency: setting.setting_value.currency || prev.currency,
-                    timezone: setting.setting_value.timezone || prev.timezone
-                  }))
-                  console.log('✅ Preferences updated')
-                }
-                break
-              case 'profile':
-                if (setting.setting_value) {
-                  // Only update editable fields (phone, bio), keep name and email from OAuth
-                  setProfile(prev => ({
-                    ...prev,
-                    phone: setting.setting_value.phone || prev.phone,
-                    bio: setting.setting_value.bio || prev.bio
-                    // name and email remain from GitHub OAuth data
-                  }))
-                }
-                break
-              case 'two_factor_auth':
-                if (setting.setting_value) {
-                  setTwoFactorAuth(prev => ({
-                    ...prev,
-                    enabled: setting.setting_value.enabled ?? false,
-                    setupStep: setting.setting_value.enabled ? 'enabled' : 'disabled',
-                    backupCodes: setting.setting_value.backup_codes || []
-                  }))
-                }
-                break
-            }
-          })
-        }
-      } else {
-        console.log('[SETTINGS] ⚠️ Dashboard request not OK, trying fallback...')
-        const errorText = await response.text()
-        console.log('[SETTINGS] ❌ Error response:', errorText)
-        // Fallback: try to get settings directly if dashboard fails
-        await loadUserSettingsFallback(token)
+                setPreferences(prev => ({
+                  language: setting.setting_value.language || prev.language,
+                  currency: setting.setting_value.currency || prev.currency,
+                  timezone: setting.setting_value.timezone || prev.timezone
+                }))
+                console.log('✅ Preferences updated')
+              }
+              break
+            case 'profile':
+              if (setting.setting_value) {
+                // Only update editable fields (phone, bio), keep name and email from OAuth
+                setProfile(prev => ({
+                  ...prev,
+                  phone: setting.setting_value.phone || prev.phone,
+                  bio: setting.setting_value.bio || prev.bio
+                  // name and email remain from GitHub OAuth data
+                }))
+              }
+              break
+            case 'two_factor_auth':
+              if (setting.setting_value) {
+                setTwoFactorAuth(prev => ({
+                  ...prev,
+                  enabled: setting.setting_value.enabled ?? false,
+                  setupStep: setting.setting_value.enabled ? 'enabled' : 'disabled',
+                  backupCodes: setting.setting_value.backup_codes || []
+                }))
+              }
+              break
+          }
+        })
       }
     } catch (error) {
       console.error('[SETTINGS] 💥 Exception loading dashboard:', error)
       console.error('[SETTINGS] 💥 Error stack:', error instanceof Error ? error.stack : 'No stack')
-      // Try fallback approach
+      
+      // Check if it's an authentication error
+      if (error instanceof Error && (error.message.includes('401') || error.message.includes('403'))) {
+        console.error('[SETTINGS] ❌ Authentication error - redirecting to login')
+        localStorage.removeItem('auth_token')
+        document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        router.push('/auth?error=session_expired')
+        return
+      }
+      
+      // Try fallback approach for other errors
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
       if (token) {
