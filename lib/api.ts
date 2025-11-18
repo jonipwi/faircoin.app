@@ -219,6 +219,7 @@ export interface AcceptTermsRequest {
 export interface AcceptTermsResponse {
   success: boolean
   message: string
+  session_id?: string // Session ID for wallet-based auth
   acceptance?: {
     user_id: number
     version: string

@@ -263,11 +263,12 @@ Created: ${new Date().toISOString()}
       if (response.success) {
         setStep('success')
         
-        // Store session token for dashboard access
-        if (session.id) {
-          localStorage.setItem('auth_token', session.id)
+        // Store session token for dashboard access (from backend response)
+        const sessionId = response.session_id || session.id
+        if (sessionId) {
+          localStorage.setItem('auth_token', sessionId)
           // Also set as cookie for server-side access
-          document.cookie = `session=${session.id}; path=/; max-age=${24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
+          document.cookie = `session=${sessionId}; path=/; max-age=${24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
           
           // Store user info for chat widget and other components
           localStorage.setItem('user', JSON.stringify({
