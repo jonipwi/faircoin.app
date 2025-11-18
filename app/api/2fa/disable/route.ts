@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createCloudflareBypassHeaders } from '@/lib/cloudflare-bypass'
 
 const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
@@ -6,14 +7,14 @@ export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
   try {
-    // Forward the request to the Go backend
+    // Forward request with browser headers to bypass Cloudflare
     const response = await fetch(`${API_URL}/api/v1/2fa/disable`, {
       method: 'POST',
-      headers: {
+      headers: createCloudflareBypassHeaders(req, {
         'Content-Type': 'application/json',
         'Cookie': req.headers.get('cookie') || '',
         'Authorization': req.headers.get('authorization') || '',
-      },
+      }),
     })
 
     if (!response.ok) {

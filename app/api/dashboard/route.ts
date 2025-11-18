@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createCloudflareBypassHeaders } from '@/lib/cloudflare-bypass'
 
 // Use API_URL for server-side routes (NEXT_PUBLIC_ is for client-side)
 const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
@@ -28,14 +29,15 @@ export async function GET(request: NextRequest) {
     
     const backendUrl = `${API_URL}/api/v1/user/dashboard`
     console.log('[DASHBOARD] Calling backend:', backendUrl)
+    console.log('[DASHBOARD] 🌐 Forwarding User-Agent:', request.headers.get('user-agent')?.substring(0, 50) + '...')
 
-    // Forward request to frontend-api
+    // Forward request with browser headers to bypass Cloudflare
     const response = await fetch(backendUrl, {
       method: 'GET',
-      headers: {
+      headers: createCloudflareBypassHeaders(request, {
         'Authorization': `Bearer ${sessionToken}`,
         'Content-Type': 'application/json',
-      },
+      }),
     })
 
     console.log('[DASHBOARD] Backend response status:', response.status)

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createCloudflareBypassHeaders } from '@/lib/cloudflare-bypass'
 
 // Use API_URL for server-side routes (NEXT_PUBLIC_ is for client-side)
 const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
@@ -28,14 +29,15 @@ export async function GET(request: NextRequest) {
     
     const backendUrl = `${API_URL}/api/v1/user/settings`
     console.log('[SETTINGS] Calling backend:', backendUrl)
+    console.log('[SETTINGS] 🌐 Forwarding User-Agent:', request.headers.get('user-agent')?.substring(0, 50) + '...')
 
-    // Forward request to frontend-api
+    // Forward request with browser headers to bypass Cloudflare
     const response = await fetch(backendUrl, {
       method: 'GET',
-      headers: {
+      headers: createCloudflareBypassHeaders(request, {
         'Authorization': `Bearer ${sessionToken}`,
         'Content-Type': 'application/json',
-      },
+      }),
     })
 
     console.log('[SETTINGS] Backend response status:', response.status)
@@ -90,16 +92,17 @@ export async function POST(request: NextRequest) {
 
     const backendUrl = `${API_URL}/api/v1/user/settings`
     console.log('[SETTINGS-POST] 📡 Calling backend:', backendUrl)
+    console.log('[SETTINGS-POST] 🌐 Forwarding User-Agent:', request.headers.get('user-agent')?.substring(0, 50) + '...')
     
     const startTime = Date.now()
 
-    // Forward request to frontend-api
+    // Forward request with browser headers to bypass Cloudflare
     const response = await fetch(backendUrl, {
       method: 'POST',
-      headers: {
+      headers: createCloudflareBypassHeaders(request, {
         'Authorization': `Bearer ${sessionToken}`,
         'Content-Type': 'application/json',
-      },
+      }),
       body: JSON.stringify(body),
     })
 
