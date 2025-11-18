@@ -3,33 +3,4 @@
 # Repository: https://github.com/jonipwi/faircoin.app
 
 User-agent: *
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-Allow: /
-Allow: /manifest.json
-Allow: /icons/
-
-# Sitemaps
-Sitemap: https://faircoin.bixio.xyz/sitemap.xml
-
-# Crawl delay (be respectful to the server)
-Crawl-delay: 1
-
-# Google specific
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-
-# Bing specific
-User-agent: Bingbot
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-
-# Verification & Security
-# Security Policy: https://github.com/jonipwi/faircoin.app/blob/main/SECURITY.md
-# License: https://github.com/jonipwi/faircoin.app/blob/main/LICENSE.md
+Disallow: /
