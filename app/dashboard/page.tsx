@@ -513,14 +513,14 @@ export default function DashboardPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Joined</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    {new Date(user.created_at).toLocaleDateString()}
+                    {new Date(user.created_at).toLocaleDateString()} {new Date(user.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
                 
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600 dark:text-gray-400">Last Login</span>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    {new Date(user.last_login).toLocaleDateString()}
+                    {new Date(user.last_login).toLocaleDateString()} {new Date(user.last_login).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
                 
