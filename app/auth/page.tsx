@@ -23,6 +23,7 @@ function AuthPageContent() {
   const [mnemonicWords, setMnemonicWords] = useState<string[]>([])
   const [generatedUsername, setGeneratedUsername] = useState('')
   const [walletAddress, setWalletAddress] = useState('')
+  const [registeredUserId, setRegisteredUserId] = useState<number | null>(null)
   const [copiedMnemonic, setCopiedMnemonic] = useState(false)
 
   // Handle OAuth callback and success/error states
@@ -93,6 +94,7 @@ function AuthPageContent() {
         setGeneratedUsername(data.username)
         setWalletAddress(data.wallet_address)
         setMnemonicWords(data.mnemonic.split(' '))
+        setRegisteredUserId(data.user_id) // Store the actual user ID
         setStep('mnemonic')
       } else {
         setError(data.error || 'Failed to create wallet')
@@ -208,11 +210,15 @@ Created: ${new Date().toISOString()}
   }
 
   const proceedToTerms = () => {
+    if (!registeredUserId) {
+      setError('User ID not found. Please try registering again.')
+      return
+    }
     const authSession: AuthSession = {
       id: '',
-      user_id: Date.now(),
+      user_id: registeredUserId, // Use the actual user ID from registration
       username: generatedUsername,
-      email: '',
+      email: email,
       avatar_url: '',
       created_at: new Date().toISOString(),
       expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
