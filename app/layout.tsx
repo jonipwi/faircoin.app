@@ -24,8 +24,15 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'FairCoin — Light & Truth, Love & Mercy, Just & Peace',
   description: 'Community-driven fair transaction system with PFI★ and TFI★ at the core. Breaking free from inequality and inflation with a fairness-first monetary system. [STAGING ENVIRONMENT - Development & Testing Only]',
-  keywords: ['FairCoin', 'cryptocurrency', 'fairness', 'community', 'PFI', 'TFI', 'blockchain', 'staging', 'development'],
+  keywords: ['FairCoin', 'ethical project', 'fairness', 'community', 'PFI', 'TFI', 'blockchain', 'staging', 'development'],
   authors: [{ name: 'FairCoin Community' }],
+  manifest: '/manifest.json',
+  themeColor: '#ffffff',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'FairCoin',
+  },
   robots: {
     index: false,
     follow: false,
