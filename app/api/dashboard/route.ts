@@ -8,22 +8,29 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
+    console.log('[DASHBOARD] API_URL:', API_URL)
+    console.log('[DASHBOARD] Request URL:', request.url)
+    
     // Get session token from cookies or headers
     const sessionToken = request.cookies.get('session')?.value || 
                         request.headers.get('authorization')?.replace('Bearer ', '') ||
                         request.headers.get('Authorization')?.replace('Bearer ', '')
 
     if (!sessionToken) {
+      console.log('[DASHBOARD] No session token found')
       return NextResponse.json(
         { error: 'Authentication required' },
         { status: 401 }
       )
     }
 
-    console.log('Fetching dashboard for token:', sessionToken.substring(0, 10) + '...')
+    console.log('[DASHBOARD] Token:', sessionToken.substring(0, 10) + '...')
+    
+    const backendUrl = `${API_URL}/api/v1/user/dashboard`
+    console.log('[DASHBOARD] Calling backend:', backendUrl)
 
     // Forward request to frontend-api
-    const response = await fetch(`${API_URL}/api/v1/user/dashboard`, {
+    const response = await fetch(backendUrl, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${sessionToken}`,
@@ -31,20 +38,26 @@ export async function GET(request: NextRequest) {
       },
     })
 
+    console.log('[DASHBOARD] Backend response status:', response.status)
+
     if (!response.ok) {
       const errorText = await response.text()
-      console.error('Dashboard API error:', response.status, errorText)
-      throw new Error(`Dashboard API returned ${response.status}`)
+      console.error('[DASHBOARD] Backend error:', response.status, errorText)
+      return NextResponse.json(
+        { error: `Backend returned ${response.status}: ${errorText}` },
+        { status: response.status }
+      )
     }
 
     const data = await response.json()
-    console.log('Dashboard data fetched successfully')
+    console.log('[DASHBOARD] Success - Data keys:', Object.keys(data))
 
     return NextResponse.json(data)
   } catch (error) {
-    console.error('Dashboard API error:', error)
+    console.error('[DASHBOARD] Exception:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'Failed to fetch dashboard data' },
+      { error: `Failed to fetch dashboard: ${errorMessage}` },
       { status: 500 }
     )
   }
