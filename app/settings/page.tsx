@@ -72,15 +72,22 @@ export default function SettingsPage() {
 
   const loadUserDashboardData = useCallback(async () => {
     try {
+      console.log('[SETTINGS] 🔍 Starting dashboard data load...')
+      
       // Get the auth token
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
       
+      console.log('[SETTINGS] 🔑 Token found:', token ? token.substring(0, 20) + '...' : 'NONE')
+      
       if (!token) {
-        console.error('No auth token found')
+        console.error('[SETTINGS] ❌ No auth token found')
         return
       }
 
+      console.log('[SETTINGS] 📡 Calling /api/dashboard...')
+      const startTime = Date.now()
+      
       // Fetch complete dashboard data which includes user info, profile, and settings
       const response = await fetch('/api/dashboard', {
         method: 'GET',
@@ -90,16 +97,38 @@ export default function SettingsPage() {
         },
       })
 
+      const duration = Date.now() - startTime
+      console.log(`[SETTINGS] ⏱️ Response received in ${duration}ms - Status: ${response.status}`)
+
+      if (response.status === 403 || response.status === 401) {
+        console.error('Session expired or invalid. Redirecting to login...')
+        localStorage.removeItem('auth_token')
+        document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        router.push('/auth?error=session_expired')
+        return
+      }
+
       if (response.ok) {
         const dashboardData = await response.json()
-        console.log('Dashboard data loaded:', dashboardData)
+        console.log('[SETTINGS] ✅ Dashboard data loaded successfully')
+        console.log('[SETTINGS] 📊 Response keys:', Object.keys(dashboardData))
+        console.log('[SETTINGS] 👤 User data:', dashboardData.user)
+        console.log('[SETTINGS] 📝 Profile data:', dashboardData.profile)
+        console.log('[SETTINGS] ⚙️ Settings count:', dashboardData.settings?.length || 0)
 
         // Update profile information from user data and profile data
         if (dashboardData.user || dashboardData.profile) {
           const userData = dashboardData.user || {}
           const profileData = dashboardData.profile || {}
           
-          setProfile({
+          console.log('[SETTINGS] 🔍 Extracting profile data...')
+          console.log('[SETTINGS]   - full_name:', userData.full_name)
+          console.log('[SETTINGS]   - email:', userData.email)
+          console.log('[SETTINGS]   - username:', userData.username)
+          console.log('[SETTINGS]   - display_name:', profileData.display_name)
+          console.log('[SETTINGS]   - phone:', profileData.phone || userData.phone)
+          
+          const profileInfo = {
             name: userData.full_name || 
                   profileData.display_name || 
                   `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || 
@@ -107,7 +136,12 @@ export default function SettingsPage() {
             email: userData.email || '',
             phone: profileData.phone || userData.phone || '',
             bio: profileData.bio || ''
-          })
+          }
+          
+          console.log('[SETTINGS] 💾 Setting profile state:', profileInfo)
+          setProfile(profileInfo)
+        } else {
+          console.log('[SETTINGS] ⚠️ No user or profile data in response')
         }
 
         // Process settings and update state
@@ -172,19 +206,24 @@ export default function SettingsPage() {
           })
         }
       } else {
+        console.log('[SETTINGS] ⚠️ Dashboard request not OK, trying fallback...')
+        const errorText = await response.text()
+        console.log('[SETTINGS] ❌ Error response:', errorText)
         // Fallback: try to get settings directly if dashboard fails
         await loadUserSettingsFallback(token)
       }
     } catch (error) {
-      console.error('Failed to load dashboard data:', error)
+      console.error('[SETTINGS] 💥 Exception loading dashboard:', error)
+      console.error('[SETTINGS] 💥 Error stack:', error instanceof Error ? error.stack : 'No stack')
       // Try fallback approach
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
       if (token) {
+        console.log('[SETTINGS] 🔄 Attempting fallback after exception...')
         await loadUserSettingsFallback(token)
       }
     }
-  }, [])
+  }, [router])
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
@@ -205,6 +244,9 @@ export default function SettingsPage() {
 
   const loadUserSettingsFallback = async (token: string) => {
     try {
+      console.log('[SETTINGS] 🔄 Trying fallback settings API...')
+      const startTime = Date.now()
+      
       const response = await fetch('/api/settings', {
         method: 'GET',
         headers: {
@@ -213,8 +255,12 @@ export default function SettingsPage() {
         },
       })
 
+      const duration = Date.now() - startTime
+      console.log(`[SETTINGS] ⏱️ Fallback response in ${duration}ms - Status: ${response.status}`)
+
       if (response.ok) {
         const result = await response.json()
+        console.log('[SETTINGS] 📦 Fallback data:', result)
         if (result.success && result.settings) {
           // Process settings and update state
           result.settings.forEach((setting: any) => {
