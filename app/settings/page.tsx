@@ -722,11 +722,10 @@ export default function SettingsPage() {
                       </div>
                       <div className="flex-1">
                         <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-1">
-                          OAuth Account Information
+                          Profile Information
                         </h4>
                         <p className="text-sm text-blue-700 dark:text-blue-300">
-                          Your name and email are automatically synced from your GitHub account and cannot be changed here. 
-                          To update them, please modify your information directly in your GitHub profile.
+                          Name and email are from your account registration and cannot be changed here.
                         </p>
                       </div>
                     </div>
@@ -736,21 +735,21 @@ export default function SettingsPage() {
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         Full Name
-                        <span className="text-xs text-gray-500 ml-2">(From GitHub OAuth)</span>
+                        <span className="text-xs text-gray-500 ml-2">(Read-only)</span>
                       </label>
                       <input
                         type="text"
                         value={profile.name}
                         readOnly
                         className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-not-allowed transition-colors"
-                        placeholder="Your name from GitHub"
+                        placeholder="Your full name"
                       />
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         Email Address
-                        <span className="text-xs text-gray-500 ml-2">(From GitHub OAuth)</span>
+                        <span className="text-xs text-gray-500 ml-2">(Read-only)</span>
                       </label>
                       <div className="relative">
                         <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -759,7 +758,7 @@ export default function SettingsPage() {
                           value={profile.email}
                           readOnly
                           className="w-full pl-11 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-not-allowed transition-colors"
-                          placeholder="Your email from GitHub"
+                          placeholder="Your email address"
                         />
                       </div>
                     </div>
