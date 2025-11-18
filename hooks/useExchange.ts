@@ -16,9 +16,11 @@ export function useExchangeHealth() {
     exchangeApi.health,
     {
       refreshInterval: 30000, // Refresh every 30 seconds
-      revalidateOnFocus: true,
+      revalidateOnFocus: false,
       shouldRetryOnError: true,
       errorRetryCount: 3,
+      errorRetryInterval: 5000, // Wait 5 seconds between retries
+      dedupingInterval: 10000, // Prevent duplicate requests within 10 seconds
     }
   )
 

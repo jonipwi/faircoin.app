@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 // Force this route to be dynamic since it requires authentication
 export const dynamic = 'force-dynamic'
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 /**
  * POST /api/2fa/backup-codes/regenerate
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Forward request to backend
-    const response = await fetch(`${BACKEND_URL}/api/v1/2fa/backup-codes/regenerate`, {
+    const response = await fetch(`${API_URL}/api/v1/2fa/backup-codes/regenerate`, {
       method: 'POST',
       headers: {
         'Cookie': `session=${authToken}`,

@@ -64,7 +64,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
           <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={profile.avatar_url}
+              src={profile?.avatar_url || user.avatar_url || `https://api.dicebear.com/7.x/identicon/svg?seed=${user.username}`}
               alt={user.username}
               className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-primary-200 dark:border-primary-800 flex-shrink-0"
             />
@@ -524,7 +524,7 @@ export default function DashboardPage() {
                   </span>
                 </div>
                 
-                {profile.location && (
+                {profile?.location && (
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-600 dark:text-gray-400">Location</span>
                     <span className="text-sm font-medium text-gray-900 dark:text-white">
@@ -533,7 +533,7 @@ export default function DashboardPage() {
                   </div>
                 )}
                 
-                {profile.bio && (
+                {profile?.bio && (
                   <div>
                     <span className="text-sm text-gray-600 dark:text-gray-400 block mb-2">Bio</span>
                     <p className="text-sm text-gray-900 dark:text-white">

@@ -29,6 +29,14 @@ export default function LiteChat() {
   // Construct iframe URL pointing directly to chat room
   const iframeUrl = `${chatUrl}/lite/chat?room=friendly-lounge&roomId=1&username=${encodeURIComponent(username)}${walletAddress ? `&wallet=${encodeURIComponent(walletAddress)}` : ''}`
 
+  // Debug logging
+  useEffect(() => {
+    console.log('🔍 Chat Page Debug:')
+    console.log('  Username:', username)
+    console.log('  Wallet:', walletAddress)
+    console.log('  Full URL:', iframeUrl)
+  }, [username, walletAddress, iframeUrl])
+
   return (
     <div className="fixed inset-0 pt-20 bg-gray-50 dark:bg-gray-900">
       <div className="h-full flex flex-col">

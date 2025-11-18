@@ -1,4 +1,4 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8090/api/v1'
+export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100') + '/api/v1'
 
 export type ApiResult<T> = { data: T; error?: string }
 
@@ -172,6 +172,8 @@ export interface AuthSession {
   username: string
   email: string
   avatar_url: string
+  full_name?: string
+  wallet_address?: string
   created_at: string
   expires_at: string
 }

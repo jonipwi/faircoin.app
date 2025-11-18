@@ -136,7 +136,23 @@ function AuthPageContent() {
         }
         setSession(sessionData)
         localStorage.setItem('auth_token', data.session_id)
-        setStep('terms')
+        
+        // Store user info for chat widget and other components
+        localStorage.setItem('user', JSON.stringify({
+          username: data.username,
+          full_name: data.full_name,
+          email: data.email,
+          avatar_url: data.avatar_url,
+          wallet_address: data.wallet_address,
+        }))
+        
+        // Check if user has already accepted terms
+        if (data.terms_accepted) {
+          // Skip terms and go directly to dashboard
+          router.push('/dashboard')
+        } else {
+          setStep('terms')
+        }
       } else {
         setError(data.error || 'Invalid secret phrase')
       }
@@ -242,6 +258,15 @@ Created: ${new Date().toISOString()}
           localStorage.setItem('auth_token', session.id)
           // Also set as cookie for server-side access
           document.cookie = `session=${session.id}; path=/; max-age=${24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
+          
+          // Store user info for chat widget and other components
+          localStorage.setItem('user', JSON.stringify({
+            username: session.username,
+            full_name: session.full_name,
+            email: session.email,
+            avatar_url: session.avatar_url,
+            wallet_address: session.wallet_address,
+          }))
         }
         
         // Redirect to dashboard after delay

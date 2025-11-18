@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const FRONTEND_API_URL = process.env.FRONTEND_API_URL || 'http://localhost:8090'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     console.log('Fetching dashboard for token:', sessionToken.substring(0, 10) + '...')
 
     // Forward request to frontend-api
-    const response = await fetch(`${FRONTEND_API_URL}/api/v1/user/dashboard`, {
+    const response = await fetch(`${API_URL}/api/v1/user/dashboard`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${sessionToken}`,

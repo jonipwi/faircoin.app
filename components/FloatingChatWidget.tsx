@@ -20,11 +20,49 @@ export function FloatingChatWidget({
   const [modalSize, setModalSize] = useState({ width: 0, height: 0, left: 0, top: 0 })
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [username, setUsername] = useState(defaultUsername)
   
   const modalContentRef = useRef<HTMLDivElement>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const resizeStartRef = useRef({ x: 0, y: 0, width: 0, height: 0, left: 0, top: 0 })
   const currentHandleRef = useRef<string | null>(null)
+
+  // Get username from localStorage (wallet auth session)
+  useEffect(() => {
+    try {
+      // Try to get from 'user' key first
+      const userStr = localStorage.getItem('user')
+      if (userStr) {
+        const user = JSON.parse(userStr)
+        if (user.username) {
+          setUsername(user.username)
+          return
+        }
+      }
+
+      // Fallback: Try to get from auth token and fetch user info
+      const authToken = localStorage.getItem('auth_token')
+      if (authToken) {
+        // Fetch user info from API
+        fetch('/api/settings', {
+          headers: {
+            'Authorization': `Bearer ${authToken}`
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.user?.username) {
+              setUsername(data.user.username)
+            } else if (data.user?.full_name) {
+              setUsername(data.user.full_name)
+            }
+          })
+          .catch(e => console.warn('Failed to fetch user from API:', e))
+      }
+    } catch (e) {
+      console.warn('Failed to load user from localStorage:', e)
+    }
+  }, [])
 
   // Detect mobile
   useEffect(() => {
@@ -194,7 +232,7 @@ export function FloatingChatWidget({
     document.removeEventListener('mouseup', upHandler)
   }
 
-  const iframeUrl = `${chatUrl}?modal=true&compact=true&maximized=true&hideHeader=true&room=${defaultRoom}&username=${defaultUsername}`
+  const iframeUrl = `${chatUrl}?modal=true&compact=true&maximized=true&hideHeader=true&room=${defaultRoom}&username=${username}`
 
   return (
     <>

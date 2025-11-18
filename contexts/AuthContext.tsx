@@ -32,6 +32,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return
       }
 
+      // Try to get user from localStorage first (wallet auth)
+      try {
+        const storedUser = localStorage.getItem('user')
+        if (storedUser) {
+          const userData = JSON.parse(storedUser)
+          setIsAuthenticated(true)
+          setUser(userData)
+          setLoading(false)
+          return
+        }
+      } catch (e) {
+        console.warn('Failed to load user from localStorage:', e)
+      }
+
+      // Fallback to API check (GitHub OAuth)
       const response = await api.auth.status(token)
       if (response.authenticated && response.session) {
         setIsAuthenticated(true)
@@ -41,6 +56,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(null)
         // Clear invalid token
         localStorage.removeItem('auth_token')
+        localStorage.removeItem('user')
         document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       }
     } catch (error) {
@@ -49,6 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(null)
       // Clear tokens on auth failure
       localStorage.removeItem('auth_token')
+      localStorage.removeItem('user')
       document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
     } finally {
       setLoading(false)
@@ -66,6 +83,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } finally {
       // Always clear tokens and update state
       localStorage.removeItem('auth_token')
+      localStorage.removeItem('user')
+      localStorage.removeItem('wallet')
+      localStorage.removeItem('session')
       document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       setIsAuthenticated(false)
       setUser(null)

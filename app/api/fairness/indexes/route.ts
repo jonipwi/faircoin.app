@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8100'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     const userId = searchParams.get('user_id')
     const username = searchParams.get('username')
 
-    let url = `${BACKEND_URL}/api/v1/fairness/indexes`
+    let url = `${API_URL}/api/v1/fairness/indexes`
     if (userId) {
       url += `?user_id=${userId}`
     } else if (username) {

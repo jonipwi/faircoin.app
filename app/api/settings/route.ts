@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const FRONTEND_API_URL = process.env.FRONTEND_API_URL || 'http://localhost:8090'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     console.log('Fetching settings for token:', sessionToken.substring(0, 10) + '...')
 
     // Forward request to frontend-api
-    const response = await fetch(`${FRONTEND_API_URL}/api/v1/user/settings`, {
+    const response = await fetch(`${API_URL}/api/v1/user/settings`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${sessionToken}`,
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     console.log('Updating settings:', body.setting_key, 'for token:', sessionToken.substring(0, 10) + '...')
 
     // Forward request to frontend-api
-    const response = await fetch(`${FRONTEND_API_URL}/api/v1/user/settings`, {
+    const response = await fetch(`${API_URL}/api/v1/user/settings`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${sessionToken}`,

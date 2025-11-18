@@ -100,7 +100,8 @@ export default function SettingsPage() {
           const profileData = dashboardData.profile || {}
           
           setProfile({
-            name: profileData.display_name || 
+            name: userData.full_name || 
+                  profileData.display_name || 
                   `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || 
                   userData.username || '',
             email: userData.email || '',

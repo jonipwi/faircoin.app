@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 /**
  * POST /api/auth/verify-2fa
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Forward request to backend
-    const response = await fetch(`${BACKEND_URL}/api/v1/auth/verify-2fa`, {
+    const response = await fetch(`${API_URL}/api/v1/auth/verify-2fa`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

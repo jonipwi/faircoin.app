@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8100'
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 export const dynamic = 'force-dynamic'
 
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     if (status) params.append('status', status)
     if (limit) params.append('limit', limit)
 
-    const url = `${BACKEND_URL}/api/v1/fairness/submissions${params.toString() ? '?' + params.toString() : ''}`
+    const url = `${API_URL}/api/v1/fairness/submissions${params.toString() ? '?' + params.toString() : ''}`
     console.log('Fetching fairness submissions from:', url)
 
     // Fetch from backend API
