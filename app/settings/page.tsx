@@ -110,7 +110,6 @@ export default function SettingsPage() {
           console.log('[SETTINGS]   - email:', userData.email)
           console.log('[SETTINGS]   - username:', userData.username)
           console.log('[SETTINGS]   - display_name:', profileData.display_name)
-          console.log('[SETTINGS]   - phone:', profileData.phone || userData.phone)
           
           const profileInfo = {
             name: userData.full_name || 
@@ -118,7 +117,7 @@ export default function SettingsPage() {
                   `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || 
                   userData.username || '',
             email: userData.email || '',
-            phone: profileData.phone || userData.phone || '',
+            phone: (userData as any).phone || '',
             bio: profileData.bio || ''
           }
           
