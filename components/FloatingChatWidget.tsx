@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import { X, Maximize2, Minimize2, Sun, Moon, MessageCircle } from 'lucide-react'
+import { X, Maximize2, Minimize2, Sun, Moon, MessageCircle, Users, Headphones } from 'lucide-react'
+import { generateXChatToken, hasValidAuth } from '@/lib/xchat-token'
 
 interface FloatingChatWidgetProps {
   chatUrl?: string
@@ -21,6 +22,9 @@ export function FloatingChatWidget({
   const [isResizing, setIsResizing] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [username, setUsername] = useState(defaultUsername)
+  const [chatMode, setChatMode] = useState<'community' | 'support'>('community')
+  const [supportUrl, setSupportUrl] = useState<string | null>(null)
+  const [loadingSupport, setLoadingSupport] = useState(false)
   
   const modalContentRef = useRef<HTMLDivElement>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -155,6 +159,41 @@ export function FloatingChatWidget({
     iframeRef.current?.contentWindow?.postMessage({ type: 'SET_THEME', theme: newTheme }, '*')
   }
 
+  // Initialize support chat with token
+  const initializeSupportChat = async () => {
+    setLoadingSupport(true)
+    try {
+      const auth = hasValidAuth()
+      if (!auth.valid || !auth.username) {
+        console.warn('[FloatingChat] No valid auth for support chat')
+        setLoadingSupport(false)
+        return
+      }
+
+      const token = await generateXChatToken(auth.username, auth.wallet || '')
+      const xchatUrl = process.env.NEXT_PUBLIC_XCHAT_URL || 'http://localhost:8088'
+      const url = `${xchatUrl}/lite?token=${token}`
+      setSupportUrl(url)
+      setLoadingSupport(false)
+    } catch (err) {
+      console.error('[FloatingChat] Failed to initialize support chat:', err)
+      setLoadingSupport(false)
+    }
+  }
+
+  // Switch to support mode
+  const switchToSupport = async () => {
+    setChatMode('support')
+    if (!supportUrl) {
+      await initializeSupportChat()
+    }
+  }
+
+  // Switch to community mode
+  const switchToCommunity = () => {
+    setChatMode('community')
+  }
+
   const toggleMaximize = () => {
     if (isMobile) {
       setIsMaximized(true)
@@ -232,7 +271,9 @@ export function FloatingChatWidget({
     document.removeEventListener('mouseup', upHandler)
   }
 
-  const iframeUrl = `${chatUrl}?modal=true&compact=true&maximized=true&hideHeader=true&room=${defaultRoom}&username=${username}`
+  const iframeUrl = chatMode === 'support' 
+    ? supportUrl 
+    : `${chatUrl}?modal=true&compact=true&maximized=true&hideHeader=true&room=${defaultRoom}&username=${username}`
 
   return (
     <>
@@ -308,11 +349,49 @@ export function FloatingChatWidget({
                 ? 'bg-gray-800 border-gray-700' 
                 : 'bg-gray-50 border-gray-200'
             }`}>
-              <h3 className={`text-lg font-semibold ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
-                Chat Support
-              </h3>
+              <div className="flex items-center gap-3">
+                <h3 className={`text-lg font-semibold ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}>
+                  {chatMode === 'support' ? 'Support Chat' : 'Community Chat'}
+                </h3>
+                
+                {/* Mode Switcher */}
+                <div className="flex items-center gap-1 ml-2">
+                  <button
+                    onClick={switchToCommunity}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                      chatMode === 'community'
+                        ? theme === 'dark'
+                          ? 'bg-primary-600 text-white'
+                          : 'bg-primary-500 text-white'
+                        : theme === 'dark'
+                        ? 'bg-gray-700 text-gray-400 hover:bg-gray-600'
+                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                    }`}
+                    title="Community Chat"
+                  >
+                    <Users className="w-3.5 h-3.5 inline mr-1" />
+                    Community
+                  </button>
+                  <button
+                    onClick={switchToSupport}
+                    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                      chatMode === 'support'
+                        ? theme === 'dark'
+                          ? 'bg-emerald-600 text-white'
+                          : 'bg-emerald-500 text-white'
+                        : theme === 'dark'
+                        ? 'bg-gray-700 text-gray-400 hover:bg-gray-600'
+                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                    }`}
+                    title="Support Chat"
+                  >
+                    <Headphones className="w-3.5 h-3.5 inline mr-1" />
+                    Support
+                  </button>
+                </div>
+              </div>
               
               <div className="flex items-center gap-2">
                 {/* Theme Toggle */}
@@ -357,12 +436,25 @@ export function FloatingChatWidget({
             </div>
 
             {/* Iframe Content */}
-            <iframe
-              ref={iframeRef}
-              src={iframeUrl}
-              className="w-full flex-1 border-0"
-              title="Chat"
-            />
+            {chatMode === 'support' && loadingSupport ? (
+              <div className="flex-1 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="animate-spin w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full mx-auto mb-3" />
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                    Connecting to support...
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <iframe
+                ref={iframeRef}
+                src={iframeUrl || ''}
+                className="w-full flex-1 border-0"
+                title={chatMode === 'support' ? 'Support Chat' : 'Community Chat'}
+                allow="clipboard-read; clipboard-write"
+                sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+              />
+            )}
           </div>
         </div>
       )}

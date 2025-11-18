@@ -95,7 +95,7 @@ export function Navbar() {
                   <div className="flex items-center gap-2">
                     <Link href="/dashboard" className="btn btn-ghost btn-sm">
                       <LayoutDashboard className="w-4 h-4" />
-                      Dashboard
+                      
                     </Link>
                     <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30">
                       <User className="w-4 h-4 text-primary-600 dark:text-primary-400" />
