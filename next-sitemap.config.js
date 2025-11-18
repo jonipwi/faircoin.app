@@ -11,15 +11,6 @@ module.exports = {
     '/admin/*',
     '/_next/*',
   ],
-  robotsTxtOptions: {
-    policies: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/'],
-      },
-    ],
-  },
   transform: async (config, path) => {
     // Custom priority for important pages
     let priority = config.priority
@@ -31,7 +22,10 @@ module.exports = {
     } else if (path.startsWith('/community') || path.startsWith('/exchange')) {
       priority = 0.8
       changefreq = 'daily'
-    } else if (path.startsWith('/about') || path.startsWith('/docs')) {
+    } else if (path.startsWith('/about')) {
+      priority = 0.8
+      changefreq = 'weekly'
+    } else if (path.startsWith('/docs')) {
       priority = 0.6
       changefreq = 'weekly'
     }
