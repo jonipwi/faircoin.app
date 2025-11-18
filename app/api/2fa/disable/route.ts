@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
+
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
   try {
     // Forward the request to the Go backend
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/2fa/disable`, {
+    const response = await fetch(`${API_URL}/api/v1/2fa/disable`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

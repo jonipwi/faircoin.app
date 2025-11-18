@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
+// Use API_URL for server-side routes (NEXT_PUBLIC_ is for client-side)
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 // Force this route to be dynamic since it requires authentication
 export const dynamic = 'force-dynamic'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 /**
  * POST /api/2fa/backup-codes/regenerate
