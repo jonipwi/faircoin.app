@@ -7,6 +7,7 @@
  * with FairCoin's authentication system.
  * 
  * Features:
+ * - Only shows when user is authenticated
  * - Uses authenticated username when user is logged in
  * - Falls back to "guest" for non-authenticated users
  * - Maintains all FloatingChatWidget functionality
@@ -19,13 +20,21 @@ import { FloatingChatWidget } from '@/components/FloatingChatWidget'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function AuthenticatedChatWidget() {
-  const { user, isAuthenticated } = useAuth()
+  const { user, isAuthenticated, loading } = useAuth()
+
+  // Don't show widget while checking authentication
+  if (loading) {
+    return null
+  }
+
+  // Only show widget if user is authenticated
+  if (!isAuthenticated) {
+    return null
+  }
 
   // Determine username based on authentication status
   // Prefer username, fallback to email prefix (before @), or generate one
-  const username = isAuthenticated 
-    ? user?.username || user?.email?.split('@')[0] || `user_${user?.user_id || 'guest'}`
-    : 'guest'
+  const username = user?.username || user?.email?.split('@')[0] || `user_${user?.user_id || 'guest'}`
 
   return (
     <FloatingChatWidget 
