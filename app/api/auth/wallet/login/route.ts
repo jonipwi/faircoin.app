@@ -20,6 +20,11 @@ export async function POST(request: NextRequest) {
 
     // Call FairCoin API to authenticate with mnemonic
     const apiUrl = `${API_BASE_URL}/api/v1/auth/wallet/login`
+    console.log('[WALLET-LOGIN] Environment check:', {
+      API_URL: process.env.API_URL,
+      NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+      resolved: API_BASE_URL
+    })
     console.log('[WALLET-LOGIN] Calling API:', apiUrl)
     
     const response = await fetch(apiUrl, {

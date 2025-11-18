@@ -30,6 +30,11 @@ export async function POST(request: NextRequest) {
 
     // Call FairCoin API to create wallet and user account
     const apiUrl = `${API_BASE_URL}/api/v1/auth/wallet/register`
+    console.log('[WALLET-REGISTER] Environment check:', {
+      API_URL: process.env.API_URL,
+      NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+      resolved: API_BASE_URL
+    })
     console.log('[WALLET-REGISTER] Calling API:', apiUrl)
     
     const response = await fetch(apiUrl, {

@@ -79,7 +79,9 @@ function AuthPageContent() {
     setError(null)
 
     try {
-      const response = await fetch('/api/auth/wallet/register', {
+      // Call backend API directly instead of Next.js API route
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ full_name: fullName.trim(), email: email.trim() }),
@@ -113,7 +115,9 @@ function AuthPageContent() {
     setError(null)
 
     try {
-      const response = await fetch('/api/auth/wallet/login', {
+      // Call backend API directly instead of Next.js API route
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+      const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mnemonic: mnemonic.trim() }),
