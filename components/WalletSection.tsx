@@ -1,16 +1,47 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Wallet, Send, QrCode, History, TrendingUp, Lock, Award, Clock } from 'lucide-react'
 import { CurrencyDisplay } from '@/components/CurrencyDisplay'
 import { MultiCurrencyBalance } from '@/components/MultiCurrencyBalance'
 import { CurrencyConverter } from '@/components/CurrencyConverter'
+import { useAuth } from '@/contexts/AuthContext'
+import { useRouter } from 'next/navigation'
 
 export function WalletSection() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const { isAuthenticated, loading } = useAuth()
+  const router = useRouter()
   const [fcBalance] = useState(1234.56) // This would come from your wallet state/API
 
-  if (!isLoggedIn) {
+  // Check for authentication token directly (supports both wallet and OAuth)
+  const [hasToken, setHasToken] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token') || 
+                 document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
+    setHasToken(!!token)
+  }, [isAuthenticated])
+
+  const handleLogin = () => {
+    router.push('/auth')
+  }
+
+  if (loading) {
+    return (
+      <section id="wallet" className="section">
+        <div className="container">
+          <div className="max-w-2xl mx-auto">
+            <div className="card p-12 text-center">
+              <div className="animate-spin w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full mx-auto mb-4" />
+              <p className="text-gray-600 dark:text-gray-400">Loading wallet...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (!hasToken && !isAuthenticated) {
     return (
       <section id="wallet" className="section">
         <div className="container">
@@ -26,7 +57,7 @@ export function WalletSection() {
                 Please log in to access your FairCoin wallet and manage your funds.
               </p>
               <div className="flex gap-4 justify-center pt-4">
-                <button className="btn btn-primary btn-lg" onClick={() => setIsLoggedIn(true)}>
+                <button className="btn btn-primary btn-lg" onClick={handleLogin}>
                   <Wallet className="w-5 h-5" />
                   Login to Wallet
                 </button>
