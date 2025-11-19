@@ -1,36 +1,38 @@
 "use client"
 
 import { Store, Star, Award, Search, TrendingUp } from 'lucide-react'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function MerchantsSection() {
+  const { t } = useLanguage()
   const merchants = [
     {
-      name: 'Green Market Co-op',
-      category: 'Groceries',
+      name: t('merchants.merchant1Name'),
+      category: t('merchants.merchant1Category'),
       tfi: 95,
       rating: 4.9,
       reviews: 234,
       image: '🌿',
     },
     {
-      name: 'Fair Trade Coffee',
-      category: 'Beverages',
+      name: t('merchants.merchant2Name'),
+      category: t('merchants.merchant2Category'),
       tfi: 92,
       rating: 4.8,
       reviews: 189,
       image: '☕',
     },
     {
-      name: 'Community Bakery',
-      category: 'Food',
+      name: t('merchants.merchant3Name'),
+      category: t('merchants.merchant3Category'),
       tfi: 90,
       rating: 4.7,
       reviews: 156,
       image: '🥖',
     },
     {
-      name: 'Local Hardware',
-      category: 'Home & Garden',
+      name: t('merchants.merchant4Name'),
+      category: t('merchants.merchant4Category'),
       tfi: 88,
       rating: 4.6,
       reviews: 98,
@@ -44,13 +46,13 @@ export function MerchantsSection() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
             <Store className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-medium text-white">Merchant Directory</span>
+            <span className="text-sm font-medium text-white">{t('merchants.title')}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Verified Merchants
+            {t('merchants.subtitle')}
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-8">
-            Find trusted merchants with high Trade Fairness Index (TFI★) scores
+            {t('merchants.description')}
           </p>
 
           {/* Search Bar */}
@@ -59,10 +61,10 @@ export function MerchantsSection() {
               <Search className="w-5 h-5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search merchants..."
+                placeholder={t('merchants.searchPlaceholder')}
                 className="flex-1 bg-transparent border-none outline-none text-gray-900 dark:text-white placeholder:text-gray-400"
               />
-              <button className="btn btn-primary btn-sm">Search</button>
+              <button className="btn btn-primary btn-sm">{t('merchants.search')}</button>
             </div>
           </div>
         </div>
@@ -87,7 +89,7 @@ export function MerchantsSection() {
               <div className="mb-4 p-3 rounded-lg bg-primary-50 dark:bg-primary-950/30">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    TFI★ Score
+                    {t('merchants.tfiScore')}
                   </span>
                   <div className="flex items-center gap-1">
                     <Award className="w-4 h-4 text-primary-500" />
@@ -107,13 +109,13 @@ export function MerchantsSection() {
                   </span>
                 </div>
                 <span className="text-gray-600 dark:text-gray-400">
-                  {merchant.reviews} reviews
+                  {merchant.reviews} {t('merchants.reviews')}
                 </span>
               </div>
 
               {/* Action Button */}
               <button className="btn btn-outline btn-sm w-full mt-4">
-                View Store
+                {t('merchants.viewStore')}
               </button>
             </div>
           ))}
@@ -122,7 +124,7 @@ export function MerchantsSection() {
         <div className="text-center mt-12">
           <button className="btn btn-primary btn-lg">
             <Store className="w-5 h-5" />
-            Become a Merchant
+            {t('merchants.becomeButton')}
           </button>
         </div>
       </div>

@@ -1,26 +1,190 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { Wallet, Send, QrCode, History, TrendingUp, Lock, Award, Clock } from 'lucide-react'
-import { CurrencyDisplay } from '@/components/CurrencyDisplay'
-import { MultiCurrencyBalance } from '@/components/MultiCurrencyBalance'
-import { CurrencyConverter } from '@/components/CurrencyConverter'
+import { Wallet, TrendingUp, Lock, Award, PieChart, Download, Copy, Check } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
+
+interface PFIMetrics {
+  score: number
+  index: number
+  share: number
+}
+
+interface WalletInfo {
+  address: string
+  balances: {
+    USDT: number
+  }
+  createdAt: Date
+}
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
 
 export function WalletSection() {
-  const { isAuthenticated, loading } = useAuth()
+  const { t } = useLanguage()
+  const { isAuthenticated, loading, user } = useAuth()
   const router = useRouter()
-  const [fcBalance] = useState(1234.56) // This would come from your wallet state/API
+  const [wallet, setWallet] = useState<WalletInfo | null>(null)
+  const [pfiMetrics, setPfiMetrics] = useState<PFIMetrics>({
+    score: 0,
+    index: 0,
+    share: 0
+  })
+  const [isCreatingWallet, setIsCreatingWallet] = useState(false)
+  const [copied, setCopied] = useState(false)
 
-  // Check for authentication token directly (supports both wallet and OAuth)
-  const [hasToken, setHasToken] = useState(false)
+  // Fetch PFI metrics from FairCoin API
+  const fetchPFIMetrics = async () => {
+    if (!user?.username) return
+    
+    try {
+      console.log(`[PFI] Fetching metrics for user: ${user.username}`)
+      const response = await fetch(`${API_BASE_URL}/api/v1/fairness/indexes?user=${encodeURIComponent(user.username)}`)
+      
+      if (response.ok) {
+        const data = await response.json()
+        console.log('[PFI] API response:', data)
+        
+        if (data.success && data.index) {
+          setPfiMetrics({
+            score: data.index.pfi_total || 0,
+            index: data.index.total_fairness_score || 0,
+            share: data.index.approved_submissions || 0
+          })
+        } else {
+          setPfiMetrics({ score: 0, index: 0, share: 0 })
+        }
+      } else {
+        console.error(`[PFI] API failed with status ${response.status}`)
+        setPfiMetrics({ score: 0, index: 0, share: 0 })
+      }
+    } catch (error) {
+      console.error('[PFI] Error fetching metrics:', error)
+      setPfiMetrics({ score: 0, index: 0, share: 0 })
+    }
+  }
 
+  // Load wallet and fetch PFI metrics on mount
   useEffect(() => {
-    const token = localStorage.getItem('auth_token') || 
-                 document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
-    setHasToken(!!token)
-  }, [isAuthenticated])
+    if (user?.username) {
+      // Load wallet from localStorage if exists
+      const savedWallet = localStorage.getItem('wallet')
+      if (savedWallet) {
+        try {
+          setWallet(JSON.parse(savedWallet))
+        } catch (e) {
+          console.error('Failed to parse saved wallet:', e)
+        }
+      }
+      
+      // Fetch PFI metrics
+      fetchPFIMetrics()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
+
+  const createWallet = async () => {
+    if (!user?.username) return
+    
+    setIsCreatingWallet(true)
+    
+    try {
+      // Create wallet through xchat API
+      const xchatAPI = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8088'
+      const response = await fetch(`${xchatAPI}/api/wallet/create`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: user.username })
+      })
+      
+      const data = await response.json()
+      
+      if (data.success && data.data) {
+        const newWallet: WalletInfo = {
+          address: data.data.address,
+          balances: { USDT: data.data.balances?.USDT || 0 },
+          createdAt: new Date()
+        }
+        
+        setWallet(newWallet)
+        localStorage.setItem('wallet', JSON.stringify(newWallet))
+        
+        // Save secret phrase
+        if (data.data.secretPhrase) {
+          localStorage.setItem(`wallet_phrase_${data.data.address}`, data.data.secretPhrase)
+          alert(
+            `Wallet Created Successfully!\n\n` +
+            `IMPORTANT: Save your secret phrase securely!\n\n` +
+            `Secret Phrase:\n${data.data.secretPhrase}\n\n` +
+            `This will NEVER be shown again. Write it down and keep it safe!\n\n` +
+            `Use the "Download Wallet Details" button to save this information.`
+          )
+        }
+      } else {
+        alert(data.error || 'Failed to create wallet')
+      }
+    } catch (error) {
+      console.error('Failed to create wallet:', error)
+      alert('Failed to create wallet. Please try again.')
+    } finally {
+      setIsCreatingWallet(false)
+    }
+  }
+
+  const copyToClipboard = async () => {
+    if (!wallet) return
+    
+    try {
+      await navigator.clipboard.writeText(wallet.address)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (error) {
+      console.error('Failed to copy address:', error)
+    }
+  }
+
+  const downloadWalletDetails = () => {
+    if (!wallet || !user?.username) return
+
+    const secretPhrase = localStorage.getItem(`wallet_phrase_${wallet.address}`) || 
+                        'Secret phrase not available (only shown once during creation)'
+
+    const walletDetails = `FAIRCOIN - PFI TREASURY DETAILS
+========================
+
+Username: ${user.username}
+Treasury Address: ${wallet.address}
+Network: FairCoin Network
+
+Secret Phrase (BIP39 Mnemonic):
+${secretPhrase}
+
+PFI METRICS:
+- PFI Score: ${pfiMetrics.score}
+- PFI Index: ${pfiMetrics.index.toFixed(1)}%
+- PFI Share: ${pfiMetrics.share}
+
+IMPORTANT SECURITY NOTES:
+- Never share your secret phrase with anyone
+- Store this file in a secure location
+- Delete this file after backing up to a secure location
+- Anyone with access to your secret phrase can access your treasury
+
+Created: ${new Date().toISOString()}
+`
+
+    const blob = new Blob([walletDetails], { type: 'text/plain' })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `faircoin-pfi-wallet-${wallet.address.substring(0, 8)}.txt`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    window.URL.revokeObjectURL(url)
+  }
 
   const handleLogin = () => {
     router.push('/auth')
@@ -41,7 +205,7 @@ export function WalletSection() {
     )
   }
 
-  if (!hasToken && !isAuthenticated) {
+  if (!isAuthenticated) {
     return (
       <section id="wallet" className="section">
         <div className="container">
@@ -74,224 +238,178 @@ export function WalletSection() {
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            My Wallet
+            PFI Treasury ✨
           </h2>
           <p className="text-xl text-white/80">
-            Manage your FairCoins and track your Personal Fairness Index
+            {t('wallet.subtitle')}
           </p>
         </div>
 
-        {/* Balance Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="card p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
-                Available Balance
+        {/* Wallet Creation or Display */}
+        {!wallet ? (
+          <div className="max-w-2xl mx-auto">
+            <div className="card p-12 text-center space-y-6">
+              <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                <Wallet className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                {t('wallet.createTreasury')}
               </h3>
-              <Wallet className="w-6 h-6 text-primary-500" />
-            </div>
-            <CurrencyDisplay
-              amount={fcBalance}
-              fcClassName="text-5xl font-extrabold bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400 bg-clip-text text-transparent"
-              fiatClassName="mt-2 text-sm text-gray-500 dark:text-gray-400"
-            />
-          </div>
-
-          <div className="card p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
-                Locked/Vesting
-              </h3>
-              <Clock className="w-6 h-6 text-amber-500" />
-            </div>
-            <CurrencyDisplay
-              amount={500}
-              fcClassName="text-5xl font-extrabold bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 bg-clip-text text-transparent"
-              fiatClassName="mt-2 text-sm text-gray-500 dark:text-gray-400"
-              showFiat={false}
-            />
-            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              Unlocks over 90 days
-            </div>
-          </div>
-        </div>
-
-        {/* Multi-Currency Balance View */}
-        <div className="mb-8">
-          <MultiCurrencyBalance fcBalance={fcBalance} />
-        </div>
-
-        {/* Currency Converter */}
-        <div className="mb-8">
-          <CurrencyConverter defaultFrom="FC" defaultTo="USD" defaultAmount={100} />
-        </div>
-
-        {/* Action Buttons */}
-        <div className="grid sm:grid-cols-3 gap-4 mb-12">
-          <button className="btn btn-primary justify-start p-6">
-            <Send className="w-5 h-5" />
-            <span className="font-semibold">Send FC</span>
-          </button>
-          <button className="btn btn-outline justify-start p-6">
-            <QrCode className="w-5 h-5" />
-            <span className="font-semibold">Request Payment</span>
-          </button>
-          <button className="btn btn-outline justify-start p-6">
-            <History className="w-5 h-5" />
-            <span className="font-semibold">Transaction History</span>
-          </button>
-        </div>
-
-        {/* PFI Display */}
-        <div className="card p-8 mb-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-              <Award className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Personal Fairness Index (PFI★)
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Your contribution score to the FairCoin community
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                {t('wallet.treasuryDescription')}
               </p>
+              <button
+                onClick={createWallet}
+                disabled={isCreatingWallet}
+                className="btn btn-primary btn-lg w-full disabled:opacity-50"
+              >
+                <Wallet className="w-5 h-5" />
+                {isCreatingWallet ? t('wallet.creatingTreasury') : t('wallet.createPFITreasury')}
+              </button>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* PFI Score Circle */}
-            <div className="flex items-center justify-center">
-              <div className="relative w-48 h-48">
-                <svg className="w-full h-full -rotate-90">
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="88"
-                    stroke="currentColor"
-                    strokeWidth="12"
-                    fill="none"
-                    className="text-gray-200 dark:text-gray-700"
-                  />
-                  <circle
-                    cx="96"
-                    cy="96"
-                    r="88"
-                    stroke="url(#pfi-gradient)"
-                    strokeWidth="12"
-                    fill="none"
-                    strokeDasharray={`${(75 / 100) * 553} 553`}
-                    strokeLinecap="round"
-                    className="transition-all duration-1000"
-                  />
-                  <defs>
-                    <linearGradient id="pfi-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#8b5cf6" />
-                      <stop offset="100%" stopColor="#ec4899" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-5xl font-extrabold bg-gradient-to-br from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                      75
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                      / 100
-                    </div>
-                  </div>
-                </div>
+        ) : (
+          <>
+            {/* Wallet Address */}
+            <div className="card p-6 mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
+                  Treasury Address
+                </h3>
+                <Wallet className="w-6 h-6 text-primary-500" />
               </div>
-            </div>
-
-            {/* PFI Breakdown */}
-            <div className="space-y-4">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Community Service
-                  </span>
-                  <span className="text-sm font-bold text-gray-900 dark:text-white">
-                    45 hours
-                  </span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" style={{ width: '75%' }} />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Community Attestations
-                  </span>
-                  <span className="text-sm font-bold text-gray-900 dark:text-white">
-                    12 attestations
-                  </span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" style={{ width: '60%' }} />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Account Age
-                  </span>
-                  <span className="text-sm font-bold text-gray-900 dark:text-white">
-                    180 days
-                  </span>
-                </div>
-                <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full" style={{ width: '50%' }} />
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <button className="btn btn-outline btn-sm w-full">
-                  <TrendingUp className="w-4 h-4" />
-                  How to Improve Your PFI
+              <div className="flex items-center gap-3">
+                <p className="text-sm text-gray-800 dark:text-white font-mono break-all flex-1">
+                  {wallet.address}
+                </p>
+                <button
+                  onClick={copyToClipboard}
+                  className="btn btn-ghost btn-sm flex items-center gap-2"
+                  title="Copy address"
+                >
+                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copied ? 'Copied' : 'Copy'}
                 </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Recent Transactions */}
-        <div className="card p-8">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Recent Transactions
-            </h3>
-            <button className="btn btn-ghost btn-sm">
-              View All
-            </button>
-          </div>
+            {/* Token Balance */}
+            <div className="card p-8 mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
+                  Tokens Entrusted ✨
+                </h3>
+                <TrendingUp className="w-6 h-6 text-amber-500" />
+              </div>
+              <p className="text-5xl font-extrabold text-amber-600 dark:text-amber-400 mb-2">
+                {wallet.balances.USDT.toFixed(4)} USDT
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Faith, Love, and Justice tokens stored in Heaven's Network
+              </p>
+            </div>
 
-          <div className="space-y-3">
-            {[
-              { type: 'Received', from: 'alice', amount: '+50.00 FC', time: '2 hours ago', icon: '↓', color: 'text-emerald-500' },
-              { type: 'Sent', from: 'bob_merchant', amount: '-25.50 FC', time: '1 day ago', icon: '↑', color: 'text-rose-500' },
-              { type: 'Reward', from: 'FairCoin System', amount: '+10.00 FC', time: '3 days ago', icon: '★', color: 'text-amber-500' },
-            ].map((tx, i) => (
-              <div key={i} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors">
-                <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xl ${tx.color}`}>
-                    {tx.icon}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900 dark:text-white">{tx.type}</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">{tx.from}</div>
-                  </div>
+            {/* PFI Metrics Section */}
+            <div className="card p-8 mb-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <Award className="w-6 h-6 text-white" />
                 </div>
-                <div className="text-right">
-                  <div className={`font-bold ${tx.color}`}>{tx.amount}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">{tx.time}</div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    Personal Fairness Index (PFI★)
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Your contribution score to the FairCoin community
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mb-6">
+                {/* PFI Score */}
+                <div className="border dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-700 dark:to-gray-600">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-1">
+                      PFI Score
+                      <span className="text-amber-500">✨</span>
+                    </p>
+                    <PieChart className="w-8 h-8 text-emerald-500" />
+                  </div>
+                  <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400">
+                    {pfiMetrics.score}
+                  </p>
+                  <div className="mt-3 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                    <div
+                      className="bg-emerald-500 h-2 rounded-full transition-all"
+                      style={{ width: `${(pfiMetrics.score / 1000) * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* PFI Index */}
+                <div className="border dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-700 dark:to-gray-600">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      PFI Index
+                    </p>
+                    <TrendingUp className="w-8 h-8 text-blue-500" />
+                  </div>
+                  <p className="text-4xl font-bold text-blue-600 dark:text-blue-400">
+                    {pfiMetrics.index.toFixed(1)}%
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                    Performance Indicator
+                  </p>
+                </div>
+
+                {/* PFI Share */}
+                <div className="border dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                      PFI Share
+                    </p>
+                    <Wallet className="w-8 h-8 text-amber-500" />
+                  </div>
+                  <p className="text-4xl font-bold text-purple-600 dark:text-purple-400">
+                    {pfiMetrics.share.toFixed(2)}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                    Approved Submissions
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={fetchPFIMetrics}
+                className="btn btn-primary w-full"
+              >
+                <TrendingUp className="w-5 h-5" />
+                Refresh PFI Metrics
+              </button>
+            </div>
+
+            {/* Spiritual Note */}
+            <div className="card p-6 mb-8 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border-2 border-amber-200 dark:border-amber-700">
+              <p className="text-base text-amber-900 dark:text-amber-100 text-center leading-relaxed">
+                ✨ <span className="font-semibold">Remember:</span> Your tokens are stored through{' '}
+                <span className="font-semibold text-amber-700 dark:text-amber-300">Faith</span>,{' '}
+                <span className="font-semibold text-amber-700 dark:text-amber-300">Love</span>, and{' '}
+                <span className="font-semibold text-amber-700 dark:text-amber-300">Justice</span> in Heaven's Network
+              </p>
+            </div>
+
+            {/* Download Wallet Details */}
+            <div className="flex justify-center">
+              <button
+                onClick={downloadWalletDetails}
+                className="btn btn-outline flex items-center gap-2"
+              >
+                <Download className="w-5 h-5" />
+                Download Treasury Details
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   )

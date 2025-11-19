@@ -3,8 +3,10 @@
 import { Heart, Shield, Copy, CheckCircle2, ExternalLink } from 'lucide-react'
 import { useState } from 'react'
 import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function DonationSection() {
+  const { t } = useLanguage()
   const [copied, setCopied] = useState(false)
   const donationAddress = "0xfad9a53a851635797d597f28b16e7d0295ef2cd6"
 
@@ -26,16 +28,16 @@ export function DonationSection() {
           <div className="text-center mb-12 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
               <Heart className="w-4 h-4 text-rose-500" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Support FairCoin</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('donation.badge')}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
-              🌍 Support FairCoin by{' '}
+              {t('donation.title')}{' '}
               <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                JacobYellowBridge
+                {t('donation.titleHighlight')}
               </span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              FairCoin is an <strong className="text-purple-600 dark:text-purple-400">ethical and peace-building initiative</strong> under the mission of{' '}
+              {t('donation.description1')}{' '}
               <a 
                 href={JACOB_YELLOW_BRIDGE_URL} 
                 target="_blank" 
@@ -45,7 +47,7 @@ export function DonationSection() {
                 {JACOB_YELLOW_BRIDGE_URL.replace('https://', '')}
                 <ExternalLink className="w-3 h-3" />
               </a>
-              , working to promote ethical exchange, compassion, and justice for those affected by corruption, human trafficking, and scamming.
+              {t('donation.description2')}
             </p>
           </div>
 
@@ -58,7 +60,7 @@ export function DonationSection() {
                   <span className="text-2xl">💠</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Ethereum Donation Address
+                  {t('donation.ethereumAddress')}
                 </h3>
               </div>
               
@@ -75,12 +77,12 @@ export function DonationSection() {
                     {copied ? (
                       <>
                         <CheckCircle2 className="w-4 h-4" />
-                        <span className="hidden sm:inline">Copied!</span>
+                        <span className="hidden sm:inline">{t('donation.copied')}</span>
                       </>
                     ) : (
                       <>
                         <Copy className="w-4 h-4" />
-                        <span className="hidden sm:inline">Copy</span>
+                        <span className="hidden sm:inline">{t('donation.copy')}</span>
                       </>
                     )}
                   </button>
@@ -94,8 +96,7 @@ export function DonationSection() {
                 <Shield className="w-6 h-6 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-1" />
                 <div className="space-y-2">
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    🔒 All contributions go toward developing FairCoin&apos;s community fairness tools 
-                    (TFI★, PFI★, Fairchain) and maintaining JesusBot to spread truth and peace through technology.
+                    {t('donation.missionStatement')}
                   </p>
                 </div>
               </div>
@@ -105,11 +106,10 @@ export function DonationSection() {
             <div className="text-center space-y-3 pt-4">
               <div className="inline-block">
                 <p className="text-lg md:text-xl italic text-gray-700 dark:text-gray-300 leading-relaxed">
-                  &ldquo;Let justice roll on like a river,{' '}
-                  righteousness like a never-failing stream.&rdquo;
+                  {t('donation.bibleVerse')}
                 </p>
                 <p className="text-sm font-semibold text-purple-600 dark:text-purple-400 mt-2">
-                  — Amos 5:24
+                  {t('donation.bibleReference')}
                 </p>
               </div>
             </div>
@@ -118,7 +118,7 @@ export function DonationSection() {
             <div className="text-center pt-4 border-t border-gray-200 dark:border-gray-700">
               <p className="text-gray-600 dark:text-gray-400 flex items-center justify-center gap-2">
                 <Heart className="w-5 h-5 text-rose-500 fill-rose-500" />
-                <span className="font-semibold">Thank you</span> for supporting our mission of fairness, peace, and justice
+                <span className="font-semibold">{t('donation.thankYou')}</span> {t('donation.gratitude')}
               </p>
             </div>
           </div>

@@ -48,7 +48,7 @@
     "**/*.cjs",
     "**/*.mjs",
     ".next/types/**/*.ts"
-  ],
+, "app/whitepaper/page.tsx.backup"  ],
   "exclude": [
     "node_modules"
   ]

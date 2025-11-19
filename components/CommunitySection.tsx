@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { Heart, Users, Calendar, Trophy, Star, MapPin, Clock, UserCheck } from 'lucide-react'
 import { api, type CommunityFeedItem, type CommunityAchievement, type CommunityEvent } from '@/lib/api'
 import { communityDebug } from '@/lib/community-debug'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function CommunitySection() {
+  const { t } = useLanguage()
   const [feed, setFeed] = useState<CommunityFeedItem[]>([])
   const [achievements, setAchievements] = useState<CommunityAchievement[]>([])
   const [events, setEvents] = useState<CommunityEvent[]>([])
@@ -214,7 +216,7 @@ export function CommunitySection() {
         <div className="container">
           <div className="text-center">
             <div className="animate-spin w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full mx-auto" />
-            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading community data...</p>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">{t('community.loading')}</p>
           </div>
         </div>
       </section>
@@ -228,23 +230,23 @@ export function CommunitySection() {
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
             <Heart className="w-4 h-4 text-primary-400" />
-            <span className="text-sm font-medium text-white">Community Hub</span>
+            <span className="text-sm font-medium text-white">{t('community.badge')}</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-            Building{' '}
+            {t('community.title')}{' '}
             <span className="bg-gradient-to-r from-primary-400 via-accent-400 to-purple-400 bg-clip-text text-transparent">
-              Together
+              {t('community.titleHighlight')}
             </span>
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Connect, contribute, and celebrate with the FairCoin community. Love & Mercy in action.
+            {t('community.description')}
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {/* Community Feed */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Community Activity</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('community.activityFeed')}</h3>
             <div className="space-y-6">
               {feed.map((item) => (
                 <div key={item.id} className="card p-6 hover:shadow-lg transition-shadow">
@@ -289,7 +291,7 @@ export function CommunitySection() {
 
           {/* Achievements Sidebar */}
           <div>
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Community Achievements</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{t('community.achievements')}</h3>
             <div className="space-y-4 mb-8 max-h-[600px] overflow-y-auto pr-2">
               {achievements.map((achievement) => (
                 <div key={achievement.id} className="card p-4">
@@ -304,7 +306,7 @@ export function CommunitySection() {
                           {achievement.rarity}
                         </span>
                         <span className="text-xs text-gray-500">
-                          {achievement.holders} holders
+                          {achievement.holders} {t('community.holders')}
                         </span>
                       </div>
                     </div>
@@ -317,7 +319,7 @@ export function CommunitySection() {
             </div>
 
             {/* Upcoming Events */}
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Upcoming Events</h3>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{t('community.upcomingEvents')}</h3>
             <div className="space-y-4">
               {events.map((event) => (
                 <div key={event.id} className="card p-4">
@@ -345,7 +347,7 @@ export function CommunitySection() {
                     </div>
                     <div className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
                       <UserCheck className="w-3 h-3" />
-                      <span>{event.attendees}/{event.max_capacity} attending</span>
+                      <span>{event.attendees}/{event.max_capacity} {t('community.attending')}</span>
                     </div>
                   </div>
 
@@ -362,7 +364,7 @@ export function CommunitySection() {
                   </div>
 
                   <button className="w-full btn btn-sm btn-primary">
-                    RSVP
+                    {t('community.rsvp')}
                   </button>
                 </div>
               ))}
@@ -379,7 +381,7 @@ export function CommunitySection() {
             <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
               {stats?.active_members?.toLocaleString() || '0'}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Active Members</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{t('community.activeMembers')}</p>
           </div>
 
           <div className="card p-6 text-center">
@@ -389,7 +391,7 @@ export function CommunitySection() {
             <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
               {stats?.achievements_earned?.toLocaleString() || '0'}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Achievements Earned</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{t('community.achievementsEarned')}</p>
           </div>
 
           <div className="card p-6 text-center">
@@ -399,7 +401,7 @@ export function CommunitySection() {
             <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
               {stats?.events_this_month?.toString() || '0'}
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Events This Month</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{t('community.eventsThisMonth')}</p>
           </div>
 
           <div className="card p-6 text-center">
@@ -409,7 +411,7 @@ export function CommunitySection() {
             <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
               {stats?.member_satisfaction?.toFixed(0) || '0'}%
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Members Online</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{t('community.membersOnline')}</p>
           </div>
         </div>
 
@@ -417,23 +419,22 @@ export function CommunitySection() {
         <div className="text-center">
           <div className="card p-8 bg-gradient-to-br from-primary-500/10 to-accent-500/10 border border-primary-500/20">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Join Our Community
+              {t('community.joinCommunity')}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-              Connect with like-minded individuals who believe in fairness, transparency, and economic justice. 
-              Together, we&apos;re building a better financial future.
+              {t('community.joinDesc')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="https://discord.gg/faircoin" target="_blank" rel="noopener noreferrer">
                 <button className="btn btn-primary">
-                  Join Community
+                  {t('community.joinCommunity')}
                 </button>
               </Link>
               <button className="btn btn-outline">
-                View All Events
+                {t('community.viewAllEvents')}
               </button>
               <button className="btn btn-outline">
-                Earn Achievements
+                {t('community.earnAchievements')}
               </button>
             </div>
           </div>

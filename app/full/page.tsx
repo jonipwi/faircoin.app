@@ -12,9 +12,11 @@ import { CommunitySection } from '@/components/CommunitySection'
 import { DonationSection } from '@/components/DonationSection'
 import { Sparkles, Heart, Scale, Users } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export default function FullApp() {
   const { isAuthenticated } = useAuth()
+  const { t } = useLanguage()
   
   return (
     <main className="relative min-h-screen overflow-hidden">
@@ -34,16 +36,13 @@ export default function FullApp() {
           <div className="text-center mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
               <Sparkles className="w-4 h-4 text-primary-400" />
-              <span className="text-sm font-medium text-white">Why Choose FairCoin</span>
+              <span className="text-sm font-medium text-white">{t('features.title')}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-              Built on Principles of{' '}
-              <span className="bg-gradient-to-r from-primary-400 via-accent-400 to-purple-400 bg-clip-text text-transparent">
-                Truth & Justice
-              </span>
+              {t('features.subtitle')}
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto">
-              More than just a currency—a movement towards a fairer economic system for all.
+              {t('features.description')}
             </p>
           </div>
           <Features />
@@ -58,10 +57,9 @@ export default function FullApp() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Light & Truth</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t('values.lightTruth')}</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Transparency in all transactions and governance. Every action is visible, 
-                every decision is documented, and every member has access to the truth.
+                {t('values.lightTruthDesc')}
               </p>
             </div>
 
@@ -69,10 +67,9 @@ export default function FullApp() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Heart className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Love & Mercy</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t('values.loveMercy')}</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Compassion for all members of our community. We believe in second chances, 
-                support systems, and building each other up rather than tearing down.
+                {t('values.loveMercyDesc')}
               </p>
             </div>
 
@@ -80,10 +77,9 @@ export default function FullApp() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Scale className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Just & Peace</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t('values.justPeace')}</h3>
               <p className="text-gray-600 dark:text-gray-400">
-                Fair distribution of resources and opportunities. We strive for economic peace 
-                through equitable systems that reward contribution over concentration.
+                {t('values.justPeaceDesc')}
               </p>
             </div>
           </div>
@@ -96,18 +92,17 @@ export default function FullApp() {
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-              Join the Fair Economy Movement
+              {t('values.joinTitle')}
             </h2>
             <p className="text-xl text-white/90">
-              Be part of a community that values fairness, transparency, and mutual support. 
-              Start your FairCoin journey today.
+              {t('values.joinDesc')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a href="#wallet" className="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 hover:shadow-2xl">
-                Create Your Wallet
+                {t('values.createWallet')}
               </a>
               <a href="#community" className="btn btn-outline btn-lg border-white text-white hover:bg-white hover:text-primary-600">
-                Explore Community
+                {t('values.exploreCommunity')}
               </a>
               <a 
                 href="https://github.com/jonipwi/faircoin.app/issues/new?template=collaboration.yml" 
@@ -116,7 +111,7 @@ export default function FullApp() {
                 className="btn btn-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 hover:from-purple-700 hover:to-pink-700 hover:shadow-2xl group"
               >
                 <Users className="w-5 h-5 group-hover:scale-110 transition-transform inline-block" />
-                <span className="ml-2">Become a Collaborator</span>
+                <span className="ml-2">{t('values.becomeCollaborator')}</span>
               </a>
             </div>
           </div>
@@ -157,11 +152,11 @@ export default function FullApp() {
               </span>
             </div>
             <p className="text-gray-400 text-lg">
-              Light & Truth • Love & Mercy • Just & Peace
+              {t('footer.tagline')}
             </p>
             <div className="pt-6 border-t border-gray-800">
               <p className="text-sm text-gray-500">
-                © {new Date().getFullYear()} FairCoin Community. Built with ❤️ for a fairer world.
+                © {new Date().getFullYear()} FairCoin Community. {t('footer.builtWith')}
               </p>
             </div>
           </div>

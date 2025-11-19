@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import { ExchangeProvider } from '@/contexts/ExchangeContext'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { AuthenticatedChatWidget } from '@/components/AuthenticatedChatWidget'
+import { LanguageProvider } from '@/lib/i18n/LanguageContext'
 import { AlertTriangle } from 'lucide-react'
 import './globals.css'
 
@@ -61,10 +62,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           enableSystem
           disableTransitionOnChange
         >
-          <AuthProvider>
-            <ExchangeProvider defaultCurrency="USD" defaultDisplayCurrencies={['USD', 'IDR', 'SGD']}>
-              {/* Staging/Development Environment Warning Banner */}
-              {devMode && devMode !== 'production' && (
+          <LanguageProvider>
+            <AuthProvider>
+              <ExchangeProvider defaultCurrency="USD" defaultDisplayCurrencies={['USD', 'IDR', 'SGD']}>
+                {/* Staging/Development Environment Warning Banner */}
+                {devMode && devMode !== 'production' && (
                 <div className="sticky top-0 z-50 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 shadow-lg border-b-2 border-amber-600">
                   <div className="container mx-auto px-4 py-3">
                     <div className="flex items-center justify-center gap-3 text-white">
@@ -83,12 +85,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
               )}
               
-              {children}
-              
-              {/* xdiscord Open Source Chat Widget */}
-              <AuthenticatedChatWidget />
-            </ExchangeProvider>
-          </AuthProvider>
+                {children}
+                
+                {/* xdiscord Open Source Chat Widget */}
+                <AuthenticatedChatWidget />
+              </ExchangeProvider>
+            </AuthProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

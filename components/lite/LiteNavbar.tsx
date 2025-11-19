@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import { Menu, X, Home, MessageCircle, HelpCircle, ArrowLeft, Download } from 'lucide-react'
+import { Menu, X, Home, HelpCircle, ArrowLeft, Download } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
+import { LanguageSelector } from '@/components/lite/LanguageSelector'
 
 export function LiteNavbar() {
   const [open, setOpen] = useState(false)
@@ -83,6 +84,7 @@ export function LiteNavbar() {
                 <span>{label}</span>
               </Link>
             ))}
+            <LanguageSelector />
             {showInstall && (
               <button
                 onClick={handleInstallClick}

@@ -3,8 +3,11 @@
 import Link from 'next/link'
 import { Heart, Shield, Users, Scale, Sparkles, HandHeart, FileText } from 'lucide-react'
 import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function MissionSection() {
+  const { t } = useLanguage()
+  
   return (
     <section id="mission" className="section bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
       <div className="container">
@@ -13,16 +16,13 @@ export function MissionSection() {
           <div className="text-center mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
               <Heart className="w-4 h-4 text-rose-500" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Our Sacred Mission</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('mission.badge')}</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
-              A Bridge of{' '}
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Light, Peace & Truth
-              </span>
+              {t('mission.title')}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              FairCoin is not a finance project—it is an <strong className="text-purple-600 dark:text-purple-400">ethical and peace-building initiative</strong> born from the mission of JacobYellowBridge to bring light, fair peace, and truth to a world burdened by corruption and inequality.
+              {t('mission.description')}
             </p>
             
             {/* Whitepaper Button */}
@@ -32,7 +32,7 @@ export function MissionSection() {
                 className="inline-flex items-center gap-2 btn btn-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-0 shadow-lg hover:shadow-xl transition-all group"
               >
                 <FileText className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span>Read Our Vision & Whitepaper</span>
+                <span>{t('mission.whitepaperButton')}</span>
               </Link>
             </div>
           </div>
@@ -45,17 +45,17 @@ export function MissionSection() {
               </div>
               <div>
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                  The Holy Purpose of Fairness
+                  {t('mission.holyPurpose')}
                 </h3>
                 <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                  FairCoin was born from <strong className="text-purple-600 dark:text-purple-400">{JACOB_YELLOW_BRIDGE_URL.replace('https://', '')}</strong> to help those in need, especially people affected by human trafficking, scamming, and other outrageous injustices. We seek to achieve the holy purpose of truth and justice through fairness in trade and personal index improvement.
+                  {t('mission.holyPurposeDesc')}
                 </p>
               </div>
             </div>
 
             <div className="bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 rounded-xl p-6 border border-purple-200 dark:border-purple-700">
               <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-center italic text-lg">
-                &ldquo;Because this world has a lot of corruption and non-balance between wealthy and poor, FairCoin exists to mitigate these injustices and help the community and world maintain its good.&rdquo;
+                &ldquo;{t('mission.quote')}&rdquo;
               </p>
             </div>
           </div>
@@ -69,10 +69,10 @@ export function MissionSection() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    Fighting Corruption & Injustice
+                    {t('mission.fightingCorruption')}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    We stand against the corruption that plagues our world. FairCoin provides a transparent, fair system that cannot be manipulated by those seeking to exploit others.
+                    {t('mission.fightingCorruptionDesc')}
                   </p>
                 </div>
               </div>
@@ -85,10 +85,10 @@ export function MissionSection() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    Helping Trafficking & Scam Victims
+                    {t('mission.helpingVictims')}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    FairCoin was specifically created to help those affected by human trafficking and scamming—providing a fair economic foundation for recovery and dignity.
+                    {t('mission.helpingVictimsDesc')}
                   </p>
                 </div>
               </div>
@@ -101,10 +101,10 @@ export function MissionSection() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    Balancing Wealth & Poverty
+                    {t('mission.balancingWealth')}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    The non-balance between wealthy and poor is a fundamental injustice. Our fairness metrics (PFI★ and TFI★) create equity and reward contribution over concentration.
+                    {t('mission.balancingWealthDesc')}
                   </p>
                 </div>
               </div>
@@ -117,10 +117,10 @@ export function MissionSection() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    Personal Index Improvement
+                    {t('mission.personalIndex')}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Through fairness in trade and transparent metrics, every individual can improve their Personal Fairness Index (PFI★) and contribute to a better world.
+                    {t('mission.personalIndexDesc')}
                   </p>
                 </div>
               </div>
@@ -134,10 +134,10 @@ export function MissionSection() {
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                JacobYellowBridge: A Light of Truth
+                {t('mission.jacobBridge')}
               </h3>
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                <strong className="text-amber-700 dark:text-amber-400">JacobYellowBridge</strong> brings a light of fair peace and truth because the FairCoin project can. This is not about profit—it&apos;s about creating an ethical bridge that spans the gap between corruption and justice, between poverty and dignity, between darkness and light.
+                {t('mission.jacobBridgeDesc')}
               </p>
               <div className="pt-4">
                 <a 
@@ -146,7 +146,7 @@ export function MissionSection() {
                   rel="noopener noreferrer"
                   className="btn btn-lg bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white border-0 shadow-lg hover:shadow-xl transition-all"
                 >
-                  Learn More at {JACOB_YELLOW_BRIDGE_URL.replace('https://', '')}
+                  {t('mission.learnMore')}
                 </a>
               </div>
             </div>
@@ -156,13 +156,10 @@ export function MissionSection() {
           <div className="mt-12 text-center">
             <div className="inline-block bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-purple-200 dark:border-purple-800">
               <p className="text-xl md:text-2xl italic text-gray-700 dark:text-gray-300 leading-relaxed mb-4" style={{ whiteSpace: 'pre-line' }}>
-                {`"Speak up for those who cannot speak for themselves,
-for the rights of all who are destitute.
-Speak up and judge fairly;
-defend the rights of the poor and needy."`}
+                &ldquo;{t('mission.bibleVerse')}&rdquo;
               </p>
               <p className="text-base font-semibold text-purple-600 dark:text-purple-400">
-                — Proverbs 31:8-9
+                — {t('mission.bibleReference')}
               </p>
             </div>
           </div>

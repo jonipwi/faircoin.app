@@ -1,62 +1,65 @@
 "use client"
 
 import { Scale, TrendingUp, Users, Shield, Heart, Globe, Award, Zap } from 'lucide-react'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function Features() {
+  const { t } = useLanguage()
+  
   const features = [
     {
       icon: Scale,
-      title: 'Fairness First',
-      description: 'PFI★ rewards contribution; TFI★ promotes honest merchants.',
+      title: t('features.fairnessFirst'),
+      description: t('features.fairnessFirstDesc'),
       color: 'from-blue-500 to-cyan-500',
       iconBg: 'bg-blue-500/10 dark:bg-blue-500/20',
     },
     {
       icon: TrendingUp,
-      title: 'Stable Value',
-      description: 'Anchored to the Community Basket Index (CBI), not speculation.',
+      title: t('features.stableValue'),
+      description: t('features.stableValueDesc'),
       color: 'from-emerald-500 to-teal-500',
       iconBg: 'bg-emerald-500/10 dark:bg-emerald-500/20',
     },
     {
       icon: Users,
-      title: 'Community Governed',
-      description: 'PFI-weighted voting ensures fair representation. No whale control.',
+      title: t('features.communityGoverned'),
+      description: t('features.communityGovernedDesc'),
       color: 'from-purple-500 to-pink-500',
       iconBg: 'bg-purple-500/10 dark:bg-purple-500/20',
     },
     {
       icon: Shield,
-      title: 'Anti-Concentration',
-      description: 'Mechanisms prevent hoarding and promote circulation.',
+      title: t('features.antiConcentration'),
+      description: t('features.antiConcentrationDesc'),
       color: 'from-amber-500 to-orange-500',
       iconBg: 'bg-amber-500/10 dark:bg-amber-500/20',
     },
     {
       icon: Heart,
-      title: 'Love & Mercy',
-      description: 'Built with compassion for all community members.',
+      title: t('features.loveMercy'),
+      description: t('features.loveMercyDesc'),
       color: 'from-rose-500 to-red-500',
       iconBg: 'bg-rose-500/10 dark:bg-rose-500/20',
     },
     {
       icon: Globe,
-      title: 'Global Access',
-      description: 'Borderless and inclusive for everyone, everywhere.',
+      title: t('features.globalAccess'),
+      description: t('features.globalAccessDesc'),
       color: 'from-indigo-500 to-blue-500',
       iconBg: 'bg-indigo-500/10 dark:bg-indigo-500/20',
     },
     {
       icon: Award,
-      title: 'Merit-Based',
-      description: 'Rewards based on contribution, not just capital.',
+      title: t('features.meritBased'),
+      description: t('features.meritBasedDesc'),
       color: 'from-violet-500 to-purple-500',
       iconBg: 'bg-violet-500/10 dark:bg-violet-500/20',
     },
     {
       icon: Zap,
-      title: 'Fast & Efficient',
-      description: 'Lightning-fast transactions with minimal fees.',
+      title: t('features.fastEfficient'),
+      description: t('features.fastEfficientDesc'),
       color: 'from-yellow-500 to-amber-500',
       iconBg: 'bg-yellow-500/10 dark:bg-yellow-500/20',
     },
