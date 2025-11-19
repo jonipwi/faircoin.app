@@ -2,13 +2,15 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export default function Home() {
   const router = useRouter()
+  const localePath = useLocalePath()
   
   useEffect(() => {
-    router.push('/lite')
-  }, [router])
+    router.push(localePath('lite') as any)
+  }, [router, localePath])
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-500 to-accent-500">

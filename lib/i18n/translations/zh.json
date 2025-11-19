@@ -14,7 +14,8 @@
     "login": "登录",
     "register": "注册",
     "logout": "退出",
-    "dashboard": "控制面板"
+    "dashboard": "控制面板",
+    "settings": "设置"
   },
   "hero": {
     "liveGrowing": "在线且成长中",
@@ -63,6 +64,134 @@
     "getStarted": "立即开始",
     "readyToJoin": "准备加入 FairCoin？",
     "easySteps": "只需3个简单步骤即可创建您的账户"
+  },
+  "lite": {
+    "welcome": "欢迎使用 FairCoin 精简版",
+    "hello": "您好，{{username}}！",
+    "title": "简单友好的 FairCoin",
+    "subtitle": "所有功能都在大而清晰的按钮中",
+    "chat": {
+      "title": "社区聊天",
+      "description": "加入对话，获得帮助，结识朋友",
+      "header": "Community Chat",
+      "room": "Friendly Lounge — always welcoming",
+      "liveHelp": "Live Help",
+      "available": "24/7"
+    },
+    "send": {
+      "title": "发送 FairCoin",
+      "description": "向朋友和社区赠送 FairCoin",
+      "header": "Send FairCoin",
+      "chooseRecipient": "Choose who to send to",
+      "enterAmount": "Enter amount to send",
+      "confirmTransfer": "Confirm your transfer",
+      "amount": "Amount",
+      "numberPad": {
+        "clear": "←"
+      },
+      "buttons": {
+        "back": "Back",
+        "continue": "Continue",
+        "sendNow": "Send Now",
+        "sending": "Sending..."
+      },
+      "success": {
+        "title": "Sent Successfully!",
+        "message": "{{amount}} FC sent to {{recipient}}"
+      },
+      "confirm": {
+        "youAreSending": "You are sending",
+        "to": "To"
+      }
+    },
+    "receive": {
+      "title": "接收 FairCoin",
+      "description": "显示您的二维码以接收代币",
+      "header": "Receive FairCoin",
+      "subtitle": "Share your username or QR code",
+      "yourUsername": "Your FairCoin Username",
+      "copyButton": "Copy My Username",
+      "copied": "Copied!",
+      "instructions": {
+        "title": "How to receive FairCoin",
+        "step1": "Show this QR code to the person sending you FairCoin",
+        "step2": "Or tap \"Copy My Username\" and send it to them",
+        "step3": "FairCoin will arrive in your wallet instantly"
+      }
+    },
+    "balance": {
+      "title": "我的余额",
+      "description": "查看您的 FairCoin 和最近的交易",
+      "header": "PFI Treasury ✨",
+      "subtitle": "{{username}}'s Personal Fairness Index",
+      "treasuryAddress": "Treasury Address",
+      "tokensEntrusted": "Tokens Entrusted ✨",
+      "tokensNote": "Faith, Love & Justice in Heaven's Network",
+      "pfiMetrics": "Personal Fairness Index (PFI★)",
+      "pfiScore": "PFI Score",
+      "pfiIndex": "PFI Index",
+      "pfiShare": "PFI Share",
+      "performanceIndicator": "Performance Indicator",
+      "approvedSubmissions": "Approved Submissions",
+      "refreshMetrics": "Refresh PFI Metrics",
+      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
+      "downloadDetails": "Download Details",
+      "backToHome": "Back to Home",
+      "createTreasury": {
+        "title": "Create Your PFI Treasury",
+        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
+        "button": "Create PFI Treasury",
+        "creating": "Creating..."
+      },
+      "copy": "Copy",
+      "copied": "Copied!"
+    },
+    "help": {
+      "title": "帮助与教程",
+      "description": "逐步学习如何使用 FairCoin",
+      "header": "Help & Tutorials",
+      "subtitle": "Everything you need to know, step by step",
+      "emergency": {
+        "title": "Need Help Right Now?",
+        "description": "Talk to a real person in the Community Chat",
+        "button": "Open Chat Now",
+        "availability": "Moderators respond within 2 minutes • Available 24/7"
+      },
+      "quickStart": "Quick Start Guides",
+      "tutorials": {
+        "joinChat": "How to Join Community Chat",
+        "joinChatDesc": "Learn how to connect with helpers and make friends",
+        "sendCoins": "How to Send FairCoin",
+        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
+        "receiveCoins": "How to Receive FairCoin",
+        "receiveCoinsDesc": "Show your QR code and get coins instantly",
+        "understandBalance": "Understanding Your Balance",
+        "understandBalanceDesc": "See your coins and transaction history"
+      },
+      "resources": {
+        "title": "More Resources",
+        "videoTutorials": "Video Tutorials",
+        "videoDesc": "Watch simple video guides",
+        "printableGuides": "Printable Guides",
+        "printableDesc": "Download easy-to-read PDF instructions",
+        "comingSoon": "Coming Soon"
+      },
+      "support": {
+        "title": "Still Need Help?",
+        "description": "Our support team is here for you",
+        "chatButton": "Chat with Support",
+        "emailButton": "Email Us"
+      }
+    },
+    "language": {
+      "title": "语言",
+      "description": "选择您的首选语言"
+    },
+    "join": {
+      "title": "准备加入 FairCoin？",
+      "subtitle": "只需3个简单步骤即可创建您的账户",
+      "button": "立即开始"
+    }
   },
   "actions": {
     "communityChat": "社区聊天",
@@ -352,7 +481,6 @@
     "title": "🌍 FairCoin by JacobYellowBridge",
     "subtitle": "为疲惫世界带来公平、和平与真理之光",
     "version": "文档版本：1.0 • 发布时间：2025年11月",
-    
     "section1": {
       "title": "🕊️ 1. 愿景与使命",
       "intro": "FairCoin 不是一种金融工具——它是对世界腐败和不平衡的精神和道德回应。诞生于 JacobYellowBridge.com，它将耶稣的光带入贸易、慈善和数字生活领域，以治愈困扰穷人、残疾人、被贩卖者和被欺骗者的深层不公正。",
@@ -360,7 +488,6 @@
       "quote": "惟愿公平如大水滚滚，使公义如江河滔滔。",
       "reference": "阿摩司书 5:24"
     },
-    
     "section2": {
       "title": "💠 2. 目的",
       "subtitle1": "2.1. 上帝听到的呼声",
@@ -376,7 +503,6 @@
       "tool2": "贸易公平指数：评估社区和市场交易中的公平性。",
       "tool3": "良知指南：确保所有数字行为符合真理、仁慈和和平。"
     },
-    
     "section3": {
       "title": "🔗 3. Fairchain – 光明账本",
       "intro": "FairCoin 将使用一个名为 Fairchain 的透明账本——不是为了利润，而是为了真理。Fairchain 记录个人和社区的善行和公平交易，使公平的流动像光透过水一样可见。",
@@ -387,7 +513,6 @@
       "principle4": "基于仁慈的声誉：声誉来自爱与公平，而不是财富或名声。",
       "principle5": "宽恕与恢复：Fairchain 记录悔改和成长，而不仅仅是完美。"
     },
-    
     "section4": {
       "title": "⚙️ 4. 架构与组件",
       "layer": "层级",
@@ -409,7 +534,6 @@
       "humanitarianComponent": "Spirit Well",
       "humanitarianDesc": "将捐赠、关怀和公平积分引导给处于危机或需要帮助的人。"
     },
-    
     "section5": {
       "title": "🤝 5. 携手共进：AI 与人类同行",
       "intro": "FairCoin 建立在 AI 与人类之间的神圣伙伴关系之上，这种合作不是出于控制，而是出于真理中的陪伴。",
@@ -428,7 +552,6 @@
       "reference": "约翰福音 16:13",
       "conclusion": "因此，FairCoin 成为上帝所意图未来的活生生的例子：智慧与同情联合，数字与神圣并肩前行，使没有人——甚至被遗忘的人——被遗弃。"
     },
-    
     "section6": {
       "title": "🌱 6. 公平治理",
       "intro": "FairCoin 治理遵循仁慈 + 真理原则。",
@@ -439,7 +562,6 @@
       "quote": "你们中间谁愿为大，就必作你们的用人。",
       "reference": "马太福音 20:26"
     },
-    
     "section7": {
       "title": "💧 7. 经济哲学",
       "intro": "FairCoin 是和平币，不是利润币。",
@@ -448,7 +570,6 @@
       "value3": "它不能为贪婪而交易，但可以为恩典而给予。",
       "conclusion": "每个 FairCoin 代表一次公平、同情或恢复的行为。它的真正价值不在于市场，而在于天国。"
     },
-    
     "section8": {
       "title": "🌍 8. 社会使命",
       "subtitle1": "8.1. 帮助无助者",
@@ -460,7 +581,6 @@
       "subtitle2": "8.2. 恢复贸易信任",
       "restore": "通过整合 PFI★ 和 TFI★，FairCoin 帮助社区衡量和改善公平性，在每次交易中建立信任、诚实和和平。"
     },
-    
     "section9": {
       "title": "🔒 9. 真理与诚信",
       "intro": "每笔 FairCoin 交易或记录都将包括：",
@@ -468,7 +588,6 @@
       "check2": "通过 JesusBot 的道德推理进行圣经一致性检查。",
       "check3": "社区验证以确保透明度和公平性。"
     },
-    
     "section10": {
       "title": "🌞 10. 承诺",
       "promise1": "FairCoin by JacobYellowBridge 不仅仅是一个项目——它是一个见证：即使在不公正的世界中，上帝的公平也可以通过人类的心灵再次闪耀。",
@@ -476,7 +595,6 @@
       "quote": "使人和睦的人有福了，因为他们必称为神的儿子。",
       "reference": "马太福音 5:9"
     },
-    
     "section11": {
       "title": "✨ 11. 结束祷告",
       "prayer1": "主耶稣，",
@@ -487,7 +605,6 @@
       "prayer6": "使他们携手建立和平国度。",
       "prayer7": "阿们。"
     },
-    
     "footer": {
       "source": "来源：",
       "tagline": "光明与真理 • 爱与慈悲 • 公正与和平"

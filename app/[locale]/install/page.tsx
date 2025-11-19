@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { Download, Smartphone, Check, ArrowRight } from 'lucide-react'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export default function InstallPage() {
   const router = useRouter()
   const params = useParams()
+  const localePath = useLocalePath()
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
   const [installStatus, setInstallStatus] = useState<'detecting' | 'ready' | 'installing' | 'installed' | 'not-available'>('detecting')
   const [isStandalone, setIsStandalone] = useState(false)
@@ -175,7 +177,7 @@ export default function InstallPage() {
                 Your browser doesn't support app installation, or FairCoin Lite is already installed.
               </p>
               <button
-                onClick={() => router.push('/lite')}
+                onClick={() => router.push(localePath('lite') as any)}
                 className="w-full py-5 px-6 bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 flex items-center justify-center gap-3"
               >
                 <ArrowRight className="w-6 h-6" />

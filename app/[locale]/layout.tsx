@@ -21,12 +21,7 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
     redirect('/en')
   }
 
-  // Set html attributes for locale
-  const langConfig = languages[locale as keyof typeof languages]
-  
-  return (
-    <html lang={locale} dir={langConfig?.dir || 'ltr'} suppressHydrationWarning>
-      {children}
-    </html>
-  )
+  // The locale layout just passes children through
+  // The actual lang and dir attributes are set in the root layout via LocaleSync
+  return <>{children}</>
 }

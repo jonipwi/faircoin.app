@@ -5,6 +5,7 @@ import { Wallet, TrendingUp, Lock, Award, PieChart, Download, Copy, Check } from
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 interface PFIMetrics {
   score: number
@@ -23,9 +24,10 @@ interface WalletInfo {
 const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
 
 export function WalletSection() {
+  const { isAuthenticated, user, loading } = useAuth()
   const { t } = useLanguage()
-  const { isAuthenticated, loading, user } = useAuth()
   const router = useRouter()
+  const localePath = useLocalePath()
   const [wallet, setWallet] = useState<WalletInfo | null>(null)
   const [pfiMetrics, setPfiMetrics] = useState<PFIMetrics>({
     score: 0,
@@ -187,7 +189,7 @@ Created: ${new Date().toISOString()}
   }
 
   const handleLogin = () => {
-    router.push('/auth')
+    router.push(localePath('auth') as any)
   }
 
   if (loading) {

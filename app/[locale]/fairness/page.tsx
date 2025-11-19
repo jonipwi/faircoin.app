@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 interface FairnessIndex {
   user_id: number
@@ -32,6 +33,7 @@ interface FairnessSubmission {
 
 export default function FairnessIndexPage() {
   const router = useRouter()
+  const localePath = useLocalePath()
   const [loading, setLoading] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -55,7 +57,7 @@ export default function FairnessIndexPage() {
       })
       
       if (response.status === 401) {
-        router.push('/auth')
+        router.push(localePath('auth') as any)
         return
       }
 

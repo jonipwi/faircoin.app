@@ -5,12 +5,16 @@ import { useState, useEffect } from 'react'
 import { Menu, X, Home, HelpCircle, ArrowLeft, Download } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { LanguageSelector } from '@/components/lite/LanguageSelector'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export function LiteNavbar() {
   const [open, setOpen] = useState(false)
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
   const [showInstall, setShowInstall] = useState(false)
   const { user, isAuthenticated } = useAuth()
+  const localePath = useLocalePath()
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -41,8 +45,8 @@ export function LiteNavbar() {
   }
 
   const navLinks = [
-    { label: 'Home', href: '/lite', icon: Home },
-    { label: 'Help', href: '/lite/help', icon: HelpCircle },
+    { label: t('nav.home') || 'Home', href: localePath('lite'), icon: Home },
+    { label: t('nav.help') || 'Help', href: localePath('lite/help'), icon: HelpCircle },
   ]
 
   return (
@@ -51,7 +55,7 @@ export function LiteNavbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo + User */}
           <div className="flex items-center gap-4">
-            <Link href="/lite" className="flex items-center gap-3 group">
+            <Link href={localePath('lite') as any} className="flex items-center gap-3 group">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <span className="text-2xl font-bold text-white">FC</span>
               </div>
@@ -91,15 +95,15 @@ export function LiteNavbar() {
                 className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 transition-all shadow-lg hover:shadow-xl"
               >
                 <Download className="w-5 h-5" />
-                <span>Install App</span>
+                <span>{t('nav.installApp') || 'Install App'}</span>
               </button>
             )}
             <Link
-              href="/full"
+              href={localePath('full') as any}
               className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors ml-2 border-l-2 border-gray-200 dark:border-gray-700"
             >
               <ArrowLeft className="w-5 h-5" />
-              <span className="hidden lg:inline">Full App</span>
+              <span className="hidden lg:inline">{t('nav.fullApp') || 'Full App'}</span>
             </Link>
           </div>
 
@@ -146,16 +150,16 @@ export function LiteNavbar() {
                 className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 transition-all shadow-lg w-full"
               >
                 <Download className="w-6 h-6" />
-                <span>Install App</span>
+                <span>{t('nav.installApp') || 'Install App'}</span>
               </button>
             )}
             <Link
-              href="/full"
+              href={localePath('full') as any}
               onClick={() => setOpen(false)}
               className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 border-t-2 border-gray-200 dark:border-gray-700 mt-2 pt-4"
             >
               <ArrowLeft className="w-6 h-6" />
-              <span>Back to Full App</span>
+              <span>{t('nav.fullApp') || 'Back to Full App'}</span>
             </Link>
           </div>
         )}

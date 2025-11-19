@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { Send, User, ArrowRight, Check, AlertCircle } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export default function LiteSend() {
   const { user } = useAuth()
+  const { t } = useLanguage()
   const [step, setStep] = useState<'contact' | 'amount' | 'confirm'>('contact')
   const [selectedContact, setSelectedContact] = useState<string>('')
   const [amount, setAmount] = useState<string>('')
@@ -49,12 +51,12 @@ export default function LiteSend() {
             <Send className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Send FairCoin
+            {t('lite.send.header') || 'Send FairCoin'}
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">
-            {step === 'contact' && 'Choose who to send to'}
-            {step === 'amount' && 'Enter amount to send'}
-            {step === 'confirm' && 'Confirm your transfer'}
+            {step === 'contact' && (t('lite.send.chooseRecipient') || 'Choose who to send to')}
+            {step === 'amount' && (t('lite.send.enterAmount') || 'Enter amount to send')}
+            {step === 'confirm' && (t('lite.send.confirmTransfer') || 'Confirm your transfer')}
           </p>
         </div>
 
@@ -94,7 +96,7 @@ export default function LiteSend() {
           <div className="space-y-8">
             {/* Amount Display */}
             <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-primary-200 dark:border-primary-700 p-8 text-center">
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">Amount</p>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">{t('lite.send.amount') || 'Amount'}</p>
               <p className="text-6xl sm:text-7xl font-extrabold text-primary-600 dark:text-primary-400 mb-2">
                 {amount || '0'}
               </p>
@@ -123,14 +125,14 @@ export default function LiteSend() {
                 onClick={() => setStep('contact')}
                 className="flex-1 py-6 rounded-2xl bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white text-2xl font-bold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
               >
-                Back
+                {t('lite.send.buttons.back') || 'Back'}
               </button>
               <button
                 onClick={() => setStep('confirm')}
                 disabled={!amount || amount === '0'}
                 className="flex-1 py-6 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 text-white text-2xl font-bold hover:from-green-600 hover:to-emerald-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-xl"
               >
-                Continue
+                {t('lite.send.buttons.continue') || 'Continue'}
               </button>
             </div>
           </div>
@@ -141,13 +143,13 @@ export default function LiteSend() {
           <div className="space-y-8">
             <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-primary-200 dark:border-primary-700 p-8 space-y-6">
               <div className="text-center">
-                <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">You are sending</p>
+                <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">{t('lite.send.confirm.youAreSending') || 'You are sending'}</p>
                 <p className="text-6xl font-extrabold text-primary-600 dark:text-primary-400 mb-2">
                   {amount} FC
                 </p>
               </div>
               <div className="border-t-2 border-gray-200 dark:border-gray-700 pt-6 text-center">
-                <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">To</p>
+                <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">{t('lite.send.confirm.to') || 'To'}</p>
                 <p className="text-3xl font-bold text-gray-900 dark:text-white">
                   {contacts.find(c => c.id === selectedContact)?.name}
                 </p>
@@ -160,7 +162,7 @@ export default function LiteSend() {
                 disabled={status === 'sending'}
                 className="flex-1 py-6 rounded-2xl bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white text-2xl font-bold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all disabled:opacity-50"
               >
-                Back
+                {t('lite.send.buttons.back') || 'Back'}
               </button>
               <button
                 onClick={handleSend}
@@ -170,10 +172,10 @@ export default function LiteSend() {
                 {status === 'sending' ? (
                   <>
                     <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin" />
-                    Sending...
+                    {t('lite.send.buttons.sending') || 'Sending...'}
                   </>
                 ) : (
-                  'Send Now'
+                  t('lite.send.buttons.sendNow') || 'Send Now'
                 )}
               </button>
             </div>
@@ -187,10 +189,13 @@ export default function LiteSend() {
               <Check className="w-16 h-16 text-green-600 dark:text-green-400" />
             </div>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white">
-              Sent Successfully!
+              {t('lite.send.success.title') || 'Sent Successfully!'}
             </h2>
             <p className="text-2xl text-gray-600 dark:text-gray-400">
-              {amount} FC sent to {contacts.find(c => c.id === selectedContact)?.name}
+              {t('lite.send.success.message', { 
+                amount: amount, 
+                recipient: contacts.find(c => c.id === selectedContact)?.name || 'recipient'
+              }) || `${amount} FC sent to ${contacts.find(c => c.id === selectedContact)?.name || 'recipient'}`}
             </p>
           </div>
         )}

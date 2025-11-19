@@ -7,12 +7,14 @@ import { ThemeSwitcher } from './ThemeSwitcher'
 import { useAuth } from '@/contexts/AuthContext'
 import { LanguageSelector } from './lite/LanguageSelector'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { isAuthenticated, user, loading, logout } = useAuth()
   const { t } = useLanguage()
+  const localePath = useLocalePath()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +25,7 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { label: t('nav.home'), href: '/full' },
+    { label: t('nav.home'), href: localePath('full') },
     { label: t('nav.wallet'), href: '#wallet' },
     { label: t('nav.merchants'), href: '#merchants' },
     { label: t('nav.fairness'), href: '#fairness' },
@@ -34,7 +36,7 @@ export function Navbar() {
   const handleLogout = async () => {
     await logout()
     // Redirect to home page after logout
-    window.location.href = '/'
+    window.location.href = localePath('')
   }
 
   return (
@@ -44,7 +46,7 @@ export function Navbar() {
           {/* Top Row: Logo + Live & Growing + Language/User Menu */}
           <div className="flex items-center justify-between mb-3">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href={localePath('') as any} className="flex items-center gap-2 group">
               <div className="relative">
                 <Coins className="w-8 h-8 text-primary-500 group-hover:rotate-12 transition-transform duration-300" />
                 <div className="absolute inset-0 bg-primary-500/20 blur-xl group-hover:bg-primary-500/30 transition-all duration-300" />
@@ -63,9 +65,9 @@ export function Navbar() {
                 <div className="w-8 h-8 animate-spin border-2 border-primary-500 border-t-transparent rounded-full" />
               ) : isAuthenticated ? (
                 <div className="flex items-center gap-2">
-                  <Link href="/dashboard" className="btn btn-ghost btn-sm">
+                  <Link href={localePath('settings') as any} className="btn btn-ghost btn-sm">
                     <LayoutDashboard className="w-4 h-4" />
-                    {t('nav.dashboard')}
+                    {t('nav.settings') || 'Settings'}
                   </Link>
                   <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30">
                     <User className="w-4 h-4 text-primary-600 dark:text-primary-400" />
@@ -80,11 +82,11 @@ export function Navbar() {
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Link href="/auth" className="btn btn-ghost btn-sm">
+                  <Link href={localePath('auth') as any} className="btn btn-ghost btn-sm">
                     <LogIn className="w-4 h-4" />
                     {t('nav.login')}
                   </Link>
-                  <Link href="/auth" className="btn btn-primary btn-sm">
+                  <Link href={localePath('auth') as any} className="btn btn-primary btn-sm">
                     <UserPlus className="w-4 h-4" />
                     {t('nav.register')}
                   </Link>
@@ -131,7 +133,7 @@ export function Navbar() {
             )}
             
             <Link
-              href="/lite"
+              href={localePath('lite') as any}
               className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors px-3 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/50"
             >
               ✨ {t('nav.liteMode')}
@@ -165,11 +167,11 @@ export function Navbar() {
                 )}
                 
                 <Link
-                  href="/lite"
+                  href={localePath('lite') as any}
                   onClick={() => setOpen(false)}
                   className="btn btn-ghost justify-start text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
                 >
-                  ✨ Lite Mode
+                  ✨ {t('nav.liteMode')}
                 </Link>
                 
                 {loading ? (
@@ -184,9 +186,9 @@ export function Navbar() {
                         {user?.username}
                       </span>
                     </div>
-                    <Link href="/dashboard" className="btn btn-outline btn-sm w-full">
+                    <Link href={localePath('settings') as any} className="btn btn-outline btn-sm w-full">
                       <LayoutDashboard className="w-4 h-4" />
-                      Dashboard
+                      {t('nav.settings') || 'Settings'}
                     </Link>
                     <button onClick={handleLogout} className="btn btn-ghost btn-sm w-full">
                       <LogOut className="w-4 h-4" />
@@ -195,13 +197,13 @@ export function Navbar() {
                   </div>
                 ) : (
                   <div className="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
-                    <Link href="/auth" className="btn btn-outline btn-sm">
+                    <Link href={localePath('auth') as any} className="btn btn-outline btn-sm">
                       <LogIn className="w-4 h-4" />
-                      Login
+                      {t('nav.login')}
                     </Link>
-                    <Link href="/auth" className="btn btn-primary btn-sm">
+                    <Link href={localePath('auth') as any} className="btn btn-primary btn-sm">
                       <UserPlus className="w-4 h-4" />
-                      Register
+                      {t('nav.register')}
                     </Link>
                   </div>
                 )}

@@ -5,6 +5,7 @@ import { ExchangeProvider } from '@/contexts/ExchangeContext'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { AuthenticatedChatWidget } from '@/components/AuthenticatedChatWidget'
 import { LanguageProvider } from '@/lib/i18n/LanguageContext'
+import { LocaleSync } from '@/components/LocaleSync'
 import { AlertTriangle } from 'lucide-react'
 import './globals.css'
 
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           disableTransitionOnChange
         >
           <LanguageProvider>
+            <LocaleSync />
             <AuthProvider>
               <ExchangeProvider defaultCurrency="USD" defaultDisplayCurrencies={['USD', 'IDR', 'SGD']}>
                 {/* Staging/Development Environment Warning Banner */}

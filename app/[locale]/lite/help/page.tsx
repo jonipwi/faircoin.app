@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { HelpCircle, MessageCircle, Send, Download, Wallet, Video, FileText } from 'lucide-react'
 import LiteVersionDisplay from '@/components/lite/LiteVersionDisplay'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export default function LiteHelp() {
   const localePath = useLocalePath()
+  const { t } = useLanguage()
   
   const tutorials: Array<{
     title: string
@@ -16,29 +18,29 @@ export default function LiteHelp() {
     color: string
   }> = [
     {
-      title: 'How to Join Community Chat',
-      description: 'Learn how to connect with helpers and make friends',
+      title: t('lite.help.tutorials.joinChat') || 'How to Join Community Chat',
+      description: t('lite.help.tutorials.joinChatDesc') || 'Learn how to connect with helpers and make friends',
       icon: MessageCircle,
       href: 'lite/chat',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'How to Send FairCoin',
-      description: 'Step-by-step guide to giving coins to friends',
+      title: t('lite.help.tutorials.sendCoins') || 'How to Send FairCoin',
+      description: t('lite.help.tutorials.sendCoinsDesc') || 'Step-by-step guide to giving coins to friends',
       icon: Send,
       href: 'lite/send',
       color: 'from-green-500 to-emerald-500'
     },
     {
-      title: 'How to Receive FairCoin',
-      description: 'Show your QR code and get coins instantly',
+      title: t('lite.help.tutorials.receiveCoins') || 'How to Receive FairCoin',
+      description: t('lite.help.tutorials.receiveCoinsDesc') || 'Show your QR code and get coins instantly',
       icon: Download,
       href: 'lite/receive',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'Understanding Your Balance',
-      description: 'See your coins and transaction history',
+      title: t('lite.help.tutorials.understandBalance') || 'Understanding Your Balance',
+      description: t('lite.help.tutorials.understandBalanceDesc') || 'See your coins and transaction history',
       icon: Wallet,
       href: 'lite/balance',
       color: 'from-amber-500 to-orange-500'
@@ -47,13 +49,13 @@ export default function LiteHelp() {
 
   const resources = [
     {
-      title: 'Video Tutorials',
-      description: 'Watch simple video guides',
+      title: t('lite.help.resources.videoTutorials') || 'Video Tutorials',
+      description: t('lite.help.resources.videoDesc') || 'Watch simple video guides',
       icon: Video
     },
     {
-      title: 'Printable Guides',
-      description: 'Download easy-to-read PDF instructions',
+      title: t('lite.help.resources.printableGuides') || 'Printable Guides',
+      description: t('lite.help.resources.printableDesc') || 'Download easy-to-read PDF instructions',
       icon: FileText
     }
   ]
@@ -68,37 +70,37 @@ export default function LiteHelp() {
             <HelpCircle className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Help & Tutorials
+            {t('lite.help.header') || 'Help & Tutorials'}
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">
-            Everything you need to know, step by step
+            {t('lite.help.subtitle') || 'Everything you need to know, step by step'}
           </p>
         </div>
 
         {/* Emergency Help Banner */}
         <div className="rounded-3xl bg-gradient-to-r from-red-500 to-pink-500 p-8 sm:p-10 text-center text-white shadow-2xl mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-            Need Help Right Now?
+            {t('lite.help.emergency.title') || 'Need Help Right Now?'}
           </h2>
           <p className="text-xl sm:text-2xl mb-8 opacity-95">
-            Talk to a real person in the Community Chat
+            {t('lite.help.emergency.description') || 'Talk to a real person in the Community Chat'}
           </p>
           <Link
             href={localePath('lite/chat') as any}
             className="inline-flex items-center gap-3 px-8 py-5 bg-white text-red-600 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
           >
             <MessageCircle className="w-7 h-7" />
-            Open Chat Now
+            {t('lite.help.emergency.button') || 'Open Chat Now'}
           </Link>
           <p className="mt-6 text-lg opacity-90">
-            Moderators respond within 2 minutes • Available 24/7
+            {t('lite.help.emergency.availability') || 'Moderators respond within 2 minutes • Available 24/7'}
           </p>
         </div>
 
         {/* Tutorial Cards */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Quick Start Guides
+            {t('lite.help.quickStart') || 'Quick Start Guides'}
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {tutorials.map((tutorial) => {
@@ -129,7 +131,7 @@ export default function LiteHelp() {
         {/* Additional Resources */}
         <div>
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            More Resources
+            {t('lite.help.resources.title') || 'More Resources'}
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {resources.map((resource) => {
@@ -149,7 +151,7 @@ export default function LiteHelp() {
                     {resource.description}
                   </p>
                   <button className="mt-6 px-6 py-3 rounded-xl bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 font-semibold hover:bg-primary-200 dark:hover:bg-primary-900/50 transition-all">
-                    Coming Soon
+                    {t('lite.help.resources.comingSoon') || 'Coming Soon'}
                   </button>
                 </div>
               )
@@ -160,23 +162,23 @@ export default function LiteHelp() {
         {/* Contact Support */}
         <div className="mt-12 rounded-3xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-700 p-8 text-center">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            Still Need Help?
+            {t('lite.help.support.title') || 'Still Need Help?'}
           </h3>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
-            Our support team is here for you
+            {t('lite.help.support.description') || 'Our support team is here for you'}
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={localePath('lite/chat') as any}
               className="px-6 py-4 rounded-2xl bg-primary-600 text-white text-lg font-bold hover:bg-primary-700 transition-all"
             >
-              Chat with Support
+              {t('lite.help.support.chatButton') || 'Chat with Support'}
             </Link>
             <a
               href="mailto:joni.pwi@gmail.com"
               className="px-6 py-4 rounded-2xl bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 text-lg font-bold border-2 border-primary-600 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 transition-all"
             >
-              Email Us
+              {t('lite.help.support.emailButton') || 'Email Us'}
             </a>
           </div>
         </div>

@@ -14,7 +14,8 @@
     "login": "登入",
     "register": "註冊",
     "logout": "登出",
-    "dashboard": "控制面板"
+    "dashboard": "控制面板",
+    "settings": "設定"
   },
   "hero": {
     "liveGrowing": "即時且成長中",
@@ -58,11 +59,139 @@
   "home": {
     "welcome": "歡迎使用 FairCoin 精簡版",
     "hello": "您好，{{username}}！",
-    "simpleTitle": "簡單友善的 FairCoin",
+    "simpleTitle": "簡單友好的 FairCoin",
     "subtitle": "所有功能都在大而清晰的按鈕中",
     "getStarted": "立即開始",
     "readyToJoin": "準備加入 FairCoin？",
-    "easySteps": "只需3個簡單步驟即可建立您的帳號"
+    "easySteps": "只需3個簡單步驟即可創建您的帳戶"
+  },
+  "lite": {
+    "welcome": "歡迎使用 FairCoin 精簡版",
+    "hello": "您好，{{username}}！",
+    "title": "簡單友好的 FairCoin",
+    "subtitle": "所有功能都在大而清晰的按鈕中",
+    "chat": {
+      "title": "社區聊天",
+      "description": "加入對話，獲得幫助，結識朋友",
+      "header": "Community Chat",
+      "room": "Friendly Lounge — always welcoming",
+      "liveHelp": "Live Help",
+      "available": "24/7"
+    },
+    "send": {
+      "title": "發送 FairCoin",
+      "description": "向朋友和社區贈送 FairCoin",
+      "header": "Send FairCoin",
+      "chooseRecipient": "Choose who to send to",
+      "enterAmount": "Enter amount to send",
+      "confirmTransfer": "Confirm your transfer",
+      "amount": "Amount",
+      "numberPad": {
+        "clear": "←"
+      },
+      "buttons": {
+        "back": "Back",
+        "continue": "Continue",
+        "sendNow": "Send Now",
+        "sending": "Sending..."
+      },
+      "success": {
+        "title": "Sent Successfully!",
+        "message": "{{amount}} FC sent to {{recipient}}"
+      },
+      "confirm": {
+        "youAreSending": "You are sending",
+        "to": "To"
+      }
+    },
+    "receive": {
+      "title": "接收 FairCoin",
+      "description": "顯示您的二維碼以接收代幣",
+      "header": "Receive FairCoin",
+      "subtitle": "Share your username or QR code",
+      "yourUsername": "Your FairCoin Username",
+      "copyButton": "Copy My Username",
+      "copied": "Copied!",
+      "instructions": {
+        "title": "How to receive FairCoin",
+        "step1": "Show this QR code to the person sending you FairCoin",
+        "step2": "Or tap \"Copy My Username\" and send it to them",
+        "step3": "FairCoin will arrive in your wallet instantly"
+      }
+    },
+    "balance": {
+      "title": "我的餘額",
+      "description": "查看您的 FairCoin 和最近的交易",
+      "header": "PFI Treasury ✨",
+      "subtitle": "{{username}}'s Personal Fairness Index",
+      "treasuryAddress": "Treasury Address",
+      "tokensEntrusted": "Tokens Entrusted ✨",
+      "tokensNote": "Faith, Love & Justice in Heaven's Network",
+      "pfiMetrics": "Personal Fairness Index (PFI★)",
+      "pfiScore": "PFI Score",
+      "pfiIndex": "PFI Index",
+      "pfiShare": "PFI Share",
+      "performanceIndicator": "Performance Indicator",
+      "approvedSubmissions": "Approved Submissions",
+      "refreshMetrics": "Refresh PFI Metrics",
+      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
+      "downloadDetails": "Download Details",
+      "backToHome": "Back to Home",
+      "createTreasury": {
+        "title": "Create Your PFI Treasury",
+        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
+        "button": "Create PFI Treasury",
+        "creating": "Creating..."
+      },
+      "copy": "Copy",
+      "copied": "Copied!"
+    },
+    "help": {
+      "title": "幫助與教程",
+      "description": "逐步學習如何使用 FairCoin",
+      "header": "Help & Tutorials",
+      "subtitle": "Everything you need to know, step by step",
+      "emergency": {
+        "title": "Need Help Right Now?",
+        "description": "Talk to a real person in the Community Chat",
+        "button": "Open Chat Now",
+        "availability": "Moderators respond within 2 minutes • Available 24/7"
+      },
+      "quickStart": "Quick Start Guides",
+      "tutorials": {
+        "joinChat": "How to Join Community Chat",
+        "joinChatDesc": "Learn how to connect with helpers and make friends",
+        "sendCoins": "How to Send FairCoin",
+        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
+        "receiveCoins": "How to Receive FairCoin",
+        "receiveCoinsDesc": "Show your QR code and get coins instantly",
+        "understandBalance": "Understanding Your Balance",
+        "understandBalanceDesc": "See your coins and transaction history"
+      },
+      "resources": {
+        "title": "More Resources",
+        "videoTutorials": "Video Tutorials",
+        "videoDesc": "Watch simple video guides",
+        "printableGuides": "Printable Guides",
+        "printableDesc": "Download easy-to-read PDF instructions",
+        "comingSoon": "Coming Soon"
+      },
+      "support": {
+        "title": "Still Need Help?",
+        "description": "Our support team is here for you",
+        "chatButton": "Chat with Support",
+        "emailButton": "Email Us"
+      }
+    },
+    "language": {
+      "title": "語言",
+      "description": "選擇您的首選語言"
+    },
+    "join": {
+      "title": "準備加入 FairCoin？",
+      "subtitle": "只需3個簡單步驟即可創建您的帳戶",
+      "button": "立即開始"
+    }
   },
   "actions": {
     "communityChat": "社群聊天",

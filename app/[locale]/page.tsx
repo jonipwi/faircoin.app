@@ -10,15 +10,21 @@ interface LocalePageProps {
 
 export default function LocalePage({ params }: LocalePageProps) {
   const router = useRouter()
-  const { setLocale } = useLanguage()
+  const { setLocale, locale } = useLanguage()
   
   useEffect(() => {
-    // Set the locale in context
-    setLocale(params.locale as any)
+    // Only set locale if it's different from current
+    if (locale !== params.locale) {
+      setLocale(params.locale as any)
+    }
     
     // Redirect to lite mode with locale
-    router.push(`/${params.locale}/lite` as any)
-  }, [params.locale, router, setLocale])
+    const timer = setTimeout(() => {
+      router.push(`/${params.locale}/lite` as any)
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [params.locale, locale, router, setLocale])
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-500 to-accent-500">

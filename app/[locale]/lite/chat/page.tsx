@@ -2,8 +2,10 @@
 
 import { MessageCircle, Users, Clock } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export default function LiteChat() {
+  const { t } = useLanguage()
   const chatUrl = process.env.NEXT_PUBLIC_CHAT_URL || 'http://localhost:3031'
   const [username, setUsername] = useState('guest')
   const [walletAddress, setWalletAddress] = useState('')
@@ -50,21 +52,21 @@ export default function LiteChat() {
                 </div>
                 <div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-                    Community Chat
+                    {t('lite.chat.header') || 'Community Chat'}
                   </h1>
                   <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-                    Friendly Lounge — always welcoming
+                    {t('lite.chat.room') || 'Friendly Lounge — always welcoming'}
                   </p>
                 </div>
               </div>
               <div className="hidden sm:flex items-center gap-6">
                 <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
                   <Users className="w-6 h-6" />
-                  <span className="text-lg font-semibold">Live Help</span>
+                  <span className="text-lg font-semibold">{t('lite.chat.liveHelp') || 'Live Help'}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                   <Clock className="w-6 h-6" />
-                  <span className="text-lg">24/7</span>
+                  <span className="text-lg">{t('lite.chat.available') || '24/7'}</span>
                 </div>
               </div>
             </div>

@@ -14,7 +14,8 @@
     "login": "ログイン",
     "register": "登録",
     "logout": "ログアウト",
-    "dashboard": "ダッシュボード"
+    "dashboard": "ダッシュボード",
+    "settings": "設定"
   },
   "hero": {
     "liveGrowing": "稼働中 & 成長中",
@@ -58,11 +59,139 @@
   "home": {
     "welcome": "FairCoin Liteへようこそ",
     "hello": "こんにちは、{{username}}さん！",
-    "simpleTitle": "シンプルで使いやすいFairCoin",
-    "subtitle": "大きく分かりやすいボタンで必要なものすべてを",
+    "simpleTitle": "シンプルでフレンドリーなFairCoin",
+    "subtitle": "大きくて分かりやすいボタンで必要なものすべて",
     "getStarted": "今すぐ始める",
-    "readyToJoin": "FairCoinに参加する準備はできましたか？",
+    "readyToJoin": "FairCoinに参加する準備はできていますか？",
     "easySteps": "3つの簡単なステップでアカウントを作成"
+  },
+  "lite": {
+    "welcome": "FairCoin Liteへようこそ",
+    "hello": "こんにちは、{{username}}さん！",
+    "title": "シンプルでフレンドリーなFairCoin",
+    "subtitle": "大きくて分かりやすいボタンで必要なものすべて",
+    "chat": {
+      "title": "コミュニティチャット",
+      "description": "会話に参加し、助けを得て、友達を作ろう",
+      "header": "Community Chat",
+      "room": "Friendly Lounge — always welcoming",
+      "liveHelp": "Live Help",
+      "available": "24/7"
+    },
+    "send": {
+      "title": "FairCoinを送る",
+      "description": "友達やコミュニティにFairCoinを贈ろう",
+      "header": "Send FairCoin",
+      "chooseRecipient": "Choose who to send to",
+      "enterAmount": "Enter amount to send",
+      "confirmTransfer": "Confirm your transfer",
+      "amount": "Amount",
+      "numberPad": {
+        "clear": "←"
+      },
+      "buttons": {
+        "back": "Back",
+        "continue": "Continue",
+        "sendNow": "Send Now",
+        "sending": "Sending..."
+      },
+      "success": {
+        "title": "Sent Successfully!",
+        "message": "{{amount}} FC sent to {{recipient}}"
+      },
+      "confirm": {
+        "youAreSending": "You are sending",
+        "to": "To"
+      }
+    },
+    "receive": {
+      "title": "FairCoinを受け取る",
+      "description": "コインを受け取るためにQRコードを表示",
+      "header": "Receive FairCoin",
+      "subtitle": "Share your username or QR code",
+      "yourUsername": "Your FairCoin Username",
+      "copyButton": "Copy My Username",
+      "copied": "Copied!",
+      "instructions": {
+        "title": "How to receive FairCoin",
+        "step1": "Show this QR code to the person sending you FairCoin",
+        "step2": "Or tap \"Copy My Username\" and send it to them",
+        "step3": "FairCoin will arrive in your wallet instantly"
+      }
+    },
+    "balance": {
+      "title": "マイバランス",
+      "description": "FairCoinと最近の取引を確認",
+      "header": "PFI Treasury ✨",
+      "subtitle": "{{username}}'s Personal Fairness Index",
+      "treasuryAddress": "Treasury Address",
+      "tokensEntrusted": "Tokens Entrusted ✨",
+      "tokensNote": "Faith, Love & Justice in Heaven's Network",
+      "pfiMetrics": "Personal Fairness Index (PFI★)",
+      "pfiScore": "PFI Score",
+      "pfiIndex": "PFI Index",
+      "pfiShare": "PFI Share",
+      "performanceIndicator": "Performance Indicator",
+      "approvedSubmissions": "Approved Submissions",
+      "refreshMetrics": "Refresh PFI Metrics",
+      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
+      "downloadDetails": "Download Details",
+      "backToHome": "Back to Home",
+      "createTreasury": {
+        "title": "Create Your PFI Treasury",
+        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
+        "button": "Create PFI Treasury",
+        "creating": "Creating..."
+      },
+      "copy": "Copy",
+      "copied": "Copied!"
+    },
+    "help": {
+      "title": "ヘルプとチュートリアル",
+      "description": "FairCoinの使い方をステップバイステップで学ぶ",
+      "header": "Help & Tutorials",
+      "subtitle": "Everything you need to know, step by step",
+      "emergency": {
+        "title": "Need Help Right Now?",
+        "description": "Talk to a real person in the Community Chat",
+        "button": "Open Chat Now",
+        "availability": "Moderators respond within 2 minutes • Available 24/7"
+      },
+      "quickStart": "Quick Start Guides",
+      "tutorials": {
+        "joinChat": "How to Join Community Chat",
+        "joinChatDesc": "Learn how to connect with helpers and make friends",
+        "sendCoins": "How to Send FairCoin",
+        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
+        "receiveCoins": "How to Receive FairCoin",
+        "receiveCoinsDesc": "Show your QR code and get coins instantly",
+        "understandBalance": "Understanding Your Balance",
+        "understandBalanceDesc": "See your coins and transaction history"
+      },
+      "resources": {
+        "title": "More Resources",
+        "videoTutorials": "Video Tutorials",
+        "videoDesc": "Watch simple video guides",
+        "printableGuides": "Printable Guides",
+        "printableDesc": "Download easy-to-read PDF instructions",
+        "comingSoon": "Coming Soon"
+      },
+      "support": {
+        "title": "Still Need Help?",
+        "description": "Our support team is here for you",
+        "chatButton": "Chat with Support",
+        "emailButton": "Email Us"
+      }
+    },
+    "language": {
+      "title": "言語",
+      "description": "お好みの言語を選択"
+    },
+    "join": {
+      "title": "FairCoinに参加する準備はできていますか？",
+      "subtitle": "3つの簡単なステップでアカウントを作成",
+      "button": "今すぐ始める"
+    }
   },
   "actions": {
     "communityChat": "コミュニティチャット",

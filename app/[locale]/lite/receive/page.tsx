@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { Download, QrCode, Copy, Check } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 export default function LiteReceive() {
   const { user } = useAuth()
+  const { t } = useLanguage()
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
@@ -28,10 +30,10 @@ export default function LiteReceive() {
             <Download className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            Receive FairCoin
+            {t('lite.receive.header') || 'Receive FairCoin'}
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">
-            Share your username or QR code
+            {t('lite.receive.subtitle') || 'Share your username or QR code'}
           </p>
         </div>
 
@@ -46,7 +48,7 @@ export default function LiteReceive() {
           </div>
 
           <div className="space-y-4">
-            <p className="text-xl text-gray-600 dark:text-gray-400">Your FairCoin Username</p>
+            <p className="text-xl text-gray-600 dark:text-gray-400">{t('lite.receive.yourUsername') || 'Your FairCoin Username'}</p>
             <p className="text-4xl sm:text-5xl font-extrabold text-primary-600 dark:text-primary-400 break-all">
               {user?.username || 'guest'}
             </p>
@@ -61,12 +63,12 @@ export default function LiteReceive() {
           {copied ? (
             <>
               <Check className="w-8 h-8" />
-              Copied!
+              {t('lite.receive.copied') || 'Copied!'}
             </>
           ) : (
             <>
               <Copy className="w-8 h-8" />
-              Copy My Username
+              {t('lite.receive.copyButton') || 'Copy My Username'}
             </>
           )}
         </button>
@@ -74,26 +76,26 @@ export default function LiteReceive() {
         {/* Instructions */}
         <div className="mt-12 rounded-3xl bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-200 dark:border-primary-700 p-8">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-            How to receive FairCoin
+            {t('lite.receive.instructions.title') || 'How to receive FairCoin'}
           </h3>
           <ol className="space-y-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300">
             <li className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold flex-shrink-0">
                 1
               </div>
-              <p>Show this QR code to the person sending you FairCoin</p>
+              <p>{t('lite.receive.instructions.step1') || 'Show this QR code to the person sending you FairCoin'}</p>
             </li>
             <li className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold flex-shrink-0">
                 2
               </div>
-              <p>Or tap &quot;Copy My Username&quot; and send it to them</p>
+              <p>{t('lite.receive.instructions.step2') || 'Or tap "Copy My Username" and send it to them'}</p>
             </li>
             <li className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-primary-500 text-white flex items-center justify-center font-bold flex-shrink-0">
                 3
               </div>
-              <p>FairCoin will arrive in your wallet instantly</p>
+              <p>{t('lite.receive.instructions.step3') || 'FairCoin will arrive in your wallet instantly'}</p>
             </li>
           </ol>
         </div>

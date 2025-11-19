@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { Heart, Shield, Users, Scale, Sparkles, HandHeart, FileText } from 'lucide-react'
 import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export function MissionSection() {
   const { t } = useLanguage()
+  const localePath = useLocalePath()
   
   return (
     <section id="mission" className="section bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
@@ -28,7 +30,7 @@ export function MissionSection() {
             {/* Whitepaper Button */}
             <div className="pt-4">
               <Link 
-                href="/whitepaper"
+                href={localePath('whitepaper') as any}
                 className="inline-flex items-center gap-2 btn btn-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white border-0 shadow-lg hover:shadow-xl transition-all group"
               >
                 <FileText className="w-5 h-5 group-hover:scale-110 transition-transform" />

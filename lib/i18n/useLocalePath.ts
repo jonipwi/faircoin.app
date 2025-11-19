@@ -1,8 +1,7 @@
-import { useParams } from 'next/navigation'
+import { useLanguage } from './LanguageContext'
 
 export function useLocalePath() {
-  const params = useParams()
-  const locale = params?.locale || 'en'
+  const { locale } = useLanguage()
   
   return (path: string) => {
     // Remove leading slash if present

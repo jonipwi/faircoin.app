@@ -4,9 +4,11 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Lock, MessageCircle, AlertCircle } from 'lucide-react'
 import { generateXChatToken, hasValidAuth } from '@/lib/xchat-token'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export default function XChatPage() {
   const router = useRouter()
+  const localePath = useLocalePath()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [token, setToken] = useState<string | null>(null)
@@ -50,7 +52,7 @@ export default function XChatPage() {
   }, [])
 
   const handleLoginClick = () => {
-    router.push('/auth')
+    router.push(localePath('auth') as any)
   }
 
   if (loading) {
@@ -99,7 +101,7 @@ export default function XChatPage() {
                     Login to Access Chat
                   </button>
                 )}
-                <button onClick={() => router.push('/')} className="btn btn-outline btn-lg">
+                <button onClick={() => router.push(localePath('') as any)} className="btn btn-outline btn-lg">
                   Return Home
                 </button>
               </div>
@@ -123,10 +125,10 @@ export default function XChatPage() {
               </h1>
             </div>
             <button
-              onClick={() => router.push('/dashboard')}
+              onClick={() => router.push(localePath('lite') as any)}
               className="btn btn-ghost btn-sm"
             >
-              ← Back to Dashboard
+              ← Back to Home
             </button>
           </div>
         </div>

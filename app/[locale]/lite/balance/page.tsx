@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Wallet, TrendingUp, PieChart, Download, Copy, Check } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
+import { useLanguage } from '@/lib/i18n/LanguageContext'
 
 interface PFIMetrics {
   score: number
@@ -23,6 +25,8 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://fairco
 
 export default function LiteBalance() {
   const { user } = useAuth()
+  const localePath = useLocalePath()
+  const { t } = useLanguage()
   const [wallet, setWallet] = useState<WalletInfo | null>(null)
   const [pfiMetrics, setPfiMetrics] = useState<PFIMetrics>({
     score: 0,
@@ -184,10 +188,10 @@ Created: ${new Date().toISOString()}
             <Wallet className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-            PFI Treasury ✨
+            {t('lite.balance.header') || 'PFI Treasury ✨'}
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400">
-            {user?.username}&apos;s Personal Fairness Index
+            {t('lite.balance.subtitle', { username: user?.username || 'User' }) || `${user?.username || 'User'}'s Personal Fairness Index`}
           </p>
         </div>
 
@@ -201,25 +205,24 @@ Created: ${new Date().toISOString()}
               <Wallet className="w-10 h-10 text-white" />
             </div>
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Create Your PFI Treasury
+              {t('lite.balance.createTreasury.title') || 'Create Your PFI Treasury'}
             </h3>
             <p className="text-xl text-gray-600 dark:text-gray-400">
-              Your treasury stores your Personal Fairness Index metrics and community tokens.
-              We're not a cryptocurrency platform - we measure fairness!
+              {t('lite.balance.createTreasury.description') || "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!"}
             </p>
             <button
               onClick={createWallet}
               disabled={isCreatingWallet}
               className="w-full py-6 px-8 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-2xl font-bold hover:from-emerald-600 hover:to-teal-600 transition-all shadow-xl disabled:opacity-50"
             >
-              {isCreatingWallet ? 'Creating...' : 'Create PFI Treasury'}
+              {isCreatingWallet ? (t('lite.balance.createTreasury.creating') || 'Creating...') : (t('lite.balance.createTreasury.button') || 'Create PFI Treasury')}
             </button>
           </div>
         ) : (
           <>
             {/* Treasury Address */}
             <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 p-6 sm:p-8 mb-8 shadow-xl">
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-3">Treasury Address</p>
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-3">{t('lite.balance.treasuryAddress') || 'Treasury Address'}</p>
               <div className="flex items-center gap-3">
                 <p className="text-base text-gray-800 dark:text-white font-mono break-all flex-1">
                   {wallet.address}
@@ -229,27 +232,27 @@ Created: ${new Date().toISOString()}
                   className="flex-shrink-0 py-3 px-4 bg-primary-500 hover:bg-primary-600 text-white rounded-xl transition-colors flex items-center gap-2 font-semibold"
                 >
                   {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
-                  {copied ? 'Copied!' : 'Copy'}
+                  {copied ? (t('lite.balance.copied') || 'Copied!') : (t('lite.balance.copy') || 'Copy')}
                 </button>
               </div>
             </div>
 
             {/* Token Balance Card */}
             <div className="rounded-3xl bg-gradient-to-br from-amber-500 to-orange-500 p-8 sm:p-12 mb-8 text-center shadow-2xl text-white">
-              <p className="text-2xl mb-4 opacity-90">Tokens Entrusted ✨</p>
+              <p className="text-2xl mb-4 opacity-90">{t('lite.balance.tokensEntrusted') || 'Tokens Entrusted ✨'}</p>
               <p className="text-6xl sm:text-7xl font-extrabold mb-2">
                 {wallet.balances.USDT.toFixed(4)}
               </p>
               <p className="text-3xl opacity-90">USDT</p>
               <p className="text-lg mt-4 opacity-80">
-                Faith, Love & Justice in Heaven's Network
+                {t('lite.balance.tokensNote') || "Faith, Love & Justice in Heaven's Network"}
               </p>
             </div>
 
             {/* PFI Metrics */}
             <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 p-6 sm:p-8 mb-8 shadow-xl">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                Personal Fairness Index (PFI★)
+                {t('lite.balance.pfiMetrics') || 'Personal Fairness Index (PFI★)'}
               </h2>
 
               <div className="space-y-6">
@@ -257,7 +260,7 @@ Created: ${new Date().toISOString()}
                 <div className="border-4 border-emerald-200 dark:border-emerald-700 rounded-2xl p-6 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-700 dark:to-gray-600">
                   <div className="flex items-center justify-between mb-3">
                     <p className="text-xl text-gray-700 dark:text-gray-300 font-semibold flex items-center gap-2">
-                      PFI Score
+                      {t('lite.balance.pfiScore') || 'PFI Score'}
                       <span className="text-amber-500">✨</span>
                     </p>
                     <PieChart className="w-10 h-10 text-emerald-500" />
@@ -277,7 +280,7 @@ Created: ${new Date().toISOString()}
                 <div className="border-4 border-blue-200 dark:border-blue-700 rounded-2xl p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-700 dark:to-gray-600">
                   <div className="flex items-center justify-between mb-3">
                     <p className="text-xl text-gray-700 dark:text-gray-300 font-semibold">
-                      PFI Index
+                      {t('lite.balance.pfiIndex') || 'PFI Index'}
                     </p>
                     <TrendingUp className="w-10 h-10 text-blue-500" />
                   </div>
@@ -285,7 +288,7 @@ Created: ${new Date().toISOString()}
                     {pfiMetrics.index.toFixed(1)}%
                   </p>
                   <p className="text-lg text-gray-600 dark:text-gray-400">
-                    Performance Indicator
+                    {t('lite.balance.performanceIndicator') || 'Performance Indicator'}
                   </p>
                 </div>
 
@@ -293,7 +296,7 @@ Created: ${new Date().toISOString()}
                 <div className="border-4 border-purple-200 dark:border-purple-700 rounded-2xl p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600">
                   <div className="flex items-center justify-between mb-3">
                     <p className="text-xl text-gray-700 dark:text-gray-300 font-semibold">
-                      PFI Share
+                      {t('lite.balance.pfiShare') || 'PFI Share'}
                     </p>
                     <Wallet className="w-10 h-10 text-purple-500" />
                   </div>
@@ -301,7 +304,7 @@ Created: ${new Date().toISOString()}
                     {pfiMetrics.share.toFixed(2)}
                   </p>
                   <p className="text-lg text-gray-600 dark:text-gray-400">
-                    Approved Submissions
+                    {t('lite.balance.approvedSubmissions') || 'Approved Submissions'}
                   </p>
                 </div>
               </div>
@@ -311,17 +314,14 @@ Created: ${new Date().toISOString()}
                 className="w-full mt-6 py-5 px-6 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-2xl hover:from-primary-600 hover:to-accent-600 text-xl font-bold shadow-xl"
               >
                 <TrendingUp className="w-6 h-6 inline mr-2" />
-                Refresh PFI Metrics
+                {t('lite.balance.refreshMetrics') || 'Refresh PFI Metrics'}
               </button>
             </div>
 
             {/* Spiritual Note */}
             <div className="rounded-3xl bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border-4 border-amber-200 dark:border-amber-700 p-6 sm:p-8 mb-8 shadow-xl">
               <p className="text-xl text-amber-900 dark:text-amber-100 text-center leading-relaxed">
-                ✨ <span className="font-bold">Remember:</span> Tokens stored through{' '}
-                <span className="font-bold text-amber-700 dark:text-amber-300">Faith</span>,{' '}
-                <span className="font-bold text-amber-700 dark:text-amber-300">Love</span>, and{' '}
-                <span className="font-bold text-amber-700 dark:text-amber-300">Justice</span>
+                ✨ <span className="font-bold">Remember:</span> {t('lite.balance.spiritualNote') || 'Tokens stored through Faith, Love, and Justice'}
               </p>
             </div>
 
@@ -332,13 +332,13 @@ Created: ${new Date().toISOString()}
                 className="py-6 px-8 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xl font-bold hover:from-blue-600 hover:to-cyan-600 transition-all shadow-xl flex items-center justify-center gap-3"
               >
                 <Download className="w-6 h-6" />
-                Download Details
+                {t('lite.balance.downloadDetails') || 'Download Details'}
               </button>
               <Link
-                href="/lite"
+                href={localePath('lite') as any}
                 className="py-6 px-8 rounded-2xl bg-gradient-to-r from-gray-500 to-gray-600 text-white text-xl font-bold hover:from-gray-600 hover:to-gray-700 transition-all shadow-xl text-center"
               >
-                Back to Home
+                {t('lite.balance.backToHome') || 'Back to Home'}
               </Link>
             </div>
           </>
