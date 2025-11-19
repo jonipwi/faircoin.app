@@ -4,7 +4,6 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import { ExchangeProvider } from '@/contexts/ExchangeContext'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { AuthenticatedChatWidget } from '@/components/AuthenticatedChatWidget'
-import VersionDisplay from '@/components/VersionDisplay'
 import { AlertTriangle } from 'lucide-react'
 import './globals.css'
 
@@ -88,9 +87,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               
               {/* xdiscord Open Source Chat Widget */}
               <AuthenticatedChatWidget />
-              
-              {/* Version Display */}
-              <VersionDisplay />
             </ExchangeProvider>
           </AuthProvider>
         </ThemeProvider>
