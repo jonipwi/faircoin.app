@@ -1,5 +1,17 @@
 # Translation Status Report
 
+## 📚 Documentation
+
+For comprehensive information about FairCoin's multi-language support system, see:
+
+📖 **[Multi-Language Support Guide](./docs/MULTI_LANGUAGE_SUPPORT.md)** - Complete documentation covering:
+- All 15 supported languages with flags and names
+- How to use the language selector
+- Developer guide for adding translations
+- Technical architecture and implementation details
+- How to add new languages
+- Translation best practices
+
 ## ✅ Completed
 
 ### English Base (en.json)

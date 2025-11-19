@@ -39,12 +39,18 @@ A community-driven fair transaction system built on principles of transparency, 
 >
 > **🛡️ Important Security Notice:** If you encounter a Google Safe Browsing warning on our staging domains, this is a false positive. These are legitimate development environments. See our [Security Policy](./SECURITY.md) and [Staging Guide](./STAGING.md) for verification, or visit our [Google Safe Browsing Reporting Guide](./GOOGLE_SAFE_BROWSING_REPORT.md) to help us resolve this issue.
 
-## 🪄 FairCoin Lite (elder-friendly preview)
+## 🪄 FairCoin Lite (Simple & User-Friendly)
 
-- Visit [`/lite`](https://faircoin.bixio.xyz/lite) on any staging deployment for **faircoin-lite.app-v1**.
-- Chat-first landing page with adjustable text size, high-contrast mode, and oversized quick actions for seniors.
-- Works alongside the primary UI—no features removed; it simply surfaces the calm path for sponsors/caregivers.
-- See [docs/FAIRCOIN_LITE.md](./docs/FAIRCOIN_LITE.md) for the product brief and rollout notes.
+FairCoin Lite is a simplified, elder-friendly interface designed for **seniors and caregivers**. Features include:
+
+- **Large Buttons**: 2-3× bigger for easy interaction
+- **High Contrast**: Clear, easy-to-read text
+- **Simple Navigation**: Essential features only
+- **Chat-First**: Community support prominently featured
+
+**Access**: Visit [`/lite`](https://faircoin.bixio.xyz/lite) on any deployment or [`/{locale}/lite`](https://faircoin.bixio.xyz/en/lite) for multi-language support.
+
+📚 **[Complete Guide](./docs/FAIRCOIN_LITE.md)** - Full documentation on design principles, features, and development.
 
 ## ⚠️ Important: Independent Project Clarification
 
@@ -107,6 +113,71 @@ Fair resource distribution and equitable economic opportunities for everyone.
 - 📱 **Responsive Design** - Mobile-first approach for accessibility
 - 🔒 **2FA Security** - TOTP-based two-factor authentication
 - 🌐 **Exchange Integration** - Live cryptocurrency and fiat exchange rates
+- 🌍 **Multi-Language Support** - 15 languages with full RTL support (see [Multi-Language Support Guide](./docs/MULTI_LANGUAGE_SUPPORT.md))
+- 🪄 **FairCoin Lite** - Simplified interface for seniors and caregivers (see [FairCoin Lite Guide](./docs/FAIRCOIN_LITE.md))
+
+## 🌍 Multi-Language Support
+
+FairCoin is available in **15 languages** to serve our global community:
+
+🇬🇧 English • 🇨🇳 中文 (简体) • 🇹🇼 中文 (繁體) • 🇪🇸 Español • 🇫🇷 Français • 🇩🇪 Deutsch • 🇮🇳 हिन्दी • 🇷🇺 Русский • 🇮🇩 Indonesia • 🇰🇷 한국어 • 🇯🇵 日本語 • 🇮🇱 עברית • 🇸🇦 العربية • 🇳🇱 Nederlands • 🇵🇹 Português
+
+### Key Features
+
+- **15 Languages**: Comprehensive coverage for global accessibility
+- **RTL Support**: Full right-to-left support for Hebrew and Arabic
+- **Automatic Detection**: Detects your browser language on first visit
+- **URL-Based**: Each language has its own URL (e.g., `/en`, `/id`, `/zh`)
+- **Persistent**: Your language choice is saved across sessions
+- **Seamless Switching**: Change languages instantly with the language selector
+
+### Quick Start
+
+1. **Access in Your Language**: Visit `/{language-code}` (e.g., `/id` for Indonesian)
+2. **Change Language**: Click the globe icon (🌐) and select your preferred language
+3. **Share**: URLs are shareable - send links in specific languages to friends
+
+### For Developers
+
+```tsx
+import { useLanguage } from '@/lib/i18n/LanguageContext'
+
+function MyComponent() {
+  const { t, locale, setLocale } = useLanguage()
+  
+  return <h1>{t('hero.title')}</h1>
+}
+```
+
+📚 **[Complete Multi-Language Guide](./docs/MULTI_LANGUAGE_SUPPORT.md)** - Learn about adding languages, translation structure, and i18n best practices.
+
+## 🪄 FairCoin Lite — Simple & User-Friendly
+
+FairCoin Lite is a simplified version designed for **seniors, caregivers, and first-time users**. Access it at `/lite` on any deployment.
+
+### Elder-Friendly Features
+
+- **Large Buttons**: 2-3× bigger than standard UI with clear icons
+- **High Contrast**: Easy-to-read text with strong visual contrast
+- **Simple Navigation**: Only 3-4 core options instead of 10+
+- **Chat-First**: Community support prominently featured
+- **Accessible**: WCAG AA compliant with screen reader support
+
+### Available Pages
+
+- **Home** (`/lite`) - Quick action cards for common tasks
+- **Chat** (`/lite/chat`) - Community support and conversations
+- **Send** (`/lite/send`) - Send FairCoin to others
+- **Receive** (`/lite/receive`) - Show QR code to receive
+- **Balance** (`/lite/balance`) - View transactions and balance
+- **Help** (`/lite/help`) - Tutorials and guides
+
+### Access FairCoin Lite
+
+- **Staging**: [https://faircoin.bixio.xyz/lite](https://faircoin.bixio.xyz/lite)
+- **Multi-Language**: `/{locale}/lite` (e.g., `/en/lite`, `/id/lite`)
+
+📚 **[Complete FairCoin Lite Guide](./docs/FAIRCOIN_LITE.md)** - Learn about the design principles, target audience, and development guide.
 
 ## 📈 How to Earn PFI-Score & PFI-Index
 
@@ -547,6 +618,8 @@ Detailed documentation is available:
 - [SPONSORS_GUIDE.md](./SPONSORS_GUIDE.md) - GitHub Sponsors setup and visibility guide
 
 ### Feature Documentation
+- [Multi-Language Support Guide](./docs/MULTI_LANGUAGE_SUPPORT.md) - **NEW!** Complete i18n guide with 15 languages
+- [FairCoin Lite Guide](./docs/FAIRCOIN_LITE.md) - **NEW!** Elder-friendly interface documentation
 - [Chat Integration Guide](./docs/CHAT_INTEGRATION.md) - xdiscord integration and configuration
 - [2FA Implementation Guide](./docs/2FA_IMPLEMENTATION.md)
 - [2FA Integration Summary](./docs/2FA_INTEGRATION_SUMMARY.md)
