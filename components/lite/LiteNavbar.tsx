@@ -59,7 +59,7 @@ export function LiteNavbar() {
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <span className="text-2xl font-bold text-white">FC</span>
               </div>
-              <div className="hidden sm:block">
+              <div>
                 <p className="text-xs uppercase tracking-wider text-primary-600 dark:text-primary-400 font-semibold">FairCoin</p>
                 <p className="text-lg font-bold text-gray-900 dark:text-white">Lite</p>
               </div>
@@ -76,7 +76,7 @@ export function LiteNavbar() {
             )}
           </div>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav - Language selector hidden in lite mode */}
           <div className="hidden md:flex items-center gap-2">
             {navLinks.map(({ label, href, icon: Icon }) => (
               <Link
@@ -88,7 +88,6 @@ export function LiteNavbar() {
                 <span>{label}</span>
               </Link>
             ))}
-            <LanguageSelector />
             {showInstall && (
               <button
                 onClick={handleInstallClick}
@@ -117,7 +116,7 @@ export function LiteNavbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Language selector visible in mobile/tablet */}
         {open && (
           <div className="md:hidden pb-4 space-y-2 border-t-2 border-gray-100 dark:border-gray-800 pt-4 mt-2">
             {isAuthenticated && user && (

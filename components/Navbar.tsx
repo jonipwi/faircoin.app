@@ -56,10 +56,15 @@ export function Navbar() {
               </span>
             </Link>
 
-            {/* Right Side: Language Selector + Theme + Auth (Desktop) */}
+            {/* Right Side: Lite Mode + Language Selector + Theme + Auth (Desktop) */}
             <div className="hidden md:flex items-center gap-3">
+              <Link
+                href={localePath('lite') as any}
+                className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors px-3 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/50"
+              >
+                ✨ {t('nav.liteMode')}
+              </Link>
               <LanguageSelector />
-              <ThemeSwitcher />
               
               {loading ? (
                 <div className="w-8 h-8 animate-spin border-2 border-primary-500 border-t-transparent rounded-full" />
@@ -69,7 +74,8 @@ export function Navbar() {
                     <LayoutDashboard className="w-4 h-4" />
                     {t('nav.settings') || 'Settings'}
                   </Link>
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30">
+                  {/* Hide username on tablets (md to lg), show only on desktop (lg+) */}
+                  <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30">
                     <User className="w-4 h-4 text-primary-600 dark:text-primary-400" />
                     <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
                       {user?.username}
@@ -94,7 +100,7 @@ export function Navbar() {
               )}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile & Tablet Menu Button with Language */}
             <div className="flex items-center gap-2 md:hidden">
               <LanguageSelector />
               <ThemeSwitcher />
@@ -131,19 +137,23 @@ export function Navbar() {
                 </Link>
               )
             )}
-            
-            <Link
-              href={localePath('lite') as any}
-              className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors px-3 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/50"
-            >
-              ✨ {t('nav.liteMode')}
-            </Link>
+            <ThemeSwitcher />
           </div>
 
           {/* Mobile Menu */}
           {open && (
             <div className="md:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 animate-slide-down">
               <div className="grid gap-2">
+                <Link
+                  href={localePath('lite') as any}
+                  onClick={() => setOpen(false)}
+                  className="btn btn-ghost justify-start text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                >
+                  ✨ {t('nav.liteMode')}
+                </Link>
+                
+                <div className="my-2 border-t border-gray-200 dark:border-gray-700"></div>
+                
                 {navLinks.map((link) => 
                   link.href.startsWith('#') ? (
                     <a
@@ -165,14 +175,6 @@ export function Navbar() {
                     </Link>
                   )
                 )}
-                
-                <Link
-                  href={localePath('lite') as any}
-                  onClick={() => setOpen(false)}
-                  className="btn btn-ghost justify-start text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
-                >
-                  ✨ {t('nav.liteMode')}
-                </Link>
                 
                 {loading ? (
                   <div className="flex justify-center py-2">

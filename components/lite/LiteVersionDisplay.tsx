@@ -39,10 +39,10 @@ export default function LiteVersionDisplay({ show = false, autoHideDelay }: Lite
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-4 right-4 bg-gradient-to-br from-primary-600/90 to-accent-600/90 dark:from-primary-700/90 dark:to-accent-700/90 backdrop-blur-sm text-white text-xs px-4 py-3 rounded-2xl shadow-xl z-50 border-2 border-white/20 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="fixed bottom-4 left-4 bg-gradient-to-br from-primary-600/90 to-accent-600/90 dark:from-primary-700/90 dark:to-accent-700/90 backdrop-blur-sm text-white text-xs px-4 py-3 rounded-2xl shadow-xl z-50 border-2 border-white/20 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <button
         onClick={handleClose}
-        className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-lg flex items-center justify-center transition-all hover:scale-110"
+        className="absolute -top-2 -left-2 w-6 h-6 rounded-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 shadow-lg flex items-center justify-center transition-all hover:scale-110"
         aria-label="Close"
       >
         <X className="w-4 h-4" />
