@@ -51,16 +51,28 @@ export function WalletSection() {
       const response = await fetch(`${API_BASE_URL}/api/v1/fairness/indexes?user=${encodeURIComponent(user.username)}`)
       
       if (response.ok) {
-        const data = await response.json()
-        console.log('[PFI] API response:', data)
+        const text = await response.text()
+        if (!text || text.trim() === '') {
+          console.log('[PFI] Empty response from API, using default metrics')
+          setPfiMetrics({ score: 0, index: 0, share: 0 })
+          return
+        }
         
-        if (data.success && data.index) {
-          setPfiMetrics({
-            score: data.index.pfi_total || 0,
-            index: data.index.total_fairness_score || 0,
-            share: data.index.approved_submissions || 0
-          })
-        } else {
+        try {
+          const data = JSON.parse(text)
+          console.log('[PFI] API response:', data)
+          
+          if (data.success && data.index) {
+            setPfiMetrics({
+              score: data.index.pfi_total || 0,
+              index: data.index.total_fairness_score || 0,
+              share: data.index.approved_submissions || 0
+            })
+          } else {
+            setPfiMetrics({ score: 0, index: 0, share: 0 })
+          }
+        } catch (parseError) {
+          console.error('[PFI] Failed to parse JSON:', parseError)
           setPfiMetrics({ score: 0, index: 0, share: 0 })
         }
       } else {
@@ -126,6 +138,14 @@ export function WalletSection() {
         
         setWallet(newWallet)
         localStorage.setItem('wallet', JSON.stringify(newWallet))
+        
+        // Update user object with wallet_address
+        if (user) {
+          const updatedUser = { ...user, wallet_address: data.data.address }
+          localStorage.setItem('user', JSON.stringify(updatedUser))
+          // Trigger auth state refresh
+          window.dispatchEvent(new Event('authStateChanged'))
+        }
         
         // Save secret phrase
         if (data.data.secretPhrase) {

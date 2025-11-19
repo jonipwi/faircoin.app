@@ -22,7 +22,7 @@ interface WalletInfo {
 const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
 
 export default function LiteBalance() {
-  const { user } = useAuth()
+  const { user, checkAuth } = useAuth()
   const [wallet, setWallet] = useState<WalletInfo | null>(null)
   const [pfiMetrics, setPfiMetrics] = useState<PFIMetrics>({
     score: 0,
@@ -41,18 +41,30 @@ export default function LiteBalance() {
       const response = await fetch(`${API_BASE_URL}/api/v1/fairness/indexes?user=${encodeURIComponent(user.username)}`)
       
       if (response.ok) {
-        const data = await response.json()
+        const text = await response.text()
+        if (!text || text.trim() === '') {
+          console.log('[PFI] Empty response from API, using default metrics')
+          setPfiMetrics({ score: 0, index: 0, share: 0 })
+          return
+        }
         
-        if (data.success && data.index) {
-          setPfiMetrics({
-            score: data.index.pfi_total || 0,
-            index: data.index.total_fairness_score || 0,
-            share: data.index.approved_submissions || 0
-          })
-        } else {
+        try {
+          const data = JSON.parse(text)
+          if (data.success && data.index) {
+            setPfiMetrics({
+              score: data.index.pfi_total || 0,
+              index: data.index.total_fairness_score || 0,
+              share: data.index.approved_submissions || 0
+            })
+          } else {
+            setPfiMetrics({ score: 0, index: 0, share: 0 })
+          }
+        } catch (parseError) {
+          console.error('[PFI] Failed to parse JSON:', parseError)
           setPfiMetrics({ score: 0, index: 0, share: 0 })
         }
       } else {
+        console.log(`[PFI] API returned status ${response.status}, using default metrics`)
         setPfiMetrics({ score: 0, index: 0, share: 0 })
       }
     } catch (error) {
@@ -62,15 +74,22 @@ export default function LiteBalance() {
   }
 
   useEffect(() => {
+    checkAuth()
+  }, [checkAuth])
+
+  useEffect(() => {
     const loadData = async () => {
       if (user?.username) {
         console.log('[Balance] Loading wallet for user:', user.username, 'wallet_address:', user.wallet_address)
+        console.log('[Balance] Full user object:', user)
+        
         // Load wallet from localStorage
         const savedWallet = localStorage.getItem('wallet')
         if (savedWallet) {
           try {
-            setWallet(JSON.parse(savedWallet))
-            console.log('[Balance] Loaded saved wallet from localStorage')
+            const parsedWallet = JSON.parse(savedWallet)
+            setWallet(parsedWallet)
+            console.log('[Balance] Loaded saved wallet from localStorage:', parsedWallet)
           } catch (e) {
             console.error('Failed to parse saved wallet:', e)
           }
@@ -85,7 +104,28 @@ export default function LiteBalance() {
           localStorage.setItem('wallet', JSON.stringify(walletFromAuth))
           console.log('[Balance] Created wallet from auth wallet_address:', user.wallet_address)
         } else {
-          console.log('[Balance] No wallet found and no wallet_address in user')
+          // Check if user object in localStorage has wallet_address
+          const storedUser = localStorage.getItem('user')
+          console.log('[Balance] No wallet_address in user object, checking localStorage user:', storedUser)
+          if (storedUser) {
+            try {
+              const userData = JSON.parse(storedUser)
+              console.log('[Balance] Parsed user from localStorage:', userData)
+              if (userData.wallet_address) {
+                const walletFromStorage: WalletInfo = {
+                  address: userData.wallet_address,
+                  balances: { USDT: 0 },
+                  createdAt: new Date()
+                }
+                setWallet(walletFromStorage)
+                localStorage.setItem('wallet', JSON.stringify(walletFromStorage))
+                console.log('[Balance] Created wallet from localStorage user wallet_address:', userData.wallet_address)
+              }
+            } catch (e) {
+              console.error('[Balance] Failed to parse user from localStorage:', e)
+            }
+          }
+          console.log('[Balance] No wallet found and no wallet_address available')
         }
         
         // Fetch PFI metrics
@@ -122,6 +162,14 @@ export default function LiteBalance() {
         
         setWallet(newWallet)
         localStorage.setItem('wallet', JSON.stringify(newWallet))
+        
+        // Update user object with wallet_address
+        if (user) {
+          const updatedUser = { ...user, wallet_address: data.data.address }
+          localStorage.setItem('user', JSON.stringify(updatedUser))
+          // Trigger auth state refresh
+          window.dispatchEvent(new Event('authStateChanged'))
+        }
         
         if (data.data.secretPhrase) {
           localStorage.setItem(`wallet_phrase_${data.data.address}`, data.data.secretPhrase)

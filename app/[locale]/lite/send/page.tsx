@@ -1,12 +1,16 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Send, User, ArrowRight, Check, AlertCircle } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export default function LiteSend() {
-  const { user } = useAuth()
+  const { user, isAuthenticated, loading } = useAuth()
+  const router = useRouter()
+  const localePath = useLocalePath()
   const { t } = useLanguage()
   const [step, setStep] = useState<'contact' | 'amount' | 'confirm'>('contact')
   const [selectedContact, setSelectedContact] = useState<string>('')
@@ -41,6 +45,12 @@ export default function LiteSend() {
   }
 
   const clearAmount = () => setAmount('')
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      router.push(localePath('auth') as any)
+    }
+  }, [loading, isAuthenticated, router, localePath])
 
   return (
     <div className="min-h-screen py-12">

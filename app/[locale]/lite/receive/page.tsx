@@ -1,14 +1,24 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Download, QrCode, Copy, Check } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 export default function LiteReceive() {
-  const { user } = useAuth()
+  const { user, isAuthenticated, loading } = useAuth()
+  const router = useRouter()
+  const localePath = useLocalePath()
   const { t } = useLanguage()
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (!loading && !isAuthenticated) {
+      router.push(localePath('auth') as any)
+    }
+  }, [loading, isAuthenticated, router, localePath])
 
   const handleCopy = () => {
     if (user?.username) {

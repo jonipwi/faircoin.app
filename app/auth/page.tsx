@@ -4,12 +4,14 @@ import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Wallet as WalletIcon, Shield, CheckCircle, ArrowLeft, Sparkles, AlertTriangle, Copy, Eye, EyeOff, Download } from 'lucide-react'
 import { api, type AuthSession, type TermsResponse } from '@/lib/api'
+import { useLocalePath } from '@/lib/i18n/useLocalePath'
 
 function AuthPageContent() {
   const devMode = process.env.NEXT_PUBLIC_DEV_MODE || process.env.DEV_MODE
   const devModeMessage = process.env.NEXT_PUBLIC_DEV_MODE_MESSAGE || process.env.DEV_MODE_MESSAGE
   const router = useRouter()
   const searchParams = useSearchParams()
+  const localePath = useLocalePath()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [step, setStep] = useState<'choice' | 'register' | 'login' | 'mnemonic' | 'terms' | 'success'>('choice')
@@ -157,8 +159,8 @@ function AuthPageContent() {
         
         // Check if user has already accepted terms
         if (data.terms_accepted) {
-          // Skip terms and go directly to dashboard
-          router.push('/dashboard')
+          // Skip terms and go directly to lite
+          router.push(localePath('lite') as any)
         } else {
           setStep('terms')
         }
@@ -288,7 +290,7 @@ Created: ${new Date().toISOString()}
         
         // Redirect to dashboard after delay
         setTimeout(() => {
-          router.push('/dashboard')
+          router.push(localePath('lite') as any)
         }, 2000)
       } else {
         setError(response.message || 'Failed to accept terms')

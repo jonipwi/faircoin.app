@@ -25,7 +25,7 @@ interface WalletInfo {
 const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
 
 export default function LiteBalance() {
-  const { user, isAuthenticated } = useAuth()
+  const { user, isAuthenticated, loading: authLoading } = useAuth()
   const router = useRouter()
   const localePath = useLocalePath()
   const { t } = useLanguage()
@@ -35,9 +35,15 @@ export default function LiteBalance() {
     index: 0,
     share: 0
   })
-  const [loading, setLoading] = useState(true)
+  const [pageLoading, setPageLoading] = useState(true)
   const [isCreatingWallet, setIsCreatingWallet] = useState(false)
   const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push(localePath('auth') as any)
+    }
+  }, [authLoading, isAuthenticated, router, localePath])
 
   // Fetch PFI metrics from FairCoin API
   const fetchPFIMetrics = async () => {
@@ -70,22 +76,54 @@ export default function LiteBalance() {
   useEffect(() => {
     const loadData = async () => {
       if (user?.username) {
-        // Load wallet from localStorage
+        let walletLoaded = false
         const savedWallet = localStorage.getItem('wallet')
         if (savedWallet) {
           try {
             setWallet(JSON.parse(savedWallet))
+            walletLoaded = true
           } catch (e) {
             console.error('Failed to parse saved wallet:', e)
           }
         }
-        
-        // Fetch PFI metrics
+
+        if (!walletLoaded && user.wallet_address) {
+          const walletFromAuth: WalletInfo = {
+            address: user.wallet_address,
+            balances: { USDT: 0 },
+            createdAt: new Date()
+          }
+          setWallet(walletFromAuth)
+          localStorage.setItem('wallet', JSON.stringify(walletFromAuth))
+          walletLoaded = true
+        }
+
+        if (!walletLoaded) {
+          const storedUser = localStorage.getItem('user')
+          if (storedUser) {
+            try {
+              const userData = JSON.parse(storedUser)
+              if (userData.wallet_address) {
+                const walletFromStorage: WalletInfo = {
+                  address: userData.wallet_address,
+                  balances: { USDT: 0 },
+                  createdAt: new Date()
+                }
+                setWallet(walletFromStorage)
+                localStorage.setItem('wallet', JSON.stringify(walletFromStorage))
+                walletLoaded = true
+              }
+            } catch (e) {
+              console.error('Failed to parse user from localStorage:', e)
+            }
+          }
+        }
+
         await fetchPFIMetrics()
       }
-      setLoading(false)
+      setPageLoading(false)
     }
-    
+
     loadData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
@@ -201,7 +239,7 @@ Created: ${new Date().toISOString()}
           </p>
         </div>
 
-        {loading ? (
+        {pageLoading ? (
           <div className="flex items-center justify-center py-12">
             <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin" />
           </div>

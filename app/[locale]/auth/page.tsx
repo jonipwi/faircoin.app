@@ -132,7 +132,6 @@ function AuthPageContent() {
       const data = await response.json()
 
       if (data.success) {
-        // Store flat response data like PowerShell test
         const sessionData = {
           id: data.session_id,
           user_id: data.user_id,
@@ -146,8 +145,6 @@ function AuthPageContent() {
         }
         setSession(sessionData)
         localStorage.setItem('auth_token', data.session_id)
-        
-        // Store user info for chat widget and other components
         localStorage.setItem('user', JSON.stringify({
           username: data.username,
           full_name: data.full_name,
@@ -155,10 +152,9 @@ function AuthPageContent() {
           avatar_url: data.avatar_url,
           wallet_address: data.wallet_address,
         }))
-        
-        // Check if user has already accepted terms
+        window.dispatchEvent(new Event('authStateChanged'))
+
         if (data.terms_accepted) {
-          // Skip terms and go directly to lite page
           router.push(localePath('lite') as any)
         } else {
           setStep('terms')
@@ -282,6 +278,7 @@ Created: ${new Date().toISOString()}
             avatar_url: session.avatar_url,
             wallet_address: session.wallet_address,
           }))
+          window.dispatchEvent(new Event('authStateChanged'))
         }
         
         // Redirect to lite page after delay
