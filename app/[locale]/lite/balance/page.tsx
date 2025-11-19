@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Wallet, TrendingUp, PieChart, Download, Copy, Check } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
@@ -24,7 +25,8 @@ interface WalletInfo {
 const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
 
 export default function LiteBalance() {
-  const { user } = useAuth()
+  const { user, isAuthenticated } = useAuth()
+  const router = useRouter()
   const localePath = useLocalePath()
   const { t } = useLanguage()
   const [wallet, setWallet] = useState<WalletInfo | null>(null)
@@ -89,7 +91,11 @@ export default function LiteBalance() {
   }, [user])
 
   const createWallet = async () => {
-    if (!user?.username) return
+    // Redirect to auth page if not authenticated
+    if (!user?.username || !isAuthenticated) {
+      router.push(localePath('auth') as any)
+      return
+    }
     
     setIsCreatingWallet(true)
     

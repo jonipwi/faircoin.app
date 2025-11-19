@@ -24,7 +24,7 @@ interface WalletInfo {
 const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
 
 export function WalletSection() {
-  const { isAuthenticated, user, loading } = useAuth()
+  const { isAuthenticated, user, loading, checkAuth } = useAuth()
   const { t } = useLanguage()
   const router = useRouter()
   const localePath = useLocalePath()
@@ -36,6 +36,11 @@ export function WalletSection() {
   })
   const [isCreatingWallet, setIsCreatingWallet] = useState(false)
   const [copied, setCopied] = useState(false)
+
+  // Refresh auth state on component mount
+  useEffect(() => {
+    checkAuth()
+  }, [])
 
   // Fetch PFI metrics from FairCoin API
   const fetchPFIMetrics = async () => {
@@ -207,34 +212,6 @@ Created: ${new Date().toISOString()}
     )
   }
 
-  if (!isAuthenticated) {
-    return (
-      <section id="wallet" className="section">
-        <div className="container">
-          <div className="max-w-2xl mx-auto">
-            <div className="card p-12 text-center space-y-6">
-              <div className="w-20 h-20 mx-auto rounded-2xl bg-primary-500/10 dark:bg-primary-500/20 flex items-center justify-center">
-                <Lock className="w-10 h-10 text-primary-500" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
-                Authentication Required
-              </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Please log in to access your FairCoin wallet and manage your funds.
-              </p>
-              <div className="flex gap-4 justify-center pt-4">
-                <button className="btn btn-primary btn-lg" onClick={handleLogin}>
-                  <Wallet className="w-5 h-5" />
-                  Login to Wallet
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   return (
     <section id="wallet" className="section bg-white/5 dark:bg-gray-900/30 backdrop-blur-sm">
       <div className="container">
@@ -248,7 +225,7 @@ Created: ${new Date().toISOString()}
         </div>
 
         {/* Wallet Creation or Display */}
-        {!wallet ? (
+        {!wallet || !isAuthenticated ? (
           <div className="max-w-2xl mx-auto">
             <div className="card p-12 text-center space-y-6">
               <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
@@ -261,12 +238,11 @@ Created: ${new Date().toISOString()}
                 {t('wallet.treasuryDescription')}
               </p>
               <button
-                onClick={createWallet}
-                disabled={isCreatingWallet}
-                className="btn btn-primary btn-lg w-full disabled:opacity-50"
+                onClick={handleLogin}
+                className="btn btn-primary btn-lg w-full"
               >
                 <Wallet className="w-5 h-5" />
-                {isCreatingWallet ? t('wallet.creatingTreasury') : t('wallet.createPFITreasury')}
+                {t('wallet.loginToWallet') || 'Create or Access Your Treasury'}
               </button>
             </div>
           </div>
