@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { HelpCircle, MessageCircle, Send, Download, Wallet, Video, FileText } from 'lucide-react'
+import LiteVersionDisplay from '@/components/lite/LiteVersionDisplay'
 
 export default function LiteHelp() {
   const tutorials: Array<{
@@ -56,6 +57,7 @@ export default function LiteHelp() {
 
   return (
     <div className="min-h-screen py-12">
+      <LiteVersionDisplay show={true} autoHideDelay={5000} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-12">

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X, Home, MessageCircle, Send, Download, Wallet, HelpCircle, ArrowLeft } from 'lucide-react'
+import { Menu, X, Home, MessageCircle, HelpCircle, ArrowLeft } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function LiteNavbar() {
@@ -12,9 +12,6 @@ export function LiteNavbar() {
   const navLinks = [
     { label: 'Home', href: '/lite', icon: Home },
     { label: 'Chat', href: '/lite/chat', icon: MessageCircle },
-    { label: 'Send', href: '/lite/send', icon: Send },
-    { label: 'Receive', href: '/lite/receive', icon: Download },
-    { label: 'Balance', href: '/lite/balance', icon: Wallet },
     { label: 'Help', href: '/lite/help', icon: HelpCircle },
   ]
 
