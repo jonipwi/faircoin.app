@@ -74,113 +74,113 @@
       "title": "Community Chat",
       "description": "Doe mee aan het gesprek, krijg hulp en ontmoet vrienden",
       "header": "Community Chat",
-      "room": "Friendly Lounge — always welcoming",
-      "liveHelp": "Live Help",
+      "room": "Vriendelijke Lounge — altijd welkom",
+      "liveHelp": "Live Hulp",
       "available": "24/7"
     },
     "send": {
       "title": "FairCoin Verzenden",
       "description": "Geef FairCoin aan vrienden en de community",
-      "header": "Send FairCoin",
-      "chooseRecipient": "Choose who to send to",
-      "enterAmount": "Enter amount to send",
-      "confirmTransfer": "Confirm your transfer",
-      "amount": "Amount",
+      "header": "FairCoin Verzenden",
+      "chooseRecipient": "Kies naar wie je wilt verzenden",
+      "enterAmount": "Voer het bedrag in om te verzenden",
+      "confirmTransfer": "Bevestig je overdracht",
+      "amount": "Bedrag",
       "numberPad": {
         "clear": "←"
       },
       "buttons": {
-        "back": "Back",
-        "continue": "Continue",
-        "sendNow": "Send Now",
-        "sending": "Sending..."
+        "back": "Terug",
+        "continue": "Doorgaan",
+        "sendNow": "Nu Verzenden",
+        "sending": "Verzenden..."
       },
       "success": {
-        "title": "Sent Successfully!",
-        "message": "{{amount}} FC sent to {{recipient}}"
+        "title": "Succesvol Verzonden!",
+        "message": "{{amount}} FC verzonden naar {{recipient}}"
       },
       "confirm": {
-        "youAreSending": "You are sending",
-        "to": "To"
+        "youAreSending": "Je verzendt",
+        "to": "Naar"
       }
     },
     "receive": {
       "title": "FairCoin Ontvangen",
       "description": "Toon je QR-code om munten te ontvangen",
-      "header": "Receive FairCoin",
-      "subtitle": "Share your username or QR code",
-      "yourUsername": "Your FairCoin Username",
-      "copyButton": "Copy My Username",
-      "copied": "Copied!",
+      "header": "FairCoin Ontvangen",
+      "subtitle": "Deel je gebruikersnaam of QR-code",
+      "yourUsername": "Je FairCoin Gebruikersnaam",
+      "copyButton": "Kopieer Mijn Gebruikersnaam",
+      "copied": "Gekopieerd!",
       "instructions": {
-        "title": "How to receive FairCoin",
-        "step1": "Show this QR code to the person sending you FairCoin",
-        "step2": "Or tap \"Copy My Username\" and send it to them",
-        "step3": "FairCoin will arrive in your wallet instantly"
+        "title": "Hoe je FairCoin ontvangt",
+        "step1": "Toon deze QR-code aan de persoon die je FairCoin stuurt",
+        "step2": "Of tik op \"Kopieer Mijn Gebruikersnaam\" en stuur het naar hen",
+        "step3": "FairCoin komt direct in je portemonnee aan"
       }
     },
     "balance": {
       "title": "Mijn Saldo",
       "description": "Bekijk je FairCoin en recente transacties",
-      "header": "PFI Treasury ✨",
-      "subtitle": "{{username}}'s Personal Fairness Index",
-      "treasuryAddress": "Treasury Address",
-      "tokensEntrusted": "Tokens Entrusted ✨",
-      "tokensNote": "Faith, Love & Justice in Heaven's Network",
-      "pfiMetrics": "Personal Fairness Index (PFI★)",
+      "header": "PFI Schatkist ✨",
+      "subtitle": "{{username}}'s Persoonlijke Eerlijkheidsindex",
+      "treasuryAddress": "Schatkist Adres",
+      "tokensEntrusted": "Toevertrouwde Tokens ✨",
+      "tokensNote": "Geloof, Liefde & Gerechtigheid in het Hemelnetwerk",
+      "pfiMetrics": "Persoonlijke Eerlijkheidsindex (PFI★)",
       "pfiScore": "PFI Score",
       "pfiIndex": "PFI Index",
-      "pfiShare": "PFI Share",
-      "performanceIndicator": "Performance Indicator",
-      "approvedSubmissions": "Approved Submissions",
-      "refreshMetrics": "Refresh PFI Metrics",
-      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
+      "pfiShare": "PFI Aandeel",
+      "performanceIndicator": "Prestatie-indicator",
+      "approvedSubmissions": "Goedgekeurde Inzendingen",
+      "refreshMetrics": "PFI Metrieken Vernieuwen",
+      "spiritualNote": "Onthoud: Tokens opgeslagen door Geloof, Liefde en Gerechtigheid",
       "downloadDetails": "Download Details",
-      "backToHome": "Back to Home",
+      "backToHome": "Terug naar Home",
       "createTreasury": {
-        "title": "Create Your PFI Treasury",
-        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
-        "button": "Create PFI Treasury",
-        "creating": "Creating..."
+        "title": "Creëer Je PFI Schatkist",
+        "description": "Je schatkist bewaart je Persoonlijke Eerlijkheidsindex metrieken en community tokens. We zijn geen cryptocurrency platform - we meten eerlijkheid!",
+        "button": "Creëer PFI Schatkist",
+        "creating": "Creëren..."
       },
-      "copy": "Copy",
-      "copied": "Copied!"
+      "copy": "Kopieer",
+      "copied": "Gekopieerd!"
     },
     "help": {
       "title": "Hulp en Tutorial",
       "description": "Leer stap voor stap hoe je FairCoin gebruikt",
-      "header": "Help & Tutorials",
-      "subtitle": "Everything you need to know, step by step",
+      "header": "Hulp & Tutorials",
+      "subtitle": "Alles wat je moet weten, stap voor stap",
       "emergency": {
-        "title": "Need Help Right Now?",
-        "description": "Talk to a real person in the Community Chat",
-        "button": "Open Chat Now",
-        "availability": "Moderators respond within 2 minutes • Available 24/7"
+        "title": "Nu Hulp Nodig?",
+        "description": "Praat met een echt persoon in de Community Chat",
+        "button": "Open Chat Nu",
+        "availability": "Moderators reageren binnen 2 minuten • Beschikbaar 24/7"
       },
-      "quickStart": "Quick Start Guides",
+      "quickStart": "Snelstartgidsen",
       "tutorials": {
-        "joinChat": "How to Join Community Chat",
-        "joinChatDesc": "Learn how to connect with helpers and make friends",
-        "sendCoins": "How to Send FairCoin",
-        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
-        "receiveCoins": "How to Receive FairCoin",
-        "receiveCoinsDesc": "Show your QR code and get coins instantly",
-        "understandBalance": "Understanding Your Balance",
-        "understandBalanceDesc": "See your coins and transaction history"
+        "joinChat": "Hoe Deel te Nemen aan Community Chat",
+        "joinChatDesc": "Leer hoe je contact maakt met helpers en vrienden maakt",
+        "sendCoins": "Hoe FairCoin te Verzenden",
+        "sendCoinsDesc": "Stap-voor-stap gids voor het geven van munten aan vrienden",
+        "receiveCoins": "Hoe FairCoin te Ontvangen",
+        "receiveCoinsDesc": "Toon je QR-code en ontvang direct munten",
+        "understandBalance": "Je Saldo Begrijpen",
+        "understandBalanceDesc": "Bekijk je munten en transactiegeschiedenis"
       },
       "resources": {
-        "title": "More Resources",
+        "title": "Extra Bronnen",
         "videoTutorials": "Video Tutorials",
-        "videoDesc": "Watch simple video guides",
-        "printableGuides": "Printable Guides",
-        "printableDesc": "Download easy-to-read PDF instructions",
-        "comingSoon": "Coming Soon"
+        "videoDesc": "Bekijk eenvoudige video tutorials",
+        "printableGuides": "Afdrukbare Gidsen",
+        "printableDesc": "Download makkelijk te lezen PDF instructies",
+        "comingSoon": "Binnenkort Beschikbaar"
       },
       "support": {
-        "title": "Still Need Help?",
-        "description": "Our support team is here for you",
-        "chatButton": "Chat with Support",
-        "emailButton": "Email Us"
+        "title": "Nog Steeds Hulp Nodig?",
+        "description": "Ons supportteam staat voor je klaar",
+        "chatButton": "Chat met Support",
+        "emailButton": "Stuur Ons een E-mail"
       }
     },
     "language": {

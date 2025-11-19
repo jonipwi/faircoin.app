@@ -73,114 +73,114 @@
     "chat": {
       "title": "Chat Communautaire",
       "description": "Rejoignez la conversation, obtenez de l'aide et rencontrez des amis",
-      "header": "Community Chat",
-      "room": "Friendly Lounge — always welcoming",
-      "liveHelp": "Live Help",
+      "header": "Chat Communautaire",
+      "room": "Salon Convivial — toujours accueillant",
+      "liveHelp": "Aide en Direct",
       "available": "24/7"
     },
     "send": {
       "title": "Envoyer FairCoin",
       "description": "Offrez FairCoin à des amis et à la communauté",
-      "header": "Send FairCoin",
-      "chooseRecipient": "Choose who to send to",
-      "enterAmount": "Enter amount to send",
-      "confirmTransfer": "Confirm your transfer",
-      "amount": "Amount",
+      "header": "Envoyer FairCoin",
+      "chooseRecipient": "Choisissez à qui envoyer",
+      "enterAmount": "Entrez le montant à envoyer",
+      "confirmTransfer": "Confirmez votre transfert",
+      "amount": "Montant",
       "numberPad": {
         "clear": "←"
       },
       "buttons": {
-        "back": "Back",
-        "continue": "Continue",
-        "sendNow": "Send Now",
-        "sending": "Sending..."
+        "back": "Retour",
+        "continue": "Continuer",
+        "sendNow": "Envoyer Maintenant",
+        "sending": "Envoi en cours..."
       },
       "success": {
-        "title": "Sent Successfully!",
-        "message": "{{amount}} FC sent to {{recipient}}"
+        "title": "Envoyé avec Succès !",
+        "message": "{{amount}} FC envoyés à {{recipient}}"
       },
       "confirm": {
-        "youAreSending": "You are sending",
-        "to": "To"
+        "youAreSending": "Vous envoyez",
+        "to": "À"
       }
     },
     "receive": {
       "title": "Recevoir FairCoin",
       "description": "Montrez votre code QR pour recevoir des pièces",
-      "header": "Receive FairCoin",
-      "subtitle": "Share your username or QR code",
-      "yourUsername": "Your FairCoin Username",
-      "copyButton": "Copy My Username",
-      "copied": "Copied!",
+      "header": "Recevoir FairCoin",
+      "subtitle": "Partagez votre nom d'utilisateur ou code QR",
+      "yourUsername": "Votre Nom d'Utilisateur FairCoin",
+      "copyButton": "Copier Mon Nom d'Utilisateur",
+      "copied": "Copié !",
       "instructions": {
-        "title": "How to receive FairCoin",
-        "step1": "Show this QR code to the person sending you FairCoin",
-        "step2": "Or tap \"Copy My Username\" and send it to them",
-        "step3": "FairCoin will arrive in your wallet instantly"
+        "title": "Comment recevoir FairCoin",
+        "step1": "Montrez ce code QR à la personne qui vous envoie FairCoin",
+        "step2": "Ou appuyez sur \"Copier Mon Nom d'Utilisateur\" et envoyez-le lui",
+        "step3": "FairCoin arrivera dans votre portefeuille instantanément"
       }
     },
     "balance": {
       "title": "Mon Solde",
       "description": "Consultez votre FairCoin et vos transactions récentes",
-      "header": "PFI Treasury ✨",
-      "subtitle": "{{username}}'s Personal Fairness Index",
-      "treasuryAddress": "Treasury Address",
-      "tokensEntrusted": "Tokens Entrusted ✨",
-      "tokensNote": "Faith, Love & Justice in Heaven's Network",
-      "pfiMetrics": "Personal Fairness Index (PFI★)",
-      "pfiScore": "PFI Score",
-      "pfiIndex": "PFI Index",
-      "pfiShare": "PFI Share",
-      "performanceIndicator": "Performance Indicator",
-      "approvedSubmissions": "Approved Submissions",
-      "refreshMetrics": "Refresh PFI Metrics",
-      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
-      "downloadDetails": "Download Details",
-      "backToHome": "Back to Home",
+      "header": "Trésorerie PFI ✨",
+      "subtitle": "Indice d'Équité Personnelle de {{username}}",
+      "treasuryAddress": "Adresse de la Trésorerie",
+      "tokensEntrusted": "Tokens Confiés ✨",
+      "tokensNote": "Foi, Amour et Justice dans le Réseau du Ciel",
+      "pfiMetrics": "Indice d'Équité Personnelle (PFI★)",
+      "pfiScore": "Score PFI",
+      "pfiIndex": "Indice PFI",
+      "pfiShare": "Part PFI",
+      "performanceIndicator": "Indicateur de Performance",
+      "approvedSubmissions": "Soumissions Approuvées",
+      "refreshMetrics": "Actualiser les Métriques PFI",
+      "spiritualNote": "Rappelez-vous : Tokens stockés par la Foi, l'Amour et la Justice",
+      "downloadDetails": "Télécharger les Détails",
+      "backToHome": "Retour à l'Accueil",
       "createTreasury": {
-        "title": "Create Your PFI Treasury",
-        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
-        "button": "Create PFI Treasury",
-        "creating": "Creating..."
+        "title": "Créez Votre Trésorerie PFI",
+        "description": "Votre trésorerie stocke vos métriques d'Indice d'Équité Personnelle et les tokens communautaires. Nous ne sommes pas une plateforme de cryptomonnaie - nous mesurons l'équité !",
+        "button": "Créer une Trésorerie PFI",
+        "creating": "Création en cours..."
       },
-      "copy": "Copy",
-      "copied": "Copied!"
+      "copy": "Copier",
+      "copied": "Copié !"
     },
     "help": {
       "title": "Aide et Tutoriel",
       "description": "Apprenez à utiliser FairCoin étape par étape",
-      "header": "Help & Tutorials",
-      "subtitle": "Everything you need to know, step by step",
+      "header": "Aide et Tutoriels",
+      "subtitle": "Tout ce que vous devez savoir, étape par étape",
       "emergency": {
-        "title": "Need Help Right Now?",
-        "description": "Talk to a real person in the Community Chat",
-        "button": "Open Chat Now",
-        "availability": "Moderators respond within 2 minutes • Available 24/7"
+        "title": "Besoin d'Aide Maintenant ?",
+        "description": "Parlez à une personne réelle dans le Chat Communautaire",
+        "button": "Ouvrir le Chat Maintenant",
+        "availability": "Les modérateurs répondent en 2 minutes • Disponible 24/7"
       },
-      "quickStart": "Quick Start Guides",
+      "quickStart": "Guides de Démarrage Rapide",
       "tutorials": {
-        "joinChat": "How to Join Community Chat",
-        "joinChatDesc": "Learn how to connect with helpers and make friends",
-        "sendCoins": "How to Send FairCoin",
-        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
-        "receiveCoins": "How to Receive FairCoin",
-        "receiveCoinsDesc": "Show your QR code and get coins instantly",
-        "understandBalance": "Understanding Your Balance",
-        "understandBalanceDesc": "See your coins and transaction history"
+        "joinChat": "Comment Rejoindre le Chat Communautaire",
+        "joinChatDesc": "Apprenez à vous connecter avec des assistants et à vous faire des amis",
+        "sendCoins": "Comment Envoyer FairCoin",
+        "sendCoinsDesc": "Guide étape par étape pour offrir des pièces à des amis",
+        "receiveCoins": "Comment Recevoir FairCoin",
+        "receiveCoinsDesc": "Montrez votre code QR et recevez des pièces instantanément",
+        "understandBalance": "Comprendre Votre Solde",
+        "understandBalanceDesc": "Consultez vos pièces et l'historique des transactions"
       },
       "resources": {
-        "title": "More Resources",
-        "videoTutorials": "Video Tutorials",
-        "videoDesc": "Watch simple video guides",
-        "printableGuides": "Printable Guides",
-        "printableDesc": "Download easy-to-read PDF instructions",
-        "comingSoon": "Coming Soon"
+        "title": "Plus de Ressources",
+        "videoTutorials": "Tutoriels Vidéo",
+        "videoDesc": "Regardez des guides vidéo simples",
+        "printableGuides": "Guides Imprimables",
+        "printableDesc": "Téléchargez des instructions PDF faciles à lire",
+        "comingSoon": "Bientôt Disponible"
       },
       "support": {
-        "title": "Still Need Help?",
-        "description": "Our support team is here for you",
-        "chatButton": "Chat with Support",
-        "emailButton": "Email Us"
+        "title": "Encore Besoin d'Aide ?",
+        "description": "Notre équipe de support est là pour vous",
+        "chatButton": "Chatter avec le Support",
+        "emailButton": "Nous Envoyer un Email"
       }
     },
     "language": {

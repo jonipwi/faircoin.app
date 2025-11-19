@@ -73,114 +73,114 @@
     "chat": {
       "title": "Чат Сообщества",
       "description": "Присоединяйтесь к беседе, получайте помощь и знакомьтесь с друзьями",
-      "header": "Community Chat",
-      "room": "Friendly Lounge — always welcoming",
-      "liveHelp": "Live Help",
+      "header": "Чат Сообщества",
+      "room": "Дружественная Гостиная — всегда рады",
+      "liveHelp": "Онлайн Помощь",
       "available": "24/7"
     },
     "send": {
       "title": "Отправить FairCoin",
       "description": "Подарите FairCoin друзьям и сообществу",
-      "header": "Send FairCoin",
-      "chooseRecipient": "Choose who to send to",
-      "enterAmount": "Enter amount to send",
-      "confirmTransfer": "Confirm your transfer",
-      "amount": "Amount",
+      "header": "Отправить FairCoin",
+      "chooseRecipient": "Выберите получателя",
+      "enterAmount": "Введите сумму отправки",
+      "confirmTransfer": "Подтвердите перевод",
+      "amount": "Сумма",
       "numberPad": {
         "clear": "←"
       },
       "buttons": {
-        "back": "Back",
-        "continue": "Continue",
-        "sendNow": "Send Now",
-        "sending": "Sending..."
+        "back": "Назад",
+        "continue": "Продолжить",
+        "sendNow": "Отправить Сейчас",
+        "sending": "Отправка..."
       },
       "success": {
-        "title": "Sent Successfully!",
-        "message": "{{amount}} FC sent to {{recipient}}"
+        "title": "Успешно Отправлено!",
+        "message": "{{amount}} FC отправлено {{recipient}}"
       },
       "confirm": {
-        "youAreSending": "You are sending",
-        "to": "To"
+        "youAreSending": "Вы отправляете",
+        "to": "Кому"
       }
     },
     "receive": {
       "title": "Получить FairCoin",
       "description": "Покажите ваш QR-код для получения монет",
-      "header": "Receive FairCoin",
-      "subtitle": "Share your username or QR code",
-      "yourUsername": "Your FairCoin Username",
-      "copyButton": "Copy My Username",
-      "copied": "Copied!",
+      "header": "Получить FairCoin",
+      "subtitle": "Поделитесь своим именем пользователя или QR-кодом",
+      "yourUsername": "Ваше Имя Пользователя FairCoin",
+      "copyButton": "Копировать Мое Имя Пользователя",
+      "copied": "Скопировано!",
       "instructions": {
-        "title": "How to receive FairCoin",
-        "step1": "Show this QR code to the person sending you FairCoin",
-        "step2": "Or tap \"Copy My Username\" and send it to them",
-        "step3": "FairCoin will arrive in your wallet instantly"
+        "title": "Как получить FairCoin",
+        "step1": "Покажите этот QR-код человеку, который отправляет вам FairCoin",
+        "step2": "Или нажмите \"Копировать Мое Имя Пользователя\" и отправьте ему",
+        "step3": "FairCoin мгновенно поступит в ваш кошелек"
       }
     },
     "balance": {
       "title": "Мой Баланс",
       "description": "Просмотрите ваш FairCoin и последние транзакции",
-      "header": "PFI Treasury ✨",
-      "subtitle": "{{username}}'s Personal Fairness Index",
-      "treasuryAddress": "Treasury Address",
-      "tokensEntrusted": "Tokens Entrusted ✨",
-      "tokensNote": "Faith, Love & Justice in Heaven's Network",
-      "pfiMetrics": "Personal Fairness Index (PFI★)",
-      "pfiScore": "PFI Score",
-      "pfiIndex": "PFI Index",
-      "pfiShare": "PFI Share",
-      "performanceIndicator": "Performance Indicator",
-      "approvedSubmissions": "Approved Submissions",
-      "refreshMetrics": "Refresh PFI Metrics",
-      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
-      "downloadDetails": "Download Details",
-      "backToHome": "Back to Home",
+      "header": "Казна PFI ✨",
+      "subtitle": "Индекс Личной Справедливости {{username}}",
+      "treasuryAddress": "Адрес Казны",
+      "tokensEntrusted": "Доверенные Токены ✨",
+      "tokensNote": "Вера, Любовь и Справедливость в Сети Небес",
+      "pfiMetrics": "Индекс Личной Справедливости (PFI★)",
+      "pfiScore": "Оценка PFI",
+      "pfiIndex": "Индекс PFI",
+      "pfiShare": "Доля PFI",
+      "performanceIndicator": "Показатель Эффективности",
+      "approvedSubmissions": "Одобренные Заявки",
+      "refreshMetrics": "Обновить Метрики PFI",
+      "spiritualNote": "Помните: Токены хранятся через Веру, Любовь и Справедливость",
+      "downloadDetails": "Скачать Детали",
+      "backToHome": "Вернуться на Главную",
       "createTreasury": {
-        "title": "Create Your PFI Treasury",
-        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
-        "button": "Create PFI Treasury",
-        "creating": "Creating..."
+        "title": "Создайте Вашу Казну PFI",
+        "description": "Ваша казна хранит метрики вашего Индекса Личной Справедливости и токены сообщества. Мы не криптовалютная платформа - мы измеряем справедливость!",
+        "button": "Создать Казну PFI",
+        "creating": "Создание..."
       },
-      "copy": "Copy",
-      "copied": "Copied!"
+      "copy": "Копировать",
+      "copied": "Скопировано!"
     },
     "help": {
       "title": "Помощь и Руководство",
       "description": "Узнайте, как использовать FairCoin шаг за шагом",
-      "header": "Help & Tutorials",
-      "subtitle": "Everything you need to know, step by step",
+      "header": "Помощь и Руководства",
+      "subtitle": "Все, что вам нужно знать, шаг за шагом",
       "emergency": {
-        "title": "Need Help Right Now?",
-        "description": "Talk to a real person in the Community Chat",
-        "button": "Open Chat Now",
-        "availability": "Moderators respond within 2 minutes • Available 24/7"
+        "title": "Нужна Помощь Сейчас?",
+        "description": "Поговорите с реальным человеком в Чате Сообщества",
+        "button": "Открыть Чат Сейчас",
+        "availability": "Модераторы отвечают в течение 2 минут • Доступно 24/7"
       },
-      "quickStart": "Quick Start Guides",
+      "quickStart": "Руководства Быстрого Старта",
       "tutorials": {
-        "joinChat": "How to Join Community Chat",
-        "joinChatDesc": "Learn how to connect with helpers and make friends",
-        "sendCoins": "How to Send FairCoin",
-        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
-        "receiveCoins": "How to Receive FairCoin",
-        "receiveCoinsDesc": "Show your QR code and get coins instantly",
-        "understandBalance": "Understanding Your Balance",
-        "understandBalanceDesc": "See your coins and transaction history"
+        "joinChat": "Как Присоединиться к Чату Сообщества",
+        "joinChatDesc": "Узнайте, как связаться с помощниками и завести друзей",
+        "sendCoins": "Как Отправить FairCoin",
+        "sendCoinsDesc": "Пошаговое руководство по дарению монет друзьям",
+        "receiveCoins": "Как Получить FairCoin",
+        "receiveCoinsDesc": "Покажите свой QR-код и мгновенно получите монеты",
+        "understandBalance": "Понимание Вашего Баланса",
+        "understandBalanceDesc": "Смотрите свои монеты и историю транзакций"
       },
       "resources": {
-        "title": "More Resources",
-        "videoTutorials": "Video Tutorials",
-        "videoDesc": "Watch simple video guides",
-        "printableGuides": "Printable Guides",
-        "printableDesc": "Download easy-to-read PDF instructions",
-        "comingSoon": "Coming Soon"
+        "title": "Дополнительные Ресурсы",
+        "videoTutorials": "Видео Руководства",
+        "videoDesc": "Смотрите простые видео гиды",
+        "printableGuides": "Печатные Руководства",
+        "printableDesc": "Скачайте легко читаемые инструкции PDF",
+        "comingSoon": "Скоро"
       },
       "support": {
-        "title": "Still Need Help?",
-        "description": "Our support team is here for you",
-        "chatButton": "Chat with Support",
-        "emailButton": "Email Us"
+        "title": "Все Еще Нужна Помощь?",
+        "description": "Наша команда поддержки здесь для вас",
+        "chatButton": "Чат с Поддержкой",
+        "emailButton": "Написать Нам"
       }
     },
     "language": {

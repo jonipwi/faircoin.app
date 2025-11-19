@@ -73,114 +73,114 @@
     "chat": {
       "title": "צ'אט קהילתי",
       "description": "הצטרף לשיחה, קבל עזרה ופגוש חברים",
-      "header": "Community Chat",
-      "room": "Friendly Lounge — always welcoming",
-      "liveHelp": "Live Help",
+      "header": "צ'אט קהילתי",
+      "room": "טרקלין ידידותי — תמיד מזמין",
+      "liveHelp": "עזרה חיה",
       "available": "24/7"
     },
     "send": {
       "title": "שלח FairCoin",
       "description": "תן FairCoin לחברים ולקהילה",
-      "header": "Send FairCoin",
-      "chooseRecipient": "Choose who to send to",
-      "enterAmount": "Enter amount to send",
-      "confirmTransfer": "Confirm your transfer",
-      "amount": "Amount",
+      "header": "שלח FairCoin",
+      "chooseRecipient": "בחר נמען",
+      "enterAmount": "הזן סכום לשליחה",
+      "confirmTransfer": "אשר את ההעברה",
+      "amount": "סכום",
       "numberPad": {
         "clear": "←"
       },
       "buttons": {
-        "back": "Back",
-        "continue": "Continue",
-        "sendNow": "Send Now",
-        "sending": "Sending..."
+        "back": "חזור",
+        "continue": "המשך",
+        "sendNow": "שלח עכשיו",
+        "sending": "שולח..."
       },
       "success": {
-        "title": "Sent Successfully!",
-        "message": "{{amount}} FC sent to {{recipient}}"
+        "title": "נשלח בהצלחה!",
+        "message": "{{amount}} FC נשלח ל-{{recipient}}"
       },
       "confirm": {
-        "youAreSending": "You are sending",
-        "to": "To"
+        "youAreSending": "אתה שולח",
+        "to": "אל"
       }
     },
     "receive": {
       "title": "קבל FairCoin",
       "description": "הצג את קוד ה-QR שלך כדי לקבל מטבעות",
-      "header": "Receive FairCoin",
-      "subtitle": "Share your username or QR code",
-      "yourUsername": "Your FairCoin Username",
-      "copyButton": "Copy My Username",
-      "copied": "Copied!",
+      "header": "קבל FairCoin",
+      "subtitle": "שתף את שם המשתמש או קוד QR שלך",
+      "yourUsername": "שם המשתמש FairCoin שלך",
+      "copyButton": "העתק את שם המשתמש שלי",
+      "copied": "הועתק!",
       "instructions": {
-        "title": "How to receive FairCoin",
-        "step1": "Show this QR code to the person sending you FairCoin",
-        "step2": "Or tap \"Copy My Username\" and send it to them",
-        "step3": "FairCoin will arrive in your wallet instantly"
+        "title": "כיצד לקבל FairCoin",
+        "step1": "הצג קוד QR זה לאדם ששולח לך FairCoin",
+        "step2": "או הקש על \"העתק את שם המשתמש שלי\" ושלח להם",
+        "step3": "FairCoin יגיע לארנק שלך מיד"
       }
     },
     "balance": {
       "title": "היתרה שלי",
       "description": "ראה את ה-FairCoin והעסקאות האחרונות שלך",
-      "header": "PFI Treasury ✨",
-      "subtitle": "{{username}}'s Personal Fairness Index",
-      "treasuryAddress": "Treasury Address",
-      "tokensEntrusted": "Tokens Entrusted ✨",
-      "tokensNote": "Faith, Love & Justice in Heaven's Network",
-      "pfiMetrics": "Personal Fairness Index (PFI★)",
-      "pfiScore": "PFI Score",
-      "pfiIndex": "PFI Index",
-      "pfiShare": "PFI Share",
-      "performanceIndicator": "Performance Indicator",
-      "approvedSubmissions": "Approved Submissions",
-      "refreshMetrics": "Refresh PFI Metrics",
-      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
-      "downloadDetails": "Download Details",
-      "backToHome": "Back to Home",
+      "header": "אוצר PFI ✨",
+      "subtitle": "מדד ההגינות האישי של {{username}}",
+      "treasuryAddress": "כתובת האוצר",
+      "tokensEntrusted": "אסימונים שהופקדו ✨",
+      "tokensNote": "אמונה, אהבה וצדק ברשת השמיים",
+      "pfiMetrics": "מדד הגינות אישי (PFI★)",
+      "pfiScore": "ציון PFI",
+      "pfiIndex": "מדד PFI",
+      "pfiShare": "חלק PFI",
+      "performanceIndicator": "אינדיקטור ביצועים",
+      "approvedSubmissions": "הגשות מאושרות",
+      "refreshMetrics": "רענן מדדי PFI",
+      "spiritualNote": "זכור: אסימונים מאוחסנים דרך אמונה, אהבה וצדק",
+      "downloadDetails": "הורד פרטים",
+      "backToHome": "חזור לדף הבית",
       "createTreasury": {
-        "title": "Create Your PFI Treasury",
-        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
-        "button": "Create PFI Treasury",
-        "creating": "Creating..."
+        "title": "צור את אוצר ה-PFI שלך",
+        "description": "האוצר שלך מאחסן את מדדי מדד ההגינות האישי ואסימוני הקהילה שלך. אנחנו לא פלטפורמת קריפטו - אנחנו מודדים הגינות!",
+        "button": "צור אוצר PFI",
+        "creating": "יוצר..."
       },
-      "copy": "Copy",
-      "copied": "Copied!"
+      "copy": "העתק",
+      "copied": "הועתק!"
     },
     "help": {
       "title": "עזרה ומדריך",
       "description": "למד כיצד להשתמש ב-FairCoin צעד אחר צעד",
-      "header": "Help & Tutorials",
-      "subtitle": "Everything you need to know, step by step",
+      "header": "עזרה ומדריכים",
+      "subtitle": "כל מה שאתה צריך לדעת, צעד אחר צעד",
       "emergency": {
-        "title": "Need Help Right Now?",
-        "description": "Talk to a real person in the Community Chat",
-        "button": "Open Chat Now",
-        "availability": "Moderators respond within 2 minutes • Available 24/7"
+        "title": "צריך עזרה עכשיו?",
+        "description": "דבר עם אדם אמיתי בצ'אט הקהילתי",
+        "button": "פתח צ'אט עכשיו",
+        "availability": "מנהלים עונים תוך 2 דקות • זמין 24/7"
       },
-      "quickStart": "Quick Start Guides",
+      "quickStart": "מדריכי התחלה מהירה",
       "tutorials": {
-        "joinChat": "How to Join Community Chat",
-        "joinChatDesc": "Learn how to connect with helpers and make friends",
-        "sendCoins": "How to Send FairCoin",
-        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
-        "receiveCoins": "How to Receive FairCoin",
-        "receiveCoinsDesc": "Show your QR code and get coins instantly",
-        "understandBalance": "Understanding Your Balance",
-        "understandBalanceDesc": "See your coins and transaction history"
+        "joinChat": "כיצד להצטרף לצ'אט הקהילתי",
+        "joinChatDesc": "למד כיצד להתחבר לעוזרים ולהכיר חברים",
+        "sendCoins": "כיצד לשלוח FairCoin",
+        "sendCoinsDesc": "מדריך שלב אחר שלב למתן מטבעות לחברים",
+        "receiveCoins": "כיצד לקבל FairCoin",
+        "receiveCoinsDesc": "הצג את קוד ה-QR שלך וקבל מטבעות מיד",
+        "understandBalance": "הבנת היתרה שלך",
+        "understandBalanceDesc": "ראה את המטבעות והיסטוריית העסקאות שלך"
       },
       "resources": {
-        "title": "More Resources",
-        "videoTutorials": "Video Tutorials",
-        "videoDesc": "Watch simple video guides",
-        "printableGuides": "Printable Guides",
-        "printableDesc": "Download easy-to-read PDF instructions",
-        "comingSoon": "Coming Soon"
+        "title": "משאבים נוספים",
+        "videoTutorials": "מדריכי וידאו",
+        "videoDesc": "צפה במדריכי וידאו פשוטים",
+        "printableGuides": "מדריכים להדפסה",
+        "printableDesc": "הורד הוראות PDF קלות לקריאה",
+        "comingSoon": "בקרוב"
       },
       "support": {
-        "title": "Still Need Help?",
-        "description": "Our support team is here for you",
-        "chatButton": "Chat with Support",
-        "emailButton": "Email Us"
+        "title": "עדיין צריך עזרה?",
+        "description": "צוות התמיכה שלנו כאן בשבילך",
+        "chatButton": "שוחח עם תמיכה",
+        "emailButton": "שלח לנו אימייל"
       }
     },
     "language": {

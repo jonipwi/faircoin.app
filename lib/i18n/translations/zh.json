@@ -73,114 +73,114 @@
     "chat": {
       "title": "社区聊天",
       "description": "加入对话，获得帮助，结识朋友",
-      "header": "Community Chat",
-      "room": "Friendly Lounge — always welcoming",
-      "liveHelp": "Live Help",
+      "header": "社区聊天",
+      "room": "友好聊天室 — 永远欢迎",
+      "liveHelp": "在线帮助",
       "available": "24/7"
     },
     "send": {
       "title": "发送 FairCoin",
       "description": "向朋友和社区赠送 FairCoin",
-      "header": "Send FairCoin",
-      "chooseRecipient": "Choose who to send to",
-      "enterAmount": "Enter amount to send",
-      "confirmTransfer": "Confirm your transfer",
-      "amount": "Amount",
+      "header": "发送FairCoin",
+      "chooseRecipient": "选择接收者",
+      "enterAmount": "输入发送金额",
+      "confirmTransfer": "确认转账",
+      "amount": "金额",
       "numberPad": {
         "clear": "←"
       },
       "buttons": {
-        "back": "Back",
-        "continue": "Continue",
-        "sendNow": "Send Now",
-        "sending": "Sending..."
+        "back": "返回",
+        "continue": "继续",
+        "sendNow": "立即发送",
+        "sending": "发送中..."
       },
       "success": {
-        "title": "Sent Successfully!",
-        "message": "{{amount}} FC sent to {{recipient}}"
+        "title": "发送成功！",
+        "message": "已向{{recipient}}发送{{amount}} FC"
       },
       "confirm": {
-        "youAreSending": "You are sending",
-        "to": "To"
+        "youAreSending": "您正在发送",
+        "to": "至"
       }
     },
     "receive": {
       "title": "接收 FairCoin",
       "description": "显示您的二维码以接收代币",
-      "header": "Receive FairCoin",
-      "subtitle": "Share your username or QR code",
-      "yourUsername": "Your FairCoin Username",
-      "copyButton": "Copy My Username",
-      "copied": "Copied!",
+      "header": "接收FairCoin",
+      "subtitle": "分享您的用户名或二维码",
+      "yourUsername": "您的FairCoin用户名",
+      "copyButton": "复制我的用户名",
+      "copied": "已复制！",
       "instructions": {
-        "title": "How to receive FairCoin",
-        "step1": "Show this QR code to the person sending you FairCoin",
-        "step2": "Or tap \"Copy My Username\" and send it to them",
-        "step3": "FairCoin will arrive in your wallet instantly"
+        "title": "如何接收FairCoin",
+        "step1": "向发送FairCoin的人展示此二维码",
+        "step2": "或点击\"复制我的用户名\"并发送给他们",
+        "step3": "FairCoin将立即到达您的钱包"
       }
     },
     "balance": {
       "title": "我的余额",
       "description": "查看您的 FairCoin 和最近的交易",
-      "header": "PFI Treasury ✨",
-      "subtitle": "{{username}}'s Personal Fairness Index",
-      "treasuryAddress": "Treasury Address",
-      "tokensEntrusted": "Tokens Entrusted ✨",
-      "tokensNote": "Faith, Love & Justice in Heaven's Network",
-      "pfiMetrics": "Personal Fairness Index (PFI★)",
-      "pfiScore": "PFI Score",
-      "pfiIndex": "PFI Index",
-      "pfiShare": "PFI Share",
-      "performanceIndicator": "Performance Indicator",
-      "approvedSubmissions": "Approved Submissions",
-      "refreshMetrics": "Refresh PFI Metrics",
-      "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
-      "downloadDetails": "Download Details",
-      "backToHome": "Back to Home",
+      "header": "PFI金库 ✨",
+      "subtitle": "{{username}}的个人公平指数",
+      "treasuryAddress": "金库地址",
+      "tokensEntrusted": "托管代币 ✨",
+      "tokensNote": "信仰、爱与正义在天堂网络",
+      "pfiMetrics": "个人公平指数 (PFI★)",
+      "pfiScore": "PFI分数",
+      "pfiIndex": "PFI指数",
+      "pfiShare": "PFI份额",
+      "performanceIndicator": "绩效指标",
+      "approvedSubmissions": "已批准的提交",
+      "refreshMetrics": "刷新PFI指标",
+      "spiritualNote": "记住：代币通过信仰、爱与正义存储",
+      "downloadDetails": "下载详情",
+      "backToHome": "返回首页",
       "createTreasury": {
-        "title": "Create Your PFI Treasury",
-        "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
-        "button": "Create PFI Treasury",
-        "creating": "Creating..."
+        "title": "创建您的PFI金库",
+        "description": "您的金库存储您的个人公平指数指标和社区代币。我们不是加密货币平台 - 我们衡量公平！",
+        "button": "创建PFI金库",
+        "creating": "创建中..."
       },
-      "copy": "Copy",
-      "copied": "Copied!"
+      "copy": "复制",
+      "copied": "已复制！"
     },
     "help": {
       "title": "帮助与教程",
       "description": "逐步学习如何使用 FairCoin",
-      "header": "Help & Tutorials",
-      "subtitle": "Everything you need to know, step by step",
+      "header": "帮助与教程",
+      "subtitle": "您需要了解的一切，逐步指导",
       "emergency": {
-        "title": "Need Help Right Now?",
-        "description": "Talk to a real person in the Community Chat",
-        "button": "Open Chat Now",
-        "availability": "Moderators respond within 2 minutes • Available 24/7"
+        "title": "现在需要帮助？",
+        "description": "在社区聊天中与真人交谈",
+        "button": "立即打开聊天",
+        "availability": "版主在2分钟内回复 • 24/7可用"
       },
-      "quickStart": "Quick Start Guides",
+      "quickStart": "快速入门指南",
       "tutorials": {
-        "joinChat": "How to Join Community Chat",
-        "joinChatDesc": "Learn how to connect with helpers and make friends",
-        "sendCoins": "How to Send FairCoin",
-        "sendCoinsDesc": "Step-by-step guide to giving coins to friends",
-        "receiveCoins": "How to Receive FairCoin",
-        "receiveCoinsDesc": "Show your QR code and get coins instantly",
-        "understandBalance": "Understanding Your Balance",
-        "understandBalanceDesc": "See your coins and transaction history"
+        "joinChat": "如何加入社区聊天",
+        "joinChatDesc": "学习如何与帮助者联系并结交朋友",
+        "sendCoins": "如何发送FairCoin",
+        "sendCoinsDesc": "向朋友赠送代币的分步指南",
+        "receiveCoins": "如何接收FairCoin",
+        "receiveCoinsDesc": "显示您的二维码并立即获得代币",
+        "understandBalance": "了解您的余额",
+        "understandBalanceDesc": "查看您的代币和交易历史"
       },
       "resources": {
-        "title": "More Resources",
-        "videoTutorials": "Video Tutorials",
-        "videoDesc": "Watch simple video guides",
-        "printableGuides": "Printable Guides",
-        "printableDesc": "Download easy-to-read PDF instructions",
-        "comingSoon": "Coming Soon"
+        "title": "更多资源",
+        "videoTutorials": "视频教程",
+        "videoDesc": "观看简单的视频指南",
+        "printableGuides": "可打印指南",
+        "printableDesc": "下载易读的PDF说明",
+        "comingSoon": "即将推出"
       },
       "support": {
-        "title": "Still Need Help?",
-        "description": "Our support team is here for you",
-        "chatButton": "Chat with Support",
-        "emailButton": "Email Us"
+        "title": "还需要帮助？",
+        "description": "我们的支持团队随时为您服务",
+        "chatButton": "与支持聊天",
+        "emailButton": "发送电子邮件"
       }
     },
     "language": {
