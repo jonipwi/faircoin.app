@@ -1,9 +1,9 @@
 "use client"
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import languages from './languages.json'
-import { getLocaleFromPath, isValidLocale, defaultLocale } from './locales'
+import { getLocaleFromPath, defaultLocale } from './locales'
 
 // Import all translations
 import en from './translations/en.json'
@@ -29,9 +29,13 @@ const translations: Record<string, any> = {
 type LanguageCode = keyof typeof languages
 type Direction = 'ltr' | 'rtl'
 
+type LocaleChangeOptions = {
+  emitChange?: boolean
+}
+
 interface LanguageContextType {
   locale: LanguageCode
-  setLocale: (locale: LanguageCode) => void
+  setLocale: (locale: LanguageCode, options?: LocaleChangeOptions) => void
   t: (key: string, params?: Record<string, string>) => string
   dir: Direction
   languages: typeof languages
@@ -45,54 +49,74 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<LanguageCode>(defaultLocale)
   const [dir, setDir] = useState<Direction>('ltr')
 
-  useEffect(() => {
-    // First priority: locale from URL path
-    const pathLocale = getLocaleFromPath(pathname)
-    if (pathLocale) {
-      setLocaleState(pathLocale)
-      setDir(languages[pathLocale].dir as Direction)
-      localStorage.setItem('faircoin-locale', pathLocale)
-      document.documentElement.setAttribute('dir', languages[pathLocale].dir)
-      document.documentElement.setAttribute('lang', pathLocale)
-      return
-    }
-
-    // Second priority: saved language from localStorage
-    const saved = localStorage.getItem('faircoin-locale') as LanguageCode
-    if (saved && translations[saved]) {
-      setLocaleState(saved)
-      setDir(languages[saved].dir as Direction)
-    } else {
-      // Third priority: browser language
-      const browserLang = navigator.language.split('-')[0]
-      if (translations[browserLang]) {
-        setLocaleState(browserLang as LanguageCode)
-        setDir(languages[browserLang as LanguageCode].dir as Direction)
-      }
-    }
-  }, [pathname])
-
-  const setLocale = (newLocale: LanguageCode) => {
+  const applyLocaleMeta = useCallback((newLocale: LanguageCode) => {
     setLocaleState(newLocale)
     setDir(languages[newLocale].dir as Direction)
     localStorage.setItem('faircoin-locale', newLocale)
     document.documentElement.setAttribute('dir', languages[newLocale].dir)
     document.documentElement.setAttribute('lang', newLocale)
-    
-    // Update URL to match locale if not already there
-    const currentPathLocale = getLocaleFromPath(pathname)
-    if (currentPathLocale !== newLocale) {
-      const segments = pathname.split('/').filter(Boolean)
-      if (currentPathLocale) {
-        // Replace existing locale in path
-        segments[0] = newLocale
-      } else {
-        // Add locale to beginning of path
-        segments.unshift(newLocale)
+  }, [])
+
+  const emitLocaleChange = useCallback((newLocale: LanguageCode) => {
+    window.dispatchEvent(
+      new CustomEvent('faircoin-locale-change', { detail: { locale: newLocale } })
+    )
+  }, [])
+
+  const setLocale = useCallback(
+    (newLocale: LanguageCode, options?: LocaleChangeOptions) => {
+      applyLocaleMeta(newLocale)
+      const shouldEmit = options?.emitChange ?? true
+      if (shouldEmit) {
+        emitLocaleChange(newLocale)
       }
-      router.push(('/' + segments.join('/')) as any)
+
+      const currentPathLocale = getLocaleFromPath(pathname)
+      if (currentPathLocale !== newLocale) {
+        const segments = pathname.split('/').filter(Boolean)
+        if (currentPathLocale) {
+          segments[0] = newLocale
+        } else {
+          segments.unshift(newLocale)
+        }
+        router.push(('/' + segments.join('/')) as any)
+      }
+    },
+    [applyLocaleMeta, emitLocaleChange, pathname, router]
+  )
+
+  useEffect(() => {
+    const pathLocale = getLocaleFromPath(pathname)
+    if (pathLocale) {
+      applyLocaleMeta(pathLocale)
+      return
     }
-  }
+
+    const saved = localStorage.getItem('faircoin-locale') as LanguageCode
+    if (saved && translations[saved]) {
+      applyLocaleMeta(saved)
+    } else {
+      const browserLang = navigator.language.split('-')[0]
+      if (translations[browserLang]) {
+        applyLocaleMeta(browserLang as LanguageCode)
+      }
+    }
+  }, [pathname, applyLocaleMeta])
+
+  useEffect(() => {
+    const handleLocaleOverride = (event: Event) => {
+      const detail = (event as CustomEvent<{ locale?: LanguageCode }>).detail
+      const overrideLocale = detail?.locale
+      if (overrideLocale && translations[overrideLocale] && overrideLocale !== locale) {
+        setLocale(overrideLocale, { emitChange: false })
+      }
+    }
+
+    window.addEventListener('faircoin-locale-override', handleLocaleOverride)
+    return () => {
+      window.removeEventListener('faircoin-locale-override', handleLocaleOverride)
+    }
+  }, [locale, setLocale])
 
   const t = (key: string, params?: Record<string, string>): string => {
     const keys = key.split('.')
@@ -102,7 +126,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       if (value && typeof value === 'object') {
         value = value[k]
       } else {
-        // Fallback to English if key not found
         value = translations.en
         for (const fallbackKey of keys) {
           value = value?.[fallbackKey]
@@ -112,10 +135,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
 
     if (typeof value !== 'string') {
-      return key // Return key if translation not found
+      return key
     }
 
-    // Replace parameters
     if (params) {
       Object.keys(params).forEach((param) => {
         value = value.replace(`{{${param}}}`, params[param])
