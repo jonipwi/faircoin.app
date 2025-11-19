@@ -94,6 +94,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     checkAuth()
+    
+    // Listen for storage changes (across tabs/windows)
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'auth_token' || e.key === 'user') {
+        checkAuth()
+      }
+    }
+    
+    // Listen for custom auth events (same tab)
+    const handleAuthChange = () => {
+      checkAuth()
+    }
+    
+    // Re-check auth when user returns to the tab/window
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        checkAuth()
+      }
+    }
+    
+    window.addEventListener('storage', handleStorageChange)
+    window.addEventListener('authStateChanged', handleAuthChange)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('authStateChanged', handleAuthChange)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
   }, [])
 
   return (

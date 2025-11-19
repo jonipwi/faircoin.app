@@ -64,14 +64,28 @@ export default function LiteBalance() {
   useEffect(() => {
     const loadData = async () => {
       if (user?.username) {
+        console.log('[Balance] Loading wallet for user:', user.username, 'wallet_address:', user.wallet_address)
         // Load wallet from localStorage
         const savedWallet = localStorage.getItem('wallet')
         if (savedWallet) {
           try {
             setWallet(JSON.parse(savedWallet))
+            console.log('[Balance] Loaded saved wallet from localStorage')
           } catch (e) {
             console.error('Failed to parse saved wallet:', e)
           }
+        } else if (user.wallet_address) {
+          // If user has wallet_address from auth but no wallet object, create it
+          const walletFromAuth: WalletInfo = {
+            address: user.wallet_address,
+            balances: { USDT: 0 },
+            createdAt: new Date()
+          }
+          setWallet(walletFromAuth)
+          localStorage.setItem('wallet', JSON.stringify(walletFromAuth))
+          console.log('[Balance] Created wallet from auth wallet_address:', user.wallet_address)
+        } else {
+          console.log('[Balance] No wallet found and no wallet_address in user')
         }
         
         // Fetch PFI metrics

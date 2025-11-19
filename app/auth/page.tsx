@@ -152,6 +152,9 @@ function AuthPageContent() {
           wallet_address: data.wallet_address,
         }))
         
+        // Notify all components that auth state has changed
+        window.dispatchEvent(new Event('authStateChanged'))
+        
         // Check if user has already accepted terms
         if (data.terms_accepted) {
           // Skip terms and go directly to dashboard
@@ -278,6 +281,9 @@ Created: ${new Date().toISOString()}
             avatar_url: session.avatar_url,
             wallet_address: session.wallet_address,
           }))
+          
+          // Notify all components that auth state has changed
+          window.dispatchEvent(new Event('authStateChanged'))
         }
         
         // Redirect to dashboard after delay

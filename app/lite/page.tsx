@@ -3,9 +3,15 @@
 import Link from 'next/link'
 import { MessageCircle, Send, Download, Wallet, HelpCircle, Sparkles } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
+import { useEffect } from 'react'
 
 export default function LiteHome() {
-  const { isAuthenticated, user } = useAuth()
+  const { isAuthenticated, user, checkAuth } = useAuth()
+  
+  // Re-check auth when this page loads
+  useEffect(() => {
+    checkAuth()
+  }, [checkAuth])
 
   const quickActions = [
     {

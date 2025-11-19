@@ -84,6 +84,15 @@ export function WalletSection() {
         } catch (e) {
           console.error('Failed to parse saved wallet:', e)
         }
+      } else if (user.wallet_address) {
+        // If user has wallet_address from auth but no wallet object, create it
+        const walletFromAuth: WalletInfo = {
+          address: user.wallet_address,
+          balances: { USDT: 0 },
+          createdAt: new Date()
+        }
+        setWallet(walletFromAuth)
+        localStorage.setItem('wallet', JSON.stringify(walletFromAuth))
       }
       
       // Fetch PFI metrics
