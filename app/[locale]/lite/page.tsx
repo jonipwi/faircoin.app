@@ -11,12 +11,19 @@ export default function LiteHome() {
   const localePath = useLocalePath()
   const { locale, setLocale, languages, t } = useLanguage()
 
+  // Function to open the floating chat widget
+  const openChatWidget = () => {
+    if (typeof window !== 'undefined' && (window as any).__openFairCoinChat) {
+      (window as any).__openFairCoinChat()
+    }
+  }
+
   const quickActions = [
     {
       title: t('lite.chat.title') || 'Community Chat',
       description: t('lite.chat.description') || 'Join the conversation, get help, and meet friends',
       icon: MessageCircle,
-      href: 'lite/chat',
+      onClick: openChatWidget,
       color: 'from-blue-500 to-cyan-500'
     },
     {
@@ -122,10 +129,34 @@ export default function LiteHome() {
               )
             }
             
+            // If action has onClick, render as button; otherwise as Link
+            if (action.onClick) {
+              return (
+                <button
+                  key={action.title}
+                  onClick={action.onClick}
+                  className="group relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 hover:border-primary-400 dark:hover:border-primary-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left w-full"
+                >
+                  <div className="p-8 sm:p-10">
+                    <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br ${action.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                      {action.title}
+                    </h2>
+                    <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {action.description}
+                    </p>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-500 to-accent-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </button>
+              )
+            }
+            
             return (
               <Link
                 key={action.href}
-                href={localePath(action.href) as any}
+                href={localePath(action.href || '') as any}
                 className="group relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 hover:border-primary-400 dark:hover:border-primary-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="p-8 sm:p-10">

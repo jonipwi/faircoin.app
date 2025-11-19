@@ -8,12 +8,14 @@ interface FloatingChatWidgetProps {
   chatUrl?: string
   defaultRoom?: string
   defaultUsername?: string
+  hideButton?: boolean
 }
 
 export function FloatingChatWidget({
   chatUrl = process.env.NEXT_PUBLIC_CHAT_URL || 'http://localhost:3031',
   defaultRoom = 'general',
-  defaultUsername = 'guest'
+  defaultUsername = 'guest',
+  hideButton = false
 }: FloatingChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
@@ -275,19 +277,33 @@ export function FloatingChatWidget({
     ? supportUrl 
     : `${chatUrl}?modal=true&compact=true&maximized=true&hideHeader=true&room=${defaultRoom}&username=${username}`
 
+  // Expose openChat function for external use (e.g., from lite version cards)
+  useEffect(() => {
+    // Always expose the function, not just when hideButton is true
+    (window as any).__openFairCoinChat = () => setIsOpen(true)
+    
+    return () => {
+      if ((window as any).__openFairCoinChat) {
+        delete (window as any).__openFairCoinChat
+      }
+    }
+  }, [])
+
   return (
     <>
-      {/* Floating Chat Button */}
-      <div className="fixed bottom-5 right-5 z-[1000]">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="group relative w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 active:scale-105 flex items-center justify-center overflow-hidden"
-          title="Open Chat"
-        >
-          <div className="absolute inset-0 rounded-full bg-gradient-radial from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <MessageCircle className="w-7 h-7 relative z-10" />
-        </button>
-      </div>
+      {/* Floating Chat Button - Hidden in lite version */}
+      {!hideButton && (
+        <div className="fixed bottom-5 right-5 z-[1000]">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="group relative w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 active:scale-105 flex items-center justify-center overflow-hidden"
+            title="Open Chat"
+          >
+            <div className="absolute inset-0 rounded-full bg-gradient-radial from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <MessageCircle className="w-7 h-7 relative z-10" />
+          </button>
+        </div>
+      )}
 
       {/* Chat Modal */}
       {isOpen && (

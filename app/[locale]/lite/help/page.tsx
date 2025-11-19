@@ -10,18 +10,26 @@ export default function LiteHelp() {
   const localePath = useLocalePath()
   const { t } = useLanguage()
   
+  // Function to open the floating chat widget
+  const openChatWidget = () => {
+    if (typeof window !== 'undefined' && (window as any).__openFairCoinChat) {
+      (window as any).__openFairCoinChat()
+    }
+  }
+  
   const tutorials: Array<{
     title: string
     description: string
     icon: typeof MessageCircle
-    href: string
+    href?: string
+    onClick?: () => void
     color: string
   }> = [
     {
       title: t('lite.help.tutorials.joinChat') || 'How to Join Community Chat',
       description: t('lite.help.tutorials.joinChatDesc') || 'Learn how to connect with helpers and make friends',
       icon: MessageCircle,
-      href: 'lite/chat',
+      onClick: openChatWidget,
       color: 'from-blue-500 to-cyan-500'
     },
     {
@@ -86,7 +94,8 @@ export default function LiteHelp() {
             {t('lite.help.emergency.description') || 'Talk to a real person in the Community Chat'}
           </p>
           <Link
-            href={localePath('lite/chat') as any}
+            href="#"
+            onClick={openChatWidget}
             className="inline-flex items-center gap-3 px-8 py-5 bg-white text-red-600 rounded-2xl text-xl font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
           >
             <MessageCircle className="w-7 h-7" />
@@ -103,25 +112,42 @@ export default function LiteHelp() {
             {t('lite.help.quickStart') || 'Quick Start Guides'}
           </h2>
           <div className="grid sm:grid-cols-2 gap-6">
-            {tutorials.map((tutorial) => {
+            {tutorials.map((tutorial, index) => {
               const Icon = tutorial.icon
+              
+              const cardContent = (
+                <div className="p-8">
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${tutorial.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                    {tutorial.title}
+                  </h3>
+                  <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {tutorial.description}
+                  </p>
+                </div>
+              )
+              
+              if (tutorial.onClick) {
+                return (
+                  <button
+                    key={index}
+                    onClick={tutorial.onClick}
+                    className="group relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 hover:border-primary-400 dark:hover:border-primary-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-left w-full"
+                  >
+                    {cardContent}
+                  </button>
+                )
+              }
+              
               return (
                 <Link
                   key={tutorial.href}
-                  href={localePath(tutorial.href) as any}
+                  href={localePath(tutorial.href || '') as any}
                   className="group relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 hover:border-primary-400 dark:hover:border-primary-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
                 >
-                  <div className="p-8">
-                    <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${tutorial.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3">
-                      {tutorial.title}
-                    </h3>
-                    <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-                      {tutorial.description}
-                    </p>
-                  </div>
+                  {cardContent}
                 </Link>
               )
             })}
@@ -169,7 +195,8 @@ export default function LiteHelp() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href={localePath('lite/chat') as any}
+              href="#"
+              onClick={openChatWidget}
               className="px-6 py-4 rounded-2xl bg-primary-600 text-white text-lg font-bold hover:bg-primary-700 transition-all"
             >
               {t('lite.help.support.chatButton') || 'Chat with Support'}
