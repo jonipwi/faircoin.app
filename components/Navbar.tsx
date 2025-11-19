@@ -20,7 +20,7 @@ export function Navbar() {
   }, [])
 
   const navLinks = [
-    { label: 'Home', href: '/' },
+    { label: 'Home', href: '/full' },
     { label: 'Wallet', href: '#wallet' },
     { label: 'Merchants', href: '#merchants' },
     { label: 'Fairness', href: '#fairness' },
@@ -86,6 +86,13 @@ export function Navbar() {
                 )
               )}
               
+              <Link
+                href="/lite"
+                className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors px-3 py-1 rounded-lg bg-primary-50 dark:bg-primary-900/30 hover:bg-primary-100 dark:hover:bg-primary-900/50"
+              >
+                ✨ Lite Mode
+              </Link>
+              
               <div className="flex items-center gap-3 ml-4 pl-4 border-l border-gray-200 dark:border-gray-700">
                 <ThemeSwitcher />
                 
@@ -149,6 +156,14 @@ export function Navbar() {
                     </Link>
                   )
                 )}
+                
+                <Link
+                  href="/lite"
+                  onClick={() => setOpen(false)}
+                  className="btn btn-ghost justify-start text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30"
+                >
+                  ✨ Lite Mode
+                </Link>
                 
                 {loading ? (
                   <div className="flex justify-center py-2">

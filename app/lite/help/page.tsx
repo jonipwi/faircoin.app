@@ -170,7 +170,7 @@ export default function LiteHelp() {
               Chat with Support
             </Link>
             <a
-              href="mailto:support@faircoin.app"
+              href="mailto:joni.pwi@gmail.com"
               className="px-6 py-4 rounded-2xl bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 text-lg font-bold border-2 border-primary-600 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-gray-700 transition-all"
             >
               Email Us

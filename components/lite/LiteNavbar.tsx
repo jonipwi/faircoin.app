@@ -1,17 +1,46 @@
 "use client"
 
 import Link from 'next/link'
-import { useState } from 'react'
-import { Menu, X, Home, MessageCircle, HelpCircle, ArrowLeft } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Menu, X, Home, MessageCircle, HelpCircle, ArrowLeft, Download } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function LiteNavbar() {
   const [open, setOpen] = useState(false)
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
+  const [showInstall, setShowInstall] = useState(false)
   const { user, isAuthenticated } = useAuth()
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
+      setShowInstall(true)
+    }
+
+    window.addEventListener('beforeinstallprompt', handler)
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler)
+    }
+  }, [])
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) {
+      return
+    }
+
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null)
+      setShowInstall(false)
+    }
+  }
 
   const navLinks = [
     { label: 'Home', href: '/lite', icon: Home },
-    { label: 'Chat', href: '/lite/chat', icon: MessageCircle },
     { label: 'Help', href: '/lite/help', icon: HelpCircle },
   ]
 
@@ -54,8 +83,17 @@ export function LiteNavbar() {
                 <span>{label}</span>
               </Link>
             ))}
+            {showInstall && (
+              <button
+                onClick={handleInstallClick}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 transition-all shadow-lg hover:shadow-xl"
+              >
+                <Download className="w-5 h-5" />
+                <span>Install App</span>
+              </button>
+            )}
             <Link
-              href="/"
+              href="/full"
               className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors ml-2 border-l-2 border-gray-200 dark:border-gray-700"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -97,8 +135,20 @@ export function LiteNavbar() {
                 <span>{label}</span>
               </Link>
             ))}
+            {showInstall && (
+              <button
+                onClick={() => {
+                  handleInstallClick()
+                  setOpen(false)
+                }}
+                className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 transition-all shadow-lg w-full"
+              >
+                <Download className="w-6 h-6" />
+                <span>Install App</span>
+              </button>
+            )}
             <Link
-              href="/"
+              href="/full"
               onClick={() => setOpen(false)}
               className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 border-t-2 border-gray-200 dark:border-gray-700 mt-2 pt-4"
             >
