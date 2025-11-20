@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 
-const LITE_VERSION = '1.0.0'
 const BUILD_DATE = '2025-11-19'
 const FEATURES = [
   'Big Buttons',
@@ -19,6 +18,9 @@ interface LiteVersionDisplayProps {
 
 export default function LiteVersionDisplay({ show = false, autoHideDelay }: LiteVersionDisplayProps) {
   const [visible, setVisible] = useState(show)
+  const version = process.env.NEXT_PUBLIC_APP_VERSION || '1.0.0'
+  const gitCommit = process.env.NEXT_PUBLIC_GIT_COMMIT || 'local'
+  const gitBranch = process.env.NEXT_PUBLIC_GIT_BRANCH || 'main'
 
   useEffect(() => {
     if (show && autoHideDelay) {
@@ -50,9 +52,13 @@ export default function LiteVersionDisplay({ show = false, autoHideDelay }: Lite
       <div className="flex items-center gap-2">
         <span className="font-bold text-sm">🌟 LITE</span>
         <span className="text-white/70">•</span>
-        <span className="font-mono font-semibold">v{LITE_VERSION}</span>
+        <span className="font-mono font-semibold">v{version}</span>
         <span className="text-white/70">•</span>
         <span className="text-white/90">{BUILD_DATE}</span>
+        <span className="text-white/70">•</span>
+        <span className="text-blue-300" title={`Branch: ${gitBranch}`}>{gitBranch}</span>
+        <span className="text-white/70">•</span>
+        <span className="text-green-300" title="Git commit hash">#{gitCommit}</span>
       </div>
       <div className="mt-1 text-[10px] text-white/80">
         {FEATURES.join(' • ')}
