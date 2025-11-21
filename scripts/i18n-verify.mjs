@@ -232,7 +232,7 @@ async function verifyTranslations() {
   }
   
   log('━'.repeat(60), 'cyan');
-  console.log('');
+  log('', 'reset'); // Empty line for spacing
 }
 
 // Run verification
