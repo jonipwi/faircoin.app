@@ -120,12 +120,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string, params?: Record<string, string>): string => {
     const keys = key.split('.')
-    let value: any = translations[locale]
+    let value: any = translations[locale] || translations.en
 
     for (const k of keys) {
       if (value && typeof value === 'object') {
         value = value[k]
       } else {
+        // Fallback to English if translation not found
         value = translations.en
         for (const fallbackKey of keys) {
           value = value?.[fallbackKey]
@@ -135,6 +136,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
 
     if (typeof value !== 'string') {
+      // Last resort: try English again
+      let fallbackValue: any = translations.en
+      for (const k of keys) {
+        fallbackValue = fallbackValue?.[k]
+      }
+      if (typeof fallbackValue === 'string') {
+        return fallbackValue
+      }
       return key
     }
 

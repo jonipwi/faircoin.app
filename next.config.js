@@ -3,32 +3,13 @@ const withPWA = require("next-pwa")({
   disable: process.env.NODE_ENV === "development",
 })
 
-const { execSync } = require('child_process')
-
-// Get git commit hash
-const getGitCommit = () => {
-  try {
-    return execSync('git rev-parse --short HEAD').toString().trim()
-  } catch (e) {
-    return 'unknown'
-  }
-}
-
-// Get git branch
-const getGitBranch = () => {
-  try {
-    return execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
-  } catch (e) {
-    return 'unknown'
-  }
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  optimizeFonts: false,
   env: {
-    NEXT_PUBLIC_GIT_COMMIT: process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA?.substring(0, 7) || getGitCommit(),
-    NEXT_PUBLIC_GIT_BRANCH: getGitBranch(),
+    NEXT_PUBLIC_GIT_COMMIT: 'dev',
+    NEXT_PUBLIC_GIT_BRANCH: 'main',
     NEXT_PUBLIC_APP_VERSION: require('./package.json').version,
   },
   experimental: {

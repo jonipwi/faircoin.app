@@ -40,10 +40,13 @@ class ExchangeAPIError extends Error {
 }
 
 async function exchangeRequest<T>(path: string, init?: RequestInit): Promise<T> {
+  const isDev = process.env.NODE_ENV === 'development'
   try {
     const url = `${EXCHANGE_API_BASE}${path}`
-    console.log('[Exchange API] Request URL:', url)
-    console.log('[Exchange API] Base URL:', EXCHANGE_API_BASE)
+    if (isDev) {
+      console.log('[Exchange API] Request URL:', url)
+      console.log('[Exchange API] Base URL:', EXCHANGE_API_BASE)
+    }
     const res = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',

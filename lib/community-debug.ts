@@ -13,6 +13,7 @@ class CommunityDebugLogger {
     if (typeof window !== 'undefined') {
       localStorage.setItem('DEBUG_COMMUNITY', 'true')
       this.enabled = true
+      // These console logs are intentional - part of the debug tool's output
       console.log('%c✅ Community Debug Logging ENABLED', 'color: #10b981; font-weight: bold; font-size: 14px')
       console.log('%cTo disable: localStorage.removeItem("DEBUG_COMMUNITY")', 'color: #6b7280; font-style: italic')
     }
@@ -22,6 +23,7 @@ class CommunityDebugLogger {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('DEBUG_COMMUNITY')
       this.enabled = false
+      // This console log is intentional - part of the debug tool's output
       console.log('%c❌ Community Debug Logging DISABLED', 'color: #ef4444; font-weight: bold')
     }
   }

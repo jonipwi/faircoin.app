@@ -29,11 +29,31 @@ export interface Transaction {
 }
 
 export interface Merchant extends User {
+  merchant_id?: number
   business_name?: string
+  business_type?: string
   category?: string
   description?: string
-  rating_count?: number
+  website_url?: string
+  business_address?: string
+  business_phone?: string
+  business_email?: string
+  verification_status?: 'pending' | 'verified' | 'rejected'
   average_rating?: number
+  total_ratings?: number
+  total_sales?: number
+  updated_at?: string
+}
+
+export interface MerchantApplication {
+  business_name: string
+  business_type: string
+  category: string
+  description: string
+  website_url?: string
+  business_address: string
+  business_phone: string
+  business_email: string
 }
 
 export interface Stats {
@@ -213,13 +233,24 @@ export interface TermsResponse {
 export interface AcceptTermsRequest {
   user_id: number
   version: string
-  session_id: string
+  session_id?: string // legacy field
+  session_token?: string // preferred
 }
 
 export interface AcceptTermsResponse {
   success: boolean
   message: string
-  session_id?: string // Session ID for wallet-based auth
+  session_token?: string // unified naming
+  session_id?: string // backward compatibility
+  user?: {
+    id: number
+    username?: string
+    full_name?: string
+    email?: string
+    terms_accepted: boolean
+    terms_version: string
+    terms_accepted_at: string
+  }
   acceptance?: {
     user_id: number
     version: string
@@ -273,13 +304,35 @@ export interface UserDashboard {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  // Get auth token from localStorage if available
+  const authToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null
+  
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+  })
+  
+  // Add any additional headers from init
+  if (init?.headers) {
+    if (init.headers instanceof Headers) {
+      init.headers.forEach((value, key) => {
+        headers.set(key, value)
+      })
+    } else if (typeof init.headers === 'object') {
+      Object.entries(init.headers).forEach(([key, value]) => {
+        headers.set(key, value as string)
+      })
+    }
+  }
+  
+  // Add Authorization header if token exists
+  if (authToken) {
+    headers.set('Authorization', `Bearer ${authToken}`)
+  }
+  
   const res = await fetch(`${API_BASE}${path}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...(init?.headers || {}),
-    },
-    cache: 'no-store',
     ...init,
+    headers,
+    cache: 'no-store',
   })
   if (!res.ok) {
     let msg = 'Request failed'
@@ -381,5 +434,26 @@ export const api = {
         headers: token ? { 'Authorization': `Bearer ${token}` } : {},
         body: JSON.stringify({ setting_key: settingKey, setting_value: settingValue })
       }),
+  },
+  
+  // Merchant APIs
+  merchant: {
+    list: () => request<{ merchants: Merchant[] }>(`/public/merchants`),
+    getById: (id: number) => request<{ merchant: Merchant }>(`/public/merchants/${id}`),
+    apply: (application: MerchantApplication, token?: string) => 
+      request<{ success: boolean; message: string; merchant_id?: number }>(`/merchant/apply`, {
+        method: 'POST',
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        body: JSON.stringify(application)
+      }),
+    update: (merchantId: number, data: Partial<MerchantApplication>, token?: string) =>
+      request<{ success: boolean; message: string }>(`/merchant/${merchantId}`, {
+        method: 'PUT',
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        body: JSON.stringify(data)
+      }),
+    myMerchant: (token?: string) => request<{ merchant: Merchant | null }>(`/merchant/me`, {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+    }),
   },
 }

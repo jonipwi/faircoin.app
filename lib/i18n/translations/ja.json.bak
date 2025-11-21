@@ -595,19 +595,10 @@
     "becomeButton": "商人になる",
     "buildTrust": "公正なビジネス慣行を通じて顧客との信頼を築きましょう",
     "categories": {
-      "all": "すべてのカテゴリ",
-      "clothing": "衣料品店",
-      "clothingHousehold": "家庭サービス",
-      "dailyEssentials": "食料品 / 必需品",
-      "educationCommunity": "コミュニティ",
-      "foodDrinks": "食品と飲料",
+      "beverages": "飲料",
+      "food": "食料",
       "groceries": "食料品",
-      "hardware": "ハードウェアストア",
-      "homeProperty": "不動産と住宅",
-      "petCare": "ペットケア",
-      "pharmacy": "薬局",
-      "restaurant": "レストラン",
-      "services": "サービスと支援"
+      "homeGarden": "ホーム \u0026 ガーデン"
     },
     "categoryDescription": "公正取引評価のある認証済み商人を閲覧する",
     "description": "高いコミュニティビジネスインデックス (CBI★) スコアを持つ信頼できる商人を見つける",

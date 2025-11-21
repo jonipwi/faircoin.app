@@ -595,19 +595,10 @@
     "becomeButton": "Jadilah Pedagang",
     "buildTrust": "Bangun kepercayaan dengan pelanggan Anda melalui praktik bisnis yang adil",
     "categories": {
-      "all": "Semua Kategori",
-      "clothing": "Toko Pakaian",
-      "clothingHousehold": "Layanan Rumah Tangga",
-      "dailyEssentials": "Bahan Makanan / Kebutuhan Dasar",
-      "educationCommunity": "Komunitas",
-      "foodDrinks": "Makanan \u0026 Minuman",
+      "beverages": "Minuman",
+      "food": "Makanan",
       "groceries": "Belanja Kebutuhan",
-      "hardware": "Toko Perkakas",
-      "homeProperty": "Properti \u0026 Perumahan",
-      "petCare": "Perawatan Hewan Peliharaan",
-      "pharmacy": "Apotek",
-      "restaurant": "Restoran",
-      "services": "Layanan \u0026 Bantuan"
+      "homeGarden": "Rumah \u0026 Taman"
     },
     "categoryDescription": "Jelajahi pedagang terverifikasi dengan peringkat perdagangan yang adil",
     "description": "Temukan pedagang tepercaya dengan skor Indeks Bisnis Komunitas (CBI★) yang tinggi",

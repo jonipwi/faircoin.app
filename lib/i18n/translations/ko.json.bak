@@ -595,19 +595,10 @@
     "becomeButton": "상인이 되세요",
     "buildTrust": "공정한 비즈니스 관행을 통해 고객과의 신뢰를 구축하세요",
     "categories": {
-      "all": "모든 카테고리",
-      "clothing": "의류 매장",
-      "clothingHousehold": "가정 서비스",
-      "dailyEssentials": "식료품 / 필수품",
-      "educationCommunity": "커뮤니티",
-      "foodDrinks": "음식 및 음료",
+      "beverages": "음료",
+      "food": "음식",
       "groceries": "식료품",
-      "hardware": "하드웨어 상점",
-      "homeProperty": "부동산 및 주택",
-      "petCare": "반려동물 돌보기",
-      "pharmacy": "약국",
-      "restaurant": "레스토랑",
-      "services": "서비스 및 도움"
+      "homeGarden": "홈 및 정원"
     },
     "categoryDescription": "공정 거래 등급이 있는 인증된 상인 탐색",
     "description": "높은 커뮤니티 비즈니스 지수(CBI★) 점수를 가진 신뢰할 수 있는 상인을 찾으세요",

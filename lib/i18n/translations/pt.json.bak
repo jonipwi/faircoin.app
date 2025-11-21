@@ -595,19 +595,10 @@
     "becomeButton": "Torne-se um Comerciante",
     "buildTrust": "Construa confiança com seus clientes através de práticas comerciais justas",
     "categories": {
-      "all": "Todas as Categorias",
-      "clothing": "Loja de Roupas",
-      "clothingHousehold": "Serviços Domésticos",
-      "dailyEssentials": "Mercearia / Essenciais",
-      "educationCommunity": "Comunidade",
-      "foodDrinks": "Alimentos \u0026 Bebidas",
+      "beverages": "Bebidas",
+      "food": "Alimentos",
       "groceries": "Alimentos",
-      "hardware": "Loja de Materiais de Construção",
-      "homeProperty": "Propriedade e Habitação",
-      "petCare": "Cuidados com Animais de Estimação",
-      "pharmacy": "Farmácia",
-      "restaurant": "Restaurante",
-      "services": "Serviços \u0026 Ajuda"
+      "homeGarden": "Casa \u0026 Jardim"
     },
     "categoryDescription": "Navegue por comerciantes verificados com classificações de comércio justo",
     "description": "Encontre comerciantes confiáveis com altas pontuações no Índice de Negócios da Comunidade (CBI★)",

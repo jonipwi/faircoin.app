@@ -595,19 +595,10 @@
     "becomeButton": "Word een Handelaar",
     "buildTrust": "Bouw vertrouwen op bij uw klanten door eerlijke zakelijke praktijken",
     "categories": {
-      "all": "Alle Categorieën",
-      "clothing": "Kledingwinkel",
-      "clothingHousehold": "Huishoudelijke Diensten",
-      "dailyEssentials": "Boodschappen / Essentiële Zaken",
-      "educationCommunity": "Gemeenschap",
-      "foodDrinks": "Voedsel \u0026 Dranken",
+      "beverages": "Dranken",
+      "food": "Voedsel",
       "groceries": "Boodschappen",
-      "hardware": "Bouwmarkt",
-      "homeProperty": "Onroerend Goed \u0026 Huisvesting",
-      "petCare": "Huisdierenverzorging",
-      "pharmacy": "Apotheek",
-      "restaurant": "Restaurant",
-      "services": "Diensten \u0026 Hulp"
+      "homeGarden": "Huis \u0026 Tuin"
     },
     "categoryDescription": "Blader door geverifieerde handelaren met eerlijke handelsbeoordelingen",
     "description": "Vind vertrouwde handelaren met hoge Community Business Index (CBI★) scores",

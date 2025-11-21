@@ -137,6 +137,8 @@
       "spiritualNote": "Remember: Tokens stored through Faith, Love, and Justice",
       "downloadDetails": "Download Details",
       "backToHome": "Back to Home",
+      "send": "Send",
+      "receive": "Receive",
       "createTreasury": {
         "title": "Create Your PFI Treasury",
         "description": "Your treasury stores your Personal Fairness Index metrics and community tokens. We're not a cryptocurrency platform - we measure fairness!",
@@ -145,6 +147,188 @@
       },
       "copy": "Copy",
       "copied": "Copied!"
+    },
+    "wallet": {
+      "title": "My Wallet",
+      "description": "Send, receive, and check your FairCoin balance"
+    },
+    "proposals": {
+      "title": "Proposals",
+      "description": "Vote on community decisions and proposals",
+      "subtitle": "Vote on decisions that shape FairCoin",
+      "signInToVote": "Please sign in to vote",
+      "signInPrompt": "Sign in to vote on proposals",
+      "noActive": "No Active Proposals",
+      "checkBack": "Check back soon for new community decisions",
+      "voteRecorded": "Vote recorded!",
+      "voteFailed": "Failed to vote",
+      "ended": "Ended",
+      "left": "left",
+      "totalVotes": "total votes",
+      "for": "For",
+      "against": "Against",
+      "voteFor": "Vote FOR",
+      "voteAgainst": "Vote AGAINST",
+      "proposedBy": "Proposed by",
+      "status": {
+        "active": "Active",
+        "passed": "Passed",
+        "rejected": "Rejected"
+      }
+    },
+    "merchants": {
+      "title": "Merchant Groups",
+      "description": "Find trusted merchants with fair ratings",
+      "subtitle": "Explore merchant categories in your community",
+      "groupHint": "Each group represents a category of local merchants",
+      "searchPlaceholder": "Search merchants...",
+      "noMerchants": "No Merchants Found",
+      "tryDifferent": "Try a different search or check back soon",
+      "tfiScore": "Community Business Index (CBI★)",
+      "verifiedReviews": "verified reviews",
+      "viewStore": "View Store Details",
+      "viewDetails": "View details",
+      "viewMerchantsIn": "View Merchants in",
+      "applyFor": "Apply for",
+      "applyMerchant": "Apply to Become a Merchant",
+      "merchant1Name": "Daily Essentials",
+      "merchant2Name": "Food & Drinks",
+      "merchant3Name": "Household Services",
+      "merchant4Name": "Services",
+      "merchant5Name": "Pet & Care",
+      "merchant6Name": "Education & Community",
+      "categories": {
+        "all": "All Categories",
+        "dailyEssentials": "Groceries / Essentials",
+        "foodDrinks": "Food & Beverages",
+        "clothingHousehold": "Household Services",
+        "services": "Services & Help",
+        "petCare": "Pet Care",
+        "educationCommunity": "Community",
+        "homeProperty": "Property & Housing",
+        "groceries": "Groceries & Food",
+        "restaurant": "Restaurant",
+        "clothing": "Clothing Store",
+        "hardware": "Hardware Store",
+        "pharmacy": "Pharmacy"
+      },
+      "merchant1": {
+        "description": "Community Mini Market, Local Grocery, Fresh Vegetables, Water Refill"
+      },
+      "merchant2": {
+        "description": "Local Food Stall, Bakery & Pastry, Coffee & Tea, Juice Bar"
+      },
+      "merchant3": {
+        "description": "Tailor, Laundry Service, Home Supplies, Small Hardware"
+      },
+      "merchant4": {
+        "description": "Local Driver, Repairman, Barber, Cleaning Service"
+      },
+      "merchant5": {
+        "description": "Pet Grooming, Pet Food Shop, Local Vet"
+      },
+      "merchant6": {
+        "description": "Tutoring Center, Sunday School, Library, Kids Activities"
+      },
+      "merchant7Name": "Health & Wellness",
+      "merchant7": {
+        "description": "Community Pharmacy, Health Supplies, Over-the-Counter Medicine, Consultation"
+      },
+      "merchant8Name": "Property & Housing",
+      "merchant8": {
+        "description": "Real Estate Agent, Home Rental, Property Management, Home Insurance"
+      },
+      "ratings": {
+        "excellent": "Excellent",
+        "veryGood": "Very Good",
+        "good": "Good",
+        "fair": "Fair"
+      },
+      "apply": {
+        "title": "Become a Merchant",
+        "subtitle": "Join our trusted merchant community",
+        "step": "Step",
+        "of": "of",
+        "businessName": "Business Name",
+        "businessNameHint": "What is your store or business called?",
+        "businessNameExample": "Example: Green Market Co-op",
+        "ownerName": "Your Name",
+        "ownerNameHint": "What is the owner's full name?",
+        "ownerNameExample": "Example: John Smith",
+        "category": "Category",
+        "categoryHint": "Choose the category that best describes your business",
+        "selectCategory": "Select a category...",
+        "businessType": "Business Type",
+        "businessTypeHint": "What type of business entity?",
+        "selectBusinessType": "Select type...",
+        "phone": "Phone Number",
+        "phoneHint": "How can we reach you?",
+        "phoneExample": "Example: +1 234 567 8900",
+        "email": "Business Email",
+        "emailHint": "Business contact email",
+        "emailExample": "Example: contact@business.com",
+        "address": "Business Address",
+        "addressHint": "Where is your business located?",
+        "addressExample": "Example: 123 Main Street, Downtown",
+        "location": "Location",
+        "locationHint": "Where is your business located?",
+        "locationExample": "Example: 123 Main Street, Downtown",
+        "website": "Business Website (Optional)",
+        "websiteHint": "Your business website or social media page",
+        "websiteExample": "Example: https://mybusiness.com",
+        "description": "Tell Us About Your Business",
+        "descriptionHint": "What makes your business special? What do you sell or offer?",
+        "descriptionExample": "Example: We sell fresh organic produce and support local farmers. Open 7 days a week with friendly service.",
+        "review": "Review Your Information",
+        "nextStep": "Next Step",
+        "submit": "Submit Application",
+        "success": {
+          "title": "Application Received!",
+          "thankYou": "Thank you",
+          "review": "We will review your application for",
+          "contact": "and contact you within 2-3 business days at",
+          "viewMerchants": "View Merchants"
+        }
+      },
+      "dashboard": {
+        "title": "My Store Dashboard",
+        "subtitle": "Manage your merchant account",
+        "thisMonth": "THIS MONTH",
+        "total": "TOTAL",
+        "average": "AVERAGE",
+        "totalSales": "Total Sales",
+        "customers": "Customers",
+        "reviews": "Reviews",
+        "tradeFairness": "Trade Fairness",
+        "quickActions": "Quick Actions",
+        "viewSales": "View Sales",
+        "viewSalesDesc": "See your recent transactions",
+        "reviewsDesc": "Read what customers say",
+        "messages": "Messages",
+        "messagesDesc": "Chat with customers",
+        "settings": "Store Settings",
+        "settingsDesc": "Update your store info",
+        "needHelp": "Need Help?",
+        "supportAvailable": "Our support team is here to assist you 24/7",
+        "getHelp": "Get Help Now",
+        "backToMerchants": "Back to Merchants"
+      },
+      "viewDashboard": "Merchant Dashboard",
+      "applyMerchant": "Apply as Merchant",
+      "joinCommunity": "Want to Join Our Merchant Community?",
+      "buildTrust": "Build trust with your customers through fair business practices",
+      "reviews": "reviews",
+      "stores": {
+        "title": "Merchant Stores",
+        "subtitle": "Browse verified stores with fair trade ratings",
+        "searchPlaceholder": "Search stores by name, category, or location...",
+        "noStores": "No Stores Found",
+        "tryDifferent": "Try a different search or check back soon",
+        "owner": "Owner",
+        "tfiLabel": "Trade Fairness Index (TFI★)",
+        "backToCategories": "Back to Categories",
+        "filterByCategory": "Filter by Category"
+      }
     },
     "help": {
       "title": "Help & Tutorial",
@@ -310,22 +494,161 @@
   },
   "merchants": {
     "title": "Merchant Directory",
-    "subtitle": "Verified Merchants",
-    "description": "Find trusted merchants with high Trade Fairness Index (TFI★) scores",
+    "subtitle": "Verified Merchant Groups",
+    "description": "Find trusted merchants with high Community Business Index (CBI★) scores",
+    "groupHint": "Each card represents a category of local merchants",
     "searchPlaceholder": "Search merchants...",
     "search": "Search",
-    "tfiScore": "TFI★ Score",
+    "tfiScore": "CBI★ Score",
     "reviews": "reviews",
     "viewStore": "View Store",
+    "viewDetails": "View Details",
+    "viewMerchantsIn": "View Merchants in",
+    "applyFor": "Apply for",
     "becomeButton": "Become a Merchant",
-    "merchant1Name": "Green Market Co-op",
-    "merchant1Category": "Groceries",
-    "merchant2Name": "Fair Trade Coffee",
-    "merchant2Category": "Beverages",
-    "merchant3Name": "Community Bakery",
-    "merchant3Category": "Food",
-    "merchant4Name": "Local Hardware",
-    "merchant4Category": "Home & Garden"
+    "merchants": "Merchants",
+    "categoryDescription": "Browse verified merchants with fair trade ratings",
+    "noMerchants": "No Merchants Found",
+    "tryDifferent": "Try a different search or check back soon",
+    "joinCommunity": "Want to Join Our Merchant Community?",
+    "buildTrust": "Build trust with your customers through fair business practices",
+    "applyMerchant": "Become a Merchant",
+    "backToCategories": "Back to Categories",
+    "viewDashboard": "My Merchant Dashboard",
+    "categories": {
+      "all": "All Categories",
+      "dailyEssentials": "Groceries / Essentials",
+      "foodDrinks": "Food & Beverages",
+      "clothingHousehold": "Household Services",
+      "services": "Services & Help",
+      "petCare": "Pet Care",
+      "educationCommunity": "Community",
+      "homeProperty": "Property & Housing",
+      "groceries": "Groceries & Food",
+      "restaurant": "Restaurant",
+      "clothing": "Clothing Store",
+      "hardware": "Hardware Store",
+      "pharmacy": "Pharmacy"
+    },
+    "merchant1Name": "Daily Essentials",
+    "merchant1Category": "Groceries / Essentials",
+    "merchant1": {
+      "description": "Community Mini Market, Local Grocery, Fresh Vegetables, Water Refill"
+    },
+    "merchant2Name": "Food & Drinks",
+    "merchant2Category": "Food & Beverages",
+    "merchant2": {
+      "description": "Local Restaurants, Street Food, Coffee Shops, Bakeries"
+    },
+    "merchant3Name": "Household Services",
+    "merchant3Category": "Household Services",
+    "merchant3": {
+      "description": "Laundry Services, Cleaning Services, Repairs, Handyman"
+    },
+    "merchant4Name": "Services",
+    "merchant4Category": "Services & Help",
+    "merchant4": {
+      "description": "Transportation, Delivery, Moving Services, Errands"
+    },
+    "merchant5Name": "Pet & Care",
+    "merchant5Category": "Pet Care",
+    "merchant5": {
+      "description": "Pet Grooming, Veterinary, Pet Supplies, Dog Walking"
+    },
+    "merchant6Name": "Education & Community",
+    "merchant6Category": "Community",
+    "merchant6": {
+      "description": "Tutoring, Classes, Workshops, Community Centers"
+    },
+    "merchant7Name": "Health & Wellness",
+    "merchant7Category": "Pharmacy",
+    "merchant7": {
+      "description": "Pharmacies, Health Clinics, Medical Supplies, Wellness Centers"
+    },
+    "merchant8Name": "Property & Housing",
+    "merchant8Category": "Property & Housing",
+    "merchant8": {
+      "description": "Home Rentals, Property Management, Housing Services"
+    },
+    "categories": {
+      "all": "All Categories",
+      "dailyEssentials": "Groceries / Essentials",
+      "foodDrinks": "Food & Beverages",
+      "clothingHousehold": "Household Services",
+      "services": "Services & Help",
+      "petCare": "Pet Care",
+      "educationCommunity": "Community",
+      "homeProperty": "Property & Housing",
+      "groceries": "Groceries & Food",
+      "restaurant": "Restaurant",
+      "clothing": "Clothing Store",
+      "hardware": "Hardware Store",
+      "pharmacy": "Pharmacy"
+    },
+    "ratings": {
+      "excellent": "Excellent",
+      "veryGood": "Very Good",
+      "good": "Good",
+      "fair": "Fair"
+    },
+    "apply": {
+      "title": "Become a Merchant",
+      "subtitle": "Join our trusted merchant community",
+      "step": "Step",
+      "of": "of",
+      "businessName": "Business Name",
+      "businessNameHint": "What is your store or business called?",
+      "businessNameExample": "Example: Green Market Co-op",
+      "ownerName": "Your Name",
+      "ownerNameHint": "What is the owner's full name?",
+      "ownerNameExample": "Example: John Smith",
+      "category": "Category",
+      "categoryHint": "Choose the category that best describes your business",
+      "selectCategory": "Select a category...",
+      "businessType": "Business Type",
+      "businessTypeHint": "What type of business entity?",
+      "selectBusinessType": "Select type...",
+      "phone": "Phone Number",
+      "phoneHint": "How can we reach you?",
+      "phoneExample": "Example: +1 234 567 8900",
+      "email": "Business Email",
+      "emailHint": "Business contact email",
+      "emailExample": "Example: contact@business.com",
+      "address": "Business Address",
+      "addressHint": "Where is your business located?",
+      "addressExample": "Example: 123 Main Street, Downtown",
+      "location": "Location",
+      "locationHint": "Where is your business located?",
+      "locationExample": "Example: 123 Main Street, Downtown",
+      "website": "Business Website (Optional)",
+      "websiteHint": "Your business website or social media page",
+      "websiteExample": "Example: https://mybusiness.com",
+      "description": "Tell Us About Your Business",
+      "descriptionHint": "What makes your business special? What do you sell or offer?",
+      "descriptionExample": "Example: We sell fresh organic produce and support local farmers. Open 7 days a week with friendly service.",
+      "review": "Review Your Information",
+      "nextStep": "Next Step",
+      "submit": "Submit Application",
+      "success": {
+        "title": "Application Received!",
+        "thankYou": "Thank you",
+        "review": "We will review your application for",
+        "contact": "and contact you within 2-3 business days at",
+        "viewMerchants": "Back to Merchants"
+      }
+    },
+    "merchant1": {
+      "description": "Fresh organic produce and fair trade goods"
+    },
+    "merchant2": {
+      "description": "Ethically sourced coffee and tea"
+    },
+    "merchant3": {
+      "description": "Fresh baked goods made daily"
+    },
+    "merchant4": {
+      "description": "Tools and supplies with honest service"
+    }
   },
   "fairness": {
     "badge": "Fairness Metrics",
@@ -468,13 +791,22 @@
   "common": {
     "close": "Close",
     "loading": "Loading...",
+    "back": "Back",
+    "home": "Home",
     "backToHome": "Back to Home",
     "refresh": "Refresh",
     "download": "Download",
     "viewAll": "View All",
+    "comingSoon": "Coming Soon",
     "communityDriven": "A Community-Driven Fair Transaction System",
-    "breakingFree": "Breaking free from inequality and inflation with a fairness-first monetary system. Powered by Personal Fairness Index (PFI★) and Trade Fairness Index (TFI★).",
+    "breakingFree": "Breaking free from inequality and inflation with a fairness-first monetary system. Powered by Personal Fairness Index (PFI★) and Community Business Index (CBI★).",
     "joinAsCollaborator": "Join as Collaborator"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
   },
   "whitepaper": {
     "badge": "OFFICIAL WHITEPAPER",
@@ -502,7 +834,7 @@
       "subtitle2": "2.2. The Mission",
       "mission": "To build a transparent, fair, and compassionate ecosystem that empowers people to practice truth, fairness, and mercy in their daily lives, supported by tools like:",
       "tool1": "Personal Fairness Index: measuring personal integrity and growth in love and justice.",
-      "tool2": "Trade Fairness Index: evaluating fairness in community and marketplace exchanges.",
+      "tool2": "Community Business Index: evaluating fairness in community and marketplace exchanges.",
       "tool3": "the Conscience Guide: ensuring all digital actions align with truth, mercy, and peace."
     },
     

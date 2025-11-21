@@ -18,6 +18,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/components/*": [
         "./components/*"
@@ -47,8 +48,9 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts"
-, "app/whitepaper/page.tsx.backup"  ],
+    ".next/types/**/*.ts",
+    "app/whitepaper/page.tsx.backup"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -595,19 +595,10 @@
     "becomeButton": "Händler werden",
     "buildTrust": "Bauen Sie Vertrauen zu Ihren Kunden durch faire Geschäftspraktiken",
     "categories": {
-      "all": "Alle Kategorien",
-      "clothing": "Bekleidungsgeschäft",
-      "clothingHousehold": "Haushaltsdienste",
-      "dailyEssentials": "Lebensmittel / Grundbedarf",
-      "educationCommunity": "Gemeinschaft",
-      "foodDrinks": "Essen \u0026 Getränke",
+      "beverages": "Getränke",
+      "food": "Essen",
       "groceries": "Lebensmittel",
-      "hardware": "Baumarkt",
-      "homeProperty": "Immobilien \u0026 Wohnen",
-      "petCare": "Haustierpflege",
-      "pharmacy": "Apotheke",
-      "restaurant": "Restaurant",
-      "services": "Dienstleistungen \u0026 Hilfe"
+      "homeGarden": "Haus \u0026 Garten"
     },
     "categoryDescription": "Durchsuchen Sie verifizierte Händler mit fairen Handelsbewertungen",
     "description": "Finden Sie vertrauenswürdige Händler mit hohen Community Business Index (CBI★) Werten",

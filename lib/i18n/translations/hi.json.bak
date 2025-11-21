@@ -595,19 +595,10 @@
     "becomeButton": "व्यापारी बनें",
     "buildTrust": "अपने ग्राहकों के साथ निष्पक्ष व्यापार प्रथाओं के माध्यम से विश्वास बनाएं",
     "categories": {
-      "all": "सभी श्रेणियाँ",
-      "clothing": "कपड़ों की दुकान",
-      "clothingHousehold": "गृह सेवाएँ",
-      "dailyEssentials": "राशन / आवश्यकताएँ",
-      "educationCommunity": "समुदाय",
-      "foodDrinks": "खाद्य और पेय",
+      "beverages": "पेय",
+      "food": "खाना",
       "groceries": "किराने का सामान",
-      "hardware": "हार्डवेयर की दुकान",
-      "homeProperty": "संपत्ति और आवास",
-      "petCare": "पशु देखभाल",
-      "pharmacy": "फार्मेसी",
-      "restaurant": "रेस्तरां",
-      "services": "सेवाएँ और सहायता"
+      "homeGarden": "घर और बगीचा"
     },
     "categoryDescription": "सत्यापित व्यापारियों को देखें जिनके पास उचित व्यापार रेटिंग हैं",
     "description": "उच्च सामुदायिक व्यापार सूचकांक (CBI★) स्कोर वाले विश्वसनीय व्यापारियों को खोजें",

@@ -595,19 +595,10 @@
     "becomeButton": "Devenir un marchand",
     "buildTrust": "Construisez la confiance avec vos clients grâce à des pratiques commerciales équitables",
     "categories": {
-      "all": "Toutes les Catégories",
-      "clothing": "Magasin de Vêtements",
-      "clothingHousehold": "Services à domicile",
-      "dailyEssentials": "Épicerie / Essentiels",
-      "educationCommunity": "Communauté",
-      "foodDrinks": "Alimentation \u0026 Boissons",
+      "beverages": "Boissons",
+      "food": "Nourriture",
       "groceries": "Épicerie",
-      "hardware": "Quincaillerie",
-      "homeProperty": "Propriété \u0026 Logement",
-      "petCare": "Soins des Animaux",
-      "pharmacy": "Pharmacie",
-      "restaurant": "Restaurant",
-      "services": "Services \u0026 Aide"
+      "homeGarden": "Maison \u0026 Jardin"
     },
     "categoryDescription": "Parcourez les marchands vérifiés avec des évaluations de commerce équitable",
     "description": "Trouvez des commerçants de confiance avec des scores élevés sur l'Indice de Business Communautaire (CBI★)",

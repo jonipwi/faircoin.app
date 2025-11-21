@@ -595,19 +595,10 @@
     "becomeButton": "كن تاجرًا",
     "buildTrust": "بناء الثقة مع عملائك من خلال ممارسات تجارية عادلة",
     "categories": {
-      "all": "جميع الفئات",
-      "clothing": "متجر الملابس",
-      "clothingHousehold": "خدمات منزلية",
-      "dailyEssentials": "البقالة / الأساسيات",
-      "educationCommunity": "المجتمع",
-      "foodDrinks": "الطعام والمشروبات",
+      "beverages": "مشروبات",
+      "food": "طعام",
       "groceries": "البقالة",
-      "hardware": "متجر الأدوات",
-      "homeProperty": "العقارات والإسكان",
-      "petCare": "رعاية الحيوانات الأليفة",
-      "pharmacy": "الصيدلية",
-      "restaurant": "المطعم",
-      "services": "الخدمات والمساعدة"
+      "homeGarden": "المنزل والحديقة"
     },
     "categoryDescription": "تصفح التجار المعتمدين مع تقييمات التجارة العادلة",
     "description": "ابحث عن تجار موثوقين scores (CBI★) عالية في مؤشر الأعمال المجتمعية",

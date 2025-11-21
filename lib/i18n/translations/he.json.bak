@@ -595,19 +595,10 @@
     "becomeButton": "הפוך לסוחר",
     "buildTrust": "בנה אמון עם הלקוחות שלך באמצעות פרקטיקות עסקיות הוגנות",
     "categories": {
-      "all": "כל הקטגוריות",
-      "clothing": "חנות בגדים",
-      "clothingHousehold": "שירותי משק בית",
-      "dailyEssentials": "מזון / מוצרים חיוניים",
-      "educationCommunity": "קהילה",
-      "foodDrinks": "אוכל \u0026 משקאות",
+      "beverages": "משקאות",
+      "food": "אוכל",
       "groceries": "מזון בסיסי",
-      "hardware": "חנות חומרה",
-      "homeProperty": "נכסים \u0026 דיור",
-      "petCare": "טיפול בחיות מחמד",
-      "pharmacy": "בית מרקחת",
-      "restaurant": "מסעדה",
-      "services": "שירותים \u0026 עזרה"
+      "homeGarden": "בית \u0026 גן"
     },
     "categoryDescription": "עיין בסוחרים מאומתים עם דירוגי סחר הוגן",
     "description": "מצא סוחרים מהימנים עם ציוני מדד העסקים הקהילתי (CBI★) גבוהים",

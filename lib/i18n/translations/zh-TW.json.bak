@@ -595,19 +595,10 @@
     "becomeButton": "成為商家",
     "buildTrust": "通過公平的商業實踐與您的客戶建立信任",
     "categories": {
-      "all": "所有類別",
-      "clothing": "服裝店",
-      "clothingHousehold": "家庭服務",
-      "dailyEssentials": "雜貨 / 生活必需品",
-      "educationCommunity": "社區",
-      "foodDrinks": "食品與飲料",
+      "beverages": "飲料",
+      "food": "食物",
       "groceries": "雜貨",
-      "hardware": "五金店",
-      "homeProperty": "房地產與住房",
-      "petCare": "寵物護理",
-      "pharmacy": "藥房",
-      "restaurant": "餐廳",
-      "services": "服務與幫助"
+      "homeGarden": "家庭與花園"
     },
     "categoryDescription": "瀏覽具有公平貿易評級的驗證商家",
     "description": "尋找擁有高社區商業指數 (CBI★) 分數的可信商家",
