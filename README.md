@@ -10,6 +10,16 @@ A community-driven fair transaction system built on principles of transparency, 
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 [![Sponsor](https://img.shields.io/badge/Sponsor-❤️-ff69b4?style=for-the-badge)](https://github.com/sponsors/jonipwi)
 
+> 🌍 **ANNOUNCEMENT: COMPLETE MULTI-LANGUAGE SUPPORT NOW AVAILABLE!**
+> 
+> **FairCoin is now fully available in 15 languages** for both Full Version and Lite Version!
+> 
+> **Supported Languages**: 🇬🇧 English • 🇨🇳 中文 • 🇹🇼 繁體中文 • 🇪🇸 Español • 🇫🇷 Français • 🇩🇪 Deutsch • 🇮🇳 हिन्दी • 🇷🇺 Русский • 🇮🇩 Indonesia • 🇰🇷 한국어 • 🇯🇵 日本語 • 🇮🇱 עברית • 🇸🇦 العربية • 🇳🇱 Nederlands • 🇵🇹 Português
+> 
+> **745 translation keys** × 15 languages = **11,175 total translations** covering every feature including navigation, wallet, merchants, governance, community, and the elder-friendly Lite interface.
+> 
+> 📖 **[Read Full Announcement](./MULTILANG_ANNOUNCEMENT.md)** | 🌐 **Try it now**: [https://faircoin.bixio.xyz/{language-code}](https://faircoin.bixio.xyz/en)
+
 > 🎉 **DOMAIN RECOVERY UPDATE - BOTH DOMAINS RECOVERED**
 > 
 > **Good News**: Both domains **jacobyellowbridge.com** and **sobatam.com** have been **RECOVERED** and are now back under legitimate control.
