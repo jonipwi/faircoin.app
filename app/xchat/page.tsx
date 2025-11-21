@@ -16,6 +16,7 @@ export default function XChatPage() {
 
   useEffect(() => {
     async function initializeChat() {
+      const isDev = process.env.NODE_ENV === 'development'
       try {
         // Check authentication
         const auth = hasValidAuth()
@@ -26,7 +27,7 @@ export default function XChatPage() {
           return
         }
 
-        console.log('[XChat] Generating token for user:', auth.username)
+        if (isDev) console.log('[XChat] Generating token for user:', auth.username)
 
         // Generate encrypted token
         const encryptedToken = await generateXChatToken(auth.username, auth.wallet || '')
@@ -39,7 +40,7 @@ export default function XChatPage() {
         const url = `${xchatUrl}/lite?token=${encryptedToken}`
         setIframeUrl(url)
 
-        console.log('[XChat] Token generated, loading iframe')
+        if (isDev) console.log('[XChat] Token generated, loading iframe')
         setLoading(false)
       } catch (err) {
         console.error('[XChat] Initialization error:', err)

@@ -231,6 +231,13 @@ export default function SettingsPage() {
   const loadUserSettingsFallback = async (token: string) => {
     try {
       console.log('[SETTINGS] 🔄 Trying fallback settings API...')
+      
+      // Check if token is valid
+      if (!token || token === 'undefined') {
+        console.error('[SETTINGS] ❌ Invalid token, cannot load settings')
+        return
+      }
+      
       const startTime = Date.now()
       
       const response = await fetch('/api/settings', {
@@ -376,6 +383,14 @@ export default function SettingsPage() {
           throw new Error('Unknown settings section')
       }
 
+      // Check for valid token
+      const token = localStorage.getItem('auth_token') || 
+                   document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
+      
+      if (!token || token === 'undefined') {
+        throw new Error('No valid authentication token found. Please log in again.')
+      }
+
       // Make API call to save settings
       const response = await fetch('/api/settings', {
         method: 'POST',
@@ -412,6 +427,10 @@ export default function SettingsPage() {
     try {
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
+
+      if (!token || token === 'undefined') {
+        throw new Error('No valid authentication token found. Please log in again.')
+      }
 
       const response = await fetch('/api/2fa/setup', {
         method: 'POST',
@@ -454,6 +473,10 @@ export default function SettingsPage() {
     try {
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
+
+      if (!token || token === 'undefined') {
+        throw new Error('No valid authentication token found. Please log in again.')
+      }
 
       const response = await fetch('/api/2fa/verify', {
         method: 'POST',
@@ -499,6 +522,10 @@ export default function SettingsPage() {
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
 
+      if (!token || token === 'undefined') {
+        throw new Error('No valid authentication token found. Please log in again.')
+      }
+
       const response = await fetch('/api/2fa/disable', {
         method: 'POST',
         headers: {
@@ -539,6 +566,10 @@ export default function SettingsPage() {
     try {
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
+
+      if (!token || token === 'undefined') {
+        throw new Error('No valid authentication token found. Please log in again.')
+      }
 
       const response = await fetch('/api/2fa/backup-codes/regenerate', {
         method: 'POST',

@@ -24,7 +24,8 @@ export default function LiteChat() {
         }
       }
     } catch (e) {
-      console.warn('Failed to load user from localStorage:', e)
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.warn('Failed to load user from localStorage:', e)
     }
   }, [])
 
@@ -33,10 +34,13 @@ export default function LiteChat() {
 
   // Debug logging
   useEffect(() => {
-    console.log('🔍 Chat Page Debug:')
-    console.log('  Username:', username)
-    console.log('  Wallet:', walletAddress)
-    console.log('  Full URL:', iframeUrl)
+    const isDev = process.env.NODE_ENV === 'development'
+    if (isDev) {
+      console.log('🔍 Chat Page Debug:')
+      console.log('  Username:', username)
+      console.log('  Wallet:', walletAddress)
+      console.log('  Full URL:', iframeUrl)
+    }
   }, [username, walletAddress, iframeUrl])
 
   return (

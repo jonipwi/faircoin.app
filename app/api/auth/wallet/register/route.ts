@@ -6,23 +6,13 @@ const API_BASE_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || '
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { full_name, email } = body
+    const { full_name } = body
 
     if (!full_name || full_name.trim().length < 2) {
       return NextResponse.json(
         { 
           success: false, 
           error: 'Full name is required and must be at least 2 characters' 
-        },
-        { status: 400 }
-      )
-    }
-
-    if (!email || !email.includes('@')) {
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Valid email address is required' 
         },
         { status: 400 }
       )
@@ -42,7 +32,7 @@ export async function POST(request: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ full_name: full_name.trim(), email: email.trim() }),
+      body: JSON.stringify({ full_name: full_name.trim() }),
     })
 
     console.log('[WALLET-REGISTER] Response status:', response.status)

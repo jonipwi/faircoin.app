@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Menu, X, Home, HelpCircle, ArrowLeft, Download } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { LanguageSelector } from '@/components/lite/LanguageSelector'
@@ -15,6 +16,7 @@ export function LiteNavbar() {
   const { user, isAuthenticated } = useAuth()
   const localePath = useLocalePath()
   const { t } = useLanguage()
+  const router = useRouter()
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -55,7 +57,7 @@ export function LiteNavbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo + User */}
           <div className="flex items-center gap-4">
-            <Link href={localePath('lite') as any} className="flex items-center gap-3 group">
+            <button onClick={() => window.location.href = localePath('lite') as string} className="flex items-center gap-3 group cursor-pointer">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <span className="text-2xl font-bold text-white">FC</span>
               </div>
@@ -63,7 +65,7 @@ export function LiteNavbar() {
                 <p className="text-xs uppercase tracking-wider text-primary-600 dark:text-primary-400 font-semibold">FairCoin</p>
                 <p className="text-lg font-bold text-gray-900 dark:text-white">Lite</p>
               </div>
-            </Link>
+            </button>
             {isAuthenticated && user && (
               <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/30 border-2 border-primary-200 dark:border-primary-700">
                 <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-sm">
@@ -79,14 +81,14 @@ export function LiteNavbar() {
           {/* Desktop Nav - Language selector hidden in lite mode */}
           <div className="hidden md:flex items-center gap-2">
             {navLinks.map(({ label, href, icon: Icon }) => (
-              <Link
+              <button
                 key={href}
-                href={href as any}
-                className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-300 transition-all"
+                onClick={() => window.location.href = href as string}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-300 transition-all cursor-pointer"
               >
                 <Icon className="w-5 h-5" />
                 <span>{label}</span>
-              </Link>
+              </button>
             ))}
             {showInstall && (
               <button
@@ -97,13 +99,13 @@ export function LiteNavbar() {
                 <span>{t('nav.installApp') || 'Install App'}</span>
               </button>
             )}
-            <Link
-              href={localePath('full') as any}
-              className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors ml-2 border-l-2 border-gray-200 dark:border-gray-700"
+            <button
+              onClick={() => window.location.href = localePath('full') as string}
+              className="flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-base text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors ml-2 border-l-2 border-gray-200 dark:border-gray-700 cursor-pointer"
             >
               <ArrowLeft className="w-5 h-5" />
               <span className="hidden lg:inline">{t('nav.fullApp') || 'Full App'}</span>
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,15 +132,17 @@ export function LiteNavbar() {
               </div>
             )}
             {navLinks.map(({ label, href, icon: Icon }) => (
-              <Link
+              <button
                 key={href}
-                href={href as any}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-all"
+                onClick={() => {
+                  window.location.href = href as string
+                  setOpen(false)
+                }}
+                className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg text-gray-700 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-all w-full text-left cursor-pointer"
               >
                 <Icon className="w-6 h-6" />
                 <span>{label}</span>
-              </Link>
+              </button>
             ))}
             {showInstall && (
               <button
@@ -152,14 +156,16 @@ export function LiteNavbar() {
                 <span>{t('nav.installApp') || 'Install App'}</span>
               </button>
             )}
-            <Link
-              href={localePath('full') as any}
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 border-t-2 border-gray-200 dark:border-gray-700 mt-2 pt-4"
+            <button
+              onClick={() => {
+                window.location.href = localePath('full') as string
+                setOpen(false)
+              }}
+              className="flex items-center gap-3 px-4 py-4 rounded-xl font-semibold text-lg text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 border-t-2 border-gray-200 dark:border-gray-700 mt-2 pt-4 w-full text-left cursor-pointer"
             >
               <ArrowLeft className="w-6 h-6" />
               <span>{t('nav.fullApp') || 'Back to Full App'}</span>
-            </Link>
+            </button>
           </div>
         )}
       </div>

@@ -18,28 +18,29 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
 
   // Close menu when clicking outside
   useEffect(() => {
+    const isDev = process.env.NODE_ENV === 'development'
     function handleClickOutside(event: MouseEvent) {
       const target = event.target as Element
       
       // Don't close if clicking on menu buttons or menu content
       if (target.closest('.mobile-menu-content') || target.closest('.mobile-menu-button')) {
-        console.log('Click was on menu element, not closing')
+        if (isDev) console.log('Click was on menu element, not closing')
         return
       }
       
-      console.log('Clicked outside, closing menu')
+      if (isDev) console.log('Clicked outside, closing menu')
       setMobileMenuOpen(false)
     }
 
     function handleEscapeKey(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        console.log('Escape pressed, closing menu')
+        if (isDev) console.log('Escape pressed, closing menu')
         setMobileMenuOpen(false)
       }
     }
 
     if (mobileMenuOpen) {
-      console.log('Menu opened, adding event listeners')
+      if (isDev) console.log('Menu opened, adding event listeners')
       // Add a small delay to prevent immediate closing
       setTimeout(() => {
         document.addEventListener('mousedown', handleClickOutside)
@@ -50,7 +51,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
       document.body.style.overflow = 'hidden'
       
       return () => {
-        console.log('Menu closed, removing event listeners')
+        if (isDev) console.log('Menu closed, removing event listeners')
         document.removeEventListener('mousedown', handleClickOutside)
         document.removeEventListener('keydown', handleEscapeKey)
         document.body.style.overflow = 'unset'
@@ -127,7 +128,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
                 onClick={(e) => {
                   e.preventDefault()
                   e.stopPropagation()
-                  console.log('Mobile menu clicked, current state:', mobileMenuOpen)
+                  if (process.env.NODE_ENV === 'development') console.log('Mobile menu clicked, current state:', mobileMenuOpen)
                   setMobileMenuOpen(!mobileMenuOpen)
                 }}
                 className="btn btn-ghost btn-sm p-2 mobile-menu-button"
@@ -152,7 +153,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
           <div 
             onClick={(e) => {
               e.preventDefault()
-              console.log('Backdrop clicked, closing menu')
+              if (process.env.NODE_ENV === 'development') console.log('Backdrop clicked, closing menu')
               setMobileMenuOpen(false)
             }}
             style={{
@@ -184,7 +185,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
               <div className="grid gap-2">
                 <button 
                   onClick={() => {
-                    console.log('Mobile Home clicked')
+                    if (process.env.NODE_ENV === 'development') console.log('Mobile Home clicked')
                     setMobileMenuOpen(false)
                     window.location.href = localePath('')
                   }}
@@ -196,7 +197,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
                 
                 <button 
                   onClick={() => {
-                    console.log('Mobile Settings clicked')
+                    if (process.env.NODE_ENV === 'development') console.log('Mobile Settings clicked')
                     setMobileMenuOpen(false)
                     window.location.href = localePath('settings')
                   }}
@@ -209,7 +210,7 @@ function DashboardHeader({ user, profile, onLogout }: DashboardHeaderProps) {
                 <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
                   <button 
                     onClick={() => {
-                      console.log('Mobile Logout clicked')
+                      if (process.env.NODE_ENV === 'development') console.log('Mobile Logout clicked')
                       setMobileMenuOpen(false)
                       onLogout()
                     }}
@@ -267,30 +268,31 @@ export default function DashboardPage() {
   }, [])
 
   const handleLogout = async () => {
-    console.log('handleLogout called')
+    const isDev = process.env.NODE_ENV === 'development'
+    if (isDev) console.log('handleLogout called')
     try {
       const sessionToken = localStorage.getItem('auth_token') || 
                          document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
       
-      console.log('Session token found:', !!sessionToken)
+      if (isDev) console.log('Session token found:', !!sessionToken)
       
       if (sessionToken) {
-        console.log('Calling API logout...')
+        if (isDev) console.log('Calling API logout...')
         await api.auth.logout(sessionToken)
-        console.log('API logout successful')
+        if (isDev) console.log('API logout successful')
       }
       
       // Clear stored tokens
-      console.log('Clearing tokens...')
+      if (isDev) console.log('Clearing tokens...')
       localStorage.removeItem('auth_token')
       document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       
-      console.log('Redirecting to /auth...')
+      if (isDev) console.log('Redirecting to /auth...')
       window.location.href = localePath('auth')
     } catch (err) {
       console.error('Logout failed:', err)
       // Force redirect anyway
-      console.log('Force clearing tokens and redirecting...')
+      if (isDev) console.log('Force clearing tokens and redirecting...')
       localStorage.removeItem('auth_token')
       document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       window.location.href = localePath('auth')

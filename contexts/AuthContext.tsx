@@ -36,7 +36,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         window.dispatchEvent(new CustomEvent('faircoin-locale-override', { detail: { locale: savedLocale } }))
       }
     } catch (error) {
-      console.warn('[Auth] Failed to load saved language preference:', error)
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.warn('[Auth] Failed to load saved language preference:', error)
     }
   }, [])
 
@@ -46,10 +47,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const checkAuth = async () => {
-    console.log('[Auth] checkAuth start')
+    const isDev = process.env.NODE_ENV === 'development'
+    if (isDev) console.log('[Auth] checkAuth start')
     try {
       const token = getToken()
-      console.log('[Auth] token retrieved', token)
+      if (isDev) console.log('[Auth] token retrieved', token)
       if (!token) {
         setIsAuthenticated(false)
         setUser(null)
@@ -59,22 +61,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Try to get user from localStorage first (wallet auth)
       try {
         const storedUser = localStorage.getItem('user')
-        console.log('[Auth] storedUser raw', storedUser)
+        if (isDev) console.log('[Auth] storedUser raw', storedUser)
         if (storedUser) {
           const userData = JSON.parse(storedUser)
-          console.log('[Auth] parsed storedUser', userData)
+          if (isDev) console.log('[Auth] parsed storedUser', userData)
           setIsAuthenticated(true)
           setUser(userData)
           await loadSavedLanguageFromSettings(token)
           return
         }
       } catch (e) {
-        console.warn('Failed to load user from localStorage:', e)
+        if (isDev) console.warn('Failed to load user from localStorage:', e)
       }
 
       // Fallback to API check (GitHub OAuth)
       const response = await api.auth.status(token)
-      console.log('[Auth] API status response', response)
+      if (isDev) console.log('[Auth] API status response', response)
       if (response.authenticated && response.session) {
         setIsAuthenticated(true)
         setUser(response.session)
@@ -88,6 +90,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       }
     } catch (error) {
+      // Keep critical auth errors in production
       console.error('Auth check failed:', error)
       setIsAuthenticated(false)
       setUser(null)
@@ -107,6 +110,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await api.auth.logout(token)
       }
     } catch (error) {
+      // Keep logout errors in production for debugging
       console.error('Logout failed:', error)
     } finally {
       // Always clear tokens and update state
@@ -125,7 +129,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     
     // Listen for storage changes (across tabs/windows)
     const handleStorageChange = (e: StorageEvent) => {
-      console.log('[Auth] storage event', e.key, e.newValue)
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.log('[Auth] storage event', e.key, e.newValue)
       if (e.key === 'auth_token' || e.key === 'user') {
         checkAuth()
       }
@@ -133,7 +138,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     
     // Listen for custom auth events (same tab)
     const handleAuthChange = () => {
-      console.log('[Auth] authStateChanged event')
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.log('[Auth] authStateChanged event')
       checkAuth()
     }
     
@@ -157,35 +163,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const handleLocaleChange = async (event: Event) => {
+      const isDev = process.env.NODE_ENV === 'development'
       const detail = (event as CustomEvent<{ locale?: string }>).detail
       const selectedLocale = detail?.locale
       
       if (!selectedLocale || !isValidLocale(selectedLocale)) {
-        console.log('[Auth] Invalid locale, skipping persistence:', selectedLocale)
+        if (isDev) console.log('[Auth] Invalid locale, skipping persistence:', selectedLocale)
         return
       }
       
       if (!isAuthenticated || !user) {
-        console.log('[Auth] Not authenticated, skipping locale persistence')
+        if (isDev) console.log('[Auth] Not authenticated, skipping locale persistence')
         return
       }
       
       const token = getToken()
       if (!token) {
-        console.log('[Auth] No auth token found, cannot persist locale preference')
+        if (isDev) console.log('[Auth] No auth token found, cannot persist locale preference')
         return
       }
       
-      console.log('[Auth] Persisting locale preference:', selectedLocale, 'with token:', token.substring(0, 20) + '...')
+      if (isDev) console.log('[Auth] Persisting locale preference:', selectedLocale, 'with token:', token.substring(0, 20) + '...')
       
       try {
         await api.user.updateSettings('preferences', { language: selectedLocale }, token)
-        console.log('[Auth] Successfully persisted locale preference:', selectedLocale)
+        if (isDev) console.log('[Auth] Successfully persisted locale preference:', selectedLocale)
       } catch (error) {
         console.error('[Auth] Failed to persist language preference:', error)
         // If token is invalid/expired, trigger re-authentication
         if (error instanceof Error && error.message.includes('expired')) {
-          console.warn('[Auth] Session expired, clearing auth state')
+          if (isDev) console.warn('[Auth] Session expired, clearing auth state')
           await logout()
         }
       }

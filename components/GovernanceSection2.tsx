@@ -11,24 +11,89 @@ export function GovernanceSection() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    let cancelled = false
+    const isDev = process.env.NODE_ENV === 'development'
+    if (isDev) {
+      console.log('[GovernanceSection] Component mounted, starting data fetch...')
+      console.log('[GovernanceSection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100')
+    }
+    
     const fetchGovernanceData = async () => {
+      const startTime = Date.now()
+      const timeout = setTimeout(() => {
+        if (isDev) {
+          console.warn('[GovernanceSection] ⚠️ API calls taking longer than expected (still loading...)', `${((Date.now() - startTime) / 1000).toFixed(2)}s elapsed`)
+        }
+      }, 10000) // 10 second timeout warning only
+
       try {
+        if (isDev) console.log('[GovernanceSection] 📡 Starting parallel API calls...')
+        
+        const proposalsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/governance/proposals`
+        if (isDev) console.log('[GovernanceSection] 🌐 Fetching:', proposalsUrl)
+        const proposalsPromise = api.governance.proposals().then(data => {
+          if (isDev) console.log('[GovernanceSection] ✓ Proposals loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
+          return data
+        }).catch(err => {
+          if (isDev) console.error('[GovernanceSection] ✗ Proposals failed:', proposalsUrl, err)
+          throw err
+        })
+        
+        const votingPowerUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/governance/voting-power`
+        if (isDev) console.log('[GovernanceSection] 🌐 Fetching:', votingPowerUrl)
+        const votingPowerPromise = api.governance.votingPower().then(data => {
+          if (isDev) console.log('[GovernanceSection] ✓ Voting power loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
+          return data
+        }).catch(err => {
+          if (isDev) console.error('[GovernanceSection] ✗ Voting power failed:', votingPowerUrl, err)
+          throw err
+        })
+        
+        const recentVotesUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/governance/recent-votes`
+        if (isDev) console.log('[GovernanceSection] 🌐 Fetching:', recentVotesUrl)
+        const recentVotesPromise = api.governance.recentVotes().then(data => {
+          if (isDev) console.log('[GovernanceSection] ✓ Recent votes loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
+          return data
+        }).catch(err => {
+          if (isDev) console.error('[GovernanceSection] ✗ Recent votes failed:', recentVotesUrl, err)
+          throw err
+        })
+        
         const [proposalData, powerData, voteData] = await Promise.all([
-          api.governance.proposals(),
-          api.governance.votingPower(),
-          api.governance.recentVotes(),
+          proposalsPromise,
+          votingPowerPromise,
+          recentVotesPromise,
         ])
-        setProposals(proposalData.proposals)
-        setVotingPower(powerData)
-        setRecentVotes(voteData.recent_votes)
+        
+        clearTimeout(timeout)
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+        if (isDev) console.log(`[GovernanceSection] ✅ All data loaded successfully in ${totalTime}s`)
+        
+        if (!cancelled) {
+          setProposals(proposalData.proposals)
+          setVotingPower(powerData)
+          setRecentVotes(voteData.recent_votes)
+          setLoading(false)
+          if (isDev) console.log('[GovernanceSection] 🎉 State updated, rendering complete')
+        } else {
+          if (isDev) console.log('[GovernanceSection] ⚠️ Component unmounted, skipping state update')
+        }
       } catch (error) {
-        console.error('Failed to fetch governance data:', error)
-      } finally {
-        setLoading(false)
+        clearTimeout(timeout)
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+        if (!cancelled) {
+          if (isDev) console.error(`[GovernanceSection] ❌ Failed to fetch governance data after ${totalTime}s:`, error)
+          setLoading(false)
+        }
       }
     }
 
     fetchGovernanceData()
+    
+    return () => {
+      if (isDev) console.log('[GovernanceSection] Component unmounting, cancelling requests...')
+      cancelled = true
+    }
   }, [])
 
   const getProposalStatusIcon = (status: string, participation: number, quorum: number) => {

@@ -16,7 +16,8 @@ export function DonationSection() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch (err) {
-      console.error('Failed to copy:', err)
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.error('Failed to copy:', err)
     }
   }
 

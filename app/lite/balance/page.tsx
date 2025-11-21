@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Wallet, TrendingUp, PieChart, Download, Copy, Check } from 'lucide-react'
+import { Wallet, TrendingUp, PieChart, Download, Copy, Check, Send, QrCode } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 
 interface PFIMetrics {
@@ -306,6 +306,24 @@ Created: ${new Date().toISOString()}
               <p className="text-lg mt-4 opacity-80">
                 Faith, Love & Justice in Heaven's Network
               </p>
+            </div>
+
+            {/* Send & Receive Buttons */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <Link
+                href="/lite/send"
+                className="py-6 px-8 rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xl font-bold hover:from-blue-600 hover:to-cyan-600 transition-all shadow-xl flex items-center justify-center gap-2"
+              >
+                <Send className="w-6 h-6" />
+                Send
+              </Link>
+              <Link
+                href="/lite/receive"
+                className="py-6 px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold hover:from-purple-600 hover:to-pink-600 transition-all shadow-xl flex items-center justify-center gap-2"
+              >
+                <QrCode className="w-6 h-6" />
+                Receive
+              </Link>
             </div>
 
             {/* PFI Metrics */}

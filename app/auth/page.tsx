@@ -19,7 +19,6 @@ function AuthPageContent() {
   const [terms, setTerms] = useState<TermsResponse['terms'] | null>(null)
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
   const [mnemonic, setMnemonic] = useState('')
   const [showMnemonic, setShowMnemonic] = useState(false)
   const [mnemonicWords, setMnemonicWords] = useState<string[]>([])
@@ -73,30 +72,27 @@ function AuthPageContent() {
       return
     }
 
-    if (!email.trim() || !email.includes('@')) {
-      setError('Please enter a valid email address')
-      return
-    }
-
     setLoading(true)
     setError(null)
 
     try {
-      // Call backend API directly instead of Next.js API route
+      // Call backend API directly
       const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ full_name: fullName.trim(), email: email.trim() }),
+        body: JSON.stringify({ full_name: fullName.trim() }),
       })
 
       const data = await response.json()
+      console.log('📝 [REGISTER] Backend response:', data)
 
-      if (data.success) {
+      if (data.success && data.user_id) {
         setGeneratedUsername(data.username)
         setWalletAddress(data.wallet_address)
         setMnemonicWords(data.mnemonic.split(' '))
-        setRegisteredUserId(data.user_id) // Store the actual user ID
+        setRegisteredUserId(data.user_id)
+        console.log('✅ [REGISTER] Success! User ID:', data.user_id)
         setStep('mnemonic')
       } else {
         setError(data.error || 'Failed to create wallet')
@@ -131,34 +127,46 @@ function AuthPageContent() {
 
       if (data.success) {
         // Store flat response data like PowerShell test
+        const sessionToken = data.session.session_token
         const sessionData = {
-          id: data.session_id,
-          user_id: data.user_id,
-          username: data.username,
-          full_name: data.full_name,
-          email: data.email || '',
-          avatar_url: data.avatar_url || '',
-          wallet_address: data.wallet_address,
-          created_at: data.created_at,
-          expires_at: data.expires_at,
+          id: sessionToken,
+          user_id: data.session.user_id,
+          username: data.session.username,
+          full_name: data.session.full_name,
+          email: data.session.email || '',
+          avatar_url: data.session.avatar_url || '',
+          wallet_address: data.session.wallet_address,
+          created_at: data.session.created_at,
+          expires_at: data.session.expires_at,
         }
+        
+        console.log('🔐 [AUTH] Login successful, session token:', sessionToken)
+        
+        // Store session token FIRST
+        localStorage.setItem('auth_token', sessionToken)
+        
+        // Also set as cookie for SSR
+        document.cookie = `session=${sessionToken}; path=/; max-age=${30*24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
+        
+        // Then set session state
         setSession(sessionData)
-        localStorage.setItem('auth_token', data.session_id)
         
         // Store user info for chat widget and other components
         localStorage.setItem('user', JSON.stringify({
-          username: data.username,
-          full_name: data.full_name,
-          email: data.email,
-          avatar_url: data.avatar_url,
-          wallet_address: data.wallet_address,
+          username: data.session.username,
+          full_name: data.session.full_name,
+          email: data.session.email,
+          avatar_url: data.session.avatar_url,
+          wallet_address: data.session.wallet_address,
         }))
         
         // Notify all components that auth state has changed
         window.dispatchEvent(new Event('authStateChanged'))
         
+        console.log('📝 [AUTH] Stored auth_token in localStorage:', localStorage.getItem('auth_token'))
+        
         // Check if user has already accepted terms
-        if (data.terms_accepted) {
+        if (data.user?.terms_accepted) {
           // Skip terms and go directly to lite
           router.push(localePath('lite') as any)
         } else {
@@ -219,12 +227,16 @@ Created: ${new Date().toISOString()}
       setError('User ID not found. Please try registering again.')
       return
     }
+    console.log('📋 [TERMS] Proceeding to terms with user_id:', registeredUserId)
+    // Create a temporary session for terms acceptance
+    // The backend will create a proper session after terms are accepted
     const authSession: AuthSession = {
-      id: '',
-      user_id: registeredUserId, // Use the actual user ID from registration
+      id: '', // Will be filled after terms acceptance
+      user_id: registeredUserId,
       username: generatedUsername,
-      email: email,
+      email: '',
       avatar_url: '',
+      wallet_address: walletAddress,
       created_at: new Date().toISOString(),
       expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
     }
@@ -245,9 +257,12 @@ Created: ${new Date().toISOString()}
 
   const loadTerms = async () => {
     try {
+      const authToken = localStorage.getItem('auth_token')
+      console.log('📋 [TERMS] Loading terms, auth_token:', authToken)
       const response = await api.auth.terms()
       setTerms(response.terms)
     } catch (err) {
+      console.error('❌ [TERMS] Failed to load terms:', err)
       setError('Failed to load terms and conditions')
     }
   }
@@ -259,43 +274,55 @@ Created: ${new Date().toISOString()}
     setError(null)
     
     try {
-      const response = await api.auth.acceptTerms({
+      const payload = {
         user_id: session.user_id,
         version: terms.version,
-        session_id: session.id,
-      })
+        session_id: '', // Empty for wallet registration flow
+      }
+      
+      console.log('✅ [ACCEPT-TERMS] Accepting terms with payload:', payload)
+      
+      // For wallet registration, backend creates session during terms acceptance
+      const response = await api.auth.acceptTerms(payload)
+      
+      console.log('📝 [ACCEPT-TERMS] Backend response:', response)
       
       if (response.success) {
-        setStep('success')
-        
-        // Store session token for dashboard access (from backend response)
-        const sessionId = response.session_id || session.id
-        if (sessionId) {
-          localStorage.setItem('auth_token', sessionId)
-          // Also set as cookie for server-side access
-          document.cookie = `session=${sessionId}; path=/; max-age=${24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
-          
-          // Store user info for chat widget and other components
-          localStorage.setItem('user', JSON.stringify({
-            username: session.username,
-            full_name: session.full_name,
-            email: session.email,
-            avatar_url: session.avatar_url,
-            wallet_address: session.wallet_address,
-          }))
-          
-          // Notify all components that auth state has changed
-          window.dispatchEvent(new Event('authStateChanged'))
+        // Store session token from backend response (new: session_token)
+        const sessionToken = response.session_token
+        if (sessionToken) {
+          console.log('🔑 [ACCEPT-TERMS] Storing session token:', sessionToken.substring(0, 16) + '...')
+          localStorage.setItem('auth_token', sessionToken)
+          // Cookie for SSR
+          document.cookie = `session=${sessionToken}; path=/; max-age=${30*24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
         }
-        
-        // Redirect to dashboard after delay
-        setTimeout(() => {
-          router.push(localePath('lite') as any)
-        }, 2000)
+        // Enriched user info from backend response
+        const storedUser = {
+          id: response.user?.id ?? session.user_id,
+          username: response.user?.username || session.username,
+          full_name: response.user?.full_name || fullName || session.username,
+          email: response.user?.email || '',
+          wallet_address: session.wallet_address,
+          terms_accepted: response.user?.terms_accepted ?? true,
+          terms_version: response.user?.terms_version || terms.version,
+          terms_accepted_at: response.user?.terms_accepted_at || new Date().toISOString(),
+        }
+        localStorage.setItem('user', JSON.stringify(storedUser))
+        // Update in-memory session with enriched data
+        setSession(prev => prev ? {
+          ...prev,
+          id: sessionToken || prev.id,
+          username: storedUser.username,
+          full_name: storedUser.full_name,
+          email: storedUser.email,
+        } : prev)
+        window.dispatchEvent(new Event('authStateChanged'))
+        setStep('success')
       } else {
         setError(response.message || 'Failed to accept terms')
       }
     } catch (err) {
+      console.error('❌ [ACCEPT-TERMS] Error:', err)
       setError(err instanceof Error ? err.message : 'Failed to accept terms')
     } finally {
       setLoading(false)
@@ -429,23 +456,6 @@ Created: ${new Date().toISOString()}
             </p>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Email Address *
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              disabled={loading}
-            />
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-              Required for account recovery and important notifications
-            </p>
-          </div>
-
           <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
             <div className="flex gap-3">
               <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
@@ -463,7 +473,7 @@ Created: ${new Date().toISOString()}
 
           <button
             onClick={handleRegisterWallet}
-            disabled={loading || !fullName.trim() || !email.trim()}
+            disabled={loading || !fullName.trim()}
             className="w-full btn btn-primary btn-lg"
           >
             {loading ? (

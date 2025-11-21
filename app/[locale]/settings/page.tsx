@@ -74,44 +74,49 @@ export default function SettingsPage() {
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
 
   const loadUserDashboardData = useCallback(async () => {
+    const isDev = process.env.NODE_ENV === 'development'
     try {
-      console.log('[SETTINGS] 🔍 Starting dashboard data load...')
+      if (isDev) console.log('[SETTINGS] 🔍 Starting dashboard data load...')
       
       // Get the auth token
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
       
-      console.log('[SETTINGS] 🔑 Token found:', token ? token.substring(0, 20) + '...' : 'NONE')
+      if (isDev) console.log('[SETTINGS] 🔑 Token found:', token ? token.substring(0, 20) + '...' : 'NONE')
       
       if (!token) {
         console.error('[SETTINGS] ❌ No auth token found')
         return
       }
 
-      console.log('[SETTINGS] 📡 Calling api.user.dashboard() - direct backend call...')
+      if (isDev) console.log('[SETTINGS] 📡 Calling api.user.dashboard() - direct backend call...')
       const startTime = Date.now()
       
       // Use the same API method as dashboard page - direct backend call bypassing Cloudflare issues
       const dashboardData = await api.user.dashboard(token)
 
       const duration = Date.now() - startTime
-      console.log(`[SETTINGS] ⏱️ Response received in ${duration}ms`)
-      console.log('[SETTINGS] ✅ Dashboard data loaded successfully')
-      console.log('[SETTINGS] 📊 Response keys:', Object.keys(dashboardData))
-      console.log('[SETTINGS] 👤 User data:', dashboardData.user)
-      console.log('[SETTINGS] 📝 Profile data:', dashboardData.profile)
-      console.log('[SETTINGS] ⚙️ Settings count:', dashboardData.settings?.length || 0)
+      if (isDev) {
+        console.log(`[SETTINGS] ⏱️ Response received in ${duration}ms`)
+        console.log('[SETTINGS] ✅ Dashboard data loaded successfully')
+        console.log('[SETTINGS] 📊 Response keys:', Object.keys(dashboardData))
+        console.log('[SETTINGS] 👤 User data:', dashboardData.user)
+        console.log('[SETTINGS] 📝 Profile data:', dashboardData.profile)
+        console.log('[SETTINGS] ⚙️ Settings count:', dashboardData.settings?.length || 0)
+      }
 
         // Update profile information from user data and profile data
         if (dashboardData.user || dashboardData.profile) {
           const userData = dashboardData.user || {}
           const profileData = dashboardData.profile || {}
           
-          console.log('[SETTINGS] 🔍 Extracting profile data...')
-          console.log('[SETTINGS]   - full_name:', userData.full_name)
-          console.log('[SETTINGS]   - email:', userData.email)
-          console.log('[SETTINGS]   - username:', userData.username)
-          console.log('[SETTINGS]   - display_name:', profileData.display_name)
+          if (isDev) {
+            console.log('[SETTINGS] 🔍 Extracting profile data...')
+            console.log('[SETTINGS]   - full_name:', userData.full_name)
+            console.log('[SETTINGS]   - email:', userData.email)
+            console.log('[SETTINGS]   - username:', userData.username)
+            console.log('[SETTINGS]   - display_name:', profileData.display_name)
+          }
           
           const profileInfo = {
             name: userData.full_name || 
@@ -123,10 +128,10 @@ export default function SettingsPage() {
             bio: profileData.bio || ''
           }
           
-          console.log('[SETTINGS] 💾 Setting profile state:', profileInfo)
+          if (isDev) console.log('[SETTINGS] 💾 Setting profile state:', profileInfo)
           setProfile(profileInfo)
         } else {
-          console.log('[SETTINGS] ⚠️ No user or profile data in response')
+          if (isDev) console.log('[SETTINGS] ⚠️ No user or profile data in response')
         }
 
       // Process settings and update state
@@ -154,7 +159,7 @@ export default function SettingsPage() {
               break
             case 'preferences':
               if (setting.setting_value) {
-                console.log('🔍 Loading preferences:', setting.setting_value)
+                if (isDev) console.log('🔍 Loading preferences:', setting.setting_value)
                 if (setting.setting_value.theme) {
                   setTheme(setting.setting_value.theme)
                 }
@@ -163,7 +168,7 @@ export default function SettingsPage() {
                   currency: setting.setting_value.currency || prev.currency,
                   timezone: setting.setting_value.timezone || prev.timezone
                 }))
-                console.log('✅ Preferences updated')
+                if (isDev) console.log('✅ Preferences updated')
               }
               break
             case 'profile':
@@ -207,7 +212,7 @@ export default function SettingsPage() {
       const token = localStorage.getItem('auth_token') || 
                    document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
       if (token) {
-        console.log('[SETTINGS] 🔄 Attempting fallback after exception...')
+        if (isDev) console.log('[SETTINGS] 🔄 Attempting fallback after exception...')
         await loadUserSettingsFallback(token)
       }
     }
@@ -231,8 +236,9 @@ export default function SettingsPage() {
   }, [user, isAuthenticated, loading, router, loadUserDashboardData])
 
   const loadUserSettingsFallback = async (token: string) => {
+    const isDev = process.env.NODE_ENV === 'development'
     try {
-      console.log('[SETTINGS] 🔄 Trying fallback settings API...')
+      if (isDev) console.log('[SETTINGS] 🔄 Trying fallback settings API...')
       const startTime = Date.now()
       
       const response = await fetch('/api/settings', {
@@ -244,11 +250,11 @@ export default function SettingsPage() {
       })
 
       const duration = Date.now() - startTime
-      console.log(`[SETTINGS] ⏱️ Fallback response in ${duration}ms - Status: ${response.status}`)
+      if (isDev) console.log(`[SETTINGS] ⏱️ Fallback response in ${duration}ms - Status: ${response.status}`)
 
       if (response.ok) {
         const result = await response.json()
-        console.log('[SETTINGS] 📦 Fallback data:', result)
+        if (isDev) console.log('[SETTINGS] 📦 Fallback data:', result)
         if (result.success && result.settings) {
           // Process settings and update state
           result.settings.forEach((setting: any) => {
@@ -372,7 +378,7 @@ export default function SettingsPage() {
             currency: preferences.currency,
             timezone: preferences.timezone
           }
-          console.log('💾 Saving preferences:', settingValue)
+          if (process.env.NODE_ENV === 'development') console.log('💾 Saving preferences:', settingValue)
           break
         default:
           throw new Error('Unknown settings section')

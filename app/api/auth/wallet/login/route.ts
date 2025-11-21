@@ -67,8 +67,8 @@ export async function POST(request: NextRequest) {
     // Return exact backend response (flat structure like PowerShell test)
     const sessionResponse = NextResponse.json(data)
 
-    // Set session cookie
-    sessionResponse.cookies.set('session', data.session_id, {
+    // Set session cookie using the nested session token
+    sessionResponse.cookies.set('session', data.session.session_token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',

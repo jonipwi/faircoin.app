@@ -16,61 +16,123 @@ export function CommunitySection() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    communityDebug.logComponentMount('CommunitySection')
+    const isDev = process.env.NODE_ENV === 'development'
+    if (isDev) communityDebug.logComponentMount('CommunitySection')
+    let cancelled = false
+    if (isDev) {
+      console.log('[CommunitySection] Component mounted, starting data fetch...')
+      console.log('[CommunitySection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100')
+    }
     
     const fetchCommunityData = async () => {
       const startTime = Date.now()
+      const timeout = setTimeout(() => {
+        if (isDev) {
+          console.warn('[CommunitySection] ⚠️ API calls taking longer than expected (still loading...)', `${((Date.now() - startTime) / 1000).toFixed(2)}s elapsed`)
+        }
+      }, 10000) // 10 second timeout warning only
       
       try {
         // Feed
-        communityDebug.logAPICall('/api/community/feed', 'GET')
+        const feedUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/feed`
+        if (isDev) {
+          console.log('[CommunitySection] 📡 Fetching feed...', feedUrl)
+          communityDebug.logAPICall('/api/community/feed', 'GET')
+        }
         const feedStart = Date.now()
         const feedData = await api.community.feed()
-        communityDebug.logAPIResponse('/api/community/feed', feedData, Date.now() - feedStart)
-        communityDebug.logFeedData(feedData.feed)
-        setFeed(feedData.feed)
+        if (isDev) {
+          console.log(`[CommunitySection] ✓ Feed loaded in ${((Date.now() - feedStart) / 1000).toFixed(2)}s:`, feedData)
+          communityDebug.logAPIResponse('/api/community/feed', feedData, Date.now() - feedStart)
+          communityDebug.logFeedData(feedData.feed)
+        }
+        if (!cancelled) setFeed(feedData.feed)
         
         // Achievements
-        communityDebug.logAPICall('/api/community/achievements', 'GET')
+        const achievementsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/achievements`
+        if (isDev) {
+          console.log('[CommunitySection] 📡 Fetching achievements...', achievementsUrl)
+          communityDebug.logAPICall('/api/community/achievements', 'GET')
+        }
         const achievementsStart = Date.now()
         const achievementData = await api.community.achievements()
-        communityDebug.logAPIResponse('/api/community/achievements', achievementData, Date.now() - achievementsStart)
-        communityDebug.logAchievementsData(achievementData.achievements)
-        setAchievements(achievementData.achievements)
+        if (isDev) {
+          console.log(`[CommunitySection] ✓ Achievements loaded in ${((Date.now() - achievementsStart) / 1000).toFixed(2)}s:`, achievementData)
+          communityDebug.logAPIResponse('/api/community/achievements', achievementData, Date.now() - achievementsStart)
+          communityDebug.logAchievementsData(achievementData.achievements)
+        }
+        if (!cancelled) setAchievements(achievementData.achievements)
         
         // Events
-        communityDebug.logAPICall('/api/community/events', 'GET')
+        const eventsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/events`
+        if (isDev) {
+          console.log('[CommunitySection] 📡 Fetching events...', eventsUrl)
+          communityDebug.logAPICall('/api/community/events', 'GET')
+        }
         const eventsStart = Date.now()
         const eventData = await api.community.events()
-        communityDebug.logAPIResponse('/api/community/events', eventData, Date.now() - eventsStart)
-        communityDebug.logEventsData(eventData.events)
-        setEvents(eventData.events)
+        if (isDev) {
+          console.log(`[CommunitySection] ✓ Events loaded in ${((Date.now() - eventsStart) / 1000).toFixed(2)}s:`, eventData)
+          communityDebug.logAPIResponse('/api/community/events', eventData, Date.now() - eventsStart)
+          communityDebug.logEventsData(eventData.events)
+        }
+        if (!cancelled) setEvents(eventData.events)
         
         // Stats
-        communityDebug.logAPICall('/api/community/stats', 'GET')
+        const statsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/stats`
+        if (isDev) {
+          console.log('[CommunitySection] 📡 Fetching stats...', statsUrl)
+          communityDebug.logAPICall('/api/community/stats', 'GET')
+        }
         const statsStart = Date.now()
         const statsData = await api.community.stats()
-        communityDebug.logAPIResponse('/api/community/stats', statsData, Date.now() - statsStart)
-        communityDebug.logStatsData(statsData)
-        setStats(statsData)
+        if (isDev) {
+          console.log(`[CommunitySection] ✓ Stats loaded in ${((Date.now() - statsStart) / 1000).toFixed(2)}s:`, statsData)
+          communityDebug.logAPIResponse('/api/community/stats', statsData, Date.now() - statsStart)
+          communityDebug.logStatsData(statsData)
+        }
+        if (!cancelled) setStats(statsData)
         
-        // Summary
-        communityDebug.logSummary({
-          feedCount: feedData.feed.length,
-          achievementsCount: achievementData.achievements.length,
-          eventsCount: eventData.events.length,
-          statsLoaded: !!statsData,
-          totalDuration: Date.now() - startTime
-        })
+        clearTimeout(timeout)
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+        if (isDev) console.log(`[CommunitySection] ✅ All data loaded successfully in ${totalTime}s`)
+        
+        if (!cancelled) {
+          setLoading(false)
+          if (isDev) {
+            console.log('[CommunitySection] 🎉 State updated, rendering complete')
+            
+            // Summary
+            communityDebug.logSummary({
+              feedCount: feedData.feed.length,
+              achievementsCount: achievementData.achievements.length,
+              eventsCount: eventData.events.length,
+              statsLoaded: !!statsData,
+              totalDuration: Date.now() - startTime
+            })
+          }
+        } else {
+          if (isDev) console.log('[CommunitySection] ⚠️ Component unmounted, skipping state update')
+        }
       } catch (error) {
-        console.error('Failed to fetch community data:', error)
-        communityDebug.logAPIError('community data', error, Date.now() - startTime)
-      } finally {
-        setLoading(false)
+        clearTimeout(timeout)
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+        if (!cancelled) {
+          if (isDev) {
+            console.error(`[CommunitySection] ❌ Failed to fetch community data after ${totalTime}s:`, error)
+            communityDebug.logAPIError('community data', error, Date.now() - startTime)
+          }
+          setLoading(false)
+        }
       }
     }
 
     fetchCommunityData()
+    
+    return () => {
+      if (isDev) console.log('[CommunitySection] Component unmounting, cancelling requests...')
+      cancelled = true
+    }
   }, [])
 
   const getActivityIcon = (type: string) => {

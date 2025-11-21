@@ -63,10 +63,14 @@ export function FloatingChatWidget({
               setUsername(data.user.full_name)
             }
           })
-          .catch(e => console.warn('Failed to fetch user from API:', e))
+          .catch(e => {
+            const isDev = process.env.NODE_ENV === 'development'
+            if (isDev) console.warn('Failed to fetch user from API:', e)
+          })
       }
     } catch (e) {
-      console.warn('Failed to load user from localStorage:', e)
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.warn('Failed to load user from localStorage:', e)
     }
   }, [])
 
@@ -96,7 +100,8 @@ export function FloatingChatWidget({
           const size = JSON.parse(saved)
           setModalSize(size)
         } catch (e) {
-          console.warn('Failed to load saved modal size:', e)
+          const isDev = process.env.NODE_ENV === 'development'
+          if (isDev) console.warn('Failed to load saved modal size:', e)
         }
       }
     }
@@ -117,7 +122,8 @@ export function FloatingChatWidget({
         try {
           iframe.contentWindow?.postMessage({ type: 'SET_THEME', theme }, '*')
         } catch (err) {
-          console.warn('Failed to send theme to iframe:', err)
+          const isDev = process.env.NODE_ENV === 'development'
+          if (isDev) console.warn('Failed to send theme to iframe:', err)
         }
       }
       // Send immediately and on load
@@ -164,10 +170,11 @@ export function FloatingChatWidget({
   // Initialize support chat with token
   const initializeSupportChat = async () => {
     setLoadingSupport(true)
+    const isDev = process.env.NODE_ENV === 'development'
     try {
       const auth = hasValidAuth()
       if (!auth.valid || !auth.username) {
-        console.warn('[FloatingChat] No valid auth for support chat')
+        if (isDev) console.warn('[FloatingChat] No valid auth for support chat')
         setLoadingSupport(false)
         return
       }

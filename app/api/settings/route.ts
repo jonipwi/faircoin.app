@@ -17,8 +17,8 @@ export async function GET(request: NextRequest) {
                         request.headers.get('authorization')?.replace('Bearer ', '') ||
                         request.headers.get('Authorization')?.replace('Bearer ', '')
 
-    if (!sessionToken) {
-      console.log('[SETTINGS] No session token found')
+    if (!sessionToken || sessionToken === 'undefined') {
+      console.log('[SETTINGS] No valid session token found')
       return NextResponse.json(
         { error: 'Authentication required' },
         { status: 401 }
@@ -74,8 +74,8 @@ export async function POST(request: NextRequest) {
                         request.headers.get('authorization')?.replace('Bearer ', '') ||
                         request.headers.get('Authorization')?.replace('Bearer ', '')
 
-    if (!sessionToken) {
-      console.log('[SETTINGS-POST] ❌ No session token found')
+    if (!sessionToken || sessionToken === 'undefined') {
+      console.log('[SETTINGS-POST] ❌ No valid session token found')
       return NextResponse.json(
         { error: 'Authentication required' },
         { status: 401 }

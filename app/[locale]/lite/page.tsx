@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { MessageCircle, Send, Download, Wallet, HelpCircle, Sparkles, Languages } from 'lucide-react'
+import { MessageCircle, Wallet, HelpCircle, Sparkles, Languages, Vote, Store } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -27,24 +27,24 @@ export default function LiteHome() {
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      title: t('lite.send.title') || 'Send FairCoin',
-      description: t('lite.send.description') || 'Give FairCoin to friends and community',
-      icon: Send,
-      href: 'lite/send',
+      title: t('lite.wallet.title') || 'My Wallet',
+      description: t('lite.wallet.description') || 'Send, receive, and check your FairCoin balance',
+      icon: Wallet,
+      href: 'lite/balance',
       color: 'from-green-500 to-emerald-500'
     },
     {
-      title: t('lite.receive.title') || 'Receive FairCoin',
-      description: t('lite.receive.description') || 'Show your QR code to receive coins',
-      icon: Download,
-      href: 'lite/receive',
+      title: t('lite.proposals.title') || 'Proposals',
+      description: t('lite.proposals.description') || 'Vote on community decisions and proposals',
+      icon: Vote,
+      href: 'lite/proposals',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      title: t('lite.balance.title') || 'My Balance',
-      description: t('lite.balance.description') || 'See your FairCoin and recent transactions',
-      icon: Wallet,
-      href: 'lite/balance',
+      title: t('lite.merchants.title') || 'Merchants',
+      description: t('lite.merchants.description') || 'Find trusted merchants with fair ratings',
+      icon: Store,
+      href: 'lite/merchants',
       color: 'from-amber-500 to-orange-500'
     },
     {

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { MessageCircle, Send, Download, Wallet, HelpCircle, Sparkles } from 'lucide-react'
+import { MessageCircle, Send, Download, Wallet, HelpCircle, Sparkles, Vote, Store } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useEffect } from 'react'
 
@@ -22,24 +22,24 @@ export default function LiteHome() {
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'Send FairCoin',
-      description: 'Give FairCoin to friends and community',
-      icon: Send,
-      href: '/lite/send',
+      title: 'My Wallet',
+      description: 'Send, receive, and check your FairCoin balance',
+      icon: Wallet,
+      href: '/lite/balance',
       color: 'from-green-500 to-emerald-500'
     },
     {
-      title: 'Receive FairCoin',
-      description: 'Show your QR code to receive coins',
-      icon: Download,
-      href: '/lite/receive',
+      title: 'Proposals',
+      description: 'Vote on community decisions and proposals',
+      icon: Vote,
+      href: '/lite/proposals',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'My Balance',
-      description: 'See your FairCoin and recent transactions',
-      icon: Wallet,
-      href: '/lite/balance',
+      title: 'Merchants',
+      description: 'Find trusted merchants with fair ratings',
+      icon: Store,
+      href: '/lite/merchants',
       color: 'from-amber-500 to-orange-500'
     },
     {

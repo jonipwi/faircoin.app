@@ -46,21 +46,22 @@ export function WalletSection() {
   const fetchPFIMetrics = async () => {
     if (!user?.username) return
     
+    const isDev = process.env.NODE_ENV === 'development'
     try {
-      console.log(`[PFI] Fetching metrics for user: ${user.username}`)
+      if (isDev) console.log(`[PFI] Fetching metrics for user: ${user.username}`)
       const response = await fetch(`${API_BASE_URL}/api/v1/fairness/indexes?user=${encodeURIComponent(user.username)}`)
       
       if (response.ok) {
         const text = await response.text()
         if (!text || text.trim() === '') {
-          console.log('[PFI] Empty response from API, using default metrics')
+          if (isDev) console.log('[PFI] Empty response from API, using default metrics')
           setPfiMetrics({ score: 0, index: 0, share: 0 })
           return
         }
         
         try {
           const data = JSON.parse(text)
-          console.log('[PFI] API response:', data)
+          if (isDev) console.log('[PFI] API response:', data)
           
           if (data.success && data.index) {
             setPfiMetrics({
@@ -72,15 +73,15 @@ export function WalletSection() {
             setPfiMetrics({ score: 0, index: 0, share: 0 })
           }
         } catch (parseError) {
-          console.error('[PFI] Failed to parse JSON:', parseError)
+          if (isDev) console.error('[PFI] Failed to parse JSON:', parseError)
           setPfiMetrics({ score: 0, index: 0, share: 0 })
         }
       } else {
-        console.error(`[PFI] API failed with status ${response.status}`)
+        if (isDev) console.error(`[PFI] API failed with status ${response.status}`)
         setPfiMetrics({ score: 0, index: 0, share: 0 })
       }
     } catch (error) {
-      console.error('[PFI] Error fetching metrics:', error)
+      if (isDev) console.error('[PFI] Error fetching metrics:', error)
       setPfiMetrics({ score: 0, index: 0, share: 0 })
     }
   }
@@ -94,7 +95,8 @@ export function WalletSection() {
         try {
           setWallet(JSON.parse(savedWallet))
         } catch (e) {
-          console.error('Failed to parse saved wallet:', e)
+          const isDev = process.env.NODE_ENV === 'development'
+          if (isDev) console.error('Failed to parse saved wallet:', e)
         }
       } else if (user.wallet_address) {
         // If user has wallet_address from auth but no wallet object, create it
@@ -177,7 +179,8 @@ export function WalletSection() {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch (error) {
-      console.error('Failed to copy address:', error)
+      const isDev = process.env.NODE_ENV === 'development'
+      if (isDev) console.error('Failed to copy address:', error)
     }
   }
 

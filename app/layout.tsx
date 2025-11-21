@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { ExchangeProvider } from '@/contexts/ExchangeContext'
 import { AuthProvider } from '@/contexts/AuthContext'
@@ -7,20 +6,8 @@ import { AuthenticatedChatWidget } from '@/components/AuthenticatedChatWidget'
 import { LanguageProvider } from '@/lib/i18n/LanguageContext'
 import { LocaleSync } from '@/components/LocaleSync'
 import { AlertTriangle } from 'lucide-react'
+// @ts-ignore
 import './globals.css'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const poppins = Poppins({ 
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  variable: '--font-poppins',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: 'FairCoin — Light & Truth, Love & Mercy, Just & Peace',
@@ -28,7 +15,6 @@ export const metadata: Metadata = {
   keywords: ['FairCoin', 'ethical project', 'fairness', 'community', 'PFI', 'TFI', 'blockchain', 'staging', 'development'],
   authors: [{ name: 'FairCoin Community' }],
   manifest: '/manifest.json',
-  themeColor: '#ffffff',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -44,10 +30,15 @@ export const metadata: Metadata = {
     type: 'website',
   },
   other: {
+    'mobile-web-app-capable': 'yes',
     'project-repository': 'https://github.com/jonipwi/faircoin.app',
     'security-policy': 'https://github.com/jonipwi/faircoin.app/blob/main/SECURITY.md',
     'staging-environment': 'true',
   },
+}
+
+export const viewport = {
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const devModeMessage = process.env.NEXT_PUBLIC_DEV_MODE_MESSAGE
   
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"

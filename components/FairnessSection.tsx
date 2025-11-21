@@ -13,24 +13,89 @@ export function FairnessSection() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    let cancelled = false
+    const isDev = process.env.NODE_ENV === 'development'
+    if (isDev) {
+      console.log('[FairnessSection] Component mounted, starting data fetch...')
+      console.log('[FairnessSection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100')
+    }
+    
     const fetchFairnessData = async () => {
+      const startTime = Date.now()
+      const timeout = setTimeout(() => {
+        if (isDev) {
+          console.warn('[FairnessSection] ⚠️ API calls taking longer than expected (still loading...)', `${((Date.now() - startTime) / 1000).toFixed(2)}s elapsed`)
+        }
+      }, 10000) // 10 second timeout warning only
+
       try {
+        if (isDev) console.log('[FairnessSection] 📡 Starting parallel API calls...')
+        
+        const distributionUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/fairness/distribution`
+        if (isDev) console.log('[FairnessSection] 🌐 Fetching:', distributionUrl)
+        const distributionPromise = api.fairness.distribution().then(data => {
+          if (isDev) console.log('[FairnessSection] ✓ Distribution loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
+          return data
+        }).catch(err => {
+          if (isDev) console.error('[FairnessSection] ✗ Distribution failed:', distributionUrl, err)
+          throw err
+        })
+        
+        const leaderboardUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/fairness/pfi-leaderboard`
+        if (isDev) console.log('[FairnessSection] 🌐 Fetching:', leaderboardUrl)
+        const leaderboardPromise = api.fairness.pfiLeaderboard().then(data => {
+          if (isDev) console.log('[FairnessSection] ✓ Leaderboard loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
+          return data
+        }).catch(err => {
+          if (isDev) console.error('[FairnessSection] ✗ Leaderboard failed:', leaderboardUrl, err)
+          throw err
+        })
+        
+        const antiConcentrationUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/fairness/anti-concentration`
+        if (isDev) console.log('[FairnessSection] 🌐 Fetching:', antiConcentrationUrl)
+        const antiConcentrationPromise = api.fairness.antiConcentration().then(data => {
+          if (isDev) console.log('[FairnessSection] ✓ Anti-concentration loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
+          return data
+        }).catch(err => {
+          if (isDev) console.error('[FairnessSection] ✗ Anti-concentration failed:', antiConcentrationUrl, err)
+          throw err
+        })
+        
         const [distData, leaderData, antiData] = await Promise.all([
-          api.fairness.distribution(),
-          api.fairness.pfiLeaderboard(),
-          api.fairness.antiConcentration(),
+          distributionPromise,
+          leaderboardPromise,
+          antiConcentrationPromise,
         ])
-        setDistribution(distData)
-        setLeaderboard(leaderData)
-        setAntiConcentration(antiData)
+        
+        clearTimeout(timeout)
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+        if (isDev) console.log(`[FairnessSection] ✅ All data loaded successfully in ${totalTime}s`)
+        
+        if (!cancelled) {
+          setDistribution(distData)
+          setLeaderboard(leaderData)
+          setAntiConcentration(antiData)
+          setLoading(false)
+          if (isDev) console.log('[FairnessSection] 🎉 State updated, rendering complete')
+        } else {
+          if (isDev) console.log('[FairnessSection] ⚠️ Component unmounted, skipping state update')
+        }
       } catch (error) {
-        console.error('Failed to fetch fairness data:', error)
-      } finally {
-        setLoading(false)
+        clearTimeout(timeout)
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(2)
+        if (!cancelled) {
+          if (isDev) console.error(`[FairnessSection] ❌ Failed to fetch fairness data after ${totalTime}s:`, error)
+          setLoading(false)
+        }
       }
     }
 
     fetchFairnessData()
+    
+    return () => {
+      if (isDev) console.log('[FairnessSection] Component unmounting, cancelling requests...')
+      cancelled = true
+    }
   }, [])
 
   if (loading) {
@@ -116,7 +181,7 @@ export function FairnessSection() {
                 </div>
               </div>
               <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                {antiConcentration?.metrics.fairness_score.toFixed(1)}/10
+                {typeof antiConcentration?.metrics.fairness_score === 'number' ? antiConcentration.metrics.fairness_score.toFixed(1) : 'N/A'}/10
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 {t('fairness.excellentRating')}

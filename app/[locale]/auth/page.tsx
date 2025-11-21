@@ -131,26 +131,26 @@ function AuthPageContent() {
 
       const data = await response.json()
 
-      if (data.success) {
+      if (data.success && data.session) {
         const sessionData = {
-          id: data.session_id,
-          user_id: data.user_id,
-          username: data.username,
-          full_name: data.full_name,
-          email: data.email || '',
-          avatar_url: data.avatar_url || '',
-          wallet_address: data.wallet_address,
-          created_at: data.created_at,
-          expires_at: data.expires_at,
+          id: data.session.session_token,
+          user_id: data.session.user_id,
+          username: data.session.username,
+          full_name: data.session.full_name,
+          email: data.session.email || '',
+          avatar_url: data.session.avatar_url || '',
+          wallet_address: data.session.wallet_address,
+          created_at: data.session.created_at,
+          expires_at: data.session.expires_at,
         }
         setSession(sessionData)
-        localStorage.setItem('auth_token', data.session_id)
+        localStorage.setItem('auth_token', data.session.session_token)
         localStorage.setItem('user', JSON.stringify({
-          username: data.username,
-          full_name: data.full_name,
-          email: data.email,
-          avatar_url: data.avatar_url,
-          wallet_address: data.wallet_address,
+          username: data.session.username,
+          full_name: data.session.full_name,
+          email: data.session.email,
+          avatar_url: data.session.avatar_url,
+          wallet_address: data.session.wallet_address,
         }))
         window.dispatchEvent(new Event('authStateChanged'))
 

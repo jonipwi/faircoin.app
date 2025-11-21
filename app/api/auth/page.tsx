@@ -122,8 +122,19 @@ function AuthPageContent() {
       const data = await response.json()
 
       if (data.success && data.session) {
-        setSession(data.session)
-        localStorage.setItem('auth_token', data.session.id)
+        const sessionData = {
+          id: data.session.session_token,
+          user_id: data.session.user_id,
+          username: data.session.username,
+          full_name: data.session.full_name,
+          email: data.session.email || '',
+          avatar_url: data.session.avatar_url || '',
+          wallet_address: data.session.wallet_address,
+          created_at: data.session.created_at,
+          expires_at: data.session.expires_at,
+        }
+        setSession(sessionData)
+        localStorage.setItem('auth_token', data.session.session_token)
         setStep('terms')
       } else {
         setError(data.error || 'Invalid secret phrase')
