@@ -1,4 +1,4 @@
-export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100') + '/api/v1'
+export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox') + '/api/v1'
 
 export type ApiResult<T> = { data: T; error?: string }
 
