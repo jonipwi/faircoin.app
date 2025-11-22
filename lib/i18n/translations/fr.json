@@ -130,6 +130,7 @@
     "activeProposals": "Propositions Actives",
     "activeVoters": "Votants Actifs",
     "against": "Contre",
+    "averagePFI": "PFI moyen",
     "badge": "Gouvernance Communautaire",
     "by": "Par",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "économique",
       "governance": "gouvernance"
     },
+    "circulationBonuses": "Bonus de circulation",
     "createProposal": "Créer une proposition",
+    "current": "Actuel",
     "description": "Chaque voix compte. Participez au vote pondéré par PFI pour façonner l'avenir de FairCoin.",
     "ended": "Terminé",
+    "excellent": "Excellent",
+    "fair": "Équitable",
     "fairRepresentation": "Représentation Équitable",
+    "fairnessMetrics": "Métriques d'équité",
+    "fairnessRating": "évaluation de l'équité",
+    "fairnessScore": "Score d'équité",
     "for": "Pour",
+    "giniCoefficient": "Coefficient de Gini",
+    "giniDescription": "0.0 = Égalité parfaite, 1.0 = Inégalité maximale",
+    "good": "Bon",
+    "hoardingPenalties": "Pénalités de thésaurisation",
     "learnMore": "En savoir plus",
+    "limit": "Limite",
     "loading": "Chargement des données de gouvernance...",
+    "maxIndividualShare": "Part individuelle maximale",
+    "median": "Médiane",
     "participationRate": "Taux de participation",
     "pfiWeighted": "Pondéré par le PFI",
     "power": "pouvoir",
     "powerDistribution": "Distribution de la puissance",
+    "proposedBy": "Proposé par",
     "quorum": "Quorum",
     "recentVotes": "Votes récents",
     "status": {
@@ -158,8 +174,10 @@
     "title": "Démocratie dans",
     "titleHighlight": "Action",
     "totalParticipation": "Participation totale",
+    "totalVotes": "votes totaux",
     "totalVotingPower": "Pouvoir de vote total",
     "users": "utilisateurs",
+    "velocityRequirement": "Exigence de vélocité",
     "viewAllProposals": "Voir toutes les propositions",
     "voteAgainst": "Votez Contre",
     "voteFor": "Vote Pour",
@@ -269,6 +287,56 @@
       "room": "Salon Amical — toujours accueillant",
       "title": "Discussion Communautaire"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} détenteurs",
+        "noAchievements": "Aucune réalisation pour le moment",
+        "rarity": {
+          "common": "Commun",
+          "epic": "Épique",
+          "legendary": "Légendaire",
+          "rare": "Rare",
+          "uncommon": "Inhabituel"
+        }
+      },
+      "discord": {
+        "chatButton": "Discuter maintenant",
+        "joinButton": "Rejoindre Discord",
+        "subtitle": "Connectez-vous avec des milliers de membres de FairCoin à travers le monde",
+        "title": "Rejoignez notre communauté Discord ! 💬"
+      },
+      "events": {
+        "attendees": "Participants",
+        "inDays": "Dans {days} jours",
+        "joinEvent": "Rejoignez cet événement 🎉",
+        "location": "Emplacement",
+        "noEvents": "Aucun événement à venir",
+        "organizer": "Organisateur",
+        "peopleAttending": "{current}/{max} personnes présentes",
+        "rsvp": "RSVP",
+        "today": "Aujourd'hui",
+        "tomorrow": "Demain"
+      },
+      "feed": {
+        "by": "par",
+        "noActivity": "Aucune activité pour le moment"
+      },
+      "loading": "Chargement de la communauté...",
+      "stats": {
+        "achievements": "Réalisations",
+        "activeMembers": "Membres actifs",
+        "events": "Événements",
+        "happyMembers": "Membres heureux"
+      },
+      "subtitle": "Connectez-vous avec des amis, rejoignez des événements et gagnez des réalisations",
+      "tabs": {
+        "achievements": "🏆 Réalisations",
+        "events": "📅 Événements",
+        "feed": "📰 Fil d'activité"
+      },
+      "title": "Centre communautaire",
+      "welcome": "Rejoignez notre communauté 👋"
+    },
     "hello": "Bonjour, {{username}} !",
     "help": {
       "description": "Apprenez à utiliser FairCoin étape par étape",
@@ -281,6 +349,8 @@
       "header": "Aide \u0026 Tutoriels",
       "quickStart": "Guides de démarrage rapide",
       "resources": {
+        "achievements": "Gagner des réalisations",
+        "achievementsDesc": "Complétez des tâches et gagnez des badges en apprenant",
         "comingSoon": "Bientôt disponible",
         "printableDesc": "Téléchargez des instructions PDF faciles à lire",
         "printableGuides": "Guides imprimables",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "Comment rejoindre le chat de la communauté",
         "joinChatDesc": "Apprenez à vous connecter avec des aides et à vous faire des amis",
+        "joinCommunity": "Rejoindre le Hub de la communauté",
+        "joinCommunityDesc": "Connectez-vous avec d'autres membres, rejoignez des événements et gagnez des réalisations",
         "receiveCoins": "Comment recevoir des FairCoin",
         "receiveCoinsDesc": "Montrez votre code QR et obtenez des pièces instantanément",
         "sendCoins": "Comment envoyer des FairCoin",
         "sendCoinsDesc": "Guide étape par étape pour donner des pièces à des amis",
+        "trackActivity": "Suivez votre activité",
+        "trackActivityDesc": "Consultez votre historique de transactions et votre fil d'activité",
         "understandBalance": "Comprendre votre solde",
         "understandBalanceDesc": "Voir vos pièces et l'historique des transactions"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "Postuler pour",
       "applyMerchant": "Postuler en tant que commerçant",
+      "avgCBI": "CBI moyen★",
       "buildTrust": "Établissez la confiance avec vos clients grâce à des pratiques commerciales équitables",
       "categories": {
         "all": "Toutes les catégories",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "Voir vos transactions récentes"
       },
       "description": "Trouvez des commerçants de confiance avec des évaluations équitables",
+      "examplesInGroup": "Exemples dans ce groupe :",
       "groupHint": "Chaque groupe représente une catégorie de commerçants locaux",
+      "inThisGroup": "dans ce groupe",
       "joinCommunity": "Voulez-vous rejoindre notre communauté de commerçants ?",
       "merchant1": {
         "description": "Mini marché communautaire, épicerie locale, légumes frais, recharge d'eau"
@@ -439,6 +516,7 @@
         "description": "Agent immobilier, location de maison, gestion de propriété, assurance habitation"
       },
       "merchant8Name": "Propriété et Logement",
+      "merchants": "Commerçants",
       "noMerchants": "Aucun marchand trouvé",
       "ratings": {
         "excellent": "Excellent",
@@ -463,6 +541,7 @@
       "tfiScore": "Indice des entreprises communautaires (CBI★)",
       "title": "Groupes de marchands",
       "tryDifferent": "Essayez une recherche différente ou revenez bientôt",
+      "typicalCBI": "CBI typique★",
       "verifiedReviews": "avis vérifiés",
       "viewDashboard": "Tableau de bord des commerçants",
       "viewDetails": "Voir les détails",

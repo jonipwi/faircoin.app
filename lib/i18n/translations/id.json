@@ -130,6 +130,7 @@
     "activeProposals": "Usulan Aktif",
     "activeVoters": "Pemilih Aktif",
     "against": "Melawan",
+    "averagePFI": "Rata-rata PFI",
     "badge": "Tata Kelola Komunitas",
     "by": "Oleh",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "ekonomi",
       "governance": "tata kelola"
     },
+    "circulationBonuses": "Bonus Sirkulasi",
     "createProposal": "Buat Proposal",
+    "current": "Saat ini",
     "description": "Setiap suara itu penting. Ikuti pemungutan suara berbobot PFI untuk membentuk masa depan FairCoin.",
     "ended": "Berakhir",
+    "excellent": "Luar biasa",
+    "fair": "Adil",
     "fairRepresentation": "Perwakilan yang Adil",
+    "fairnessMetrics": "Metrik Keadilan",
+    "fairnessRating": "penilaian keadilan",
+    "fairnessScore": "Skor Keadilan",
     "for": "Untuk",
+    "giniCoefficient": "Koefisien Gini",
+    "giniDescription": "0.0 = Kesetaraan sempurna, 1.0 = Ketidaksetaraan maksimum",
+    "good": "Baik",
+    "hoardingPenalties": "Sanksi Penimbunan",
     "learnMore": "Pelajari Lebih Lanjut",
+    "limit": "Batas",
     "loading": "Memuat data tata kelola...",
+    "maxIndividualShare": "Bagian Individu Maksimal",
+    "median": "Median",
     "participationRate": "Tingkat Partisipasi",
     "pfiWeighted": "Berbasis PFI",
     "power": "kekuatan",
     "powerDistribution": "Distribusi Daya",
+    "proposedBy": "Diusulkan oleh",
     "quorum": "Kuorum",
     "recentVotes": "Suara Terbaru",
     "status": {
@@ -158,8 +174,10 @@
     "title": "Demokrasi dalam",
     "titleHighlight": "Tindakan",
     "totalParticipation": "Total Partisipasi",
+    "totalVotes": "total suara",
     "totalVotingPower": "Total Daya Suara",
     "users": "pengguna",
+    "velocityRequirement": "Persyaratan Kecepatan",
     "viewAllProposals": "Lihat Semua Usulan",
     "voteAgainst": "Suara Menentang",
     "voteFor": "Suara Untuk",
@@ -269,6 +287,56 @@
       "room": "Lounge Ramah — selalu menyambut",
       "title": "Obrolan Komunitas"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} pemegang",
+        "noAchievements": "Belum ada pencapaian",
+        "rarity": {
+          "common": "Umum",
+          "epic": "Epik",
+          "legendary": "Legendaris",
+          "rare": "Langka",
+          "uncommon": "Tidak biasa"
+        }
+      },
+      "discord": {
+        "chatButton": "Obrolan Sekarang",
+        "joinButton": "Bergabung dengan Discord",
+        "subtitle": "Terhubung dengan ribuan anggota FairCoin di seluruh dunia",
+        "title": "Bergabunglah dengan Komunitas Discord Kami! 💬"
+      },
+      "events": {
+        "attendees": "Peserta",
+        "inDays": "Dalam {days} hari",
+        "joinEvent": "Bergabung dengan Acara Ini 🎉",
+        "location": "Lokasi",
+        "noEvents": "Tidak ada acara yang akan datang",
+        "organizer": "Penyelenggara",
+        "peopleAttending": "{current}/{max} orang yang hadir",
+        "rsvp": "RSVP",
+        "today": "Hari ini",
+        "tomorrow": "Besok"
+      },
+      "feed": {
+        "by": "oleh",
+        "noActivity": "Belum ada aktivitas"
+      },
+      "loading": "Memuat Komunitas...",
+      "stats": {
+        "achievements": "Pencapaian",
+        "activeMembers": "Anggota Aktif",
+        "events": "Acara",
+        "happyMembers": "Anggota Bahagia"
+      },
+      "subtitle": "Terhubung dengan teman, bergabung dalam acara, dan raih pencapaian",
+      "tabs": {
+        "achievements": "🏆 Pencapaian",
+        "events": "📅 Acara",
+        "feed": "📰 Umpan Aktivitas"
+      },
+      "title": "Pusat Komunitas",
+      "welcome": "Bergabunglah dengan Komunitas Kami 👋"
+    },
     "hello": "Halo, {{username}}!",
     "help": {
       "description": "Pelajari cara menggunakan FairCoin langkah demi langkah",
@@ -281,6 +349,8 @@
       "header": "Bantuan \u0026 Tutorial",
       "quickStart": "Panduan Memulai Cepat",
       "resources": {
+        "achievements": "Dapatkan Pencapaian",
+        "achievementsDesc": "Selesaikan tugas dan dapatkan lencana saat Anda belajar",
         "comingSoon": "Segera Hadir",
         "printableDesc": "Unduh instruksi PDF yang mudah dibaca",
         "printableGuides": "Panduan Cetak",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "Cara Bergabung dengan Obrolan Komunitas",
         "joinChatDesc": "Pelajari cara terhubung dengan para pembantu dan membuat teman",
+        "joinCommunity": "Bergabung dengan Pusat Komunitas",
+        "joinCommunityDesc": "Terhubung dengan anggota lainnya, bergabung dalam acara, dan raih pencapaian",
         "receiveCoins": "Cara Menerima FairCoin",
         "receiveCoinsDesc": "Tunjukkan kode QR Anda dan dapatkan koin secara instan",
         "sendCoins": "Cara Mengirim FairCoin",
         "sendCoinsDesc": "Panduan langkah demi langkah untuk memberikan koin kepada teman",
+        "trackActivity": "Lacak Aktivitas Anda",
+        "trackActivityDesc": "Lihat riwayat transaksi dan umpan aktivitas Anda",
         "understandBalance": "Memahami Saldo Anda",
         "understandBalanceDesc": "Lihat koin dan riwayat transaksi Anda"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "Daftar untuk",
       "applyMerchant": "Daftar sebagai Pedagang",
+      "avgCBI": "Rata-rata CBI★",
       "buildTrust": "Bangun kepercayaan dengan pelanggan Anda melalui praktik bisnis yang adil",
       "categories": {
         "all": "Semua Kategori",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "Lihat transaksi terbaru Anda"
       },
       "description": "Temukan pedagang tepercaya dengan penilaian yang adil",
+      "examplesInGroup": "Contoh dalam kelompok ini:",
       "groupHint": "Setiap kelompok mewakili kategori pedagang lokal",
+      "inThisGroup": "dalam kelompok ini",
       "joinCommunity": "Ingin Bergabung dengan Komunitas Pedagang Kami?",
       "merchant1": {
         "description": "Mini Pasar Komunitas, Toko Kelontong Lokal, Sayuran Segar, Pengisian Ulang Air"
@@ -439,6 +516,7 @@
         "description": "Agen Real Estat, Sewa Rumah, Manajemen Properti, Asuransi Rumah"
       },
       "merchant8Name": "Properti \u0026 Perumahan",
+      "merchants": "Pedagang",
       "noMerchants": "Tidak Ada Pedagang Ditemukan",
       "ratings": {
         "excellent": "Luar Biasa",
@@ -463,6 +541,7 @@
       "tfiScore": "Indeks Bisnis Komunitas (CBI★)",
       "title": "Kelompok Pedagang",
       "tryDifferent": "Coba pencarian yang berbeda atau periksa kembali segera",
+      "typicalCBI": "CBI Tipikal★",
       "verifiedReviews": "ulasan terverifikasi",
       "viewDashboard": "Dasbor Pedagang",
       "viewDetails": "Lihat detail",

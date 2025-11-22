@@ -177,6 +177,12 @@
       }
     },
     "merchants": {
+      "avgCBI": "Avg CBI★",
+      "examplesInGroup": "Examples in this group:",
+      "inThisGroup": "in this group",
+      "merchants": "Merchants",
+      "typicalCBI": "Typical CBI★",
+      "viewMerchantsIn": "View Merchants in",
       "title": "Merchant Groups",
       "description": "Find trusted merchants with fair ratings",
       "subtitle": "Explore merchant categories in your community",
@@ -350,14 +356,20 @@
         "receiveCoins": "How to Receive FairCoin",
         "receiveCoinsDesc": "Show your QR code and get coins instantly",
         "understandBalance": "Understanding Your Balance",
-        "understandBalanceDesc": "See your coins and transaction history"
+        "understandBalanceDesc": "See your coins and transaction history",
+        "joinCommunity": "Join the Community Hub",
+        "joinCommunityDesc": "Connect with other members, join events, and earn achievements",
+        "trackActivity": "Track Your Activity",
+        "trackActivityDesc": "View your transaction history and activity feed"
       },
       "resources": {
         "title": "More Resources",
         "videoTutorials": "Video Tutorials",
-        "videoDesc": "Watch simple video guides",
+        "videoDesc": "Watch simple video guides on using FairCoin",
         "printableGuides": "Printable Guides",
-        "printableDesc": "Download easy-to-read PDF instructions",
+        "printableDesc": "Download easy-to-read PDF instructions you can print",
+        "achievements": "Earn Achievements",
+        "achievementsDesc": "Complete tasks and earn badges as you learn",
         "comingSoon": "Coming Soon"
       },
       "support": {
@@ -365,6 +377,56 @@
         "description": "Our support team is here for you",
         "chatButton": "Chat with Support",
         "emailButton": "Email Us"
+      }
+    },
+    "community": {
+      "title": "Community Hub",
+      "welcome": "Join Our Community 👋",
+      "subtitle": "Connect with friends, join events, and earn achievements",
+      "loading": "Loading Community...",
+      "stats": {
+        "activeMembers": "Active Members",
+        "achievements": "Achievements",
+        "events": "Events",
+        "happyMembers": "Happy Members"
+      },
+      "tabs": {
+        "feed": "📰 Activity Feed",
+        "events": "📅 Events",
+        "achievements": "🏆 Achievements"
+      },
+      "feed": {
+        "noActivity": "No activity yet",
+        "by": "by"
+      },
+      "events": {
+        "noEvents": "No upcoming events",
+        "location": "Location",
+        "organizer": "Organizer",
+        "attendees": "Attendees",
+        "peopleAttending": "{current}/{max} people attending",
+        "joinEvent": "Join This Event 🎉",
+        "rsvp": "RSVP",
+        "today": "Today",
+        "tomorrow": "Tomorrow",
+        "inDays": "In {days} days"
+      },
+      "achievements": {
+        "noAchievements": "No achievements yet",
+        "holders": "{count} holders",
+        "rarity": {
+          "common": "Common",
+          "uncommon": "Uncommon",
+          "rare": "Rare",
+          "epic": "Epic",
+          "legendary": "Legendary"
+        }
+      },
+      "discord": {
+        "title": "Join Our Discord Community! 💬",
+        "subtitle": "Connect with thousands of FairCoin members around the world",
+        "joinButton": "Join Discord",
+        "chatButton": "Chat Now"
       }
     },
     "language": {
@@ -692,6 +754,26 @@
     "pfiWeighted": "PFI-Weighted",
     "fairRepresentation": "Fair Representation",
     "activeProposals": "Active Proposals",
+    "fairnessMetrics": "Fairness Metrics",
+    "giniCoefficient": "Gini Coefficient",
+    "giniDescription": "0.0 = Perfect equality, 1.0 = Maximum inequality",
+    "averagePFI": "Average PFI",
+    "median": "Median",
+    "fairnessScore": "Fairness Score",
+    "fairnessRating": "fairness rating",
+    "velocityRequirement": "Velocity Requirement",
+    "current": "Current",
+    "hoardingPenalties": "Hoarding Penalties",
+    "circulationBonuses": "Circulation Bonuses",
+    "maxIndividualShare": "Max Individual Share",
+    "limit": "Limit",
+    "totalVotes": "total votes",
+    "proposedBy": "Proposed by",
+    "votedFor": "Voted FOR",
+    "votedAgainst": "Voted AGAINST",
+    "excellent": "Excellent",
+    "good": "Good",
+    "fair": "Fair",
     "status": {
       "active": "active",
       "passed": "passed",

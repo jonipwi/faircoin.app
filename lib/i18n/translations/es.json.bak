@@ -130,6 +130,7 @@
     "activeProposals": "Propuestas Activas",
     "activeVoters": "Votantes activos",
     "against": "En Contra",
+    "averagePFI": "PFI promedio",
     "badge": "Gobernanza Comunitaria",
     "by": "Por",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "económico",
       "governance": "gobernanza"
     },
+    "circulationBonuses": "Bonificaciones de circulación",
     "createProposal": "Crear Propuesta",
+    "current": "Actual",
     "description": "Cada voz cuenta. Participa en la votación ponderada por PFI para dar forma al futuro de FairCoin.",
     "ended": "Terminado",
+    "excellent": "Excelente",
+    "fair": "Justo",
     "fairRepresentation": "Representación Justa",
+    "fairnessMetrics": "Métricas de Equidad",
+    "fairnessRating": "calificación de equidad",
+    "fairnessScore": "Puntuación de equidad",
     "for": "Para",
+    "giniCoefficient": "Coeficiente de Gini",
+    "giniDescription": "0.0 = Igualdad perfecta, 1.0 = Desigualdad máxima",
+    "good": "Bueno",
+    "hoardingPenalties": "Penalizaciones por Acaparamiento",
     "learnMore": "Aprender más",
+    "limit": "Límite",
     "loading": "Cargando datos de gobernanza...",
+    "maxIndividualShare": "Máxima participación individual",
+    "median": "Mediana",
     "participationRate": "Tasa de Participación",
     "pfiWeighted": "PFI-Ponderado",
     "power": "poder",
     "powerDistribution": "Distribución de Poder",
+    "proposedBy": "Propuesto por",
     "quorum": "Quórum",
     "recentVotes": "Votaciones Recientes",
     "status": {
@@ -158,8 +174,10 @@
     "title": "Democracia en",
     "titleHighlight": "Acción",
     "totalParticipation": "Participación Total",
+    "totalVotes": "votos totales",
     "totalVotingPower": "Poder de Votación Total",
     "users": "usuarios",
+    "velocityRequirement": "Requisito de Velocidad",
     "viewAllProposals": "Ver todas las propuestas",
     "voteAgainst": "Votar en Contra",
     "voteFor": "Votar por",
@@ -269,6 +287,56 @@
       "room": "Salón Amigable — siempre acogedor",
       "title": "Chat comunitario"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} poseedores",
+        "noAchievements": "No hay logros aún",
+        "rarity": {
+          "common": "Común",
+          "epic": "Épico",
+          "legendary": "Legendario",
+          "rare": "Raro",
+          "uncommon": "Poco común"
+        }
+      },
+      "discord": {
+        "chatButton": "Chatea ahora",
+        "joinButton": "Únete a Discord",
+        "subtitle": "Conéctate con miles de miembros de FairCoin alrededor del mundo",
+        "title": "¡Únete a nuestra comunidad de Discord! 💬"
+      },
+      "events": {
+        "attendees": "Asistentes",
+        "inDays": "En {days} días",
+        "joinEvent": "Únete a Este Evento 🎉",
+        "location": "Ubicación",
+        "noEvents": "No hay eventos próximos",
+        "organizer": "Organizador",
+        "peopleAttending": "{current}/{max} personas asistiendo",
+        "rsvp": "Confirmar asistencia",
+        "today": "Hoy",
+        "tomorrow": "Mañana"
+      },
+      "feed": {
+        "by": "por",
+        "noActivity": "Sin actividad aún"
+      },
+      "loading": "Cargando Comunidad...",
+      "stats": {
+        "achievements": "Logros",
+        "activeMembers": "Miembros Activos",
+        "events": "Eventos",
+        "happyMembers": "Miembros Felices"
+      },
+      "subtitle": "Conéctate con amigos, únete a eventos y gana logros",
+      "tabs": {
+        "achievements": "🏆 Logros",
+        "events": "📅 Eventos",
+        "feed": "📰 Feed de Actividad"
+      },
+      "title": "Centro Comunitario",
+      "welcome": "Únete a Nuestra Comunidad 👋"
+    },
     "hello": "¡Hola, {{username}}!",
     "help": {
       "description": "Aprende a usar FairCoin paso a paso",
@@ -281,6 +349,8 @@
       "header": "Ayuda y tutoriales",
       "quickStart": "Guías de Inicio Rápido",
       "resources": {
+        "achievements": "Gana logros",
+        "achievementsDesc": "Completa tareas y gana insignias mientras aprendes",
         "comingSoon": "Próximamente",
         "printableDesc": "Descargar instrucciones en PDF fáciles de leer",
         "printableGuides": "Guías imprimibles",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "Cómo Unirse al Chat de la Comunidad",
         "joinChatDesc": "Aprende cómo conectar con ayudantes y hacer amigos",
+        "joinCommunity": "Únete al Centro de la Comunidad",
+        "joinCommunityDesc": "Conéctate con otros miembros, únete a eventos y gana logros",
         "receiveCoins": "Cómo Recibir FairCoin",
         "receiveCoinsDesc": "Muestra tu código QR y recibe monedas al instante",
         "sendCoins": "Cómo enviar FairCoin",
         "sendCoinsDesc": "Guía paso a paso para dar monedas a amigos",
+        "trackActivity": "Rastrea Tu Actividad",
+        "trackActivityDesc": "Ve tu historial de transacciones y actividad",
         "understandBalance": "Entendiendo tu saldo",
         "understandBalanceDesc": "Ve tus monedas e historial de transacciones"
       }
@@ -595,10 +669,19 @@
     "becomeButton": "Conviértete en un Comerciante",
     "buildTrust": "Construya confianza con sus clientes a través de prácticas comerciales justas",
     "categories": {
-      "beverages": "Bebidas",
-      "food": "Comida",
+      "all": "Todas las Categorías",
+      "clothing": "Tienda de Ropa",
+      "clothingHousehold": "Servicios Domésticos",
+      "dailyEssentials": "Comestibles / Esenciales",
+      "educationCommunity": "Comunidad",
+      "foodDrinks": "Comida y Bebidas",
       "groceries": "Abarrotes",
-      "homeGarden": "Hogar y Jardín"
+      "hardware": "Tienda de Ferretería",
+      "homeProperty": "Propiedad \u0026 Vivienda",
+      "petCare": "Cuidado de Mascotas",
+      "pharmacy": "Farmacia",
+      "restaurant": "Restaurante",
+      "services": "Servicios y Ayuda"
     },
     "categoryDescription": "Explore comerciantes verificados con calificaciones de comercio justo",
     "description": "Encuentra comerciantes de confianza con altos puntajes en el Índice de Negocios de la Comunidad (CBI★)",

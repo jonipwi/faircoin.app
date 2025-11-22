@@ -130,6 +130,7 @@
     "activeProposals": "Aktive Vorschläge",
     "activeVoters": "Aktive Wähler",
     "against": "Gegen",
+    "averagePFI": "Durchschnittlicher PFI",
     "badge": "Gemeinschaftsverwaltung",
     "by": "Von",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "wirtschaftlich",
       "governance": "Governance"
     },
+    "circulationBonuses": "Zirkulationsboni",
     "createProposal": "Vorschlag erstellen",
+    "current": "Aktuell",
     "description": "Jede Stimme zählt. Nehmen Sie an der PFI-gewichteten Abstimmung teil, um die Zukunft von FairCoin zu gestalten.",
     "ended": "Beendet",
+    "excellent": "Ausgezeichnet",
+    "fair": "Fair",
     "fairRepresentation": "Faire Vertretung",
+    "fairnessMetrics": "Fairness-Metriken",
+    "fairnessRating": "Fairnessbewertung",
+    "fairnessScore": "Fairness-Score",
     "for": "Für",
+    "giniCoefficient": "Gini-Koeffizient",
+    "giniDescription": "0,0 = Perfekte Gleichheit, 1,0 = Maximale Ungleichheit",
+    "good": "Gut",
+    "hoardingPenalties": "Strafmaßnahmen für Horten",
     "learnMore": "Erfahren Sie mehr",
+    "limit": "Limit",
     "loading": "Lade Governance-Daten...",
+    "maxIndividualShare": "Maximaler individueller Anteil",
+    "median": "Median",
     "participationRate": "Teilnahmerate",
     "pfiWeighted": "PFI-gewichtet",
     "power": "Macht",
     "powerDistribution": "Machtverteilung",
+    "proposedBy": "Vorgeschlagen von",
     "quorum": "Quorum",
     "recentVotes": "Aktuelle Abstimmungen",
     "status": {
@@ -158,8 +174,10 @@
     "title": "Demokratie in",
     "titleHighlight": "Aktion",
     "totalParticipation": "Gesamte Teilnahme",
+    "totalVotes": "Gesamtstimmen",
     "totalVotingPower": "Gesamte Stimmkraft",
     "users": "Benutzer",
+    "velocityRequirement": "Geschwindigkeitsanforderung",
     "viewAllProposals": "Alle Vorschläge anzeigen",
     "voteAgainst": "Gegen stimmen",
     "voteFor": "Wählen Sie aus",
@@ -269,6 +287,56 @@
       "room": "Freundliche Lounge — immer einladend",
       "title": "Gemeinschafts-Chat"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} Inhaber",
+        "noAchievements": "Noch keine Erfolge",
+        "rarity": {
+          "common": "Gemeinsam",
+          "epic": "Episch",
+          "legendary": "Legendär",
+          "rare": "Selten",
+          "uncommon": "Ungewöhnlich"
+        }
+      },
+      "discord": {
+        "chatButton": "Jetzt chatten",
+        "joinButton": "Tritt Discord bei",
+        "subtitle": "Verbinde dich mit Tausenden von FairCoin-Mitgliedern auf der ganzen Welt",
+        "title": "Tritt unserer Discord-Community bei! 💬"
+      },
+      "events": {
+        "attendees": "Teilnehmer",
+        "inDays": "In {days} Tagen",
+        "joinEvent": "Nehmen Sie an dieser Veranstaltung teil 🎉",
+        "location": "Standort",
+        "noEvents": "Keine bevorstehenden Veranstaltungen",
+        "organizer": "Veranstalter",
+        "peopleAttending": "{current}/{max} Personen nehmen teil",
+        "rsvp": "Zusage",
+        "today": "Heute",
+        "tomorrow": "Morgen"
+      },
+      "feed": {
+        "by": "von",
+        "noActivity": "Noch keine Aktivitäten"
+      },
+      "loading": "Lade Community...",
+      "stats": {
+        "achievements": "Erfolge",
+        "activeMembers": "Aktive Mitglieder",
+        "events": "Veranstaltungen",
+        "happyMembers": "Glückliche Mitglieder"
+      },
+      "subtitle": "Verbinde dich mit Freunden, nimm an Veranstaltungen teil und erziele Erfolge",
+      "tabs": {
+        "achievements": "🏆 Erfolge",
+        "events": "📅 Veranstaltungen",
+        "feed": "📰 Aktivitäts-Feed"
+      },
+      "title": "Community-Hub",
+      "welcome": "Tritt unserer Gemeinschaft bei 👋"
+    },
     "hello": "Hallo, {{username}}!",
     "help": {
       "description": "Erfahren Sie Schritt für Schritt, wie Sie FairCoin verwenden",
@@ -281,6 +349,8 @@
       "header": "Hilfe \u0026 Tutorials",
       "quickStart": "Schnellstartanleitungen",
       "resources": {
+        "achievements": "Verdiene Erfolge",
+        "achievementsDesc": "Vervollständige Aufgaben und verdiene Abzeichen, während du lernst",
         "comingSoon": "Demnächst verfügbar",
         "printableDesc": "Laden Sie die leicht verständlichen PDF-Anleitungen herunter",
         "printableGuides": "Druckbare Leitfäden",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "Wie man dem Community-Chat beitritt",
         "joinChatDesc": "Lerne, wie man mit Helfern in Kontakt tritt und Freundschaften schließt",
+        "joinCommunity": "Tritt dem Community-Hub bei",
+        "joinCommunityDesc": "Verbinde dich mit anderen Mitgliedern, nimm an Veranstaltungen teil und erziele Erfolge",
         "receiveCoins": "Wie man FairCoin erhält",
         "receiveCoinsDesc": "Zeige deinen QR-Code und erhalte sofort Coins",
         "sendCoins": "Wie man FairCoin sendet",
         "sendCoinsDesc": "Schritt-für-Schritt-Anleitung zum Verschenken von Münzen an Freunde",
+        "trackActivity": "Verfolge Deine Aktivitäten",
+        "trackActivityDesc": "Sieh dir deine Transaktionshistorie und den Aktivitäts-Feed an",
         "understandBalance": "Verstehen Ihres Saldos",
         "understandBalanceDesc": "Sehen Sie Ihre Münzen und Transaktionshistorie"
       }
@@ -595,10 +669,19 @@
     "becomeButton": "Händler werden",
     "buildTrust": "Bauen Sie Vertrauen zu Ihren Kunden durch faire Geschäftspraktiken",
     "categories": {
-      "beverages": "Getränke",
-      "food": "Essen",
+      "all": "Alle Kategorien",
+      "clothing": "Bekleidungsgeschäft",
+      "clothingHousehold": "Haushaltsdienste",
+      "dailyEssentials": "Lebensmittel / Grundbedarf",
+      "educationCommunity": "Gemeinschaft",
+      "foodDrinks": "Essen \u0026 Getränke",
       "groceries": "Lebensmittel",
-      "homeGarden": "Haus \u0026 Garten"
+      "hardware": "Baumarkt",
+      "homeProperty": "Immobilien \u0026 Wohnen",
+      "petCare": "Haustierpflege",
+      "pharmacy": "Apotheke",
+      "restaurant": "Restaurant",
+      "services": "Dienstleistungen \u0026 Hilfe"
     },
     "categoryDescription": "Durchsuchen Sie verifizierte Händler mit fairen Handelsbewertungen",
     "description": "Finden Sie vertrauenswürdige Händler mit hohen Community Business Index (CBI★) Werten",

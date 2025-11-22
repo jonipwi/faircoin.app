@@ -130,6 +130,7 @@
     "activeProposals": "Actieve voorstellen",
     "activeVoters": "Actieve Stemmer",
     "against": "Tegen",
+    "averagePFI": "Gemiddelde PFI",
     "badge": "Gemeenschapsbestuur",
     "by": "Door",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "economisch",
       "governance": "bestuur"
     },
+    "circulationBonuses": "Circulatiebonussen",
     "createProposal": "Voorstel Aanmaken",
+    "current": "Huidig",
     "description": "Elke stem telt. Neem deel aan PFI-gewogen stemmen om de toekomst van FairCoin vorm te geven.",
     "ended": "Einde",
+    "excellent": "Uitstekend",
+    "fair": "Eerlijk",
     "fairRepresentation": "Eerlijke Vertegenwoordiging",
+    "fairnessMetrics": "Eerlijkheidsmetrics",
+    "fairnessRating": "eerlijkheidsbeoordeling",
+    "fairnessScore": "Eerlijkheidsscore",
     "for": "Voor",
+    "giniCoefficient": "Gini-coëfficiënt",
+    "giniDescription": "0.0 = Perfecte gelijkheid, 1.0 = Maximale ongelijkheid",
+    "good": "Goed",
+    "hoardingPenalties": "Straf voor Oppotten",
     "learnMore": "Leer Meer",
+    "limit": "Limiet",
     "loading": "Bezig met het laden van governance-gegevens...",
+    "maxIndividualShare": "Maximale Individuele Aandeel",
+    "median": "Mediaan",
     "participationRate": "Deelnamepercentage",
     "pfiWeighted": "PFI-Gewogen",
     "power": "kracht",
     "powerDistribution": "Energieverdeling",
+    "proposedBy": "Voorgesteld door",
     "quorum": "Quorum",
     "recentVotes": "Recente Stemmen",
     "status": {
@@ -158,8 +174,10 @@
     "title": "Democratie in",
     "titleHighlight": "Actie",
     "totalParticipation": "Totaal Deelname",
+    "totalVotes": "totaal aantal stemmen",
     "totalVotingPower": "Totaal Stemkracht",
     "users": "gebruikers",
+    "velocityRequirement": "Snelheidseis",
     "viewAllProposals": "Bekijk Alle Voorstellen",
     "voteAgainst": "Stem Tegen",
     "voteFor": "Stem Voor",
@@ -269,6 +287,56 @@
       "room": "Vriendelijke Lounge — altijd welkom",
       "title": "Gemeenschapschat"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} houders",
+        "noAchievements": "Nog geen prestaties",
+        "rarity": {
+          "common": "Algemeen",
+          "epic": "Episch",
+          "legendary": "Legendarisch",
+          "rare": "Zeldzaam",
+          "uncommon": "Ongebruikelijk"
+        }
+      },
+      "discord": {
+        "chatButton": "Chat Nu",
+        "joinButton": "Doe mee op Discord",
+        "subtitle": "Verbind met duizenden FairCoin-leden over de hele wereld",
+        "title": "Word lid van onze Discord-gemeenschap! 💬"
+      },
+      "events": {
+        "attendees": "Deelnemers",
+        "inDays": "Over {days} dagen",
+        "joinEvent": "Doe mee aan dit evenement 🎉",
+        "location": "Locatie",
+        "noEvents": "Geen aankomende evenementen",
+        "organizer": "Organisator",
+        "peopleAttending": "{current}/{max} mensen aanwezig",
+        "rsvp": "RSVP",
+        "today": "Vandaag",
+        "tomorrow": "Morgen"
+      },
+      "feed": {
+        "by": "door",
+        "noActivity": "Nog geen activiteit"
+      },
+      "loading": "Gemeenschap laden...",
+      "stats": {
+        "achievements": "Prestaties",
+        "activeMembers": "Actieve Leden",
+        "events": "Evenementen",
+        "happyMembers": "Blije Leden"
+      },
+      "subtitle": "Verbind met vrienden, neem deel aan evenementen en verdien prestaties",
+      "tabs": {
+        "achievements": "🏆 Prestaties",
+        "events": "📅 Evenementen",
+        "feed": "📰 Activiteitenfeed"
+      },
+      "title": "Gemeenschapscentrum",
+      "welcome": "Word lid van onze gemeenschap 👋"
+    },
     "hello": "Hallo, {{username}}!",
     "help": {
       "description": "Leer stap voor stap hoe je FairCoin gebruikt",
@@ -281,6 +349,8 @@
       "header": "Hulp \u0026 Tutorials",
       "quickStart": "Snelle Startgidsen",
       "resources": {
+        "achievements": "Verdien prestaties",
+        "achievementsDesc": "Voltooi taken en verdien badges terwijl je leert",
         "comingSoon": "Binnenkort Beschikbaar",
         "printableDesc": "Download gemakkelijk leesbare PDF-instructies",
         "printableGuides": "Afdrukbare Gidsen",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "Hoe deel te nemen aan de community chat",
         "joinChatDesc": "Leer hoe je contact kunt maken met helpers en vrienden kunt maken",
+        "joinCommunity": "Sluit je aan bij de Community Hub",
+        "joinCommunityDesc": "Verbind met andere leden, neem deel aan evenementen en verdien prestaties",
         "receiveCoins": "Hoe FairCoin te Ontvangen",
         "receiveCoinsDesc": "Toon je QR-code en ontvang direct munten",
         "sendCoins": "Hoe FairCoin te verzenden",
         "sendCoinsDesc": "Stapsgewijze gids voor het geven van munten aan vrienden",
+        "trackActivity": "Volg je activiteit",
+        "trackActivityDesc": "Bekijk je transactiegeschiedenis en activiteitenfeed",
         "understandBalance": "Begrijp uw saldo",
         "understandBalanceDesc": "Bekijk uw munten en transactiegeschiedenis"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "Aanvragen voor",
       "applyMerchant": "Aanmelden als Handelaar",
+      "avgCBI": "Gem. CBI★",
       "buildTrust": "Bouw vertrouwen op met je klanten door eerlijke zakelijke praktijken",
       "categories": {
         "all": "Alle Categorieën",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "Bekijk uw recente transacties"
       },
       "description": "Vind vertrouwde handelaren met eerlijke beoordelingen",
+      "examplesInGroup": "Voorbeelden in deze groep:",
       "groupHint": "Elke groep vertegenwoordigt een categorie van lokale handelaren",
+      "inThisGroup": "in deze groep",
       "joinCommunity": "Wil je lid worden van onze Handelsgemeenschap?",
       "merchant1": {
         "description": "Gemeenschaps Mini Markt, Lokale Boodschappen, Verse Groenten, Water Bijvullen"
@@ -439,6 +516,7 @@
         "description": "Vastgoedmakelaar, Huurovereenkomst, Vastgoedbeheer, Woonverzekering"
       },
       "merchant8Name": "Eigendom \u0026 Huisvesting",
+      "merchants": "Handelaren",
       "noMerchants": "Geen handelaren gevonden",
       "ratings": {
         "excellent": "Uitstekend",
@@ -463,6 +541,7 @@
       "tfiScore": "Gemeenschapsbedrijf Index (CBI★)",
       "title": "Handelsgroepen",
       "tryDifferent": "Probeer een andere zoekopdracht of kom binnenkort terug",
+      "typicalCBI": "Typische CBI★",
       "verifiedReviews": "geverifieerde beoordelingen",
       "viewDashboard": "Merchant Dashboard",
       "viewDetails": "Bekijk details",

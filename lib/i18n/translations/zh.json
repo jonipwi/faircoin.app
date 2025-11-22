@@ -130,6 +130,7 @@
     "activeProposals": "活跃提案",
     "activeVoters": "活跃投票者",
     "against": "反对",
+    "averagePFI": "平均 PFI",
     "badge": "社区治理",
     "by": "由",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "经济",
       "governance": "治理"
     },
+    "circulationBonuses": "流通奖励",
     "createProposal": "创建提案",
+    "current": "当前",
     "description": "每个声音都很重要。参与PFI加权投票，共同塑造FairCoin的未来。",
     "ended": "结束",
+    "excellent": "优秀",
+    "fair": "一般",
     "fairRepresentation": "公平代表",
+    "fairnessMetrics": "公平指标",
+    "fairnessRating": "公平评级",
+    "fairnessScore": "公平分数",
     "for": "为",
+    "giniCoefficient": "基尼系数",
+    "giniDescription": "0.0 = 完全平等，1.0 = 最大不平等",
+    "good": "良好",
+    "hoardingPenalties": "囤积惩罚",
     "learnMore": "了解更多",
+    "limit": "限制",
     "loading": "正在加载治理数据...",
+    "maxIndividualShare": "最大个人份额",
+    "median": "中位数",
     "participationRate": "参与率",
     "pfiWeighted": "PFI加权",
     "power": "权力",
     "powerDistribution": "电力分配",
+    "proposedBy": "提议人",
     "quorum": "法定人数",
     "recentVotes": "最近投票",
     "status": {
@@ -158,8 +174,10 @@
     "title": "民主在",
     "titleHighlight": "行动",
     "totalParticipation": "全面参与",
+    "totalVotes": "总票数",
     "totalVotingPower": "总投票权",
     "users": "用户",
+    "velocityRequirement": "流通要求",
     "viewAllProposals": "查看所有提案",
     "voteAgainst": "反对投票",
     "voteFor": "投票给",
@@ -269,6 +287,56 @@
       "room": "友好的休息室 — 永远欢迎",
       "title": "社区聊天"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} 持有者",
+        "noAchievements": "尚无成就",
+        "rarity": {
+          "common": "常见",
+          "epic": "史诗",
+          "legendary": "传奇",
+          "rare": "稀有",
+          "uncommon": "罕见"
+        }
+      },
+      "discord": {
+        "chatButton": "立即聊天",
+        "joinButton": "加入 Discord",
+        "subtitle": "与全球数千名 FairCoin 成员连接",
+        "title": "加入我们的 Discord 社区！💬"
+      },
+      "events": {
+        "attendees": "与会者",
+        "inDays": "在 {days} 天内",
+        "joinEvent": "参加此活动 🎉",
+        "location": "位置",
+        "noEvents": "没有即将举行的活动",
+        "organizer": "组织者",
+        "peopleAttending": "{current}/{max} 人参加",
+        "rsvp": "回复",
+        "today": "今天",
+        "tomorrow": "明天"
+      },
+      "feed": {
+        "by": "由",
+        "noActivity": "尚无活动"
+      },
+      "loading": "加载社区...",
+      "stats": {
+        "achievements": "成就",
+        "activeMembers": "活跃成员",
+        "events": "活动",
+        "happyMembers": "快乐的成员"
+      },
+      "subtitle": "与朋友连接，参加活动，获得成就",
+      "tabs": {
+        "achievements": "🏆 成就",
+        "events": "📅 事件",
+        "feed": "📰 活动动态"
+      },
+      "title": "社区中心",
+      "welcome": "加入我们的社区 👋"
+    },
     "hello": "你好，{{username}}！",
     "help": {
       "description": "逐步学习如何使用 FairCoin",
@@ -281,6 +349,8 @@
       "header": "帮助与教程",
       "quickStart": "快速入门指南",
       "resources": {
+        "achievements": "获得成就",
+        "achievementsDesc": "完成任务并在学习中获得徽章",
         "comingSoon": "即将推出",
         "printableDesc": "下载易于阅读的PDF说明",
         "printableGuides": "可打印指南",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "如何加入社区聊天",
         "joinChatDesc": "了解如何与帮助者联系并交朋友",
+        "joinCommunity": "加入社区中心",
+        "joinCommunityDesc": "与其他成员连接，参加活动，获得成就",
         "receiveCoins": "如何接收 FairCoin",
         "receiveCoinsDesc": "展示您的二维码，立即获得币",
         "sendCoins": "如何发送FairCoin",
         "sendCoinsDesc": "逐步指南：如何将硬币赠送给朋友",
+        "trackActivity": "跟踪您的活动",
+        "trackActivityDesc": "查看您的交易历史和活动动态",
         "understandBalance": "了解您的余额",
         "understandBalanceDesc": "查看您的币和交易历史"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "申请",
       "applyMerchant": "申请成为商家",
+      "avgCBI": "平均 CBI★",
       "buildTrust": "通过公平的商业实践与您的客户建立信任",
       "categories": {
         "all": "所有类别",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "查看您最近的交易"
       },
       "description": "找到值得信赖的商家，拥有公平的评级",
+      "examplesInGroup": "此组中的示例：",
       "groupHint": "每个小组代表一类本地商家",
+      "inThisGroup": "在此组中",
       "joinCommunity": "想加入我们的商户社区吗？",
       "merchant1": {
         "description": "社区迷你市场，本地杂货店，新鲜蔬菜，水补充"
@@ -439,6 +516,7 @@
         "description": "房地产代理、房屋租赁、物业管理、房屋保险"
       },
       "merchant8Name": "财产与住房",
+      "merchants": "商家",
       "noMerchants": "未找到商家",
       "ratings": {
         "excellent": "优秀",
@@ -463,6 +541,7 @@
       "tfiScore": "社区商业指数 (CBI★)",
       "title": "商户团体",
       "tryDifferent": "尝试不同的搜索或稍后再回来",
+      "typicalCBI": "典型 CBI★",
       "verifiedReviews": "经过验证的评论",
       "viewDashboard": "商家仪表板",
       "viewDetails": "查看详情",

@@ -130,6 +130,7 @@
     "activeProposals": "הצעות פעילות",
     "activeVoters": "בוחרים פעילים",
     "against": "נגד",
+    "averagePFI": "PFI ממוצע",
     "badge": "ממשלת קהילה",
     "by": "על ידי",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "כלכלי",
       "governance": "ממשלתיות"
     },
+    "circulationBonuses": "בונוסים במחזור",
     "createProposal": "צור הצעה",
+    "current": "נוכחי",
     "description": "כל קול חשוב. השתתף בהצבעה במשקל PFI כדי לעצב את עתיד FairCoin.",
     "ended": "הסתיים",
+    "excellent": "מצוין",
+    "fair": "הוגן",
     "fairRepresentation": "ייצוג הוגן",
+    "fairnessMetrics": "מדדי הוגנות",
+    "fairnessRating": "דירוג הוגנות",
+    "fairnessScore": "ציון הוגנות",
     "for": "עבור",
+    "giniCoefficient": "מקדם ג'יני",
+    "giniDescription": "0.0 = שוויון מושלם, 1.0 = אי שוויון מקסימלי",
+    "good": "טוב",
+    "hoardingPenalties": "עונשי צבירה",
     "learnMore": "למד עוד",
+    "limit": "מגבלה",
     "loading": "טוען נתוני ממשל...",
+    "maxIndividualShare": "מקסימום חלק אישי",
+    "median": "חציון",
     "participationRate": "שיעור ההשתתפות",
     "pfiWeighted": "משקל PFI",
     "power": "כוח",
     "powerDistribution": "הפצת כוח",
+    "proposedBy": "מוצע על ידי",
     "quorum": "קוורום",
     "recentVotes": "הצבעות האחרונות",
     "status": {
@@ -158,8 +174,10 @@
     "title": "דמוקרטיה ב",
     "titleHighlight": "פעולה",
     "totalParticipation": "השתתפות כוללת",
+    "totalVotes": "סך הכל קולות",
     "totalVotingPower": "סך כל כוח ההצבעה",
     "users": "משתמשים",
+    "velocityRequirement": "דרישת מהירות",
     "viewAllProposals": "צפה בכל ההצעות",
     "voteAgainst": "הצב נגד",
     "voteFor": "הצביע עבור",
@@ -269,6 +287,56 @@
       "room": "סלון ידידותי — תמיד מקבל",
       "title": "צ'אט קהילתי"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} מחזיקים",
+        "noAchievements": "אין הישגים עדיין",
+        "rarity": {
+          "common": "נפוץ",
+          "epic": "אפית",
+          "legendary": "אגדי",
+          "rare": "נדיר",
+          "uncommon": "לא שכיח"
+        }
+      },
+      "discord": {
+        "chatButton": "צ'אט עכשיו",
+        "joinButton": "הצטרף לדיסקורד",
+        "subtitle": "התחבר עם אלפי חברי FairCoin ברחבי העולם",
+        "title": "הצטרף לקהילת הדיסקורד שלנו! 💬"
+      },
+      "events": {
+        "attendees": "משתתפים",
+        "inDays": "בעוד {days} ימים",
+        "joinEvent": "הצטרף לאירוע הזה 🎉",
+        "location": "מיקום",
+        "noEvents": "אין אירועים קרובים",
+        "organizer": "מארגן",
+        "peopleAttending": "{current}/{max} אנשים נוכחים",
+        "rsvp": "אשרו הגעה",
+        "today": "היום",
+        "tomorrow": "מחר"
+      },
+      "feed": {
+        "by": "על ידי",
+        "noActivity": "אין פעילות עדיין"
+      },
+      "loading": "טוען קהילה...",
+      "stats": {
+        "achievements": "הישגים",
+        "activeMembers": "חברים פעילים",
+        "events": "אירועים",
+        "happyMembers": "חברים מאושרים"
+      },
+      "subtitle": "התחבר עם חברים, הצטרף לאירועים, והשג הישגים",
+      "tabs": {
+        "achievements": "🏆 הישגים",
+        "events": "📅 אירועים",
+        "feed": "📰 עדכון פעילות"
+      },
+      "title": "מרכז קהילה",
+      "welcome": "הצטרף לקהילה שלנו 👋"
+    },
     "hello": "שלום, {{username}}!",
     "help": {
       "description": "למד כיצד להשתמש ב-FairCoin שלב אחר שלב",
@@ -281,6 +349,8 @@
       "header": "עזרה ומדריכים",
       "quickStart": "מדריכי התחלה מהירה",
       "resources": {
+        "achievements": "רכוש הישגים",
+        "achievementsDesc": "השלם משימות ורכוש תגי הישג בזמן שאתה לומד",
         "comingSoon": "בקרוב",
         "printableDesc": "הורד הוראות PDF קלות לקריאה",
         "printableGuides": "מדריכים להדפסה",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "איך להצטרף לשיחת קהילה",
         "joinChatDesc": "למד איך להתחבר לעוזרים וליצור חברים",
+        "joinCommunity": "הצטרף למרכז הקהילה",
+        "joinCommunityDesc": "התחבר עם חברים אחרים, הצטרף לאירועים, והשג הישגים",
         "receiveCoins": "איך לקבל FairCoin",
         "receiveCoinsDesc": "הצג את קוד ה-QR שלך וקבל מטבעות מיד",
         "sendCoins": "איך לשלוח פיירקוין",
         "sendCoinsDesc": "מדריך שלב אחר שלב למתן מטבעות לחברים",
+        "trackActivity": "עקוב אחרי הפעילות שלך",
+        "trackActivityDesc": "צפה בהיסטוריית העסקאות שלך וב-feed הפעילות",
         "understandBalance": "הבנת היתרה שלך",
         "understandBalanceDesc": "ראה את המטבעות שלך ואת היסטוריית העסקאות"
       }
@@ -595,10 +669,19 @@
     "becomeButton": "הפוך לסוחר",
     "buildTrust": "בנה אמון עם הלקוחות שלך באמצעות פרקטיקות עסקיות הוגנות",
     "categories": {
-      "beverages": "משקאות",
-      "food": "אוכל",
+      "all": "כל הקטגוריות",
+      "clothing": "חנות בגדים",
+      "clothingHousehold": "שירותי משק בית",
+      "dailyEssentials": "מזון / מוצרים חיוניים",
+      "educationCommunity": "קהילה",
+      "foodDrinks": "אוכל \u0026 משקאות",
       "groceries": "מזון בסיסי",
-      "homeGarden": "בית \u0026 גן"
+      "hardware": "חנות חומרה",
+      "homeProperty": "נכסים \u0026 דיור",
+      "petCare": "טיפול בחיות מחמד",
+      "pharmacy": "בית מרקחת",
+      "restaurant": "מסעדה",
+      "services": "שירותים \u0026 עזרה"
     },
     "categoryDescription": "עיין בסוחרים מאומתים עם דירוגי סחר הוגן",
     "description": "מצא סוחרים מהימנים עם ציוני מדד העסקים הקהילתי (CBI★) גבוהים",

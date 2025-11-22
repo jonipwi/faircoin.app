@@ -130,6 +130,7 @@
     "activeProposals": "المقترحات النشطة",
     "activeVoters": "الناخبون النشطون",
     "against": "ضد",
+    "averagePFI": "متوسط PFI",
     "badge": "حوكمة المجتمع",
     "by": "بواسطة",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "اقتصادي",
       "governance": "الحوكمة"
     },
+    "circulationBonuses": "مكافآت التداول",
     "createProposal": "إنشاء اقتراح",
+    "current": "الحالي",
     "description": "كل صوت مهم. شارك في التصويت المعتمد على PFI لتشكيل مستقبل FairCoin.",
     "ended": "انتهى",
+    "excellent": "ممتاز",
+    "fair": "عادل",
     "fairRepresentation": "تمثيل عادل",
+    "fairnessMetrics": "مقاييس العدالة",
+    "fairnessRating": "تصنيف العدالة",
+    "fairnessScore": "درجة العدالة",
     "for": "ل",
+    "giniCoefficient": "معامل جيني",
+    "giniDescription": "0.0 = مساواة تامة، 1.0 = أقصى عدم مساواة",
+    "good": "جيد",
+    "hoardingPenalties": "عقوبات التكديس",
     "learnMore": "تعلم المزيد",
+    "limit": "حد",
     "loading": "جارٍ تحميل بيانات الحوكمة...",
+    "maxIndividualShare": "الحد الأقصى للحصة الفردية",
+    "median": "متوسط",
     "participationRate": "معدل المشاركة",
     "pfiWeighted": "مؤشر الوزن الشخصي (PFI-Weighted)",
     "power": "قوة",
     "powerDistribution": "توزيع الطاقة",
+    "proposedBy": "مقترح من",
     "quorum": "نصاب",
     "recentVotes": "التصويتات الأخيرة",
     "status": {
@@ -158,8 +174,10 @@
     "title": "الديمقراطية في",
     "titleHighlight": "إجراء",
     "totalParticipation": "مشاركة شاملة",
+    "totalVotes": "إجمالي الأصوات",
     "totalVotingPower": "إجمالي قوة التصويت",
     "users": "المستخدمون",
+    "velocityRequirement": "متطلبات السرعة",
     "viewAllProposals": "عرض جميع الاقتراحات",
     "voteAgainst": "صوت ضد",
     "voteFor": "صوت من أجل",
@@ -269,6 +287,56 @@
       "room": "صالة ودية — دائمًا مرحب بها",
       "title": "دردشة المجتمع"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} حامل",
+        "noAchievements": "لا توجد إنجازات بعد",
+        "rarity": {
+          "common": "شائع",
+          "epic": "ملحمي",
+          "legendary": "أسطوري",
+          "rare": "نادر",
+          "uncommon": "غير شائع"
+        }
+      },
+      "discord": {
+        "chatButton": "الدردشة الآن",
+        "joinButton": "انضم إلى ديسكورد",
+        "subtitle": "تواصل مع الآلاف من أعضاء FairCoin حول العالم",
+        "title": "انضم إلى مجتمعنا على ديسكورد! 💬"
+      },
+      "events": {
+        "attendees": "الحضور",
+        "inDays": "في {days} أيام",
+        "joinEvent": "انضم إلى هذا الحدث 🎉",
+        "location": "الموقع",
+        "noEvents": "لا توجد أحداث قادمة",
+        "organizer": "المنظم",
+        "peopleAttending": "{current}/{max} شخصًا يحضرون",
+        "rsvp": "RSVP",
+        "today": "اليوم",
+        "tomorrow": "غداً"
+      },
+      "feed": {
+        "by": "بواسطة",
+        "noActivity": "لا توجد أنشطة بعد"
+      },
+      "loading": "جارٍ تحميل المجتمع...",
+      "stats": {
+        "achievements": "إنجازات",
+        "activeMembers": "الأعضاء النشطون",
+        "events": "الفعاليات",
+        "happyMembers": "أعضاء سعداء"
+      },
+      "subtitle": "تواصل مع الأصدقاء، انضم إلى الفعاليات، واحصل على إنجازات",
+      "tabs": {
+        "achievements": "🏆 الإنجازات",
+        "events": "📅 الأحداث",
+        "feed": "📰 تغذية النشاط"
+      },
+      "title": "مركز المجتمع",
+      "welcome": "انضم إلى مجتمعنا 👋"
+    },
     "hello": "مرحبًا، {{username}}!",
     "help": {
       "description": "تعلم كيفية استخدام FairCoin خطوة بخطوة",
@@ -281,6 +349,8 @@
       "header": "المساعدة والدروس التعليمية",
       "quickStart": "أدلة البدء السريع",
       "resources": {
+        "achievements": "احصل على إنجازات",
+        "achievementsDesc": "أكمل المهام واحصل على شارات أثناء تعلمك",
         "comingSoon": "قريباً",
         "printableDesc": "قم بتنزيل تعليمات PDF سهلة القراءة",
         "printableGuides": "أدلة قابلة للطباعة",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "كيفية الانضمام إلى دردشة المجتمع",
         "joinChatDesc": "تعلم كيف تتواصل مع المساعدين وتكوين صداقات",
+        "joinCommunity": "انضم إلى مركز المجتمع",
+        "joinCommunityDesc": "تواصل مع الأعضاء الآخرين، انضم إلى الفعاليات، واحصل على إنجازات",
         "receiveCoins": "كيف تتلقى FairCoin",
         "receiveCoinsDesc": "أظهر رمز الاستجابة السريعة الخاص بك واحصل على العملات على الفور",
         "sendCoins": "كيفية إرسال FairCoin",
         "sendCoinsDesc": "دليل خطوة بخطوة لإعطاء العملات للأصدقاء",
+        "trackActivity": "تتبع نشاطك",
+        "trackActivityDesc": "عرض تاريخ معاملاتك وتغذية نشاطك",
         "understandBalance": "فهم رصيدك",
         "understandBalanceDesc": "شاهد عملاتك وتاريخ المعاملات"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "تقدم بطلب للحصول على",
       "applyMerchant": "تقدم كتاجر",
+      "avgCBI": "متوسط CBI★",
       "buildTrust": "بناء الثقة مع عملائك من خلال ممارسات تجارية عادلة",
       "categories": {
         "all": "جميع الفئات",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "شاهد معاملاتك الأخيرة"
       },
       "description": "ابحث عن تجار موثوقين بتقييمات عادلة",
+      "examplesInGroup": "أمثلة في هذه المجموعة:",
       "groupHint": "تمثل كل مجموعة فئة من التجار المحليين",
+      "inThisGroup": "في هذه المجموعة",
       "joinCommunity": "هل ترغب في الانضمام إلى مجتمع التجار لدينا؟",
       "merchant1": {
         "description": "سوق المجتمع المصغر، البقالة المحلية، الخضروات الطازجة، تعبئة المياه"
@@ -439,6 +516,7 @@
         "description": "وكيل عقارات، تأجير منازل، إدارة ممتلكات، تأمين منازل"
       },
       "merchant8Name": "الممتلكات والإسكان",
+      "merchants": "التجار",
       "noMerchants": "لم يتم العثور على تجار",
       "ratings": {
         "excellent": "ممتاز",
@@ -463,6 +541,7 @@
       "tfiScore": "مؤشر الأعمال المجتمعية (CBI★)",
       "title": "مجموعات التجار",
       "tryDifferent": "جرّب بحثًا مختلفًا أو تحقق مرة أخرى قريبًا",
+      "typicalCBI": "CBI النموذجي★",
       "verifiedReviews": "مراجعات موثوقة",
       "viewDashboard": "لوحة تحكم التجار",
       "viewDetails": "عرض التفاصيل",

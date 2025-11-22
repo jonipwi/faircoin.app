@@ -56,6 +56,21 @@ export interface MerchantApplication {
   business_email: string
 }
 
+export interface MerchantCategory {
+  id: number
+  icon: string
+  display_name: string
+  folder: string
+  examples: string
+  avg_cbi: number
+  merchant_count: string
+  cbi_range: string
+  rating: string
+  is_active: number
+  created_at: string
+  updated_at: string
+}
+
 export interface Stats {
   total_users: number
   total_merchants: number
@@ -127,6 +142,7 @@ export interface GovernanceProposal {
   end_date: string
   category: 'economic' | 'governance' | 'community'
   quorum_percentage: number // Changed from 'required_quorum'
+  quorum_required: number // Added: minimum votes needed
   current_participation: number
   time_remaining?: string // Added: "5d 3h" format for active proposals
 }
@@ -439,6 +455,7 @@ export const api = {
   // Merchant APIs
   merchant: {
     list: () => request<{ merchants: Merchant[] }>(`/public/merchants`),
+    categories: () => request<{ categories: MerchantCategory[] }>(`/public/merchant-categories`),
     getById: (id: number) => request<{ merchant: Merchant }>(`/public/merchants/${id}`),
     apply: (application: MerchantApplication, token?: string) => 
       request<{ success: boolean; message: string; merchant_id?: number }>(`/merchant/apply`, {

@@ -130,6 +130,7 @@
     "activeProposals": "활성 제안",
     "activeVoters": "활동적인 투표자",
     "against": "대항",
+    "averagePFI": "평균 PFI",
     "badge": "커뮤니티 거버넌스",
     "by": "작성자",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "경제적",
       "governance": "거버넌스"
     },
+    "circulationBonuses": "유통 보너스",
     "createProposal": "제안 만들기",
+    "current": "현재",
     "description": "모든 목소리가 중요합니다. PFI 가중치 투표에 참여하여 FairCoin의 미래를 형성하십시오.",
     "ended": "종료됨",
+    "excellent": "우수함",
+    "fair": "공정",
     "fairRepresentation": "공정한 대표성",
+    "fairnessMetrics": "공정성 지표",
+    "fairnessRating": "공정성 평가",
+    "fairnessScore": "공정성 점수",
     "for": "위한",
+    "giniCoefficient": "지니 계수",
+    "giniDescription": "0.0 = 완벽한 평등, 1.0 = 최대 불평등",
+    "good": "좋음",
+    "hoardingPenalties": "저장 벌칙",
     "learnMore": "자세히 알아보기",
+    "limit": "한계",
     "loading": "거버넌스 데이터 로딩 중...",
+    "maxIndividualShare": "최대 개인 지분",
+    "median": "중앙값",
     "participationRate": "참여율",
     "pfiWeighted": "PFI 가중치",
     "power": "전력",
     "powerDistribution": "전력 분배",
+    "proposedBy": "제안자",
     "quorum": "쿼럼",
     "recentVotes": "최근 투표",
     "status": {
@@ -158,8 +174,10 @@
     "title": "민주주의는",
     "titleHighlight": "행동",
     "totalParticipation": "총 참여",
+    "totalVotes": "총 투표 수",
     "totalVotingPower": "총 투표 권한",
     "users": "사용자",
+    "velocityRequirement": "속도 요구 사항",
     "viewAllProposals": "모든 제안 보기",
     "voteAgainst": "반대 투표",
     "voteFor": "투표하기",
@@ -269,6 +287,56 @@
       "room": "친근한 라운지 — 항상 환영합니다",
       "title": "커뮤니티 채팅"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count}명의 보유자",
+        "noAchievements": "아직 성과가 없습니다",
+        "rarity": {
+          "common": "공통",
+          "epic": "서사적인",
+          "legendary": "전설적인",
+          "rare": "희귀",
+          "uncommon": "드문"
+        }
+      },
+      "discord": {
+        "chatButton": "지금 채팅하기",
+        "joinButton": "디스코드에 참여하기",
+        "subtitle": "전 세계의 수천 명의 FairCoin 회원과 연결하세요",
+        "title": "우리의 디스코드 커뮤니티에 참여하세요! 💬"
+      },
+      "events": {
+        "attendees": "참석자",
+        "inDays": "{days}일 후",
+        "joinEvent": "이 이벤트에 참여하세요 🎉",
+        "location": "위치",
+        "noEvents": "예정된 이벤트가 없습니다",
+        "organizer": "주최자",
+        "peopleAttending": "{current}/{max}명이 참석 중",
+        "rsvp": "참석 회신",
+        "today": "오늘",
+        "tomorrow": "내일"
+      },
+      "feed": {
+        "by": "작성자",
+        "noActivity": "아직 활동이 없습니다"
+      },
+      "loading": "커뮤니티 로딩 중...",
+      "stats": {
+        "achievements": "업적",
+        "activeMembers": "활동 중인 회원들",
+        "events": "이벤트",
+        "happyMembers": "행복한 회원들"
+      },
+      "subtitle": "친구와 연결하고, 이벤트에 참여하며, 업적을 획득하세요",
+      "tabs": {
+        "achievements": "🏆 업적",
+        "events": "📅 이벤트",
+        "feed": "📰 활동 피드"
+      },
+      "title": "커뮤니티 허브",
+      "welcome": "우리 커뮤니티에 참여하세요 👋"
+    },
     "hello": "안녕하세요, {{username}}!",
     "help": {
       "description": "FairCoin을 단계별로 사용하는 방법 배우기",
@@ -281,6 +349,8 @@
       "header": "도움 및 튜토리얼",
       "quickStart": "빠른 시작 가이드",
       "resources": {
+        "achievements": "업적 획득",
+        "achievementsDesc": "작업을 완료하고 배우면서 배지를 획득하세요",
         "comingSoon": "곧 출시됩니다",
         "printableDesc": "읽기 쉬운 PDF 지침 다운로드",
         "printableGuides": "인쇄 가능한 가이드",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "커뮤니티 채팅에 참여하는 방법",
         "joinChatDesc": "도움이 필요한 사람들과 연결하고 친구를 만드는 방법을 배우세요.",
+        "joinCommunity": "커뮤니티 허브에 참여하기",
+        "joinCommunityDesc": "다른 회원들과 연결하고, 이벤트에 참여하며, 업적을 달성하세요",
         "receiveCoins": "FairCoin 받는 방법",
         "receiveCoinsDesc": "QR 코드를 보여주고 즉시 코인을 받으세요",
         "sendCoins": "FairCoin 보내는 방법",
         "sendCoinsDesc": "친구에게 동전을 주는 단계별 가이드",
+        "trackActivity": "활동 추적하기",
+        "trackActivityDesc": "거래 내역 및 활동 피드를 확인하세요",
         "understandBalance": "잔액 이해하기",
         "understandBalanceDesc": "당신의 코인과 거래 내역을 확인하세요"
       }
@@ -595,10 +669,19 @@
     "becomeButton": "상인이 되세요",
     "buildTrust": "공정한 비즈니스 관행을 통해 고객과의 신뢰를 구축하세요",
     "categories": {
-      "beverages": "음료",
-      "food": "음식",
+      "all": "모든 카테고리",
+      "clothing": "의류 매장",
+      "clothingHousehold": "가정 서비스",
+      "dailyEssentials": "식료품 / 필수품",
+      "educationCommunity": "커뮤니티",
+      "foodDrinks": "음식 및 음료",
       "groceries": "식료품",
-      "homeGarden": "홈 및 정원"
+      "hardware": "하드웨어 상점",
+      "homeProperty": "부동산 및 주택",
+      "petCare": "반려동물 돌보기",
+      "pharmacy": "약국",
+      "restaurant": "레스토랑",
+      "services": "서비스 및 도움"
     },
     "categoryDescription": "공정 거래 등급이 있는 인증된 상인 탐색",
     "description": "높은 커뮤니티 비즈니스 지수(CBI★) 점수를 가진 신뢰할 수 있는 상인을 찾으세요",

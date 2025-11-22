@@ -130,6 +130,7 @@
     "activeProposals": "アクティブ提案",
     "activeVoters": "アクティブ投票者",
     "against": "反対",
+    "averagePFI": "平均PFI",
     "badge": "コミュニティガバナンス",
     "by": "作成者",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "経済",
       "governance": "ガバナンス"
     },
+    "circulationBonuses": "流通ボーナス",
     "createProposal": "提案を作成",
+    "current": "現在",
     "description": "すべての声が重要です。PFI加重投票に参加してFairCoinの未来を形作りましょう。",
     "ended": "終了",
+    "excellent": "優れた",
+    "fair": "公正",
     "fairRepresentation": "公正な表現",
+    "fairnessMetrics": "公平性指標",
+    "fairnessRating": "公平性評価",
+    "fairnessScore": "公平スコア",
     "for": "ために",
+    "giniCoefficient": "ジニ係数",
+    "giniDescription": "0.0 = 完全な平等, 1.0 = 最大の不平等",
+    "good": "良い",
+    "hoardingPenalties": "蓄積ペナルティ",
     "learnMore": "詳細を学ぶ",
+    "limit": "制限",
     "loading": "ガバナンスデータを読み込み中...",
+    "maxIndividualShare": "最大個人シェア",
+    "median": "中央値",
     "participationRate": "参加率",
     "pfiWeighted": "PFI加重",
     "power": "力",
     "powerDistribution": "電力分配",
+    "proposedBy": "提案者",
     "quorum": "クォーラム",
     "recentVotes": "最近の投票",
     "status": {
@@ -158,8 +174,10 @@
     "title": "民主主義に",
     "titleHighlight": "アクション",
     "totalParticipation": "総参加",
+    "totalVotes": "総投票数",
     "totalVotingPower": "総投票権",
     "users": "ユーザー",
+    "velocityRequirement": "速度要件",
     "viewAllProposals": "すべての提案を見る",
     "voteAgainst": "反対票を投じる",
     "voteFor": "投票する",
@@ -269,6 +287,56 @@
       "room": "フレンドリーラウンジ — いつでも歓迎",
       "title": "コミュニティチャット"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} 保有者",
+        "noAchievements": "まだ成果はありません",
+        "rarity": {
+          "common": "共通",
+          "epic": "エピック",
+          "legendary": "伝説的",
+          "rare": "レア",
+          "uncommon": "珍しい"
+        }
+      },
+      "discord": {
+        "chatButton": "今すぐチャット",
+        "joinButton": "Discordに参加する",
+        "subtitle": "世界中の何千人ものFairCoinメンバーとつながりましょう",
+        "title": "私たちのDiscordコミュニティに参加しよう！ 💬"
+      },
+      "events": {
+        "attendees": "参加者",
+        "inDays": "{days}日後",
+        "joinEvent": "このイベントに参加する 🎉",
+        "location": "場所",
+        "noEvents": "今後のイベントはありません",
+        "organizer": "主催者",
+        "peopleAttending": "{current}/{max} 人が参加しています",
+        "rsvp": "RSVP",
+        "today": "今日",
+        "tomorrow": "明日"
+      },
+      "feed": {
+        "by": "によって",
+        "noActivity": "まだアクティビティはありません"
+      },
+      "loading": "コミュニティを読み込み中...",
+      "stats": {
+        "achievements": "成果",
+        "activeMembers": "アクティブメンバー",
+        "events": "イベント",
+        "happyMembers": "幸せなメンバー"
+      },
+      "subtitle": "友達とつながり、イベントに参加し、成果を獲得しましょう",
+      "tabs": {
+        "achievements": "🏆 実績",
+        "events": "📅 イベント",
+        "feed": "📰 アクティビティフィード"
+      },
+      "title": "コミュニティハブ",
+      "welcome": "私たちのコミュニティに参加しよう 👋"
+    },
     "hello": "こんにちは、{{username}}！",
     "help": {
       "description": "FairCoinの使い方をステップバイステップで学ぶ",
@@ -281,6 +349,8 @@
       "header": "ヘルプとチュートリアル",
       "quickStart": "クイックスタートガイド",
       "resources": {
+        "achievements": "実績を獲得する",
+        "achievementsDesc": "タスクを完了し、学びながらバッジを獲得しましょう",
         "comingSoon": "近日公開",
         "printableDesc": "読みやすいPDFの指示をダウンロードする",
         "printableGuides": "印刷可能なガイド",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "コミュニティチャットに参加する方法",
         "joinChatDesc": "助けてくれる人とつながり、友達を作る方法を学ぶ",
+        "joinCommunity": "コミュニティハブに参加する",
+        "joinCommunityDesc": "他のメンバーとつながり、イベントに参加し、成果を獲得しましょう",
         "receiveCoins": "フェアコインの受け取り方",
         "receiveCoinsDesc": "QRコードを表示して、すぐにコインを受け取る",
         "sendCoins": "フェアコインを送る方法",
         "sendCoinsDesc": "友人にコインを送るためのステップバイステップガイド",
+        "trackActivity": "活動を追跡する",
+        "trackActivityDesc": "取引履歴とアクティビティフィードを表示",
         "understandBalance": "残高の理解",
         "understandBalanceDesc": "あなたのコインと取引履歴を見る"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "申し込む",
       "applyMerchant": "商人として申し込む",
+      "avgCBI": "平均CBI★",
       "buildTrust": "公正なビジネス慣行を通じて顧客との信頼を築く",
       "categories": {
         "all": "すべてのカテゴリ",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "最近の取引を確認してください"
       },
       "description": "公正な評価を持つ信頼できる商人を見つける",
+      "examplesInGroup": "このグループの例:",
       "groupHint": "各グループは地元の商人のカテゴリーを表しています",
+      "inThisGroup": "このグループ内",
       "joinCommunity": "私たちの商人コミュニティに参加したいですか？",
       "merchant1": {
         "description": "コミュニティミニマーケット、地元の食料品店、新鮮な野菜、水の補充"
@@ -439,6 +516,7 @@
         "description": "不動産エージェント、住宅賃貸、プロパティ管理、住宅保険"
       },
       "merchant8Name": "不動産と住宅",
+      "merchants": "商人",
       "noMerchants": "商人が見つかりませんでした",
       "ratings": {
         "excellent": "優秀",
@@ -463,6 +541,7 @@
       "tfiScore": "コミュニティビジネスインデックス (CBI★)",
       "title": "商人グループ",
       "tryDifferent": "別の検索を試すか、しばらくしてから再度チェックしてください",
+      "typicalCBI": "典型的CBI★",
       "verifiedReviews": "確認済みのレビュー",
       "viewDashboard": "商人ダッシュボード",
       "viewDetails": "詳細を見る",

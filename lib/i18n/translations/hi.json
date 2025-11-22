@@ -130,6 +130,7 @@
     "activeProposals": "सक्रिय प्रस्ताव",
     "activeVoters": "सक्रिय मतदाता",
     "against": "विरुद्ध",
+    "averagePFI": "औसत PFI",
     "badge": "समुदाय शासन",
     "by": "द्वारा",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "आर्थिक",
       "governance": "शासन"
     },
+    "circulationBonuses": "संचलन बोनस",
     "createProposal": "प्रस्ताव बनाएं",
+    "current": "वर्तमान",
     "description": "हर आवाज़ मायने रखती है। FairCoin के भविष्य को आकार देने के लिए PFI-भारित मतदान में भाग लें।",
     "ended": "समाप्त",
+    "excellent": "उत्कृष्ट",
+    "fair": "निष्पक्ष",
     "fairRepresentation": "निष्पक्ष प्रतिनिधित्व",
+    "fairnessMetrics": "निष्पक्षता मेट्रिक्स",
+    "fairnessRating": "निष्पक्षता रेटिंग",
+    "fairnessScore": "निष्पक्षता स्कोर",
     "for": "के लिए",
+    "giniCoefficient": "जिनी गुणांक",
+    "giniDescription": "0.0 = पूर्ण समानता, 1.0 = अधिकतम असमानता",
+    "good": "अच्छा",
+    "hoardingPenalties": "जमा करने की दंड",
     "learnMore": "और जानें",
+    "limit": "सीमा",
     "loading": "शासन डेटा लोड हो रहा है...",
+    "maxIndividualShare": "अधिकतम व्यक्तिगत शेयर",
+    "median": "माध्य",
     "participationRate": "भागीदारी दर",
     "pfiWeighted": "पीएफआई-भारित",
     "power": "शक्ति",
     "powerDistribution": "शक्ति वितरण",
+    "proposedBy": "प्रस्तावित द्वारा",
     "quorum": "क्वोरम",
     "recentVotes": "हाल के मतदान",
     "status": {
@@ -158,8 +174,10 @@
     "title": "लोकतंत्र में",
     "titleHighlight": "क्रिया",
     "totalParticipation": "कुल भागीदारी",
+    "totalVotes": "कुल वोट",
     "totalVotingPower": "कुल मतदान शक्ति",
     "users": "उपयोगकर्ता",
+    "velocityRequirement": "गति आवश्यकता",
     "viewAllProposals": "सभी प्रस्ताव देखें",
     "voteAgainst": "वोट करें खिलाफ",
     "voteFor": "मत दें",
@@ -269,6 +287,56 @@
       "room": "मित्रवत लाउंज - हमेशा स्वागत करने वाला",
       "title": "समुदाय चैट"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} धारक",
+        "noAchievements": "अभी तक कोई उपलब्धियाँ नहीं",
+        "rarity": {
+          "common": "सामान्य",
+          "epic": "महान",
+          "legendary": "पौराणिक",
+          "rare": "दुर्लभ",
+          "uncommon": "असामान्य"
+        }
+      },
+      "discord": {
+        "chatButton": "अब चैट करें",
+        "joinButton": "डिस्कॉर्ड में शामिल हों",
+        "subtitle": "दुनिया भर में हजारों FairCoin सदस्यों से जुड़ें",
+        "title": "हमारे डिस्कॉर्ड समुदाय में शामिल हों! 💬"
+      },
+      "events": {
+        "attendees": "प्रतिभागी",
+        "inDays": "{days} दिनों में",
+        "joinEvent": "इस कार्यक्रम में शामिल हों 🎉",
+        "location": "स्थान",
+        "noEvents": "कोई आगामी कार्यक्रम नहीं",
+        "organizer": "आयोजक",
+        "peopleAttending": "{current}/{max} लोग उपस्थित हैं",
+        "rsvp": "RSVP",
+        "today": "आज",
+        "tomorrow": "कल"
+      },
+      "feed": {
+        "by": "द्वारा",
+        "noActivity": "अभी तक कोई गतिविधि नहीं"
+      },
+      "loading": "समुदाय लोड हो रहा है...",
+      "stats": {
+        "achievements": "उपलब्धियाँ",
+        "activeMembers": "सक्रिय सदस्य",
+        "events": "घटनाएँ",
+        "happyMembers": "खुश सदस्य"
+      },
+      "subtitle": "दोस्तों से जुड़ें, कार्यक्रमों में भाग लें, और उपलब्धियाँ अर्जित करें",
+      "tabs": {
+        "achievements": "🏆 उपलब्धियाँ",
+        "events": "📅 कार्यक्रम",
+        "feed": "📰 गतिविधि फ़ीड"
+      },
+      "title": "समुदाय केंद्र",
+      "welcome": "हमारे समुदाय में शामिल हों 👋"
+    },
     "hello": "नमस्ते, {{username}}!",
     "help": {
       "description": "फेयरकॉइन का उपयोग करने के लिए चरण-दर-चरण सीखें",
@@ -281,6 +349,8 @@
       "header": "सहायता और ट्यूटोरियल",
       "quickStart": "त्वरित प्रारंभ गाइड",
       "resources": {
+        "achievements": "उपलब्धियाँ अर्जित करें",
+        "achievementsDesc": "कार्य पूरे करें और सीखते समय बैज अर्जित करें",
         "comingSoon": "जल्द आ रहा है",
         "printableDesc": "पढ़ने में आसान PDF निर्देश डाउनलोड करें",
         "printableGuides": "प्रिंट करने योग्य गाइड",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "समुदाय चैट में कैसे शामिल हों",
         "joinChatDesc": "सहायकों से जुड़ना और दोस्त बनाना सीखें",
+        "joinCommunity": "समुदाय हब में शामिल हों",
+        "joinCommunityDesc": "अन्य सदस्यों से जुड़ें, कार्यक्रमों में भाग लें, और उपलब्धियाँ अर्जित करें",
         "receiveCoins": "FairCoin कैसे प्राप्त करें",
         "receiveCoinsDesc": "अपना QR कोड दिखाएं और तुरंत सिक्के प्राप्त करें",
         "sendCoins": "फेयरकॉइन कैसे भेजें",
         "sendCoinsDesc": "दोस्तों को सिक्के देने के लिए चरण-दर-चरण मार्गदर्शिका",
+        "trackActivity": "अपनी गतिविधि ट्रैक करें",
+        "trackActivityDesc": "अपने लेन-देन के इतिहास और गतिविधि फ़ीड को देखें",
         "understandBalance": "अपने बैलेंस को समझना",
         "understandBalanceDesc": "अपने सिक्के और लेन-देन का इतिहास देखें"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "आवेदन करें",
       "applyMerchant": "व्यापारी के रूप में आवेदन करें",
+      "avgCBI": "औसत CBI★",
       "buildTrust": "अपने ग्राहकों के साथ निष्पक्ष व्यापार प्रथाओं के माध्यम से विश्वास बनाएं",
       "categories": {
         "all": "सभी श्रेणियाँ",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "अपने हाल के लेन-देन देखें"
       },
       "description": "विश्वसनीय व्यापारियों को खोजें जिनकी उचित रेटिंग हो",
+      "examplesInGroup": "इस समूह में उदाहरण:",
       "groupHint": "प्रत्येक समूह स्थानीय व्यापारियों की एक श्रेणी का प्रतिनिधित्व करता है",
+      "inThisGroup": "इस समूह में",
       "joinCommunity": "क्या आप हमारे व्यापारी समुदाय में शामिल होना चाहते हैं?",
       "merchant1": {
         "description": "समुदाय मिनी मार्केट, स्थानीय किराना, ताजे सब्जियाँ, पानी रिफिल"
@@ -439,6 +516,7 @@
         "description": "रियल एस्टेट एजेंट, घर किराए पर लेना, संपत्ति प्रबंधन, गृह बीमा"
       },
       "merchant8Name": "संपत्ति और आवास",
+      "merchants": "व्यापारी",
       "noMerchants": "कोई व्यापारी नहीं मिला",
       "ratings": {
         "excellent": "उत्कृष्ट",
@@ -463,6 +541,7 @@
       "tfiScore": "सामुदायिक व्यवसाय सूचकांक (CBI★)",
       "title": "व्यापारी समूह",
       "tryDifferent": "एक अलग खोज करने की कोशिश करें या जल्द ही वापस जांचें",
+      "typicalCBI": "विशिष्ट CBI★",
       "verifiedReviews": "सत्यापित समीक्षाएँ",
       "viewDashboard": "व्यापारी डैशबोर्ड",
       "viewDetails": "विवरण देखें",

@@ -130,6 +130,7 @@
     "activeProposals": "活躍提案",
     "activeVoters": "活躍選民",
     "against": "反對",
+    "averagePFI": "平均 PFI",
     "badge": "社群治理",
     "by": "由",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "經濟",
       "governance": "治理"
     },
+    "circulationBonuses": "流通獎勵",
     "createProposal": "創建提案",
+    "current": "當前",
     "description": "每個聲音都很重要。參與PFI加權投票，塑造FairCoin的未來。",
     "ended": "結束",
+    "excellent": "優秀",
+    "fair": "公平",
     "fairRepresentation": "公平代表",
+    "fairnessMetrics": "公平指標",
+    "fairnessRating": "公平評級",
+    "fairnessScore": "公平分數",
     "for": "為了",
+    "giniCoefficient": "基尼係數",
+    "giniDescription": "0.0 = 完全平等，1.0 = 最大不平等",
+    "good": "良好",
+    "hoardingPenalties": "囤積罰則",
     "learnMore": "了解更多",
+    "limit": "限制",
     "loading": "載入治理數據...",
+    "maxIndividualShare": "最大個人股份",
+    "median": "中位數",
     "participationRate": "參與率",
     "pfiWeighted": "PFI加權",
     "power": "權力",
     "powerDistribution": "權力分配",
+    "proposedBy": "提議者",
     "quorum": "法定人數",
     "recentVotes": "最近的投票",
     "status": {
@@ -158,8 +174,10 @@
     "title": "民主在",
     "titleHighlight": "行動",
     "totalParticipation": "總參與人數",
+    "totalVotes": "總票數",
     "totalVotingPower": "總投票權",
     "users": "用戶",
+    "velocityRequirement": "流通速度要求",
     "viewAllProposals": "查看所有提案",
     "voteAgainst": "反對投票",
     "voteFor": "投票給",
@@ -269,6 +287,56 @@
       "room": "友好的休息室 — 總是歡迎",
       "title": "社群聊天"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} 持有者",
+        "noAchievements": "尚未有成就",
+        "rarity": {
+          "common": "常見",
+          "epic": "史詩",
+          "legendary": "傳奇",
+          "rare": "稀有",
+          "uncommon": "不常見"
+        }
+      },
+      "discord": {
+        "chatButton": "立即聊天",
+        "joinButton": "加入 Discord",
+        "subtitle": "與全球數千名 FairCoin 成員連接",
+        "title": "加入我們的 Discord 社群！💬"
+      },
+      "events": {
+        "attendees": "參加者",
+        "inDays": "在 {days} 天內",
+        "joinEvent": "參加此活動 🎉",
+        "location": "地點",
+        "noEvents": "沒有即將舉行的活動",
+        "organizer": "組織者",
+        "peopleAttending": "{current}/{max} 人參加",
+        "rsvp": "回覆參加",
+        "today": "今天",
+        "tomorrow": "明天"
+      },
+      "feed": {
+        "by": "由",
+        "noActivity": "尚未有活動"
+      },
+      "loading": "載入社區...",
+      "stats": {
+        "achievements": "成就",
+        "activeMembers": "活躍成員",
+        "events": "活動",
+        "happyMembers": "快樂的成員"
+      },
+      "subtitle": "與朋友連結，參加活動，並獲得成就",
+      "tabs": {
+        "achievements": "🏆 成就",
+        "events": "📅 活動",
+        "feed": "📰 活動動態"
+      },
+      "title": "社群中心",
+      "welcome": "加入我們的社群 👋"
+    },
     "hello": "你好，{{username}}！",
     "help": {
       "description": "逐步學習如何使用 FairCoin",
@@ -281,6 +349,8 @@
       "header": "幫助與教程",
       "quickStart": "快速入門指南",
       "resources": {
+        "achievements": "獲得成就",
+        "achievementsDesc": "完成任務並在學習過程中獲得徽章",
         "comingSoon": "即將推出",
         "printableDesc": "下載易於閱讀的 PDF 指示",
         "printableGuides": "可列印指南",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "如何加入社區聊天",
         "joinChatDesc": "了解如何與幫助者聯繫並交朋友",
+        "joinCommunity": "加入社群中心",
+        "joinCommunityDesc": "與其他成員聯繫，參加活動，並獲得成就",
         "receiveCoins": "如何接收 FairCoin",
         "receiveCoinsDesc": "展示您的 QR 碼並立即獲得代幣",
         "sendCoins": "如何發送 FairCoin",
         "sendCoinsDesc": "逐步指南：如何將硬幣贈送給朋友",
+        "trackActivity": "追蹤您的活動",
+        "trackActivityDesc": "查看您的交易歷史和活動動態",
         "understandBalance": "了解您的餘額",
         "understandBalanceDesc": "查看您的貨幣和交易歷史"
       }
@@ -595,10 +669,19 @@
     "becomeButton": "成為商家",
     "buildTrust": "通過公平的商業實踐與您的客戶建立信任",
     "categories": {
-      "beverages": "飲料",
-      "food": "食物",
+      "all": "所有類別",
+      "clothing": "服裝店",
+      "clothingHousehold": "家庭服務",
+      "dailyEssentials": "雜貨 / 生活必需品",
+      "educationCommunity": "社區",
+      "foodDrinks": "食品與飲料",
       "groceries": "雜貨",
-      "homeGarden": "家庭與花園"
+      "hardware": "五金店",
+      "homeProperty": "房地產與住房",
+      "petCare": "寵物護理",
+      "pharmacy": "藥房",
+      "restaurant": "餐廳",
+      "services": "服務與幫助"
     },
     "categoryDescription": "瀏覽具有公平貿易評級的驗證商家",
     "description": "尋找擁有高社區商業指數 (CBI★) 分數的可信商家",

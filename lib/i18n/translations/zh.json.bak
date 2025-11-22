@@ -595,10 +595,19 @@
     "becomeButton": "成为商家",
     "buildTrust": "通过公平的商业实践与您的客户建立信任",
     "categories": {
-      "beverages": "饮料",
-      "food": "食物",
+      "all": "所有类别",
+      "clothing": "服装店",
+      "clothingHousehold": "家庭服务",
+      "dailyEssentials": "杂货 / 生活必需品",
+      "educationCommunity": "社区",
+      "foodDrinks": "食品与饮料",
       "groceries": "杂货",
-      "homeGarden": "家居与花园"
+      "hardware": "五金店",
+      "homeProperty": "物业与住房",
+      "petCare": "宠物护理",
+      "pharmacy": "药店",
+      "restaurant": "餐厅",
+      "services": "服务与帮助"
     },
     "categoryDescription": "浏览具有公平贸易评级的认证商家",
     "description": "找到具有高社区商业指数 (CBI★) 评分的可信商户",

@@ -130,6 +130,7 @@
     "activeProposals": "Propostas Ativas",
     "activeVoters": "Votantes Ativos",
     "against": "Contra",
+    "averagePFI": "PFI Médio",
     "badge": "Governança da Comunidade",
     "by": "Por",
     "categories": {
@@ -137,17 +138,32 @@
       "economic": "econômico",
       "governance": "governança"
     },
+    "circulationBonuses": "Bônus de Circulação",
     "createProposal": "Criar Proposta",
+    "current": "Atual",
     "description": "Cada voz importa. Participe da votação ponderada por PFI para moldar o futuro do FairCoin.",
     "ended": "Encerrado",
+    "excellent": "Excelente",
+    "fair": "Justo",
     "fairRepresentation": "Representação Justa",
+    "fairnessMetrics": "Métricas de Justiça",
+    "fairnessRating": "classificação de justiça",
+    "fairnessScore": "Pontuação de Justiça",
     "for": "Para",
+    "giniCoefficient": "Coeficiente de Gini",
+    "giniDescription": "0.0 = Igualdade perfeita, 1.0 = Máxima desigualdade",
+    "good": "Bom",
+    "hoardingPenalties": "Penalidades por Acumulação",
     "learnMore": "Saiba Mais",
+    "limit": "Limite",
     "loading": "Carregando dados de governança...",
+    "maxIndividualShare": "Participação Máxima Individual",
+    "median": "Mediana",
     "participationRate": "Taxa de Participação",
     "pfiWeighted": "Ponderado pelo PFI",
     "power": "poder",
     "powerDistribution": "Distribuição de Poder",
+    "proposedBy": "Proposto por",
     "quorum": "Quorum",
     "recentVotes": "Votos Recentes",
     "status": {
@@ -158,8 +174,10 @@
     "title": "Democracia em",
     "titleHighlight": "Ação",
     "totalParticipation": "Participação Total",
+    "totalVotes": "total de votos",
     "totalVotingPower": "Poder de Votação Total",
     "users": "usuários",
+    "velocityRequirement": "Requisito de Velocidade",
     "viewAllProposals": "Ver Todas as Propostas",
     "voteAgainst": "Votar Contra",
     "voteFor": "Vote em",
@@ -269,6 +287,56 @@
       "room": "Lounge Amigável — sempre acolhedor",
       "title": "Chat da Comunidade"
     },
+    "community": {
+      "achievements": {
+        "holders": "{count} detentores",
+        "noAchievements": "Nenhuma conquista ainda",
+        "rarity": {
+          "common": "Comum",
+          "epic": "Épico",
+          "legendary": "Lendário",
+          "rare": "Raro",
+          "uncommon": "Incomum"
+        }
+      },
+      "discord": {
+        "chatButton": "Converse Agora",
+        "joinButton": "Junte-se ao Discord",
+        "subtitle": "Conecte-se com milhares de membros do FairCoin ao redor do mundo",
+        "title": "Junte-se à Nossa Comunidade no Discord! 💬"
+      },
+      "events": {
+        "attendees": "Participantes",
+        "inDays": "Em {days} dias",
+        "joinEvent": "Junte-se a Este Evento 🎉",
+        "location": "Localização",
+        "noEvents": "Nenhum evento programado",
+        "organizer": "Organizador",
+        "peopleAttending": "{current}/{max} pessoas participando",
+        "rsvp": "RSVP",
+        "today": "Hoje",
+        "tomorrow": "Amanhã"
+      },
+      "feed": {
+        "by": "por",
+        "noActivity": "Nenhuma atividade ainda"
+      },
+      "loading": "Carregando Comunidade...",
+      "stats": {
+        "achievements": "Conquistas",
+        "activeMembers": "Membros Ativos",
+        "events": "Eventos",
+        "happyMembers": "Membros Felizes"
+      },
+      "subtitle": "Conecte-se com amigos, participe de eventos e ganhe conquistas",
+      "tabs": {
+        "achievements": "🏆 Conquistas",
+        "events": "📅 Eventos",
+        "feed": "📰 Feed de Atividades"
+      },
+      "title": "Central da Comunidade",
+      "welcome": "Junte-se à Nossa Comunidade 👋"
+    },
     "hello": "Olá, {{username}}!",
     "help": {
       "description": "Aprenda a usar o FairCoin passo a passo",
@@ -281,6 +349,8 @@
       "header": "Ajuda \u0026 Tutoriais",
       "quickStart": "Guias de Início Rápido",
       "resources": {
+        "achievements": "Ganhe Conquistas",
+        "achievementsDesc": "Complete tarefas e ganhe emblemas enquanto aprende",
         "comingSoon": "Em Breve",
         "printableDesc": "Baixe instruções em PDF fáceis de ler",
         "printableGuides": "Guias Impressos",
@@ -299,10 +369,14 @@
       "tutorials": {
         "joinChat": "Como Participar do Chat da Comunidade",
         "joinChatDesc": "Aprenda como se conectar com ajudantes e fazer amigos",
+        "joinCommunity": "Junte-se ao Hub da Comunidade",
+        "joinCommunityDesc": "Conecte-se com outros membros, participe de eventos e ganhe conquistas",
         "receiveCoins": "Como Receber FairCoin",
         "receiveCoinsDesc": "Mostre seu código QR e receba moedas instantaneamente",
         "sendCoins": "Como Enviar FairCoin",
         "sendCoinsDesc": "Guia passo a passo para dar moedas a amigos",
+        "trackActivity": "Acompanhe Sua Atividade",
+        "trackActivityDesc": "Veja seu histórico de transações e feed de atividades",
         "understandBalance": "Entendendo Seu Saldo",
         "understandBalanceDesc": "Veja suas moedas e histórico de transações"
       }
@@ -365,6 +439,7 @@
       },
       "applyFor": "Candidatar-se a",
       "applyMerchant": "Candidatar-se como Comerciante",
+      "avgCBI": "CBI Médio★",
       "buildTrust": "Construa confiança com seus clientes através de práticas comerciais justas",
       "categories": {
         "all": "Todas as Categorias",
@@ -405,7 +480,9 @@
         "viewSalesDesc": "Veja suas transações recentes"
       },
       "description": "Encontre comerciantes confiáveis com avaliações justas",
+      "examplesInGroup": "Exemplos neste grupo:",
       "groupHint": "Cada grupo representa uma categoria de comerciantes locais",
+      "inThisGroup": "neste grupo",
       "joinCommunity": "Quer se juntar à nossa comunidade de comerciantes?",
       "merchant1": {
         "description": "Mini Mercado Comunitário, Mercearia Local, Vegetais Frescos, Refil de Água"
@@ -439,6 +516,7 @@
         "description": "Corretor de Imóveis, Aluguel de Casas, Gestão de Propriedades, Seguro Residencial"
       },
       "merchant8Name": "Propriedade \u0026 Habitação",
+      "merchants": "Comerciantes",
       "noMerchants": "Nenhum Comerciante Encontrado",
       "ratings": {
         "excellent": "Excelente",
@@ -463,6 +541,7 @@
       "tfiScore": "Índice de Negócios da Comunidade (CBI★)",
       "title": "Grupos de Comerciantes",
       "tryDifferent": "Tente uma busca diferente ou volte em breve",
+      "typicalCBI": "CBI Típico★",
       "verifiedReviews": "avaliações verificadas",
       "viewDashboard": "Painel do Comerciante",
       "viewDetails": "Ver detalhes",
