@@ -337,6 +337,15 @@
       "title": "Pusat Komunitas",
       "welcome": "Bergabunglah dengan Komunitas Kami 👋"
     },
+    "exchange": {
+      "convertTo": "Konversi Ke",
+      "convertedAmount": "Jumlah yang Dikonversi",
+      "fcAmount": "Jumlah FairCoin",
+      "lastUpdated": "Terakhir diperbarui",
+      "liveRates": "Kurs Pertukaran Langsung",
+      "subtitle": "Konversi FC ke mata uang lainnya",
+      "title": "Pengonversi Pertukaran"
+    },
     "hello": "Halo, {{username}}!",
     "help": {
       "description": "Pelajari cara menggunakan FairCoin langkah demi langkah",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "Melawan",
+      "cancel": "Batal",
       "checkBack": "Periksa kembali segera untuk keputusan komunitas baru",
+      "createForm": {
+        "categories": {
+          "community": "Komunitas",
+          "expansion": "Ekspansi",
+          "general": "Umum",
+          "policy": "Kebijakan",
+          "technical": "Teknis"
+        },
+        "categoryLabel": "Kategori",
+        "creating": "Sedang Membuat...",
+        "descriptionLabel": "Deskripsi",
+        "descriptionPlaceholder": "Jelaskan proposal Anda secara rinci",
+        "submit": "Kirim Proposal",
+        "title": "Buat Proposal Baru",
+        "titleLabel": "Judul",
+        "titlePlaceholder": "Masukkan judul proposal"
+      },
+      "createNew": "Buat Proposal Baru",
       "description": "Suara pada keputusan dan proposal komunitas",
       "ended": "Selesai",
       "for": "Untuk",

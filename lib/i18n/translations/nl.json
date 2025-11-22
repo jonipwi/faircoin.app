@@ -337,6 +337,15 @@
       "title": "Gemeenschapscentrum",
       "welcome": "Word lid van onze gemeenschap 👋"
     },
+    "exchange": {
+      "convertTo": "Omzetten Naar",
+      "convertedAmount": "Omgezet Bedrag",
+      "fcAmount": "FairCoin Bedrag",
+      "lastUpdated": "Laatst bijgewerkt",
+      "liveRates": "Live Wisselkoersen",
+      "subtitle": "Converteer FC naar andere valuta's",
+      "title": "Wisselkoersconverter"
+    },
     "hello": "Hallo, {{username}}!",
     "help": {
       "description": "Leer stap voor stap hoe je FairCoin gebruikt",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "Tegen",
+      "cancel": "Annuleren",
       "checkBack": "Kom snel terug voor nieuwe gemeenschapsbeslissingen",
+      "createForm": {
+        "categories": {
+          "community": "Gemeenschap",
+          "expansion": "Uitbreiding",
+          "general": "Algemeen",
+          "policy": "Beleid",
+          "technical": "Technisch"
+        },
+        "categoryLabel": "Categorie",
+        "creating": "Aan het maken...",
+        "descriptionLabel": "Beschrijving",
+        "descriptionPlaceholder": "Beschrijf uw voorstel in detail",
+        "submit": "Voorstel indienen",
+        "title": "Nieuwe Voorstel Aanmaken",
+        "titleLabel": "Titel",
+        "titlePlaceholder": "Voer de titel van het voorstel in"
+      },
+      "createNew": "Nieuwe Voorstel Aanmaken",
       "description": "Stem op gemeenschapsbeslissingen en voorstellen",
       "ended": "Einde",
       "for": "Voor",

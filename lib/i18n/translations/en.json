@@ -119,6 +119,15 @@
         "step3": "FairCoin will arrive in your wallet instantly"
       }
     },
+    "exchange": {
+      "title": "Exchange Converter",
+      "subtitle": "Convert FC to other currencies",
+      "fcAmount": "FairCoin Amount",
+      "convertTo": "Convert To",
+      "convertedAmount": "Converted Amount",
+      "liveRates": "Live Exchange Rates",
+      "lastUpdated": "Last updated"
+    },
     "balance": {
       "title": "My Balance",
       "description": "See your FairCoin and recent transactions",
@@ -170,6 +179,25 @@
       "voteFor": "Vote FOR",
       "voteAgainst": "Vote AGAINST",
       "proposedBy": "Proposed by",
+      "createNew": "Create New Proposal",
+      "cancel": "Cancel",
+      "createForm": {
+        "title": "Create New Proposal",
+        "titleLabel": "Title",
+        "titlePlaceholder": "Enter proposal title",
+        "categoryLabel": "Category",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Describe your proposal in detail",
+        "submit": "Submit Proposal",
+        "creating": "Creating...",
+        "categories": {
+          "general": "General",
+          "policy": "Policy",
+          "technical": "Technical",
+          "community": "Community",
+          "expansion": "Expansion"
+        }
+      },
       "status": {
         "active": "Active",
         "passed": "Passed",

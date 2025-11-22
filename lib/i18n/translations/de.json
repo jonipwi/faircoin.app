@@ -337,6 +337,15 @@
       "title": "Community-Hub",
       "welcome": "Tritt unserer Gemeinschaft bei 👋"
     },
+    "exchange": {
+      "convertTo": "Umrechnen in",
+      "convertedAmount": "Umgerechneter Betrag",
+      "fcAmount": "FairCoin-Betrag",
+      "lastUpdated": "Zuletzt aktualisiert",
+      "liveRates": "Live-Wechselkurse",
+      "subtitle": "FC in andere Währungen umwandeln",
+      "title": "Währungsumrechner"
+    },
     "hello": "Hallo, {{username}}!",
     "help": {
       "description": "Erfahren Sie Schritt für Schritt, wie Sie FairCoin verwenden",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "Gegen",
+      "cancel": "Abbrechen",
       "checkBack": "Schau bald wieder vorbei für neue Gemeinschaftsentscheidungen",
+      "createForm": {
+        "categories": {
+          "community": "Gemeinschaft",
+          "expansion": "Erweiterung",
+          "general": "Allgemein",
+          "policy": "Richtlinie",
+          "technical": "Technisch"
+        },
+        "categoryLabel": "Kategorie",
+        "creating": "Erstelle...",
+        "descriptionLabel": "Beschreibung",
+        "descriptionPlaceholder": "Beschreibe deinen Vorschlag im Detail",
+        "submit": "Vorschlag einreichen",
+        "title": "Neuen Vorschlag erstellen",
+        "titleLabel": "Titel",
+        "titlePlaceholder": "Titel des Vorschlags eingeben"
+      },
+      "createNew": "Neuen Vorschlag erstellen",
       "description": "Über Abstimmungen zu Gemeinschaftsentscheidungen und Vorschlägen",
       "ended": "Beendet",
       "for": "Für",

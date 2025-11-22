@@ -337,6 +337,15 @@
       "title": "מרכז קהילה",
       "welcome": "הצטרף לקהילה שלנו 👋"
     },
+    "exchange": {
+      "convertTo": "המיר ל",
+      "convertedAmount": "סכום המומר",
+      "fcAmount": "סכום פיירקוין",
+      "lastUpdated": "עודכן לאחרונה",
+      "liveRates": "שערי חליפין חיים",
+      "subtitle": "המרת FC למטבעות אחרים",
+      "title": "ממיר המרות"
+    },
     "hello": "שלום, {{username}}!",
     "help": {
       "description": "למד כיצד להשתמש ב-FairCoin שלב אחר שלב",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "נגד",
+      "cancel": "ביטול",
       "checkBack": "בדוק שוב בקרוב עבור החלטות קהילתיות חדשות",
+      "createForm": {
+        "categories": {
+          "community": "קהילה",
+          "expansion": "הרחבה",
+          "general": "כללי",
+          "policy": "מדיניות",
+          "technical": "טכני"
+        },
+        "categoryLabel": "קטגוריה",
+        "creating": "יוצר...",
+        "descriptionLabel": "תיאור",
+        "descriptionPlaceholder": "תאר את ההצעה שלך בפירוט",
+        "submit": "הגש הצעה",
+        "title": "צור הצעה חדשה",
+        "titleLabel": "כותרת",
+        "titlePlaceholder": "הכנס כותרת הצעה"
+      },
+      "createNew": "צור הצעה חדשה",
       "description": "הצביעו על החלטות והצעות קהילתיות",
       "ended": "הסתיים",
       "for": "עבור",

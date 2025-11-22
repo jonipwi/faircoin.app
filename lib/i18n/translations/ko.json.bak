@@ -337,6 +337,15 @@
       "title": "커뮤니티 허브",
       "welcome": "우리 커뮤니티에 참여하세요 👋"
     },
+    "exchange": {
+      "convertTo": "변환할 대상",
+      "convertedAmount": "변환된 금액",
+      "fcAmount": "페어코인 금액",
+      "lastUpdated": "마지막 업데이트",
+      "liveRates": "실시간 환율",
+      "subtitle": "FC를 다른 통화로 변환하기",
+      "title": "환전 변환기"
+    },
     "hello": "안녕하세요, {{username}}!",
     "help": {
       "description": "FairCoin을 단계별로 사용하는 방법 배우기",
@@ -439,6 +448,7 @@
       },
       "applyFor": "신청하기",
       "applyMerchant": "상인으로 신청하기",
+      "avgCBI": "평균 CBI★",
       "buildTrust": "공정한 비즈니스 관행을 통해 고객과의 신뢰를 구축하세요.",
       "categories": {
         "all": "모든 카테고리",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "최근 거래 내역 보기"
       },
       "description": "신뢰할 수 있는 상인과 공정한 평가를 찾으세요",
+      "examplesInGroup": "이 그룹의 예:",
       "groupHint": "각 그룹은 지역 상인의 카테고리를 나타냅니다.",
+      "inThisGroup": "이 그룹에서",
       "joinCommunity": "우리 상인 커뮤니티에 가입하고 싶으신가요?",
       "merchant1": {
         "description": "커뮤니티 미니 마켓, 지역 식료품점, 신선한 채소, 물 리필"
@@ -513,6 +525,7 @@
         "description": "부동산 중개인, 주택 임대, 자산 관리, 주택 보험"
       },
       "merchant8Name": "재산 및 주택",
+      "merchants": "상인",
       "noMerchants": "상인이 발견되지 않았습니다",
       "ratings": {
         "excellent": "우수한",
@@ -537,6 +550,7 @@
       "tfiScore": "커뮤니티 비즈니스 지수 (CBI★)",
       "title": "상인 그룹",
       "tryDifferent": "다른 검색을 시도하거나 곧 다시 확인하세요",
+      "typicalCBI": "전형적인 CBI★",
       "verifiedReviews": "검증된 리뷰",
       "viewDashboard": "상인 대시보드",
       "viewDetails": "세부정보 보기",

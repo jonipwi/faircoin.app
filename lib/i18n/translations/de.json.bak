@@ -337,6 +337,15 @@
       "title": "Community-Hub",
       "welcome": "Tritt unserer Gemeinschaft bei 👋"
     },
+    "exchange": {
+      "convertTo": "Umrechnen in",
+      "convertedAmount": "Umgerechneter Betrag",
+      "fcAmount": "FairCoin-Betrag",
+      "lastUpdated": "Zuletzt aktualisiert",
+      "liveRates": "Live-Wechselkurse",
+      "subtitle": "FC in andere Währungen umwandeln",
+      "title": "Währungsumrechner"
+    },
     "hello": "Hallo, {{username}}!",
     "help": {
       "description": "Erfahren Sie Schritt für Schritt, wie Sie FairCoin verwenden",
@@ -439,6 +448,7 @@
       },
       "applyFor": "Bewerben Sie sich für",
       "applyMerchant": "Als Händler bewerben",
+      "avgCBI": "Durchschnittlicher CBI★",
       "buildTrust": "Bauen Sie Vertrauen zu Ihren Kunden durch faire Geschäftspraktiken",
       "categories": {
         "all": "Alle Kategorien",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "Sehen Sie Ihre aktuellen Transaktionen"
       },
       "description": "Finden Sie vertrauenswürdige Händler mit fairen Bewertungen",
+      "examplesInGroup": "Beispiele in dieser Gruppe:",
       "groupHint": "Jede Gruppe repräsentiert eine Kategorie lokaler Händler",
+      "inThisGroup": "in dieser Gruppe",
       "joinCommunity": "Möchten Sie unserer Händlergemeinschaft beitreten?",
       "merchant1": {
         "description": "Gemeinschafts-Mini-Markt, lokaler Lebensmittelladen, frisches Gemüse, Wasserauffüllung"
@@ -513,6 +525,7 @@
         "description": "Immobilienmakler, Wohnungsvermietung, Immobilienverwaltung, Hausratversicherung"
       },
       "merchant8Name": "Eigentum \u0026 Wohnen",
+      "merchants": "Händler",
       "noMerchants": "Keine Händler gefunden",
       "ratings": {
         "excellent": "Ausgezeichnet",
@@ -537,6 +550,7 @@
       "tfiScore": "Gemeinschaftsunternehmensindex (CBI★)",
       "title": "Händlergruppen",
       "tryDifferent": "Versuchen Sie eine andere Suche oder schauen Sie bald wieder vorbei",
+      "typicalCBI": "Typischer CBI★",
       "verifiedReviews": "verifizierte Bewertungen",
       "viewDashboard": "Händler-Dashboard",
       "viewDetails": "Details anzeigen",

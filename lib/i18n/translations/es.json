@@ -337,6 +337,15 @@
       "title": "Centro Comunitario",
       "welcome": "Únete a Nuestra Comunidad 👋"
     },
+    "exchange": {
+      "convertTo": "Convertir a",
+      "convertedAmount": "Cantidad convertida",
+      "fcAmount": "Cantidad de FairCoin",
+      "lastUpdated": "Última actualización",
+      "liveRates": "Tasas de cambio en vivo",
+      "subtitle": "Convertir FC a otras monedas",
+      "title": "Convertidor de intercambio"
+    },
     "hello": "¡Hola, {{username}}!",
     "help": {
       "description": "Aprende a usar FairCoin paso a paso",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "En contra de",
+      "cancel": "Cancelar",
       "checkBack": "Vuelve pronto para nuevas decisiones de la comunidad",
+      "createForm": {
+        "categories": {
+          "community": "Comunidad",
+          "expansion": "Expansión",
+          "general": "General",
+          "policy": "Política",
+          "technical": "Técnico"
+        },
+        "categoryLabel": "Categoría",
+        "creating": "Creando...",
+        "descriptionLabel": "Descripción",
+        "descriptionPlaceholder": "Describa su propuesta en detalle",
+        "submit": "Enviar Propuesta",
+        "title": "Crear Nueva Propuesta",
+        "titleLabel": "Título",
+        "titlePlaceholder": "Ingrese el título de la propuesta"
+      },
+      "createNew": "Crear Nueva Propuesta",
       "description": "Vota sobre decisiones y propuestas comunitarias",
       "ended": "Terminado",
       "for": "Para",

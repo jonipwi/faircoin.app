@@ -337,6 +337,15 @@
       "title": "Pusat Komunitas",
       "welcome": "Bergabunglah dengan Komunitas Kami 👋"
     },
+    "exchange": {
+      "convertTo": "Konversi Ke",
+      "convertedAmount": "Jumlah yang Dikonversi",
+      "fcAmount": "Jumlah FairCoin",
+      "lastUpdated": "Terakhir diperbarui",
+      "liveRates": "Kurs Pertukaran Langsung",
+      "subtitle": "Konversi FC ke mata uang lainnya",
+      "title": "Pengonversi Pertukaran"
+    },
     "hello": "Halo, {{username}}!",
     "help": {
       "description": "Pelajari cara menggunakan FairCoin langkah demi langkah",
@@ -439,6 +448,7 @@
       },
       "applyFor": "Daftar untuk",
       "applyMerchant": "Daftar sebagai Pedagang",
+      "avgCBI": "Rata-rata CBI★",
       "buildTrust": "Bangun kepercayaan dengan pelanggan Anda melalui praktik bisnis yang adil",
       "categories": {
         "all": "Semua Kategori",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "Lihat transaksi terbaru Anda"
       },
       "description": "Temukan pedagang tepercaya dengan penilaian yang adil",
+      "examplesInGroup": "Contoh dalam kelompok ini:",
       "groupHint": "Setiap kelompok mewakili kategori pedagang lokal",
+      "inThisGroup": "dalam kelompok ini",
       "joinCommunity": "Ingin Bergabung dengan Komunitas Pedagang Kami?",
       "merchant1": {
         "description": "Mini Pasar Komunitas, Toko Kelontong Lokal, Sayuran Segar, Pengisian Ulang Air"
@@ -513,6 +525,7 @@
         "description": "Agen Real Estat, Sewa Rumah, Manajemen Properti, Asuransi Rumah"
       },
       "merchant8Name": "Properti \u0026 Perumahan",
+      "merchants": "Pedagang",
       "noMerchants": "Tidak Ada Pedagang Ditemukan",
       "ratings": {
         "excellent": "Luar Biasa",
@@ -537,6 +550,7 @@
       "tfiScore": "Indeks Bisnis Komunitas (CBI★)",
       "title": "Kelompok Pedagang",
       "tryDifferent": "Coba pencarian yang berbeda atau periksa kembali segera",
+      "typicalCBI": "CBI Tipikal★",
       "verifiedReviews": "ulasan terverifikasi",
       "viewDashboard": "Dasbor Pedagang",
       "viewDetails": "Lihat detail",

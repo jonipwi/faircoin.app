@@ -337,6 +337,15 @@
       "title": "Centro Comunitario",
       "welcome": "Únete a Nuestra Comunidad 👋"
     },
+    "exchange": {
+      "convertTo": "Convertir a",
+      "convertedAmount": "Cantidad convertida",
+      "fcAmount": "Cantidad de FairCoin",
+      "lastUpdated": "Última actualización",
+      "liveRates": "Tasas de cambio en vivo",
+      "subtitle": "Convertir FC a otras monedas",
+      "title": "Convertidor de intercambio"
+    },
     "hello": "¡Hola, {{username}}!",
     "help": {
       "description": "Aprende a usar FairCoin paso a paso",
@@ -439,6 +448,7 @@
       },
       "applyFor": "Solicitar",
       "applyMerchant": "Solicitar como Comerciante",
+      "avgCBI": "Promedio CBI★",
       "buildTrust": "Construye confianza con tus clientes a través de prácticas comerciales justas",
       "categories": {
         "all": "Todas las Categorías",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "Ver tus transacciones recientes"
       },
       "description": "Encuentra comerciantes de confianza con calificaciones justas",
+      "examplesInGroup": "Ejemplos en este grupo:",
       "groupHint": "Cada grupo representa una categoría de comerciantes locales",
+      "inThisGroup": "en este grupo",
       "joinCommunity": "¿Quieres unirte a nuestra comunidad de comerciantes?",
       "merchant1": {
         "description": "Mini Mercado Comunitario, Tienda Local, Verduras Frescas, Recarga de Agua"
@@ -513,6 +525,7 @@
         "description": "Agente inmobiliario, alquiler de viviendas, gestión de propiedades, seguro de hogar"
       },
       "merchant8Name": "Propiedad y Vivienda",
+      "merchants": "Comerciantes",
       "noMerchants": "No se encontraron comerciantes",
       "ratings": {
         "excellent": "Excelente",
@@ -537,6 +550,7 @@
       "tfiScore": "Índice de Negocios Comunitarios (CBI★)",
       "title": "Grupos de comerciantes",
       "tryDifferent": "Intenta una búsqueda diferente o vuelve pronto",
+      "typicalCBI": "CBI Típico★",
       "verifiedReviews": "reseñas verificadas",
       "viewDashboard": "Panel de control del comerciante",
       "viewDetails": "Ver detalles",

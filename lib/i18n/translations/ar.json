@@ -337,6 +337,15 @@
       "title": "مركز المجتمع",
       "welcome": "انضم إلى مجتمعنا 👋"
     },
+    "exchange": {
+      "convertTo": "تحويل إلى",
+      "convertedAmount": "المبلغ المحول",
+      "fcAmount": "مبلغ FairCoin",
+      "lastUpdated": "آخر تحديث",
+      "liveRates": "أسعار الصرف الحية",
+      "subtitle": "تحويل FC إلى عملات أخرى",
+      "title": "محول الصرف"
+    },
     "hello": "مرحبًا، {{username}}!",
     "help": {
       "description": "تعلم كيفية استخدام FairCoin خطوة بخطوة",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "ضد",
+      "cancel": "إلغاء",
       "checkBack": "تحقق مرة أخرى قريبًا للحصول على قرارات جديدة من المجتمع",
+      "createForm": {
+        "categories": {
+          "community": "مجتمع",
+          "expansion": "توسيع",
+          "general": "عام",
+          "policy": "سياسة",
+          "technical": "تقني"
+        },
+        "categoryLabel": "فئة",
+        "creating": "جارٍ الإنشاء...",
+        "descriptionLabel": "وصف",
+        "descriptionPlaceholder": "وصف اقتراحك بالتفصيل",
+        "submit": "تقديم الاقتراح",
+        "title": "إنشاء اقتراح جديد",
+        "titleLabel": "العنوان",
+        "titlePlaceholder": "أدخل عنوان الاقتراح"
+      },
+      "createNew": "إنشاء اقتراح جديد",
       "description": "صوت على قرارات المجتمع والمقترحات",
       "ended": "انتهى",
       "for": "لـ",

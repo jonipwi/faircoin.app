@@ -337,6 +337,15 @@
       "title": "Сообщество",
       "welcome": "Присоединяйтесь к нашему сообществу 👋"
     },
+    "exchange": {
+      "convertTo": "Конвертировать в",
+      "convertedAmount": "Конвертированная сумма",
+      "fcAmount": "Сумма FairCoin",
+      "lastUpdated": "Последнее обновление",
+      "liveRates": "Текущие курсы обмена",
+      "subtitle": "Конвертировать FC в другие валюты",
+      "title": "Конвертер обмена"
+    },
     "hello": "Здравствуйте, {{username}}!",
     "help": {
       "description": "Узнайте, как использовать FairCoin шаг за шагом",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "Против",
+      "cancel": "Отменить",
       "checkBack": "Проверьте позже для новых решений сообщества",
+      "createForm": {
+        "categories": {
+          "community": "Сообщество",
+          "expansion": "Расширение",
+          "general": "Общее",
+          "policy": "Политика",
+          "technical": "Технический"
+        },
+        "categoryLabel": "Категория",
+        "creating": "Создание...",
+        "descriptionLabel": "Описание",
+        "descriptionPlaceholder": "Подробно опишите ваше предложение",
+        "submit": "Отправить предложение",
+        "title": "Создать новое предложение",
+        "titleLabel": "Название",
+        "titlePlaceholder": "Введите заголовок предложения"
+      },
+      "createNew": "Создать новое предложение",
       "description": "Голосуйте по решениям и предложениям сообщества",
       "ended": "Завершено",
       "for": "Для",

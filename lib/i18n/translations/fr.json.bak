@@ -337,6 +337,15 @@
       "title": "Centre communautaire",
       "welcome": "Rejoignez notre communauté 👋"
     },
+    "exchange": {
+      "convertTo": "Convertir en",
+      "convertedAmount": "Montant converti",
+      "fcAmount": "Montant FairCoin",
+      "lastUpdated": "Dernière mise à jour",
+      "liveRates": "Taux de change en direct",
+      "subtitle": "Convertir FC en d'autres devises",
+      "title": "Convertisseur d'échange"
+    },
     "hello": "Bonjour, {{username}} !",
     "help": {
       "description": "Apprenez à utiliser FairCoin étape par étape",
@@ -439,6 +448,7 @@
       },
       "applyFor": "Postuler pour",
       "applyMerchant": "Postuler en tant que commerçant",
+      "avgCBI": "CBI moyen★",
       "buildTrust": "Établissez la confiance avec vos clients grâce à des pratiques commerciales équitables",
       "categories": {
         "all": "Toutes les catégories",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "Voir vos transactions récentes"
       },
       "description": "Trouvez des commerçants de confiance avec des évaluations équitables",
+      "examplesInGroup": "Exemples dans ce groupe :",
       "groupHint": "Chaque groupe représente une catégorie de commerçants locaux",
+      "inThisGroup": "dans ce groupe",
       "joinCommunity": "Voulez-vous rejoindre notre communauté de commerçants ?",
       "merchant1": {
         "description": "Mini marché communautaire, épicerie locale, légumes frais, recharge d'eau"
@@ -513,6 +525,7 @@
         "description": "Agent immobilier, location de maison, gestion de propriété, assurance habitation"
       },
       "merchant8Name": "Propriété et Logement",
+      "merchants": "Commerçants",
       "noMerchants": "Aucun marchand trouvé",
       "ratings": {
         "excellent": "Excellent",
@@ -537,6 +550,7 @@
       "tfiScore": "Indice des entreprises communautaires (CBI★)",
       "title": "Groupes de marchands",
       "tryDifferent": "Essayez une recherche différente ou revenez bientôt",
+      "typicalCBI": "CBI typique★",
       "verifiedReviews": "avis vérifiés",
       "viewDashboard": "Tableau de bord des commerçants",
       "viewDetails": "Voir les détails",

@@ -337,6 +337,15 @@
       "title": "社区中心",
       "welcome": "加入我们的社区 👋"
     },
+    "exchange": {
+      "convertTo": "转换为",
+      "convertedAmount": "转换金额",
+      "fcAmount": "FairCoin 数量",
+      "lastUpdated": "最后更新",
+      "liveRates": "实时汇率",
+      "subtitle": "将FC转换为其他货币",
+      "title": "兑换转换器"
+    },
     "hello": "你好，{{username}}！",
     "help": {
       "description": "逐步学习如何使用 FairCoin",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "反对",
+      "cancel": "取消",
       "checkBack": "请稍后查看新的社区决策",
+      "createForm": {
+        "categories": {
+          "community": "社区",
+          "expansion": "扩展",
+          "general": "一般",
+          "policy": "政策",
+          "technical": "技术"
+        },
+        "categoryLabel": "类别",
+        "creating": "创建中...",
+        "descriptionLabel": "描述",
+        "descriptionPlaceholder": "详细描述您的提案",
+        "submit": "提交提案",
+        "title": "创建新提案",
+        "titleLabel": "标题",
+        "titlePlaceholder": "输入提案标题"
+      },
+      "createNew": "创建新提案",
       "description": "对社区决策和提案进行投票",
       "ended": "结束",
       "for": "为",

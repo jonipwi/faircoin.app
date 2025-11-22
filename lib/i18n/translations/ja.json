@@ -337,6 +337,15 @@
       "title": "コミュニティハブ",
       "welcome": "私たちのコミュニティに参加しよう 👋"
     },
+    "exchange": {
+      "convertTo": "変換先",
+      "convertedAmount": "変換された金額",
+      "fcAmount": "フェアコインの金額",
+      "lastUpdated": "最終更新",
+      "liveRates": "ライブ為替レート",
+      "subtitle": "FCを他の通貨に変換する",
+      "title": "エクスチェンジコンバーター"
+    },
     "hello": "こんにちは、{{username}}！",
     "help": {
       "description": "FairCoinの使い方をステップバイステップで学ぶ",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "反対",
+      "cancel": "キャンセル",
       "checkBack": "新しいコミュニティの決定について、すぐに戻ってきてください",
+      "createForm": {
+        "categories": {
+          "community": "コミュニティ",
+          "expansion": "拡張",
+          "general": "一般",
+          "policy": "ポリシー",
+          "technical": "技術的"
+        },
+        "categoryLabel": "カテゴリ",
+        "creating": "作成中...",
+        "descriptionLabel": "説明",
+        "descriptionPlaceholder": "提案の詳細を説明してください",
+        "submit": "提案を提出",
+        "title": "新しい提案を作成",
+        "titleLabel": "タイトル",
+        "titlePlaceholder": "提案のタイトルを入力してください"
+      },
+      "createNew": "新しい提案を作成",
       "description": "コミュニティの決定や提案に投票する",
       "ended": "終了",
       "for": "ため",

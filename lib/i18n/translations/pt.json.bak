@@ -337,6 +337,15 @@
       "title": "Central da Comunidade",
       "welcome": "Junte-se à Nossa Comunidade 👋"
     },
+    "exchange": {
+      "convertTo": "Converter Para",
+      "convertedAmount": "Valor Convertido",
+      "fcAmount": "Quantidade de FairCoin",
+      "lastUpdated": "Última atualização",
+      "liveRates": "Taxas de Câmbio ao Vivo",
+      "subtitle": "Converter FC para outras moedas",
+      "title": "Conversor de Câmbio"
+    },
     "hello": "Olá, {{username}}!",
     "help": {
       "description": "Aprenda a usar o FairCoin passo a passo",
@@ -439,6 +448,7 @@
       },
       "applyFor": "Candidatar-se a",
       "applyMerchant": "Candidatar-se como Comerciante",
+      "avgCBI": "CBI Médio★",
       "buildTrust": "Construa confiança com seus clientes através de práticas comerciais justas",
       "categories": {
         "all": "Todas as Categorias",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "Veja suas transações recentes"
       },
       "description": "Encontre comerciantes confiáveis com avaliações justas",
+      "examplesInGroup": "Exemplos neste grupo:",
       "groupHint": "Cada grupo representa uma categoria de comerciantes locais",
+      "inThisGroup": "neste grupo",
       "joinCommunity": "Quer se juntar à nossa comunidade de comerciantes?",
       "merchant1": {
         "description": "Mini Mercado Comunitário, Mercearia Local, Vegetais Frescos, Refil de Água"
@@ -513,6 +525,7 @@
         "description": "Corretor de Imóveis, Aluguel de Casas, Gestão de Propriedades, Seguro Residencial"
       },
       "merchant8Name": "Propriedade \u0026 Habitação",
+      "merchants": "Comerciantes",
       "noMerchants": "Nenhum Comerciante Encontrado",
       "ratings": {
         "excellent": "Excelente",
@@ -537,6 +550,7 @@
       "tfiScore": "Índice de Negócios da Comunidade (CBI★)",
       "title": "Grupos de Comerciantes",
       "tryDifferent": "Tente uma busca diferente ou volte em breve",
+      "typicalCBI": "CBI Típico★",
       "verifiedReviews": "avaliações verificadas",
       "viewDashboard": "Painel do Comerciante",
       "viewDetails": "Ver detalhes",

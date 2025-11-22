@@ -337,6 +337,15 @@
       "title": "社群中心",
       "welcome": "加入我們的社群 👋"
     },
+    "exchange": {
+      "convertTo": "轉換為",
+      "convertedAmount": "轉換金額",
+      "fcAmount": "FairCoin 金額",
+      "lastUpdated": "最後更新",
+      "liveRates": "即時匯率",
+      "subtitle": "將FC轉換為其他貨幣",
+      "title": "匯率轉換器"
+    },
     "hello": "你好，{{username}}！",
     "help": {
       "description": "逐步學習如何使用 FairCoin",
@@ -439,6 +448,7 @@
       },
       "applyFor": "申請",
       "applyMerchant": "申請成為商家",
+      "avgCBI": "平均 CBI★",
       "buildTrust": "通過公平的商業實踐與您的客戶建立信任",
       "categories": {
         "all": "所有類別",
@@ -479,7 +489,9 @@
         "viewSalesDesc": "查看您的最近交易"
       },
       "description": "尋找具有良好評價的可信商家",
+      "examplesInGroup": "此組中的範例：",
       "groupHint": "每個組別代表一類當地商家",
+      "inThisGroup": "在此組中",
       "joinCommunity": "想加入我們的商家社群嗎？",
       "merchant1": {
         "description": "社區迷你市場、本地雜貨店、新鮮蔬菜、加水"
@@ -513,6 +525,7 @@
         "description": "房地產經紀人、房屋租賃、物業管理、房屋保險"
       },
       "merchant8Name": "財產與住房",
+      "merchants": "商家",
       "noMerchants": "未找到商家",
       "ratings": {
         "excellent": "優秀",
@@ -537,6 +550,7 @@
       "tfiScore": "社區商業指數 (CBI★)",
       "title": "商家群組",
       "tryDifferent": "嘗試不同的搜索或稍後再檢查",
+      "typicalCBI": "典型的 CBI★",
       "verifiedReviews": "驗證的評論",
       "viewDashboard": "商家儀表板",
       "viewDetails": "查看詳情",

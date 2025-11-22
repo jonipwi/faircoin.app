@@ -337,6 +337,15 @@
       "title": "커뮤니티 허브",
       "welcome": "우리 커뮤니티에 참여하세요 👋"
     },
+    "exchange": {
+      "convertTo": "변환할 대상",
+      "convertedAmount": "변환된 금액",
+      "fcAmount": "페어코인 금액",
+      "lastUpdated": "마지막 업데이트",
+      "liveRates": "실시간 환율",
+      "subtitle": "FC를 다른 통화로 변환하기",
+      "title": "환전 변환기"
+    },
     "hello": "안녕하세요, {{username}}!",
     "help": {
       "description": "FairCoin을 단계별로 사용하는 방법 배우기",
@@ -550,7 +559,26 @@
     },
     "proposals": {
       "against": "대항",
+      "cancel": "취소",
       "checkBack": "새로운 커뮤니티 결정을 위해 곧 다시 확인하세요",
+      "createForm": {
+        "categories": {
+          "community": "커뮤니티",
+          "expansion": "확장",
+          "general": "일반",
+          "policy": "정책",
+          "technical": "기술"
+        },
+        "categoryLabel": "카테고리",
+        "creating": "생성 중...",
+        "descriptionLabel": "설명",
+        "descriptionPlaceholder": "제안을 자세히 설명하세요",
+        "submit": "제안 제출",
+        "title": "새 제안 만들기",
+        "titleLabel": "제목",
+        "titlePlaceholder": "제안 제목 입력"
+      },
+      "createNew": "새 제안 만들기",
       "description": "커뮤니티 결정 및 제안에 투표하기",
       "ended": "종료됨",
       "for": "위하여",
