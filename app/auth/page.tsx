@@ -19,6 +19,7 @@ function AuthPageContent() {
   const [terms, setTerms] = useState<TermsResponse['terms'] | null>(null)
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [fullName, setFullName] = useState('')
+  const [email, setEmail] = useState('')
   const [mnemonic, setMnemonic] = useState('')
   const [showMnemonic, setShowMnemonic] = useState(false)
   const [mnemonicWords, setMnemonicWords] = useState<string[]>([])
@@ -81,7 +82,10 @@ function AuthPageContent() {
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ full_name: fullName.trim() }),
+        body: JSON.stringify({ 
+          full_name: fullName.trim(),
+          email: email.trim() || undefined 
+        }),
       })
 
       const data = await response.json()
@@ -251,6 +255,16 @@ Created: ${new Date().toISOString()}
     }
   }, [step, terms])
 
+  // Redirect to dashboard on success
+  useEffect(() => {
+    if (step === 'success') {
+      const timer = setTimeout(() => {
+        router.push(localePath('lite') as any)
+      }, 2000) // 2 second delay to show success message
+      return () => clearTimeout(timer)
+    }
+  }, [step, router, localePath])
+
 
 
 
@@ -296,16 +310,17 @@ Created: ${new Date().toISOString()}
           // Cookie for SSR
           document.cookie = `session=${sessionToken}; path=/; max-age=${30*24*60*60}; secure=${location.protocol === 'https:'}; samesite=strict`
         }
-        // Enriched user info from backend response
-        const storedUser = {
-          id: response.user?.id ?? session.user_id,
+        // Enriched user info from backend response (match AuthSession interface)
+        const storedUser: AuthSession = {
+          id: sessionToken || '', // session token as id
+          user_id: response.user?.id ?? session.user_id,
           username: response.user?.username || session.username,
           full_name: response.user?.full_name || fullName || session.username,
           email: response.user?.email || '',
+          avatar_url: '',
           wallet_address: session.wallet_address,
-          terms_accepted: response.user?.terms_accepted ?? true,
-          terms_version: response.user?.terms_version || terms.version,
-          terms_accepted_at: response.user?.terms_accepted_at || new Date().toISOString(),
+          created_at: new Date().toISOString(),
+          expires_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days
         }
         localStorage.setItem('user', JSON.stringify(storedUser))
         // Update in-memory session with enriched data
@@ -317,6 +332,13 @@ Created: ${new Date().toISOString()}
           email: storedUser.email,
         } : prev)
         window.dispatchEvent(new Event('authStateChanged'))
+        
+        // Redirect to dashboard after successful registration
+        console.log('✅ [ACCEPT-TERMS] Registration complete, redirecting to dashboard...')
+        setTimeout(() => {
+          router.push(localePath('lite') as any)
+        }, 1500) // Short delay to show success message
+        
         setStep('success')
       } else {
         setError(response.message || 'Failed to accept terms')
@@ -453,6 +475,23 @@ Created: ${new Date().toISOString()}
             />
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
               A unique username will be automatically generated from your name
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Email (Optional)
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              disabled={loading}
+            />
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+              Optional: for account recovery and notifications
             </p>
           </div>
 

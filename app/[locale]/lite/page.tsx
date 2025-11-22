@@ -1,15 +1,71 @@
 "use client"
 
 import Link from 'next/link'
-import { MessageCircle, Wallet, HelpCircle, Sparkles, Languages, Vote, Store } from 'lucide-react'
+import { MessageCircle, Wallet, HelpCircle, Sparkles, Languages, Vote, Store, ArrowRightLeft } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { useState, useEffect } from 'react'
 
 export default function LiteHome() {
   const { isAuthenticated, user } = useAuth()
   const localePath = useLocalePath()
   const { locale, setLocale, languages, t } = useLanguage()
+  
+  // Exchange rates state
+  const [fcAmount, setFcAmount] = useState<string>('1')
+  const [selectedCurrency, setSelectedCurrency] = useState<'USD' | 'SGD' | 'IDR'>('USD')
+  const [exchangeRates, setExchangeRates] = useState({
+    USD: 1.0,
+    SGD: 1.35,
+    IDR: 15500
+  })
+  const [loading, setLoading] = useState(false)
+  const [lastUpdated, setLastUpdated] = useState<string>('')
+  
+  // Fetch exchange rates from API
+  useEffect(() => {
+    const fetchExchangeRates = async () => {
+      setLoading(true)
+      try {
+        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+        const url = `${API_BASE_URL}/api/v1/exchange/rates`
+        
+        console.log('Fetching exchange rates from:', url)
+        const response = await fetch(url)
+        console.log('Exchange API response status:', response.status)
+        
+        if (response.ok) {
+          const data = await response.json()
+          console.log('Exchange API data:', data)
+          
+          if (data.success && data.rates) {
+            setExchangeRates({
+              USD: parseFloat(data.rates.USD) || 0.0,
+              SGD: parseFloat(data.rates.SGD) || 0.0,
+              IDR: parseFloat(data.rates.IDR) || 0.0
+            })
+            setLastUpdated(new Date().toLocaleTimeString())
+            console.log('Exchange rates updated:', data.rates)
+          }
+        } else {
+          console.error('Exchange API returned error:', response.status)
+        }
+      } catch (error) {
+        console.error('Failed to fetch exchange rates:', error)
+        // Keep default rates on error
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchExchangeRates()
+    // Refresh rates every 5 minutes
+    const interval = setInterval(fetchExchangeRates, 5 * 60 * 1000)
+    return () => clearInterval(interval)
+  }, [])
+  
+  const convertedAmount = (parseFloat(fcAmount) || 0) * exchangeRates[selectedCurrency]
 
   // Function to open the floating chat widget
   const openChatWidget = () => {
@@ -174,6 +230,120 @@ export default function LiteHome() {
               </Link>
             )
           })}
+        </div>
+
+        {/* Exchange Converter Card */}
+        <div className="mb-12">
+          <div className="rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-500 p-1 shadow-2xl">
+            <div className="rounded-3xl bg-white dark:bg-gray-800 p-8 sm:p-10">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                  <ArrowRightLeft className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                    {t('lite.exchange.title') || 'Exchange Converter'}
+                  </h2>
+                  <p className="text-lg text-gray-600 dark:text-gray-400">
+                    {t('lite.exchange.subtitle') || 'Convert FC to other currencies'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Input Section */}
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                      FairCoin Amount
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        value={fcAmount}
+                        onChange={(e) => setFcAmount(e.target.value)}
+                        className="w-full px-6 py-5 text-2xl font-bold rounded-2xl border-3 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900 transition-all"
+                        placeholder="1.0"
+                        min="0"
+                        step="0.01"
+                      />
+                      <div className="absolute right-6 top-1/2 -translate-y-1/2 text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                        FC
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                      Convert To
+                    </label>
+                    <select
+                      value={selectedCurrency}
+                      onChange={(e) => setSelectedCurrency(e.target.value as 'USD' | 'SGD' | 'IDR')}
+                      className="w-full px-6 py-5 text-2xl font-bold rounded-2xl border-3 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900 transition-all"
+                    >
+                      <option value="USD">🇺🇸 USD ($)</option>
+                      <option value="SGD">🇸🇬 SGD (S$)</option>
+                      <option value="IDR">🇮🇩 IDR (Rp)</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Output Section */}
+                <div className="flex items-center justify-center">
+                  <div className="w-full p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/50 border-2 border-emerald-200 dark:border-emerald-800">
+                    <div className="text-center">
+                      <div className="text-sm font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
+                        Converted Amount
+                      </div>
+                      <div className="text-5xl font-extrabold text-emerald-600 dark:text-emerald-400 mb-2">
+                        {selectedCurrency === 'USD' && '$'}
+                        {selectedCurrency === 'SGD' && 'S$'}
+                        {selectedCurrency === 'IDR' && 'Rp '}
+                        {convertedAmount.toLocaleString(undefined, {
+                          minimumFractionDigits: selectedCurrency === 'IDR' ? 0 : 2,
+                          maximumFractionDigits: selectedCurrency === 'IDR' ? 0 : 2
+                        })}
+                      </div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">
+                        1 FC = {selectedCurrency === 'USD' && '$'}
+                        {selectedCurrency === 'SGD' && 'S$'}
+                        {selectedCurrency === 'IDR' && 'Rp '}
+                        {exchangeRates[selectedCurrency].toLocaleString(undefined, {
+                          minimumFractionDigits: selectedCurrency === 'IDR' ? 0 : 2,
+                          maximumFractionDigits: selectedCurrency === 'IDR' ? 0 : 2
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Exchange Rate Info */}
+              <div className="mt-8 p-6 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
+                <div className="flex items-start gap-3">
+                  <div className="text-blue-500 mt-1">
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-1">
+                      Live Exchange Rates {loading && <span className="text-xs">(Updating...)</span>}
+                    </h4>
+                    <p className="text-sm text-blue-700 dark:text-blue-300">
+                      1 FC = ${exchangeRates.USD.toFixed(2)} USD | S${exchangeRates.SGD.toFixed(2)} SGD | Rp {exchangeRates.IDR.toLocaleString()} IDR
+                    </p>
+                    {lastUpdated && (
+                      <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                        Last updated: {lastUpdated}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Quick Info Banner */}

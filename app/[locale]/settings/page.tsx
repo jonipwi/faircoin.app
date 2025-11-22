@@ -51,6 +51,7 @@ export default function SettingsPage() {
     marketing: false
   })
   const [profile, setProfile] = useState({
+    username: '',
     name: '',
     email: '',
     phone: '',
@@ -119,6 +120,7 @@ export default function SettingsPage() {
           }
           
           const profileInfo = {
+            username: userData.username || '',
             name: userData.full_name || 
                   profileData.display_name || 
                   `${profileData.first_name || ''} ${profileData.last_name || ''}`.trim() || 
@@ -173,12 +175,12 @@ export default function SettingsPage() {
               break
             case 'profile':
               if (setting.setting_value) {
-                // Only update editable fields (phone, bio), keep name and email from OAuth
+                // Only update editable fields (phone, bio), keep username, name and email from account data
                 setProfile(prev => ({
                   ...prev,
                   phone: setting.setting_value.phone || prev.phone,
                   bio: setting.setting_value.bio || prev.bio
-                  // name and email remain from GitHub OAuth data
+                  // username, name and email remain from account data
                 }))
               }
               break
@@ -287,12 +289,12 @@ export default function SettingsPage() {
                 break
               case 'profile':
                 if (setting.setting_value) {
-                  // Only update editable fields (phone, bio), keep name and email from OAuth
+                  // Only update editable fields (phone, bio), keep username, name and email from account data
                   setProfile(prev => ({
                     ...prev,
                     phone: setting.setting_value.phone || prev.phone,
                     bio: setting.setting_value.bio || prev.bio
-                    // name and email remain from GitHub OAuth data
+                    // username, name and email remain from account data
                   }))
                 }
                 break
@@ -347,7 +349,7 @@ export default function SettingsPage() {
       switch (section.toLowerCase()) {
         case 'profile':
           settingKey = 'profile'
-          // Only save editable fields (phone and bio), exclude name and email from GitHub OAuth
+          // Only save editable fields (phone and bio), exclude username, name and email from account data
           settingValue = {
             phone: profile.phone,
             bio: profile.bio
@@ -744,7 +746,7 @@ export default function SettingsPage() {
                         Profile Information
                       </h2>
                       <p className="text-gray-600 dark:text-gray-400">
-                        Update your personal information. Name and email are from your GitHub account and cannot be changed here.
+                        Update your personal information. Username, name, and email are from your account registration and cannot be changed here.
                       </p>
                     </div>
                   </div>
@@ -765,13 +767,30 @@ export default function SettingsPage() {
                           Profile Information
                         </h4>
                         <p className="text-sm text-blue-700 dark:text-blue-300">
-                          Name and email are from your account registration and cannot be changed here.
+                          Username, full name, and email are from your account registration and cannot be changed here.
                         </p>
                       </div>
                     </div>
                   </div>
                   
                   <div className="grid gap-6 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Username
+                        <span className="text-xs text-gray-500 ml-2">(Read-only)</span>
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          type="text"
+                          value={profile.username}
+                          readOnly
+                          className="w-full pl-11 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-not-allowed transition-colors"
+                          placeholder="Your username"
+                        />
+                      </div>
+                    </div>
+
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         Full Name
@@ -805,7 +824,8 @@ export default function SettingsPage() {
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Phone Number
+                        Contact Number
+                        <span className="text-xs text-gray-500 ml-2">(Optional)</span>
                       </label>
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -814,7 +834,7 @@ export default function SettingsPage() {
                           value={profile.phone}
                           onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
                           className="w-full pl-11 pr-4 py-3 border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                          placeholder="Enter your phone number"
+                          placeholder="Enter your contact number"
                         />
                       </div>
                     </div>
