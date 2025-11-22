@@ -61,7 +61,7 @@ export function MerchantsSection({
   const fetchMerchantCategories = async () => {
     try {
       // Fetch merchant categories from API
-      const categoriesResponse = await fetch('http://localhost:8100/api/v1/public/merchant-categories', {
+      const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchant-categories`, {
         headers: {
           'X-API-Key': 'faircoin-secret-key-2025'
         }
@@ -75,7 +75,7 @@ export function MerchantsSection({
       const categories = categoriesData.categories || []
       
       // Fetch all merchants to calculate statistics
-      const merchantsResponse = await fetch('http://localhost:8100/api/v1/public/merchants', {
+      const merchantsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchants`, {
         headers: {
           'X-API-Key': 'faircoin-secret-key-2025'
         }

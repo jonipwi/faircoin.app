@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createCloudflareBypassHeaders } from '@/lib/cloudflare-bypass'
 
-const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'

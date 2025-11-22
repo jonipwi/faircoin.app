@@ -21,7 +21,7 @@ export function CommunitySection() {
     let cancelled = false
     if (isDev) {
       console.log('[CommunitySection] Component mounted, starting data fetch...')
-      console.log('[CommunitySection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100')
+      console.log('[CommunitySection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox')
     }
     
     const fetchCommunityData = async () => {
@@ -34,7 +34,7 @@ export function CommunitySection() {
       
       try {
         // Feed
-        const feedUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/feed`
+        const feedUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/community/feed`
         if (isDev) {
           console.log('[CommunitySection] 📡 Fetching feed...', feedUrl)
           communityDebug.logAPICall('/api/community/feed', 'GET')
@@ -49,7 +49,7 @@ export function CommunitySection() {
         if (!cancelled) setFeed(feedData.feed)
         
         // Achievements
-        const achievementsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/achievements`
+        const achievementsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/community/achievements`
         if (isDev) {
           console.log('[CommunitySection] 📡 Fetching achievements...', achievementsUrl)
           communityDebug.logAPICall('/api/community/achievements', 'GET')
@@ -64,7 +64,7 @@ export function CommunitySection() {
         if (!cancelled) setAchievements(achievementData.achievements)
         
         // Events
-        const eventsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/events`
+        const eventsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/community/events`
         if (isDev) {
           console.log('[CommunitySection] 📡 Fetching events...', eventsUrl)
           communityDebug.logAPICall('/api/community/events', 'GET')
@@ -79,7 +79,7 @@ export function CommunitySection() {
         if (!cancelled) setEvents(eventData.events)
         
         // Stats
-        const statsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/community/stats`
+        const statsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/community/stats`
         if (isDev) {
           console.log('[CommunitySection] 📡 Fetching stats...', statsUrl)
           communityDebug.logAPICall('/api/community/stats', 'GET')

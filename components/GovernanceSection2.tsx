@@ -15,7 +15,7 @@ export function GovernanceSection() {
     const isDev = process.env.NODE_ENV === 'development'
     if (isDev) {
       console.log('[GovernanceSection] Component mounted, starting data fetch...')
-      console.log('[GovernanceSection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100')
+      console.log('[GovernanceSection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox')
     }
     
     const fetchGovernanceData = async () => {
@@ -29,7 +29,7 @@ export function GovernanceSection() {
       try {
         if (isDev) console.log('[GovernanceSection] 📡 Starting parallel API calls...')
         
-        const proposalsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/governance/proposals`
+        const proposalsUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/governance/proposals`
         if (isDev) console.log('[GovernanceSection] 🌐 Fetching:', proposalsUrl)
         const proposalsPromise = api.governance.proposals().then(data => {
           if (isDev) console.log('[GovernanceSection] ✓ Proposals loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
@@ -39,7 +39,7 @@ export function GovernanceSection() {
           throw err
         })
         
-        const votingPowerUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/governance/voting-power`
+        const votingPowerUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/governance/voting-power`
         if (isDev) console.log('[GovernanceSection] 🌐 Fetching:', votingPowerUrl)
         const votingPowerPromise = api.governance.votingPower().then(data => {
           if (isDev) console.log('[GovernanceSection] ✓ Voting power loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
@@ -49,7 +49,7 @@ export function GovernanceSection() {
           throw err
         })
         
-        const recentVotesUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/governance/recent-votes`
+        const recentVotesUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/governance/recent-votes`
         if (isDev) console.log('[GovernanceSection] 🌐 Fetching:', recentVotesUrl)
         const recentVotesPromise = api.governance.recentVotes().then(data => {
           if (isDev) console.log('[GovernanceSection] ✓ Recent votes loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)

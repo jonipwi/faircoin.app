@@ -17,7 +17,7 @@ export function FairnessSection() {
     const isDev = process.env.NODE_ENV === 'development'
     if (isDev) {
       console.log('[FairnessSection] Component mounted, starting data fetch...')
-      console.log('[FairnessSection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100')
+      console.log('[FairnessSection] 🔗 API Base URL:', process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox')
     }
     
     const fetchFairnessData = async () => {
@@ -31,7 +31,7 @@ export function FairnessSection() {
       try {
         if (isDev) console.log('[FairnessSection] 📡 Starting parallel API calls...')
         
-        const distributionUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/fairness/distribution`
+        const distributionUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/fairness/distribution`
         if (isDev) console.log('[FairnessSection] 🌐 Fetching:', distributionUrl)
         const distributionPromise = api.fairness.distribution().then(data => {
           if (isDev) console.log('[FairnessSection] ✓ Distribution loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
@@ -41,7 +41,7 @@ export function FairnessSection() {
           throw err
         })
         
-        const leaderboardUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/fairness/pfi-leaderboard`
+        const leaderboardUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/fairness/pfi-leaderboard`
         if (isDev) console.log('[FairnessSection] 🌐 Fetching:', leaderboardUrl)
         const leaderboardPromise = api.fairness.pfiLeaderboard().then(data => {
           if (isDev) console.log('[FairnessSection] ✓ Leaderboard loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)
@@ -51,7 +51,7 @@ export function FairnessSection() {
           throw err
         })
         
-        const antiConcentrationUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'}/api/v1/public/fairness/anti-concentration`
+        const antiConcentrationUrl = `${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/fairness/anti-concentration`
         if (isDev) console.log('[FairnessSection] 🌐 Fetching:', antiConcentrationUrl)
         const antiConcentrationPromise = api.fairness.antiConcentration().then(data => {
           if (isDev) console.log('[FairnessSection] ✓ Anti-concentration loaded:', `${((Date.now() - startTime) / 1000).toFixed(2)}s`, data)

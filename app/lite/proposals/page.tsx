@@ -18,7 +18,7 @@ interface Proposal {
   category: string
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
 
 export default function LiteProposals() {
   const { user, isAuthenticated, checkAuth } = useAuth()

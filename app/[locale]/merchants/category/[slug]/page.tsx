@@ -40,7 +40,7 @@ export default function CategoryMerchants({ params }: { params: { slug: string }
       let matchedCategory: any = null
       
       // Fetch categories first to get the proper category name
-      const categoriesResponse = await fetch('http://localhost:8100/api/v1/public/merchant-categories', {
+      const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchant-categories`, {
         headers: {
           'X-API-Key': 'faircoin-secret-key-2025'
         }
@@ -73,7 +73,7 @@ export default function CategoryMerchants({ params }: { params: { slug: string }
       }
       
       // Fetch merchants from API
-      const response = await fetch('http://localhost:8100/api/v1/public/merchants', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchants`, {
         headers: {
           'X-API-Key': 'faircoin-secret-key-2025'
         }
