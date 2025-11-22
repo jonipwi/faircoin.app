@@ -1,20 +1,12 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { Store, Star, MapPin, Search, Award, X } from 'lucide-react'
+import { Store, Search, X } from 'lucide-react'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
-import { api, type Merchant } from '@/lib/api'
+import { api, type MerchantCategory } from '@/lib/api'
 
 export const dynamic = 'force-dynamic'
-
-interface MerchantGroup {
-  category: string
-  count: number
-  avgRating: number
-  avgTFI: number
-  merchants: Merchant[]
-}
 
 interface Toast {
   message: string
@@ -24,7 +16,7 @@ interface Toast {
 export default function LiteMerchants() {
   const localePath = useLocalePath()
   const { t } = useLanguage()
-  const [merchantGroups, setMerchantGroups] = useState<MerchantGroup[]>([])
+  const [categories, setCategories] = useState<MerchantCategory[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [toast, setToast] = useState<Toast>({ message: '', show: false })
@@ -37,78 +29,26 @@ export default function LiteMerchants() {
   }
 
   useEffect(() => {
-    fetchMerchants()
+    fetchCategories()
   }, [])
 
-  const fetchMerchants = async () => {
-    const isDev = process.env.NODE_ENV === 'development'
+  const fetchCategories = async () => {
     try {
-      const response = await api.merchant.list()
-      const merchants = response.merchants
-      
-      // Group merchants by category
-      const grouped = merchants.reduce((acc, merchant) => {
-        const category = merchant.category || 'Other'
-        if (!acc[category]) {
-          acc[category] = []
-        }
-        acc[category].push(merchant)
-        return acc
-      }, {} as Record<string, Merchant[]>)
-      
-      // Convert to array with stats
-      const groups: MerchantGroup[] = Object.entries(grouped).map(([category, merch]) => ({
-        category,
-        count: merch.length,
-        avgRating: merch.reduce((sum, m) => sum + (m.average_rating || 0), 0) / merch.length,
-        avgTFI: merch.reduce((sum, m) => sum + (m.tfi || 0), 0) / merch.length,
-        merchants: merch
-      }))
-      
-      setMerchantGroups(groups)
+      const response = await api.merchant.categories()
+      setCategories(response.categories)
     } catch (error) {
       const isDev = process.env.NODE_ENV === 'development'
-      if (isDev) console.error('Failed to fetch merchants:', error)
-      setMerchantGroups([])
+      if (isDev) console.error('Failed to fetch merchant categories:', error)
+      setCategories([])
     } finally {
       setLoading(false)
     }
   }
 
-  const filteredGroups = merchantGroups.filter(group =>
-    group.category.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredCategories = categories.filter(category =>
+    category.display_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    category.folder.toLowerCase().includes(searchQuery.toLowerCase())
   )
-
-  const getCategoryIcon = (category: string) => {
-    const icons: Record<string, string> = {
-      'Groceries': '🏪',
-      'Food': '🍲',
-      'Services': '🚖',
-      'Pet': '🐶',
-      'Community': '📚',
-      'Pharmacy': '💊',
-      'Property': '🏠',
-      'Household': '👕'
-    }
-    for (const [key, icon] of Object.entries(icons)) {
-      if (category.includes(key)) return icon
-    }
-    return '🏪'
-  }
-
-  const getTFIColor = (score: number) => {
-    if (score >= 90) return 'from-green-500 to-emerald-500'
-    if (score >= 80) return 'from-blue-500 to-cyan-500'
-    if (score >= 70) return 'from-yellow-500 to-amber-500'
-    return 'from-orange-500 to-red-500'
-  }
-
-  const getTFIRating = (score: number) => {
-    if (score >= 90) return t('lite.merchants.ratings.excellent') || 'Excellent'
-    if (score >= 80) return t('lite.merchants.ratings.veryGood') || 'Very Good'
-    if (score >= 70) return t('lite.merchants.ratings.good') || 'Good'
-    return t('lite.merchants.ratings.fair') || 'Fair'
-  }
 
   return (
     <div className="min-h-screen py-12">
@@ -147,7 +87,7 @@ export default function LiteMerchants() {
           <div className="flex items-center justify-center py-12">
             <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin" />
           </div>
-        ) : filteredGroups.length === 0 ? (
+        ) : filteredCategories.length === 0 ? (
           <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 p-8 sm:p-12 text-center shadow-xl">
             <Store className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -159,70 +99,80 @@ export default function LiteMerchants() {
           </div>
         ) : (
           <div className="space-y-6">
-            {filteredGroups.map((group) => (
+            {filteredCategories.map((category) => (
               <div
-                key={group.category}
+                key={category.folder}
                 className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-gray-200 dark:border-gray-700 p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1"
               >
                 {/* Category Header */}
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start gap-4 mb-4">
+                  <span className="text-5xl sm:text-6xl">{category.icon}</span>
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-4xl sm:text-5xl">{getCategoryIcon(group.category)}</span>
-                      <div>
-                        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-                          {group.category}
-                        </h2>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {group.count} {group.count === 1 ? 'merchant' : 'merchants'}
-                        </p>
-                      </div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1">
+                      {category.display_name}
+                    </h2>
+                    <p className="text-lg text-gray-500 dark:text-gray-400">
+                      📁 {category.folder}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Examples */}
+                <div className="mb-6 bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4">
+                  <div className="flex items-start gap-2">
+                    <span className="text-xl">📋</span>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1">
+                        {t('lite.merchants.examplesInGroup') || 'Examples in this group:'}
+                      </p>
+                      <p className="text-base text-gray-700 dark:text-gray-300">
+                        {category.examples}
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Group Statistics */}
+                {/* Statistics Grid */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Avg TFI★
-                      </span>
+                  <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl p-5">
+                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
+                      {t('lite.merchants.avgCBI') || 'Avg CBI★'}
                     </div>
-                    <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">
-                      {group.avgTFI.toFixed(1)}
+                    <div className="text-3xl font-bold text-amber-600 dark:text-amber-400 mb-1">
+                      {category.avg_cbi}
                     </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                      {getTFIRating(group.avgTFI)}
+                    <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                      {category.rating}
                     </div>
                   </div>
                   
-                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Star className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                      <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Avg Rating
-                      </span>
+                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl p-5">
+                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">
+                      {t('lite.merchants.merchants') || 'Merchants'}
                     </div>
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                      {group.avgRating.toFixed(1)}
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                      {category.merchant_count}
                     </div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400">
-                      out of 5.0
+                    <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                      {t('lite.merchants.inThisGroup') || 'in this group'}
                     </div>
                   </div>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-col gap-3">
-                  <button
-                    onClick={() => window.location.href = `${localePath('lite/merchants/stores')}?category=${encodeURIComponent(group.category)}` as string}
-                    className="w-full py-5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xl font-bold hover:from-amber-600 hover:to-orange-600 transition-all shadow-xl"
-                  >
-                    👁️ View {group.count} {group.count === 1 ? 'Merchant' : 'Merchants'}
-                  </button>
+                {/* CBI Range */}
+                <div className="mb-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-4 text-center">
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
+                    {t('lite.merchants.typicalCBI') || 'Typical CBI★'}: <span className="text-base font-bold text-green-600 dark:text-green-400">{category.cbi_range}</span>
+                  </p>
                 </div>
+
+                {/* Action Button */}
+                <button
+                  onClick={() => window.location.href = `${localePath('lite/merchants/stores')}?folder=${encodeURIComponent(category.folder)}` as string}
+                  className="w-full py-5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xl font-bold hover:from-amber-600 hover:to-orange-600 transition-all shadow-xl"
+                >
+                  👁️ {t('lite.merchants.viewMerchantsIn') || 'View Merchants in'} {category.folder}
+                </button>
               </div>
             ))}
           </div>

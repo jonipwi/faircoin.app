@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { HelpCircle, MessageCircle, Send, Download, Wallet, Video, FileText } from 'lucide-react'
+import { HelpCircle, MessageCircle, Send, Download, Wallet, Video, FileText, Users, TrendingUp, Award } from 'lucide-react'
 import LiteVersionDisplay from '@/components/lite/LiteVersionDisplay'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -52,19 +52,38 @@ export default function LiteHelp() {
       icon: Wallet,
       href: 'lite/balance',
       color: 'from-amber-500 to-orange-500'
+    },
+    {
+      title: t('lite.help.tutorials.joinCommunity') || 'Join the Community Hub',
+      description: t('lite.help.tutorials.joinCommunityDesc') || 'Connect with other members, join events, and earn achievements',
+      icon: Users,
+      href: 'lite/community',
+      color: 'from-pink-500 to-rose-500'
+    },
+    {
+      title: t('lite.help.tutorials.trackActivity') || 'Track Your Activity',
+      description: t('lite.help.tutorials.trackActivityDesc') || 'View your transaction history and activity feed',
+      icon: TrendingUp,
+      href: 'lite',
+      color: 'from-indigo-500 to-blue-500'
     }
   ]
 
   const resources = [
     {
       title: t('lite.help.resources.videoTutorials') || 'Video Tutorials',
-      description: t('lite.help.resources.videoDesc') || 'Watch simple video guides',
+      description: t('lite.help.resources.videoDesc') || 'Watch simple video guides on using FairCoin',
       icon: Video
     },
     {
       title: t('lite.help.resources.printableGuides') || 'Printable Guides',
-      description: t('lite.help.resources.printableDesc') || 'Download easy-to-read PDF instructions',
+      description: t('lite.help.resources.printableDesc') || 'Download easy-to-read PDF instructions you can print',
       icon: FileText
+    },
+    {
+      title: t('lite.help.resources.achievements') || 'Earn Achievements',
+      description: t('lite.help.resources.achievementsDesc') || 'Complete tasks and earn badges as you learn',
+      icon: Award
     }
   ]
 
@@ -111,7 +130,7 @@ export default function LiteHelp() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
             {t('lite.help.quickStart') || 'Quick Start Guides'}
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {tutorials.map((tutorial, index) => {
               const Icon = tutorial.icon
               
@@ -159,7 +178,7 @@ export default function LiteHelp() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
             {t('lite.help.resources.title') || 'More Resources'}
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource) => {
               const Icon = resource.icon
               return (

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { HelpCircle, MessageCircle, Send, Download, Wallet, Video, FileText } from 'lucide-react'
+import { HelpCircle, MessageCircle, Send, Download, Wallet, Video, FileText, Users, TrendingUp, Award } from 'lucide-react'
 import LiteVersionDisplay from '@/components/lite/LiteVersionDisplay'
 
 export default function LiteHelp() {
@@ -39,19 +39,38 @@ export default function LiteHelp() {
       icon: Wallet,
       href: '/lite/balance',
       color: 'from-amber-500 to-orange-500'
+    },
+    {
+      title: 'Join the Community Hub',
+      description: 'Connect with other members, join events, and earn achievements',
+      icon: Users,
+      href: '/lite/community',
+      color: 'from-pink-500 to-rose-500'
+    },
+    {
+      title: 'Track Your Activity',
+      description: 'View your transaction history and activity feed',
+      icon: TrendingUp,
+      href: '/lite',
+      color: 'from-indigo-500 to-blue-500'
     }
   ]
 
   const resources = [
     {
       title: 'Video Tutorials',
-      description: 'Watch simple video guides',
+      description: 'Watch simple video guides on using FairCoin',
       icon: Video
     },
     {
       title: 'Printable Guides',
-      description: 'Download easy-to-read PDF instructions',
+      description: 'Download easy-to-read PDF instructions you can print',
       icon: FileText
+    },
+    {
+      title: 'Earn Achievements',
+      description: 'Complete tasks and earn badges as you learn',
+      icon: Award
     }
   ]
 
@@ -97,7 +116,7 @@ export default function LiteHelp() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
             Quick Start Guides
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {tutorials.map((tutorial) => {
               const Icon = tutorial.icon
               return (
@@ -128,7 +147,7 @@ export default function LiteHelp() {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
             More Resources
           </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource) => {
               const Icon = resource.icon
               return (

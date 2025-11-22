@@ -28,88 +28,129 @@ export default function CategoryMerchants({ params }: { params: { slug: string }
   const [merchants, setMerchants] = useState<Merchant[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-
-  // Convert slug back to readable category name
-  const categoryName = params.slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-
-  // Get category icon based on name
-  const getCategoryIcon = () => {
-    const name = categoryName.toLowerCase()
-    if (name.includes('groceries') || name.includes('essentials')) return '🏪'
-    if (name.includes('food') || name.includes('beverages')) return '🍲'
-    if (name.includes('household') || name.includes('services')) return '👕'
-    if (name.includes('pet')) return '🐶'
-    if (name.includes('pharmacy') || name.includes('health')) return '💊'
-    if (name.includes('property') || name.includes('housing')) return '🏠'
-    if (name.includes('community') || name.includes('education')) return '📚'
-    return '🚖'
-  }
+  const [categoryName, setCategoryName] = useState('')
+  const [categoryIcon, setCategoryIcon] = useState('🏪')
 
   useEffect(() => {
-    fetchMerchants()
+    fetchCategoryAndMerchants()
   }, [params.slug])
 
-  const fetchMerchants = async () => {
+  const fetchCategoryAndMerchants = async () => {
     try {
-      // Mock data - replace with actual API call
-      setMerchants([
-        {
-          id: 1,
-          name: "Green Valley Market",
-          category: categoryName,
-          tfiScore: 95,
-          rating: 4.9,
-          reviews: 234,
-          location: "Downtown",
-          address: "123 Main Street",
-          phone: "+1 234 567 8900",
-          hours: "Mon-Sat: 8AM-8PM",
-          description: "Fresh organic produce and local products. We support local farmers and offer fair prices to our community.",
-          owner: "Maria Santos",
-          isOwner: false,
-          image: getCategoryIcon()
-        },
-        {
-          id: 2,
-          name: "Fresh Foods Co-op",
-          category: categoryName,
-          tfiScore: 91,
-          rating: 4.8,
-          reviews: 189,
-          location: "Midtown",
-          address: "456 Oak Avenue",
-          phone: "+1 234 567 8901",
-          hours: "Daily: 7AM-9PM",
-          description: "Community-owned cooperative providing fresh groceries at fair prices with transparent sourcing.",
-          owner: "Community Board",
-          isOwner: false,
-          image: getCategoryIcon()
-        },
-        {
-          id: 3,
-          name: "Community Corner Store",
-          category: categoryName,
-          tfiScore: 88,
-          rating: 4.7,
-          reviews: 156,
-          location: "Eastside",
-          address: "789 Elm Street",
-          phone: "+1 234 567 8902",
-          hours: "Mon-Sun: 9AM-7PM",
-          description: "Your neighborhood essential store with friendly service and fair trade practices.",
-          owner: "John Smith",
-          isOwner: false,
-          image: getCategoryIcon()
+      let matchedCategory: any = null
+      
+      // Fetch categories first to get the proper category name
+      const categoriesResponse = await fetch('http://localhost:8100/api/v1/public/merchant-categories', {
+        headers: {
+          'X-API-Key': 'faircoin-secret-key-2025'
         }
-      ])
+      })
+      
+      if (categoriesResponse.ok) {
+        const categoriesData = await categoriesResponse.json()
+        const categories = categoriesData.categories || []
+        
+        // Find the category that matches this slug
+        matchedCategory = categories.find((cat: any) => {
+          const categorySlug = (cat.folder || cat.display_name || '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '')
+          return categorySlug === params.slug
+        })
+        
+        if (matchedCategory) {
+          setCategoryName(matchedCategory.display_name || matchedCategory.folder || params.slug)
+          setCategoryIcon(matchedCategory.icon || '🏪')
+        } else {
+          // Fallback to converting slug to title case
+          setCategoryName(params.slug
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' '))
+          setCategoryIcon('🏪')
+        }
+      }
+      
+      // Fetch merchants from API
+      const response = await fetch('http://localhost:8100/api/v1/public/merchants', {
+        headers: {
+          'X-API-Key': 'faircoin-secret-key-2025'
+        }
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch merchants')
+      }
+      
+      const data = await response.json()
+      const merchantsData = data.merchants || []
+      
+      // Transform database merchants to match frontend interface
+      const transformedMerchants = merchantsData
+        .filter((m: any) => {
+          if (m.verification_status !== 'verified') return false
+          
+          // Match by merchant category against category display_name or folder
+          if (matchedCategory) {
+            const merchantCategory = (m.category || '').toLowerCase()
+            const displayName = (matchedCategory.display_name || '').toLowerCase()
+            const folder = (matchedCategory.folder || '').toLowerCase()
+            
+            // Check if merchant category matches display_name or folder (partial match)
+            return merchantCategory.includes(displayName.split(' ')[0]) || 
+                   displayName.includes(merchantCategory.split(' ')[0]) ||
+                   merchantCategory.includes(folder.split(' ')[0]) ||
+                   folder.includes(merchantCategory.split(' ')[0])
+          }
+          
+          return true // Show all if no category matched
+        })
+        .map((m: any) => ({
+          id: m.id,
+          name: m.business_name,
+          category: m.category || (matchedCategory?.display_name) || categoryName,
+          tfiScore: calculateTFI(m.average_rating, m.total_ratings),
+          rating: parseFloat(m.average_rating) || 0,
+          reviews: m.total_ratings || 0,
+          location: extractLocation(m.business_address),
+          address: m.business_address || 'Address not provided',
+          phone: m.business_phone || 'Phone not provided',
+          hours: m.business_hours || 'Hours not available',
+          description: m.description || 'No description available',
+          owner: m.business_contact || 'Owner not specified',
+          isOwner: false,
+          image: matchedCategory?.icon || categoryIcon || '🏪'
+        }))
+      
+      setMerchants(transformedMerchants)
     } catch (error) {
       console.error('Failed to fetch merchants:', error)
+      // Fallback to empty array on error
+      setMerchants([])
     } finally {
       setLoading(false)
     }
+  }
+  
+  // Calculate TFI (Transaction Fairness Index) score from rating metrics
+  const calculateTFI = (rating: number, totalRatings: number): number => {
+    if (!rating || !totalRatings) return 0
+    // TFI = (rating * 20) weighted by number of reviews
+    // More reviews = closer to actual rating score
+    const baseScore = parseFloat(String(rating)) * 20
+    const reviewWeight = Math.min(totalRatings / 50, 1) // Max weight at 50+ reviews
+    return Math.round(baseScore * (0.7 + 0.3 * reviewWeight))
+  }
+  
+  // Extract location from address (e.g., "123 Market Street" -> "Market Street area")
+  const extractLocation = (address: string): string => {
+    if (!address) return 'Location not specified'
+    // Try to extract street name or area
+    const parts = address.split(',')
+    if (parts.length > 1) return parts[1].trim()
+    const streetMatch = address.match(/\d+\s+(.+?)(?:\s+(?:Street|Road|Avenue|Plaza|Boulevard))?$/i)
+    return streetMatch ? streetMatch[1].trim() + ' area' : 'Local area'
   }
 
   const filteredMerchants = merchants.filter(merchant =>

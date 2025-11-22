@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Vote, ThumbsUp, ThumbsDown, Clock, CheckCircle, XCircle, Users } from 'lucide-react'
+import { Vote, ThumbsUp, ThumbsDown, Clock, CheckCircle, XCircle, Users, Plus } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -19,7 +19,7 @@ interface Proposal {
   category: string
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 export default function LiteProposals() {
   const { user, isAuthenticated, checkAuth } = useAuth()
@@ -28,24 +28,36 @@ export default function LiteProposals() {
   const [proposals, setProposals] = useState<Proposal[]>([])
   const [loading, setLoading] = useState(true)
   const [votingOn, setVotingOn] = useState<number | null>(null)
+  const [showCreateForm, setShowCreateForm] = useState(false)
+  const [newProposal, setNewProposal] = useState({
+    title: '',
+    description: '',
+    category: 'general'
+  })
+  const [creating, setCreating] = useState(false)
 
   useEffect(() => {
     checkAuth()
-  }, [checkAuth])
-
-  useEffect(() => {
     fetchProposals()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const fetchProposals = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/governance/proposals`)
+      const response = await fetch(`${API_BASE_URL}/api/v1/public/governance/proposals`)
       if (response.ok) {
         const data = await response.json()
-        if (data.success && data.proposals) {
+        if (data.proposals) {
           setProposals(data.proposals.map((p: any) => ({
-            ...p,
-            endsAt: new Date(p.endsAt)
+            id: p.id,
+            title: p.title,
+            description: p.description,
+            status: p.status,
+            votesFor: p.votes_for || 0,
+            votesAgainst: p.votes_against || 0,
+            endsAt: new Date(p.end_date || p.endsAt),
+            createdBy: p.proposer_username || (p.proposer_id ? `User ${p.proposer_id}` : 'Unknown'),
+            category: p.proposal_type || 'general'
           })))
         }
       }
@@ -57,11 +69,6 @@ export default function LiteProposals() {
   }
 
   const castVote = async (proposalId: number, support: boolean) => {
-    if (!isAuthenticated || !user) {
-      alert(t('lite.proposals.signInToVote') || 'Please sign in to vote')
-      return
-    }
-
     setVotingOn(proposalId)
 
     try {
@@ -70,24 +77,73 @@ export default function LiteProposals() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           proposalId,
-          username: user.username,
+          username: user?.username || 'Anonymous',
           support
         })
       })
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
 
       const data = await response.json()
       
       if (data.success) {
         alert(`✅ ${t('lite.proposals.voteRecorded') || `Vote ${support ? 'FOR' : 'AGAINST'} recorded!`}`)
-        fetchProposals() // Refresh proposals
+        // Refresh proposals after a short delay to ensure DB is updated
+        setTimeout(() => fetchProposals(), 500)
       } else {
         alert(data.error || (t('lite.proposals.voteFailed') || 'Failed to vote'))
       }
     } catch (error) {
       console.error('Failed to vote:', error)
-      alert(t('lite.proposals.voteFailed') || 'Failed to vote. Please try again.')
+      alert(`${t('lite.proposals.voteFailed') || 'Failed to vote'}: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setVotingOn(null)
+    }
+  }
+
+  const createProposal = async () => {
+    if (!newProposal.title || !newProposal.description) {
+      alert('Please fill in all fields')
+      return
+    }
+
+    setCreating(true)
+    try {
+      const token = localStorage.getItem('auth_token')
+      const response = await fetch(`${API_BASE_URL}/api/v1/governance/proposals`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token ? `Bearer ${token}` : ''
+        },
+        body: JSON.stringify({
+          title: newProposal.title,
+          description: newProposal.description,
+          proposal_type: newProposal.category
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+
+      const data = await response.json()
+      
+      if (data.success) {
+        alert('✅ Proposal created successfully!')
+        setShowCreateForm(false)
+        setNewProposal({ title: '', description: '', category: 'general' })
+        fetchProposals()
+      } else {
+        alert(data.error || 'Failed to create proposal')
+      }
+    } catch (error) {
+      console.error('Failed to create proposal:', error)
+      alert(`Failed to create proposal: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    } finally {
+      setCreating(false)
     }
   }
 
@@ -149,6 +205,81 @@ export default function LiteProposals() {
             >
               {t('auth.signIn') || 'Sign In'}
             </Link>
+          </div>
+        )}
+
+        {/* Create Proposal Button */}
+        {isAuthenticated && (
+          <div className="mb-8">
+            <button
+              onClick={() => setShowCreateForm(!showCreateForm)}
+              className="w-full py-6 px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold hover:from-purple-600 hover:to-pink-600 transition-all shadow-xl flex items-center justify-center gap-3"
+            >
+              <Plus className="w-6 h-6" />
+              {showCreateForm ? 'Cancel' : 'Create New Proposal'}
+            </button>
+          </div>
+        )}
+
+        {/* Create Proposal Form */}
+        {showCreateForm && isAuthenticated && (
+          <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-purple-200 dark:border-purple-700 p-6 sm:p-8 mb-8 shadow-xl">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              📝 Create New Proposal
+            </h3>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  value={newProposal.title}
+                  onChange={(e) => setNewProposal({ ...newProposal, title: e.target.value })}
+                  placeholder="Enter proposal title"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all text-lg"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Category
+                </label>
+                <select
+                  value={newProposal.category}
+                  onChange={(e) => setNewProposal({ ...newProposal, category: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all text-lg"
+                >
+                  <option value="general">📋 General</option>
+                  <option value="policy">📁 Policy</option>
+                  <option value="technical">⚙️ Technical</option>
+                  <option value="community">👥 Community</option>
+                  <option value="expansion">🌍 Expansion</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Description
+                </label>
+                <textarea
+                  value={newProposal.description}
+                  onChange={(e) => setNewProposal({ ...newProposal, description: e.target.value })}
+                  placeholder="Describe your proposal in detail"
+                  rows={6}
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all text-lg"
+                />
+              </div>
+
+              <button
+                onClick={createProposal}
+                disabled={creating}
+                className="w-full py-5 px-6 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xl font-bold hover:from-green-600 hover:to-emerald-600 transition-all shadow-xl disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {creating ? 'Creating...' : '✅ Submit Proposal'}
+              </button>
+            </div>
           </div>
         )}
 

@@ -181,7 +181,16 @@ export function FairnessSection() {
                 </div>
               </div>
               <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                {typeof antiConcentration?.metrics.fairness_score === 'number' ? antiConcentration.metrics.fairness_score.toFixed(1) : 'N/A'}/10
+                {(() => {
+                  const fairnessScore = antiConcentration?.metrics.fairness_score
+                  if (typeof fairnessScore === 'number') {
+                    return fairnessScore.toFixed(1)
+                  } else if (fairnessScore && typeof fairnessScore === 'object' && 'pfi_average' in fairnessScore) {
+                    const scoreObj = fairnessScore as { pfi_average?: number; participants?: number }
+                    return typeof scoreObj.pfi_average === 'number' ? scoreObj.pfi_average.toFixed(1) : 'N/A'
+                  }
+                  return 'N/A'
+                })()}/10
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 {t('fairness.excellentRating')}
@@ -287,7 +296,11 @@ export function FairnessSection() {
                   <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20">
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{t('fairness.maxShare')}</p>
                     <p className="text-lg font-bold text-blue-600 dark:text-blue-400">
-                      {(antiConcentration.metrics.wealth_distribution.current_max_share * 100).toFixed(1)}% / {(antiConcentration.metrics.wealth_distribution.max_individual_share * 100).toFixed(0)}%
+                      {typeof antiConcentration.metrics.wealth_distribution.current_max_share === 'number' 
+                        ? `${(antiConcentration.metrics.wealth_distribution.current_max_share * 100).toFixed(1)}%` 
+                        : 'N/A'} / {typeof antiConcentration.metrics.wealth_distribution.max_individual_share === 'number'
+                        ? `${(antiConcentration.metrics.wealth_distribution.max_individual_share * 100).toFixed(0)}%`
+                        : 'N/A'}
                     </p>
                     <p className="text-xs text-gray-500">{t('fairness.wellBelow')}</p>
                   </div>

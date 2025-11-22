@@ -85,7 +85,7 @@ function AuthPageContent() {
 
     try {
       // Call backend API directly instead of Next.js API route
-      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -122,7 +122,7 @@ function AuthPageContent() {
 
     try {
       // Call backend API directly instead of Next.js API route
-      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

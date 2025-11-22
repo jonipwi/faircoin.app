@@ -23,6 +23,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!token) return
     try {
       const response = await api.user.settings(token)
+      // Check if settings array exists before calling .find()
+      if (!response.settings || !Array.isArray(response.settings)) return
       const prefs = response.settings.find((setting) => setting.setting_key === 'preferences')
       if (!prefs?.setting_value) return
 

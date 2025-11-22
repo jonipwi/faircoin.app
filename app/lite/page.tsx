@@ -1,7 +1,7 @@
 "use client"
 
 import Link from 'next/link'
-import { MessageCircle, Send, Download, Wallet, HelpCircle, Sparkles, Vote, Store } from 'lucide-react'
+import { MessageCircle, Send, Download, Wallet, HelpCircle, Sparkles, Vote, Store, Users } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useEffect } from 'react'
 
@@ -20,6 +20,13 @@ export default function LiteHome() {
       icon: MessageCircle,
       href: '/lite/chat',
       color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      title: 'Community Hub',
+      description: 'Join events, earn achievements, and connect',
+      icon: Users,
+      href: '/lite/community',
+      color: 'from-pink-500 to-rose-500'
     },
     {
       title: 'My Wallet',

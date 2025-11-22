@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Menu, X, Home, HelpCircle, ArrowLeft, Download } from 'lucide-react'
+import { Menu, X, Home, HelpCircle, ArrowLeft, Download, Users } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { LanguageSelector } from '@/components/lite/LanguageSelector'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
@@ -48,6 +48,7 @@ export function LiteNavbar() {
 
   const navLinks = [
     { label: t('nav.home') || 'Home', href: localePath('lite'), icon: Home },
+    { label: t('nav.community') || 'Community', href: localePath('lite/community'), icon: Users },
     { label: t('nav.help') || 'Help', href: localePath('lite/help'), icon: HelpCircle },
   ]
 

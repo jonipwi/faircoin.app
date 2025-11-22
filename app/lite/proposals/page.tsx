@@ -18,7 +18,7 @@ interface Proposal {
   category: string
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FAIRCOIN_API_URL || 'https://faircoin-api.bixio.xyz'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8100'
 
 export default function LiteProposals() {
   const { user, isAuthenticated, checkAuth } = useAuth()
@@ -28,21 +28,26 @@ export default function LiteProposals() {
 
   useEffect(() => {
     checkAuth()
-  }, [checkAuth])
-
-  useEffect(() => {
     fetchProposals()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const fetchProposals = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/governance/proposals`)
+      const response = await fetch(`${API_BASE_URL}/api/v1/public/governance/proposals`)
       if (response.ok) {
         const data = await response.json()
-        if (data.success && data.proposals) {
+        if (data.proposals) {
           setProposals(data.proposals.map((p: any) => ({
-            ...p,
-            endsAt: new Date(p.endsAt)
+            id: p.id,
+            title: p.title,
+            description: p.description,
+            status: p.status,
+            votesFor: p.votes_for || 0,
+            votesAgainst: p.votes_against || 0,
+            endsAt: new Date(p.end_date || p.endsAt),
+            createdBy: p.proposer_id ? `User ${p.proposer_id}` : 'Unknown',
+            category: p.proposal_type || 'general'
           })))
         }
       }
@@ -54,17 +59,27 @@ export default function LiteProposals() {
   }
 
   const castVote = async (proposalId: number, support: boolean) => {
-    if (!isAuthenticated || !user) {
-      alert('Please sign in to vote')
+    // Check if user is authenticated
+    const authToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null
+    
+    if (!authToken || !isAuthenticated || !user) {
+      if (confirm('You need to sign in to vote. Go to sign in page?')) {
+        window.location.href = '/auth/signin'
+      }
       return
     }
 
     setVotingOn(proposalId)
 
     try {
+      console.log('Casting vote:', { proposalId, support, user: user.username })
+
       const response = await fetch(`${API_BASE_URL}/api/v1/governance/vote`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authToken}`
+        },
         body: JSON.stringify({
           proposalId,
           username: user.username,
@@ -72,17 +87,34 @@ export default function LiteProposals() {
         })
       })
 
+      console.log('Vote response:', response.status, response.statusText)
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Vote error response:', errorText)
+        
+        // Try to parse as JSON for better error message
+        try {
+          const errorData = JSON.parse(errorText)
+          throw new Error(errorData.error || `HTTP ${response.status}`)
+        } catch {
+          throw new Error(`HTTP ${response.status}: ${errorText}`)
+        }
+      }
+
       const data = await response.json()
+      console.log('Vote success:', data)
       
       if (data.success) {
         alert(`✅ Vote ${support ? 'FOR' : 'AGAINST'} recorded!`)
-        fetchProposals() // Refresh proposals
+        // Refresh proposals after a short delay to ensure DB is updated
+        setTimeout(() => fetchProposals(), 500)
       } else {
         alert(data.error || 'Failed to vote')
       }
     } catch (error) {
       console.error('Failed to vote:', error)
-      alert('Failed to vote. Please try again.')
+      alert(`Failed to vote: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setVotingOn(null)
     }

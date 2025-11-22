@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Award, Star, Store, Search, X } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
@@ -41,20 +41,102 @@ export function MerchantsSection({
   const { t } = useLanguage()
   const localePath = useLocalePath()
   const [toast, setToast] = useState<Toast>({ message: '', show: false })
+  const [merchants, setMerchants] = useState<Merchant[]>([])
+  const [loading, setLoading] = useState(true)
 
   // Mode-based defaults
   const effectiveShowSearch = showSearch !== undefined ? showSearch : mode === 'full'
   const effectiveShowActions = showActions !== undefined ? showActions : mode === 'full'
   const effectiveShowTFI = showTFI !== undefined ? showTFI : true
 
-  const showToast = (message: string) => {
-    setToast({ message, show: true })
-    setTimeout(() => {
-      setToast({ message: '', show: false })
-    }, 2000)
-  }
+  useEffect(() => {
+    if (externalMerchants) {
+      setMerchants(externalMerchants)
+      setLoading(false)
+    } else {
+      fetchMerchantCategories()
+    }
+  }, [externalMerchants])
 
-  const merchants: Merchant[] = externalMerchants || [
+  const fetchMerchantCategories = async () => {
+    try {
+      // Fetch merchant categories from API
+      const categoriesResponse = await fetch('http://localhost:8100/api/v1/public/merchant-categories', {
+        headers: {
+          'X-API-Key': 'faircoin-secret-key-2025'
+        }
+      })
+      
+      if (!categoriesResponse.ok) {
+        throw new Error('Failed to fetch categories')
+      }
+      
+      const categoriesData = await categoriesResponse.json()
+      const categories = categoriesData.categories || []
+      
+      // Fetch all merchants to calculate statistics
+      const merchantsResponse = await fetch('http://localhost:8100/api/v1/public/merchants', {
+        headers: {
+          'X-API-Key': 'faircoin-secret-key-2025'
+        }
+      })
+      
+      const merchantsData = await merchantsResponse.json()
+      const allMerchants = merchantsData.merchants || []
+      
+      // Calculate statistics per category
+      const categoryStats = categories.map((cat: any) => {
+        const categoryName = cat.display_name || cat.name
+        const categoryMerchants = allMerchants.filter((m: any) => 
+          m.category === categoryName || m.category === cat.folder
+        )
+        
+        // Use database values if available, otherwise calculate
+        const avgRating = cat.avg_cbi ? parseFloat(cat.avg_cbi) / 20 : // Convert CBI back to rating
+          (categoryMerchants.length > 0
+            ? categoryMerchants.reduce((sum: number, m: any) => sum + (parseFloat(m.average_rating) || 0), 0) / categoryMerchants.length
+            : 0)
+        
+        const totalReviews = cat.merchant_count ? parseInt(cat.merchant_count.replace('+', '')) :
+          categoryMerchants.length
+        
+        const avgTFI = cat.avg_cbi ? parseFloat(cat.avg_cbi) : Math.round(avgRating * 20)
+        
+        return {
+          name: categoryName,
+          category: cat.folder || categoryName,
+          tfi: Math.round(avgTFI),
+          rating: avgRating,
+          reviews: totalReviews,
+          image: cat.icon || getCategoryIcon(categoryName),
+          description: cat.examples || cat.description || t(`${prefix}.${categoryName.toLowerCase().replace(/\\s+/g, '')}.description`),
+          location: cat.cbi_range ? `Typical CBI★: ${cat.cbi_range}` : `Typical CBI★: ${Math.round(avgTFI - 10)}-${Math.round(avgTFI + 5)}`
+        }
+      })
+      
+      setMerchants(categoryStats)
+    } catch (error) {
+      console.error('Failed to fetch merchant categories:', error)
+      // Fallback to translation-based data
+      setMerchants(getDefaultMerchants())
+    } finally {
+      setLoading(false)
+    }
+  }
+  
+  const getCategoryIcon = (categoryName: string): string => {
+    const name = categoryName.toLowerCase()
+    if (name.includes('groceries') || name.includes('essentials') || name.includes('daily')) return '🏪'
+    if (name.includes('food') || name.includes('beverages') || name.includes('drinks')) return '🍲'
+    if (name.includes('household') || name.includes('services')) return '👕'
+    if (name.includes('pet')) return '🐶'
+    if (name.includes('pharmacy') || name.includes('health')) return '💊'
+    if (name.includes('property') || name.includes('housing')) return '🏠'
+    if (name.includes('community') || name.includes('education')) return '📚'
+    return '🚖'
+  }
+  
+  const getDefaultMerchants = (): Merchant[] => [
     {
       name: t(`${prefix}.merchant1Name`),
       category: t(`${prefix}.merchant1Category`),
@@ -136,6 +218,36 @@ export function MerchantsSection({
       location: 'Typical CBI★: 84-94',
     },
   ]
+
+  const showToast = (message: string) => {
+    setToast({ message, show: true })
+    setTimeout(() => {
+      setToast({ message: '', show: false })
+    }, 2000)
+  }
+
+  if (loading) {
+    return (
+      <section id="merchants" className="section">
+        <div className="container">
+          <div className="text-center">
+            <div className="animate-pulse">
+              <div className="h-8 w-48 bg-gray-300 dark:bg-gray-700 rounded mx-auto mb-4"></div>
+              <div className="h-12 w-96 bg-gray-300 dark:bg-gray-700 rounded mx-auto mb-8"></div>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                <div key={i} className="card p-6 animate-pulse">
+                  <div className="h-24 bg-gray-300 dark:bg-gray-700 rounded mb-4"></div>
+                  <div className="h-16 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section id="merchants" className="section">
