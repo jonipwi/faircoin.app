@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { useState, useEffect } from 'react'
+import { useExchangeRate } from '@/hooks/useExchange'
 
 export default function LiteHome() {
   const { isAuthenticated, user } = useAuth()
@@ -15,55 +16,27 @@ export default function LiteHome() {
   // Exchange rates state
   const [fcAmount, setFcAmount] = useState<string>('1')
   const [selectedCurrency, setSelectedCurrency] = useState<'USD' | 'SGD' | 'IDR'>('USD')
-  const [exchangeRates, setExchangeRates] = useState({
-    USD: 1.0,
-    SGD: 1.35,
-    IDR: 15500
-  })
-  const [loading, setLoading] = useState(false)
+  
+  // Fetch live exchange rates using hooks
+  const { rate: usdRate, isLoading: loadingUSD } = useExchangeRate('FC', 'USD')
+  const { rate: sgdRate, isLoading: loadingSGD } = useExchangeRate('FC', 'SGD')
+  const { rate: idrRate, isLoading: loadingIDR } = useExchangeRate('FC', 'IDR')
+  
+  const loading = loadingUSD || loadingSGD || loadingIDR
   const [lastUpdated, setLastUpdated] = useState<string>('')
   
-  // Fetch exchange rates from API
+  const exchangeRates = {
+    USD: usdRate || 1.0,
+    SGD: sgdRate || 1.35,
+    IDR: idrRate || 15500
+  }
+  
+  // Update lastUpdated timestamp when rates change
   useEffect(() => {
-    const fetchExchangeRates = async () => {
-      setLoading(true)
-      try {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
-        const url = `${API_BASE_URL}/api/v1/exchange/rates`
-        
-        console.log('Fetching exchange rates from:', url)
-        const response = await fetch(url)
-        console.log('Exchange API response status:', response.status)
-        
-        if (response.ok) {
-          const data = await response.json()
-          console.log('Exchange API data:', data)
-          
-          if (data.success && data.rates) {
-            setExchangeRates({
-              USD: parseFloat(data.rates.USD) || 0.0,
-              SGD: parseFloat(data.rates.SGD) || 0.0,
-              IDR: parseFloat(data.rates.IDR) || 0.0
-            })
-            setLastUpdated(new Date().toLocaleTimeString())
-            console.log('Exchange rates updated:', data.rates)
-          }
-        } else {
-          console.error('Exchange API returned error:', response.status)
-        }
-      } catch (error) {
-        console.error('Failed to fetch exchange rates:', error)
-        // Keep default rates on error
-      } finally {
-        setLoading(false)
-      }
+    if (!loading && (usdRate || sgdRate || idrRate)) {
+      setLastUpdated(new Date().toLocaleTimeString())
     }
-
-    fetchExchangeRates()
-    // Refresh rates every 5 minutes
-    const interval = setInterval(fetchExchangeRates, 5 * 60 * 1000)
-    return () => clearInterval(interval)
-  }, [])
+  }, [usdRate, sgdRate, idrRate, loading])
   
   const convertedAmount = (parseFloat(fcAmount) || 0) * exchangeRates[selectedCurrency]
 
@@ -255,7 +228,7 @@ export default function LiteHome() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                      FairCoin Amount
+                      {t('lite.exchange.fcAmount') || 'FairCoin Amount'}
                     </label>
                     <div className="relative">
                       <input
@@ -275,7 +248,7 @@ export default function LiteHome() {
 
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                      Convert To
+                      {t('lite.exchange.convertTo') || 'Convert To'}
                     </label>
                     <select
                       value={selectedCurrency}
@@ -294,7 +267,7 @@ export default function LiteHome() {
                   <div className="w-full p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/50 border-2 border-emerald-200 dark:border-emerald-800">
                     <div className="text-center">
                       <div className="text-sm font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
-                        Converted Amount
+                        {t('lite.exchange.convertedAmount') || 'Converted Amount'}
                       </div>
                       <div className="text-5xl font-extrabold text-emerald-600 dark:text-emerald-400 mb-2">
                         {selectedCurrency === 'USD' && '$'}
@@ -329,14 +302,14 @@ export default function LiteHome() {
                   </div>
                   <div className="flex-1">
                     <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 mb-1">
-                      Live Exchange Rates {loading && <span className="text-xs">(Updating...)</span>}
+                      {t('lite.exchange.liveRates') || 'Live Exchange Rates'} {loading && <span className="text-xs">(Updating...)</span>}
                     </h4>
                     <p className="text-sm text-blue-700 dark:text-blue-300">
-                      1 FC = ${exchangeRates.USD.toFixed(2)} USD | S${exchangeRates.SGD.toFixed(2)} SGD | Rp {exchangeRates.IDR.toLocaleString()} IDR
+                      1 FC = ${exchangeRates.USD.toFixed(4)} USD | S${exchangeRates.SGD.toFixed(4)} SGD | Rp {exchangeRates.IDR.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 })} IDR
                     </p>
                     {lastUpdated && (
                       <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
-                        Last updated: {lastUpdated}
+                        {t('lite.exchange.lastUpdated') || 'Last updated'}: {lastUpdated}
                       </p>
                     )}
                   </div>

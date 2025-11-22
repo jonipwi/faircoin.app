@@ -216,7 +216,7 @@ export default function LiteProposals() {
               className="w-full py-6 px-8 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold hover:from-purple-600 hover:to-pink-600 transition-all shadow-xl flex items-center justify-center gap-3"
             >
               <Plus className="w-6 h-6" />
-              {showCreateForm ? 'Cancel' : 'Create New Proposal'}
+              {showCreateForm ? (t('lite.proposals.cancel') || 'Cancel') : (t('lite.proposals.createNew') || 'Create New Proposal')}
             </button>
           </div>
         )}
@@ -225,48 +225,48 @@ export default function LiteProposals() {
         {showCreateForm && isAuthenticated && (
           <div className="rounded-3xl bg-white dark:bg-gray-800 border-4 border-purple-200 dark:border-purple-700 p-6 sm:p-8 mb-8 shadow-xl">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              📝 Create New Proposal
+              📝 {t('lite.proposals.createForm.title') || 'Create New Proposal'}
             </h3>
             
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Title
+                  {t('lite.proposals.createForm.titleLabel') || 'Title'}
                 </label>
                 <input
                   type="text"
                   value={newProposal.title}
                   onChange={(e) => setNewProposal({ ...newProposal, title: e.target.value })}
-                  placeholder="Enter proposal title"
+                  placeholder={t('lite.proposals.createForm.titlePlaceholder') || 'Enter proposal title'}
                   className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all text-lg"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Category
+                  {t('lite.proposals.createForm.categoryLabel') || 'Category'}
                 </label>
                 <select
                   value={newProposal.category}
                   onChange={(e) => setNewProposal({ ...newProposal, category: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all text-lg"
                 >
-                  <option value="general">📋 General</option>
-                  <option value="policy">📁 Policy</option>
-                  <option value="technical">⚙️ Technical</option>
-                  <option value="community">👥 Community</option>
-                  <option value="expansion">🌍 Expansion</option>
+                  <option value="general">📋 {t('lite.proposals.createForm.categories.general') || 'General'}</option>
+                  <option value="policy">📁 {t('lite.proposals.createForm.categories.policy') || 'Policy'}</option>
+                  <option value="technical">⚙️ {t('lite.proposals.createForm.categories.technical') || 'Technical'}</option>
+                  <option value="community">👥 {t('lite.proposals.createForm.categories.community') || 'Community'}</option>
+                  <option value="expansion">🌍 {t('lite.proposals.createForm.categories.expansion') || 'Expansion'}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                  Description
+                  {t('lite.proposals.createForm.descriptionLabel') || 'Description'}
                 </label>
                 <textarea
                   value={newProposal.description}
                   onChange={(e) => setNewProposal({ ...newProposal, description: e.target.value })}
-                  placeholder="Describe your proposal in detail"
+                  placeholder={t('lite.proposals.createForm.descriptionPlaceholder') || 'Describe your proposal in detail'}
                   rows={6}
                   className="w-full px-4 py-3 rounded-xl border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500 transition-all text-lg"
                 />
@@ -277,7 +277,7 @@ export default function LiteProposals() {
                 disabled={creating}
                 className="w-full py-5 px-6 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xl font-bold hover:from-green-600 hover:to-emerald-600 transition-all shadow-xl disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                {creating ? 'Creating...' : '✅ Submit Proposal'}
+                {creating ? (t('lite.proposals.createForm.creating') || 'Creating...') : `✅ ${t('lite.proposals.createForm.submit') || 'Submit Proposal'}`}
               </button>
             </div>
           </div>

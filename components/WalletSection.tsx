@@ -249,7 +249,7 @@ Created: ${new Date().toISOString()}
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
-            PFI Treasury ✨
+            {t('wallet.title') || 'PFI Treasury'} ✨
           </h2>
           <p className="text-xl text-white/80">
             {t('wallet.subtitle')}
@@ -284,7 +284,7 @@ Created: ${new Date().toISOString()}
             <div className="card p-6 mb-8">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
-                  Treasury Address
+                  {t('wallet.treasuryAddress') || 'Treasury Address'}
                 </h3>
                 <Wallet className="w-6 h-6 text-primary-500" />
               </div>
@@ -298,7 +298,7 @@ Created: ${new Date().toISOString()}
                   title="Copy address"
                 >
                   {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  {copied ? 'Copied' : 'Copy'}
+                  {copied ? t('wallet.copied') : t('wallet.copy')}
                 </button>
               </div>
             </div>
@@ -307,7 +307,7 @@ Created: ${new Date().toISOString()}
             <div className="card p-8 mb-8">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-400">
-                  Tokens Entrusted ✨
+                  {t('wallet.tokensEntrusted') || 'Tokens Entrusted'} ✨
                 </h3>
                 <TrendingUp className="w-6 h-6 text-amber-500" />
               </div>
@@ -315,7 +315,7 @@ Created: ${new Date().toISOString()}
                 {wallet.balances.USDT.toFixed(4)} USDT
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Faith, Love, and Justice tokens stored in Heaven's Network
+                {t('wallet.tokensNote') || "Faith, Love, and Justice tokens stored in Heaven's Network"}
               </p>
             </div>
 
@@ -327,10 +327,10 @@ Created: ${new Date().toISOString()}
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                    Personal Fairness Index (PFI★)
+                    {t('wallet.pfiMetrics') || 'Personal Fairness Index (PFI★)'}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Your contribution score to the FairCoin community
+                    {t('wallet.contributionScore') || 'Your contribution score to the FairCoin community'}
                   </p>
                 </div>
               </div>
@@ -340,7 +340,7 @@ Created: ${new Date().toISOString()}
                 <div className="border dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-700 dark:to-gray-600">
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-sm text-gray-600 dark:text-gray-300 flex items-center gap-1">
-                      PFI Score
+                      {t('wallet.pfiScore') || 'PFI Score'}
                       <span className="text-amber-500">✨</span>
                     </p>
                     <PieChart className="w-8 h-8 text-emerald-500" />
@@ -360,7 +360,7 @@ Created: ${new Date().toISOString()}
                 <div className="border dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-700 dark:to-gray-600">
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      PFI Index
+                      {t('wallet.pfiIndex') || 'PFI Index'}
                     </p>
                     <TrendingUp className="w-8 h-8 text-blue-500" />
                   </div>
@@ -368,7 +368,7 @@ Created: ${new Date().toISOString()}
                     {pfiMetrics.index.toFixed(1)}%
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                    Performance Indicator
+                    {t('wallet.performanceIndicator') || 'Performance Indicator'}
                   </p>
                 </div>
 
@@ -376,7 +376,7 @@ Created: ${new Date().toISOString()}
                 <div className="border dark:border-gray-700 rounded-xl p-5 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-700 dark:to-gray-600">
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      PFI Share
+                      {t('wallet.pfiShare') || 'PFI Share'}
                     </p>
                     <Wallet className="w-8 h-8 text-amber-500" />
                   </div>
@@ -384,7 +384,7 @@ Created: ${new Date().toISOString()}
                     {pfiMetrics.share.toFixed(2)}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                    Approved Submissions
+                    {t('wallet.approvedSubmissions') || 'Approved Submissions'}
                   </p>
                 </div>
               </div>
@@ -394,17 +394,14 @@ Created: ${new Date().toISOString()}
                 className="btn btn-primary w-full"
               >
                 <TrendingUp className="w-5 h-5" />
-                Refresh PFI Metrics
+                {t('wallet.refreshPFI') || 'Refresh PFI Metrics'}
               </button>
             </div>
 
             {/* Spiritual Note */}
             <div className="card p-6 mb-8 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 border-2 border-amber-200 dark:border-amber-700">
               <p className="text-base text-amber-900 dark:text-amber-100 text-center leading-relaxed">
-                ✨ <span className="font-semibold">Remember:</span> Your tokens are stored through{' '}
-                <span className="font-semibold text-amber-700 dark:text-amber-300">Faith</span>,{' '}
-                <span className="font-semibold text-amber-700 dark:text-amber-300">Love</span>, and{' '}
-                <span className="font-semibold text-amber-700 dark:text-amber-300">Justice</span> in Heaven's Network
+                ✨ {t('wallet.spiritualNote') || "Remember: Your tokens are stored through Faith, Love, and Justice in Heaven's Network"}
               </p>
             </div>
 
@@ -415,7 +412,7 @@ Created: ${new Date().toISOString()}
                 className="btn btn-outline flex items-center gap-2"
               >
                 <Download className="w-5 h-5" />
-                Download Treasury Details
+                {t('wallet.downloadDetails') || 'Download Treasury Details'}
               </button>
             </div>
           </>
