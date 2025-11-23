@@ -77,11 +77,28 @@ function AuthPageContent() {
     setError(null)
 
     try {
-      // Call backend API directly
+      // Call backend API directly with request signing
+      const { generateSignedHeaders } = await import('@/lib/request-signing')
       const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
-      const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const method = 'POST'
+      const path = '/api/v1/auth/wallet/register'
+      
+      // Generate signed headers
+      const signedHeaders = await generateSignedHeaders(method, path)
+      
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      }
+      
+      // Add signature headers if available
+      if (signedHeaders['X-Request-Signature']) {
+        headers['X-Request-Signature'] = signedHeaders['X-Request-Signature']
+        headers['X-Request-Timestamp'] = signedHeaders['X-Request-Timestamp']
+      }
+      
+      const response = await fetch(`${API_BASE_URL}${path}`, {
+        method,
+        headers,
         body: JSON.stringify({ 
           full_name: fullName.trim(),
           email: email.trim() || undefined 
@@ -119,11 +136,28 @@ function AuthPageContent() {
     setError(null)
 
     try {
-      // Call backend API directly instead of Next.js API route
+      // Call backend API directly with request signing
+      const { generateSignedHeaders } = await import('@/lib/request-signing')
       const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
-      const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const method = 'POST'
+      const path = '/api/v1/auth/wallet/login'
+      
+      // Generate signed headers
+      const signedHeaders = await generateSignedHeaders(method, path)
+      
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+      }
+      
+      // Add signature headers if available
+      if (signedHeaders['X-Request-Signature']) {
+        headers['X-Request-Signature'] = signedHeaders['X-Request-Signature']
+        headers['X-Request-Timestamp'] = signedHeaders['X-Request-Timestamp']
+      }
+      
+      const response = await fetch(`${API_BASE_URL}${path}`, {
+        method,
+        headers,
         body: JSON.stringify({ mnemonic: mnemonic.trim() }),
       })
 
