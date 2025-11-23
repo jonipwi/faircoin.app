@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 // Use API_URL for server-side routes (NEXT_PUBLIC_ is for client-side)
 const API_BASE_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || ''
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,6 +32,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-API-Key': API_KEY,
       },
       body: JSON.stringify({ mnemonic: mnemonic.trim() }),
     })

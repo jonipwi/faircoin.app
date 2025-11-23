@@ -88,7 +88,10 @@ function AuthPageContent() {
       const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/register`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-API-Key': process.env.NEXT_PUBLIC_API_KEY || ''
+        },
         body: JSON.stringify({ full_name: fullName.trim(), email: email.trim() }),
       })
 
@@ -125,7 +128,10 @@ function AuthPageContent() {
       const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
       const response = await fetch(`${API_BASE_URL}/api/v1/auth/wallet/login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-API-Key': process.env.NEXT_PUBLIC_API_KEY || ''
+        },
         body: JSON.stringify({ mnemonic: mnemonic.trim() }),
       })
 

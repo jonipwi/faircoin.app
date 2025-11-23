@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
+import { api } from '@/lib/api'
 
 interface PFIMetrics {
   score: number
@@ -49,35 +50,17 @@ export function WalletSection() {
     const isDev = process.env.NODE_ENV === 'development'
     try {
       if (isDev) console.log(`[PFI] Fetching metrics for user: ${user.username}`)
-      const response = await fetch(`${API_BASE_URL}/api/v1/fairness/indexes?user=${encodeURIComponent(user.username)}`)
+      const data = await api.fairness.indexes(user.username)
       
-      if (response.ok) {
-        const text = await response.text()
-        if (!text || text.trim() === '') {
-          if (isDev) console.log('[PFI] Empty response from API, using default metrics')
-          setPfiMetrics({ score: 0, index: 0, share: 0 })
-          return
-        }
-        
-        try {
-          const data = JSON.parse(text)
-          if (isDev) console.log('[PFI] API response:', data)
-          
-          if (data.success && data.index) {
-            setPfiMetrics({
-              score: data.index.pfi_total || 0,
-              index: data.index.total_fairness_score || 0,
-              share: data.index.approved_submissions || 0
-            })
-          } else {
-            setPfiMetrics({ score: 0, index: 0, share: 0 })
-          }
-        } catch (parseError) {
-          if (isDev) console.error('[PFI] Failed to parse JSON:', parseError)
-          setPfiMetrics({ score: 0, index: 0, share: 0 })
-        }
+      if (isDev) console.log('[PFI] API response:', data)
+      
+      if (data.success && data.index) {
+        setPfiMetrics({
+          score: data.index.pfi_total || 0,
+          index: data.index.total_fairness_score || 0,
+          share: data.index.approved_submissions || 0
+        })
       } else {
-        if (isDev) console.error(`[PFI] API failed with status ${response.status}`)
         setPfiMetrics({ score: 0, index: 0, share: 0 })
       }
     } catch (error) {

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || ''
 
 /**
  * POST /api/auth/verify-2fa
@@ -31,6 +32,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${sessionToken}`,
+        'X-API-Key': API_KEY,
       },
       body: JSON.stringify({
         code,

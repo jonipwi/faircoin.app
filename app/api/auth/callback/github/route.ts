@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:8090/api/v1'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || ''
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'
@@ -35,6 +36,7 @@ export async function GET(request: NextRequest) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'X-API-Key': API_KEY,
       },
     })
 

@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { useEffect, useState } from 'react'
-import { Vote, Users, Clock, CheckCircle, XCircle, AlertCircle, TrendingUp, ThumbsUp, ThumbsDown, Award, Shield, Activity } from 'lucide-react'
+import { Vote, Users, Clock, CheckCircle, XCircle, AlertCircle, TrendingUp, ThumbsUp, ThumbsDown, Award, Shield, Activity, Scale } from 'lucide-react'
 import { api, type GovernanceProposal, type VotingPower, type RecentVote, type FairnessDistribution, type AntiConcentration } from '@/lib/api'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 
@@ -347,7 +347,14 @@ export function GovernanceSection() {
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('governance.activeProposals')}</h3>
             <div className="space-y-6">
-              {proposals.map((proposal) => {
+              {proposals.length === 0 ? (
+                <div className="card p-6 text-center">
+                  <Scale className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {t('governance.noProposals')}
+                  </p>
+                </div>
+              ) : proposals.map((proposal) => {
                 const totalVotes = proposal.votes_for + proposal.votes_against
                 const forPercentage = totalVotes > 0 ? (proposal.votes_for / totalVotes * 100) : 0
                 const againstPercentage = totalVotes > 0 ? (proposal.votes_against / totalVotes * 100) : 0
@@ -469,8 +476,7 @@ export function GovernanceSection() {
                     </div>
                   </div>
                 )
-              })}
-            </div>
+              })}\n            </div>
           </div>
 
           {/* Recent Votes Sidebar */}
@@ -517,7 +523,7 @@ export function GovernanceSection() {
                 <div className="card p-6 text-center">
                   <Vote className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    No recent votes yet
+                    {t('governance.noVotes')}
                   </p>
                 </div>
               )}

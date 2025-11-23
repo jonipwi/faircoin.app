@@ -7,6 +7,7 @@ import { Wallet, TrendingUp, PieChart, Download, Copy, Check, Send, QrCode } fro
 import { useAuth } from '@/contexts/AuthContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { api } from '@/lib/api'
 
 interface PFIMetrics {
   score: number
@@ -50,20 +51,14 @@ export default function LiteBalance() {
     if (!user?.username) return
     
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/fairness/indexes?user=${encodeURIComponent(user.username)}`)
+      const data = await api.fairness.indexes(user.username)
       
-      if (response.ok) {
-        const data = await response.json()
-        
-        if (data.success && data.index) {
-          setPfiMetrics({
-            score: data.index.pfi_total || 0,
-            index: data.index.total_fairness_score || 0,
-            share: data.index.approved_submissions || 0
-          })
-        } else {
-          setPfiMetrics({ score: 0, index: 0, share: 0 })
-        }
+      if (data.success && data.index) {
+        setPfiMetrics({
+          score: data.index.pfi_total || 0,
+          index: data.index.total_fairness_score || 0,
+          share: data.index.approved_submissions || 0
+        })
       } else {
         setPfiMetrics({ score: 0, index: 0, share: 0 })
       }
@@ -141,7 +136,10 @@ export default function LiteBalance() {
       const xchatAPI = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8088'
       const response = await fetch(`${xchatAPI}/api/wallet/create`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-API-Key': process.env.NEXT_PUBLIC_API_KEY || ''
+        },
         body: JSON.stringify({ username: user.username })
       })
       

@@ -120,56 +120,19 @@ export function CommunitySection() {
         if (!cancelled) {
           if (isDev) {
             console.error(`[CommunitySection] ❌ Failed to fetch community data after ${totalTime}s:`, error)
-            console.log('[CommunitySection] 🔄 Using fallback mock data')
             communityDebug.logAPIError('community data', error, Date.now() - startTime)
           }
           
-          // Set fallback mock data
-          setFeed([
-            {
-              id: '1',
-              type: 'milestone',
-              title: 'FairCoin Community Milestone',
-              description: 'Welcome to FairCoin! Our community is growing every day. Join us in building a fairer financial future.',
-              user: 'FairCoin Team',
-              timestamp: new Date().toISOString(),
-              reactions: { '🎉': 5, '❤️': 3 }
-            }
-          ])
-          
-          setAchievements([
-            {
-              id: '1',
-              title: 'Early Adopter',
-              description: 'Join the FairCoin community in its early days',
-              icon: '🌟',
-              rarity: 'common',
-              holders: 100,
-              requirements: {}
-            }
-          ])
-          
-          setEvents([
-            {
-              id: '1',
-              title: 'Community Launch Event',
-              description: 'Join us for the official FairCoin community launch! Meet the team and fellow community members.',
-              type: 'meetup',
-              date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-              location: 'Online (Discord)',
-              organizer: 'FairCoin Team',
-              attendees: 0,
-              max_capacity: 100,
-              tags: ['community', 'launch', 'meetup']
-            }
-          ])
-          
+          // Don't show fallback data - leave arrays empty to show "not available" message
+          setFeed([])
+          setAchievements([])
+          setEvents([])
           setStats({
-            active_members: 150,
-            achievements_earned: 45,
-            events_this_month: 2,
-            member_satisfaction: 95,
-            online_count: 12
+            active_members: 0,
+            achievements_earned: 0,
+            events_this_month: 0,
+            member_satisfaction: 0,
+            online_count: 0
           })
           
           setLoading(false)
@@ -360,7 +323,14 @@ export function CommunitySection() {
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('community.activityFeed')}</h3>
             <div className="space-y-6">
-              {feed.map((item) => (
+              {feed.length === 0 ? (
+                <div className="card p-6 text-center">
+                  <Heart className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {t('community.noCommunityActivity')}
+                  </p>
+                </div>
+              ) : feed.map((item) => (
                 <div key={item.id} className="card p-6 hover:shadow-lg transition-shadow">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
@@ -405,7 +375,14 @@ export function CommunitySection() {
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{t('community.achievements')}</h3>
             <div className="space-y-4 mb-8 max-h-[600px] overflow-y-auto pr-2">
-              {achievements.map((achievement) => (
+              {achievements.length === 0 ? (
+                <div className="card p-4 text-center">
+                  <Trophy className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {t('community.noAchievements')}
+                  </p>
+                </div>
+              ) : achievements.map((achievement) => (
                 <div key={achievement.id} className="card p-4">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-2xl">{achievement.icon}</span>
@@ -433,7 +410,14 @@ export function CommunitySection() {
             {/* Upcoming Events */}
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">{t('community.upcomingEvents')}</h3>
             <div className="space-y-4">
-              {events.map((event) => (
+              {events.length === 0 ? (
+                <div className="card p-4 text-center">
+                  <Calendar className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {t('community.noUpcomingEvents')}
+                  </p>
+                </div>
+              ) : events.map((event) => (
                 <div key={event.id} className="card p-4">
                   <div className="flex items-start gap-3 mb-3">
                     <Calendar className="w-5 h-5 text-primary-500 mt-0.5" />

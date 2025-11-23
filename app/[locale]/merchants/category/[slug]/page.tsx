@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Store, Star, Award, MapPin, Phone, Clock, ArrowLeft, Search, TrendingUp } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { api } from '@/lib/api'
 
 interface Merchant {
   id: number
@@ -40,54 +41,36 @@ export default function CategoryMerchants({ params }: { params: { slug: string }
       let matchedCategory: any = null
       
       // Fetch categories first to get the proper category name
-      const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchant-categories`, {
-        headers: {
-          'X-API-Key': 'faircoin-secret-key-2025'
-        }
+      const categoriesData = await api.merchant.categories()
+      const categories = categoriesData.categories || []
+      
+      // Find the category that matches this slug
+      matchedCategory = categories.find((cat: any) => {
+        const categorySlug = (cat.folder || cat.display_name || '')
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, '')
+        return categorySlug === params.slug
       })
       
-      if (categoriesResponse.ok) {
-        const categoriesData = await categoriesResponse.json()
-        const categories = categoriesData.categories || []
-        
-        // Find the category that matches this slug
-        matchedCategory = categories.find((cat: any) => {
-          const categorySlug = (cat.folder || cat.display_name || '')
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-|-$/g, '')
-          return categorySlug === params.slug
-        })
-        
-        if (matchedCategory) {
-          setCategoryName(matchedCategory.display_name || matchedCategory.folder || params.slug)
-          setCategoryIcon(matchedCategory.icon || '🏪')
-        } else {
-          // Fallback to converting slug to title case
-          setCategoryName(params.slug
-            .split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' '))
-          setCategoryIcon('🏪')
-        }
+      if (matchedCategory) {
+        setCategoryName(matchedCategory.display_name || matchedCategory.folder || params.slug)
+        setCategoryIcon(matchedCategory.icon || '🏪')
+      } else {
+        // Fallback to converting slug to title case
+        setCategoryName(params.slug
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' '))
+        setCategoryIcon('🏪')
       }
       
       // Fetch merchants from API
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchants`, {
-        headers: {
-          'X-API-Key': 'faircoin-secret-key-2025'
-        }
-      })
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch merchants')
-      }
-      
-      const data = await response.json()
-      const merchantsData = data.merchants || []
+      const merchantsData = await api.merchant.list()
+      const allMerchants = merchantsData.merchants || []
       
       // Transform database merchants to match frontend interface
-      const transformedMerchants = merchantsData
+      const transformedMerchants = allMerchants
         .filter((m: any) => {
           if (m.verification_status !== 'verified') return false
           

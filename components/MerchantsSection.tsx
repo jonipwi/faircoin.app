@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Award, Star, Store, Search, X } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
+import { api } from '@/lib/api'
 
 interface Merchant {
   name: string
@@ -61,27 +62,11 @@ export function MerchantsSection({
   const fetchMerchantCategories = async () => {
     try {
       // Fetch merchant categories from API
-      const categoriesResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchant-categories`, {
-        headers: {
-          'X-API-Key': 'faircoin-secret-key-2025'
-        }
-      })
-      
-      if (!categoriesResponse.ok) {
-        throw new Error('Failed to fetch categories')
-      }
-      
-      const categoriesData = await categoriesResponse.json()
+      const categoriesData = await api.merchant.categories()
       const categories = categoriesData.categories || []
       
       // Fetch all merchants to calculate statistics
-      const merchantsResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'}/api/v1/public/merchants`, {
-        headers: {
-          'X-API-Key': 'faircoin-secret-key-2025'
-        }
-      })
-      
-      const merchantsData = await merchantsResponse.json()
+      const merchantsData = await api.merchant.list()
       const allMerchants = merchantsData.merchants || []
       
       // Calculate statistics per category
@@ -117,8 +102,8 @@ export function MerchantsSection({
       setMerchants(categoryStats)
     } catch (error) {
       console.error('Failed to fetch merchant categories:', error)
-      // Fallback to translation-based data
-      setMerchants(getDefaultMerchants())
+      // Don't show fallback data - show error state instead
+      setMerchants([])
     } finally {
       setLoading(false)
     }
@@ -283,8 +268,16 @@ export function MerchantsSection({
           )}
         </div>
 
-        {/* Merchants Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Merchants Grid or Not Available Message */}
+        {merchants.length === 0 && !loading ? (
+          <div className="card p-8 text-center">
+            <Store className="w-12 h-12 text-gray-400 mx-auto mb-3" />
+            <p className="text-gray-500 dark:text-gray-400">
+              {t(`${prefix}.noMerchantsAvailable`) || 'No merchants available'}
+            </p>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {merchants.map((merchant) => (
             <div key={merchant.name} className="card card-hover p-6 group flex flex-col">
               {/* Merchant Header */}
@@ -379,7 +372,8 @@ export function MerchantsSection({
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* CTA Section */}
         <div className="mt-16 text-center">

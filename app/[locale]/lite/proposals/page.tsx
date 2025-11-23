@@ -6,6 +6,7 @@ import { Vote, ThumbsUp, ThumbsDown, Clock, CheckCircle, XCircle, Users, Plus } 
 import { useAuth } from '@/contexts/AuthContext'
 import { useLocalePath } from '@/lib/i18n/useLocalePath'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
+import { api } from '@/lib/api'
 
 interface Proposal {
   id: number
@@ -44,22 +45,19 @@ export default function LiteProposals() {
 
   const fetchProposals = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/public/governance/proposals`)
-      if (response.ok) {
-        const data = await response.json()
-        if (data.proposals) {
-          setProposals(data.proposals.map((p: any) => ({
-            id: p.id,
-            title: p.title,
-            description: p.description,
-            status: p.status,
-            votesFor: p.votes_for || 0,
-            votesAgainst: p.votes_against || 0,
-            endsAt: new Date(p.end_date || p.endsAt),
-            createdBy: p.proposer_username || (p.proposer_id ? `User ${p.proposer_id}` : 'Unknown'),
-            category: p.proposal_type || 'general'
-          })))
-        }
+      const data = await api.governance.proposals()
+      if (data.proposals) {
+        setProposals(data.proposals.map((p: any) => ({
+          id: p.id,
+          title: p.title,
+          description: p.description,
+          status: p.status,
+          votesFor: p.votes_for || 0,
+          votesAgainst: p.votes_against || 0,
+          endsAt: new Date(p.end_date || p.endsAt),
+          createdBy: p.proposer_username || (p.proposer_id ? `User ${p.proposer_id}` : 'Unknown'),
+          category: p.proposal_type || 'general'
+        })))
       }
     } catch (error) {
       console.error('Failed to fetch proposals:', error)
@@ -72,21 +70,7 @@ export default function LiteProposals() {
     setVotingOn(proposalId)
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/governance/vote`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          proposalId,
-          username: user?.username || 'Anonymous',
-          support
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
-      }
-
-      const data = await response.json()
+      const data = await api.governance.vote(proposalId, user?.username || 'Anonymous', support)
       
       if (data.success) {
         alert(`✅ ${t('lite.proposals.voteRecorded') || `Vote ${support ? 'FOR' : 'AGAINST'} recorded!`}`)
@@ -111,25 +95,11 @@ export default function LiteProposals() {
 
     setCreating(true)
     try {
-      const token = localStorage.getItem('auth_token')
-      const response = await fetch(`${API_BASE_URL}/api/v1/governance/proposals`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token ? `Bearer ${token}` : ''
-        },
-        body: JSON.stringify({
-          title: newProposal.title,
-          description: newProposal.description,
-          proposal_type: newProposal.category
-        })
-      })
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
-      }
-
-      const data = await response.json()
+      const data = await api.governance.createProposal(
+        newProposal.title,
+        newProposal.description,
+        newProposal.category
+      )
       
       if (data.success) {
         alert('✅ Proposal created successfully!')

@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createCloudflareBypassHeaders } from '@/lib/cloudflare-bypass'
+import { addSignedHeaders } from '@/lib/server-request-signing'
 
 // Use API_URL for server-side routes (NEXT_PUBLIC_ is for client-side)
 const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || ''
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'
@@ -31,13 +33,18 @@ export async function GET(request: NextRequest) {
     console.log('[SETTINGS] Calling backend:', backendUrl)
     console.log('[SETTINGS] 🌐 Forwarding User-Agent:', request.headers.get('user-agent')?.substring(0, 50) + '...')
 
+    // Prepare headers with signing
+    const baseHeaders = {
+      'Authorization': `Bearer ${sessionToken}`,
+      'Content-Type': 'application/json',
+      'X-API-Key': API_KEY,
+    }
+    const signedHeaders = addSignedHeaders(baseHeaders, 'GET', '/api/v1/user/settings')
+
     // Forward request with browser headers to bypass Cloudflare
     const response = await fetch(backendUrl, {
       method: 'GET',
-      headers: createCloudflareBypassHeaders(request, {
-        'Authorization': `Bearer ${sessionToken}`,
-        'Content-Type': 'application/json',
-      }),
+      headers: createCloudflareBypassHeaders(request, signedHeaders),
     })
 
     console.log('[SETTINGS] Backend response status:', response.status)
@@ -96,13 +103,18 @@ export async function POST(request: NextRequest) {
     
     const startTime = Date.now()
 
+    // Prepare headers with signing
+    const baseHeaders = {
+      'Authorization': `Bearer ${sessionToken}`,
+      'Content-Type': 'application/json',
+      'X-API-Key': API_KEY,
+    }
+    const signedHeaders = addSignedHeaders(baseHeaders, 'POST', '/api/v1/user/settings')
+
     // Forward request with browser headers to bypass Cloudflare
     const response = await fetch(backendUrl, {
       method: 'POST',
-      headers: createCloudflareBypassHeaders(request, {
-        'Authorization': `Bearer ${sessionToken}`,
-        'Content-Type': 'application/json',
-      }),
+      headers: createCloudflareBypassHeaders(request, signedHeaders),
       body: JSON.stringify(body),
     })
 

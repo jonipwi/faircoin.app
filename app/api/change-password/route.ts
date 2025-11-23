@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createCloudflareBypassHeaders } from '@/lib/cloudflare-bypass'
 
 const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox'
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || ''
 
 // Mark this route as dynamic to prevent static optimization
 export const dynamic = 'force-dynamic'
@@ -39,6 +40,7 @@ export async function POST(request: NextRequest) {
       headers: createCloudflareBypassHeaders(request, {
         'Authorization': `Bearer ${sessionToken}`,
         'Content-Type': 'application/json',
+        'X-API-Key': API_KEY,
       }),
       body: JSON.stringify(body),
     })
