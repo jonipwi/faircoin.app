@@ -49,6 +49,9 @@
     "joinDesc": "與志同道合的人聯繫，他們相信公平、透明和經濟正義。一起，我們正在建立更好的財務未來。",
     "loading": "正在加載社區數據...",
     "membersOnline": "在線成員",
+    "noAchievements": "尚未有成就",
+    "noCommunityActivity": "沒有社區活動",
+    "noUpcomingEvents": "沒有即將舉行的活動",
     "rsvp": "請回覆",
     "title": "建築",
     "titleHighlight": "一起",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "反對",
+      "cancel": "取消",
       "checkBack": "請稍後查看新的社區決策",
+      "createForm": {
+        "categories": {
+          "community": "社群",
+          "expansion": "擴展",
+          "general": "一般",
+          "policy": "政策",
+          "technical": "技術"
+        },
+        "categoryLabel": "類別",
+        "creating": "創建中...",
+        "descriptionLabel": "描述",
+        "descriptionPlaceholder": "詳細描述您的提案",
+        "submit": "提交提案",
+        "title": "創建新提案",
+        "titleLabel": "標題",
+        "titlePlaceholder": "輸入提案標題"
+      },
+      "createNew": "創建新提案",
       "description": "對社區決策和提案進行投票",
       "ended": "已結束",
       "for": "為",
@@ -743,6 +765,7 @@
     "merchant8Name": "財產與住房",
     "merchants": "商家",
     "noMerchants": "未找到商家",
+    "noMerchantsAvailable": "沒有可用的商家",
     "ratings": {
       "excellent": "優秀",
       "fair": "公平",

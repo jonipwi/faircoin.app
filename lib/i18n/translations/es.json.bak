@@ -49,6 +49,9 @@
     "joinDesc": "Conéctate con personas afines que creen en la equidad, la transparencia y la justicia económica. Juntos, estamos construyendo un mejor futuro financiero.",
     "loading": "Cargando datos de la comunidad...",
     "membersOnline": "Miembros en línea",
+    "noAchievements": "Aún no hay logros",
+    "noCommunityActivity": "No hay actividad comunitaria",
+    "noUpcomingEvents": "No hay eventos próximos",
     "rsvp": "RSVP",
     "title": "Construyendo",
     "titleHighlight": "Juntos",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "En contra de",
+      "cancel": "Cancelar",
       "checkBack": "Vuelve pronto para nuevas decisiones de la comunidad",
+      "createForm": {
+        "categories": {
+          "community": "Comunidad",
+          "expansion": "Expansión",
+          "general": "General",
+          "policy": "Política",
+          "technical": "Técnico"
+        },
+        "categoryLabel": "Categoría",
+        "creating": "Creando...",
+        "descriptionLabel": "Descripción",
+        "descriptionPlaceholder": "Describa su propuesta en detalle",
+        "submit": "Enviar Propuesta",
+        "title": "Crear Nueva Propuesta",
+        "titleLabel": "Título",
+        "titlePlaceholder": "Ingrese el título de la propuesta"
+      },
+      "createNew": "Crear Nueva Propuesta",
       "description": "Vota sobre decisiones y propuestas comunitarias",
       "ended": "Terminado",
       "for": "Para",
@@ -743,6 +765,7 @@
     "merchant8Name": "Propiedad y Vivienda",
     "merchants": "Comerciantes",
     "noMerchants": "No se encontraron comerciantes",
+    "noMerchantsAvailable": "No hay comerciantes disponibles",
     "ratings": {
       "excellent": "Excelente",
       "fair": "Justo",

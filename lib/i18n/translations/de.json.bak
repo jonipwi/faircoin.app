@@ -49,6 +49,9 @@
     "joinDesc": "Verbinden Sie sich mit Gleichgesinnten, die an Fairness, Transparenz und wirtschaftliche Gerechtigkeit glauben. Gemeinsam bauen wir eine bessere finanzielle Zukunft.",
     "loading": "Lade Community-Daten...",
     "membersOnline": "Mitglieder online",
+    "noAchievements": "Noch keine Erfolge",
+    "noCommunityActivity": "Keine Gemeinschaftsaktivitäten",
+    "noUpcomingEvents": "Keine bevorstehenden Veranstaltungen",
     "rsvp": "Zusage",
     "title": "Bau",
     "titleHighlight": "Gemeinsam",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "Gegen",
+      "cancel": "Abbrechen",
       "checkBack": "Schau bald wieder vorbei für neue Gemeinschaftsentscheidungen",
+      "createForm": {
+        "categories": {
+          "community": "Gemeinschaft",
+          "expansion": "Erweiterung",
+          "general": "Allgemein",
+          "policy": "Richtlinie",
+          "technical": "Technisch"
+        },
+        "categoryLabel": "Kategorie",
+        "creating": "Erstelle...",
+        "descriptionLabel": "Beschreibung",
+        "descriptionPlaceholder": "Beschreibe deinen Vorschlag im Detail",
+        "submit": "Vorschlag einreichen",
+        "title": "Neuen Vorschlag erstellen",
+        "titleLabel": "Titel",
+        "titlePlaceholder": "Titel des Vorschlags eingeben"
+      },
+      "createNew": "Neuen Vorschlag erstellen",
       "description": "Über Abstimmungen zu Gemeinschaftsentscheidungen und Vorschlägen",
       "ended": "Beendet",
       "for": "Für",
@@ -743,6 +765,7 @@
     "merchant8Name": "Eigentum \u0026 Wohnen",
     "merchants": "Händler",
     "noMerchants": "Keine Händler gefunden",
+    "noMerchantsAvailable": "Keine Händler verfügbar",
     "ratings": {
       "excellent": "Ausgezeichnet",
       "fair": "Fair",

@@ -49,6 +49,9 @@
     "joinDesc": "공정성, 투명성 및 경제적 정의를 믿는 같은 생각을 가진 사람들과 연결하세요. 함께, 우리는 더 나은 금융 미래를 구축하고 있습니다.",
     "loading": "커뮤니티 데이터 로딩 중...",
     "membersOnline": "온라인 회원",
+    "noAchievements": "아직 성과가 없습니다",
+    "noCommunityActivity": "커뮤니티 활동이 없습니다",
+    "noUpcomingEvents": "예정된 이벤트가 없습니다",
     "rsvp": "참석 여부 회신",
     "title": "건물",
     "titleHighlight": "함께",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "대항",
+      "cancel": "취소",
       "checkBack": "새로운 커뮤니티 결정을 위해 곧 다시 확인하세요",
+      "createForm": {
+        "categories": {
+          "community": "커뮤니티",
+          "expansion": "확장",
+          "general": "일반",
+          "policy": "정책",
+          "technical": "기술"
+        },
+        "categoryLabel": "카테고리",
+        "creating": "생성 중...",
+        "descriptionLabel": "설명",
+        "descriptionPlaceholder": "제안을 자세히 설명하세요",
+        "submit": "제안 제출",
+        "title": "새 제안 만들기",
+        "titleLabel": "제목",
+        "titlePlaceholder": "제안 제목 입력"
+      },
+      "createNew": "새 제안 만들기",
       "description": "커뮤니티 결정 및 제안에 투표하기",
       "ended": "종료됨",
       "for": "위하여",
@@ -743,6 +765,7 @@
     "merchant8Name": "재산 및 주택",
     "merchants": "상인",
     "noMerchants": "상인이 발견되지 않음",
+    "noMerchantsAvailable": "사용 가능한 상인이 없습니다.",
     "ratings": {
       "excellent": "우수함",
       "fair": "공정",

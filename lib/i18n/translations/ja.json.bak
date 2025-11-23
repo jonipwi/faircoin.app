@@ -49,6 +49,9 @@
     "joinDesc": "公平性、透明性、経済的正義を信じる志を同じくする人々とつながりましょう。共に、より良い金融の未来を築いています。",
     "loading": "コミュニティデータを読み込んでいます...",
     "membersOnline": "オンラインメンバー",
+    "noAchievements": "まだ達成事項はありません",
+    "noCommunityActivity": "コミュニティ活動はありません",
+    "noUpcomingEvents": "今後のイベントはありません",
     "rsvp": "RSVP",
     "title": "建設",
     "titleHighlight": "共に",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "反対",
+      "cancel": "キャンセル",
       "checkBack": "新しいコミュニティの決定について、すぐに戻ってきてください",
+      "createForm": {
+        "categories": {
+          "community": "コミュニティ",
+          "expansion": "拡張",
+          "general": "一般",
+          "policy": "ポリシー",
+          "technical": "技術的"
+        },
+        "categoryLabel": "カテゴリ",
+        "creating": "作成中...",
+        "descriptionLabel": "説明",
+        "descriptionPlaceholder": "提案の詳細を説明してください",
+        "submit": "提案を提出",
+        "title": "新しい提案を作成",
+        "titleLabel": "タイトル",
+        "titlePlaceholder": "提案のタイトルを入力してください"
+      },
+      "createNew": "新しい提案を作成",
       "description": "コミュニティの決定や提案に投票する",
       "ended": "終了",
       "for": "ため",
@@ -743,6 +765,7 @@
     "merchant8Name": "不動産と住宅",
     "merchants": "商人",
     "noMerchants": "商人が見つかりませんでした",
+    "noMerchantsAvailable": "利用可能な商人はありません",
     "ratings": {
       "excellent": "優れた",
       "fair": "フェア",

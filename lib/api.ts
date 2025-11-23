@@ -1,4 +1,6 @@
-export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox') + '/api/v1'
+import { generateSignedHeaders } from './request-signing'
+
+export const API_BASE = process.env.NEXT_PUBLIC_API_BASE || (process.env.NEXT_PUBLIC_API_URL || 'https://faircoin-api.bixio.xyz/sandbox') + '/api/v1'
 
 export type ApiResult<T> = { data: T; error?: string }
 
@@ -323,9 +325,27 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   // Get auth token from localStorage if available
   const authToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null
   
+  // Get API key from environment
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY
+  
   const headers = new Headers({
     'Content-Type': 'application/json',
   })
+  
+  // Add API key if available
+  if (apiKey) {
+    headers.set('X-API-Key', apiKey)
+  }
+  
+  // Add request signing headers
+  // IMPORTANT: Sign the FULL path including /api/v1 prefix to match backend validation
+  const method = init?.method || 'GET'
+  const fullPath = `/api/v1${path}` // Backend validates against full URL path
+  const signingHeaders = await generateSignedHeaders(method, fullPath)
+  if (signingHeaders['X-Request-Signature']) {
+    headers.set('X-Request-Signature', signingHeaders['X-Request-Signature'])
+    headers.set('X-Request-Timestamp', signingHeaders['X-Request-Timestamp'])
+  }
   
   // Add any additional headers from init
   if (init?.headers) {
@@ -371,6 +391,7 @@ export const api = {
     distribution: () => request<FairnessDistribution>(`/public/fairness/distribution`),
     pfiLeaderboard: () => request<PFILeaderboard>(`/public/fairness/pfi-leaderboard`),
     antiConcentration: () => request<AntiConcentration>(`/public/fairness/anti-concentration`),
+    indexes: (username: string) => request<{ success: boolean; index?: any; error?: string }>(`/fairness/indexes?user=${encodeURIComponent(username)}`),
   },
   
   // Governance APIs
@@ -378,6 +399,14 @@ export const api = {
     proposals: () => request<{ proposals: GovernanceProposal[] }>(`/public/governance/proposals`),
     votingPower: () => request<VotingPower>(`/public/governance/voting-power`),
     recentVotes: () => request<{ recent_votes: RecentVote[] }>(`/public/governance/recent-votes`),
+    vote: (proposalId: number, username: string, support: boolean) => request<{ success: boolean; message?: string; error?: string }>(`/governance/vote`, {
+      method: 'POST',
+      body: JSON.stringify({ proposalId, username, support })
+    }),
+    createProposal: (title: string, description: string, proposal_type: string) => request<{ success: boolean; proposal_id?: number; message?: string; error?: string }>(`/governance/proposals`, {
+      method: 'POST',
+      body: JSON.stringify({ title, description, proposal_type })
+    }),
   },
   
   // Community APIs

@@ -49,6 +49,9 @@
     "joinDesc": "התחבר עם אנשים בעלי דעות דומות המאמינים בהוגנות, שקיפות וצדק כלכלי. יחד, אנו בונים עתיד פיננסי טוב יותר.",
     "loading": "טוען נתוני קהילה...",
     "membersOnline": "חברים אונליין",
+    "noAchievements": "אין הישגים עדיין",
+    "noCommunityActivity": "אין פעילות קהילתית",
+    "noUpcomingEvents": "אין אירועים קרובים",
     "rsvp": "אשרו הגעה",
     "title": "בניית",
     "titleHighlight": "בTogether",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "נגד",
+      "cancel": "ביטול",
       "checkBack": "בדוק שוב בקרוב עבור החלטות קהילתיות חדשות",
+      "createForm": {
+        "categories": {
+          "community": "קהילה",
+          "expansion": "הרחבה",
+          "general": "כללי",
+          "policy": "מדיניות",
+          "technical": "טכני"
+        },
+        "categoryLabel": "קטגוריה",
+        "creating": "יוצר...",
+        "descriptionLabel": "תיאור",
+        "descriptionPlaceholder": "תאר את ההצעה שלך בפירוט",
+        "submit": "הגש הצעה",
+        "title": "צור הצעה חדשה",
+        "titleLabel": "כותרת",
+        "titlePlaceholder": "הכנס כותרת הצעה"
+      },
+      "createNew": "צור הצעה חדשה",
       "description": "הצביעו על החלטות והצעות קהילתיות",
       "ended": "הסתיים",
       "for": "עבור",
@@ -743,6 +765,7 @@
     "merchant8Name": "נכסים ודירות",
     "merchants": "סוחרים",
     "noMerchants": "לא נמצאו סוחרים",
+    "noMerchantsAvailable": "אין סוחרים זמינים",
     "ratings": {
       "excellent": "מצוין",
       "fair": "הוגן",

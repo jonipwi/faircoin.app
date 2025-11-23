@@ -599,6 +599,7 @@
     "merchants": "Merchants",
     "categoryDescription": "Browse verified merchants with fair trade ratings",
     "noMerchants": "No Merchants Found",
+    "noMerchantsAvailable": "No merchants available",
     "tryDifferent": "Try a different search or check back soon",
     "joinCommunity": "Want to Join Our Merchant Community?",
     "buildTrust": "Build trust with your customers through fair business practices",
@@ -831,7 +832,9 @@
     "yourVoice": "Your Voice Matters",
     "yourVoiceDesc": "Higher PFI gives you more voting power, but every community member's voice is heard. Participate in governance to shape FairCoin's future.",
     "viewAllProposals": "View All Proposals",
-    "createProposal": "Create Proposal"
+    "createProposal": "Create Proposal",
+    "noProposals": "No active proposals",
+    "noVotes": "No recent votes yet"
   },
   "community": {
     "badge": "Community Hub",
@@ -855,7 +858,10 @@
     "holders": "holders",
     "date": "Date",
     "common": "common",
-    "discordRole": "Discord role"
+    "discordRole": "Discord role",
+    "noCommunityActivity": "No community activity",
+    "noAchievements": "No achievements yet",
+    "noUpcomingEvents": "No upcoming events"
   },
   "donation": {
     "badge": "Support FairCoin",

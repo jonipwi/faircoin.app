@@ -49,6 +49,9 @@
     "joinDesc": "समान विचारधारा वाले व्यक्तियों के साथ जुड़ें जो निष्पक्षता, पारदर्शिता और आर्थिक न्याय में विश्वास करते हैं। मिलकर, हम एक बेहतर वित्तीय भविष्य का निर्माण कर रहे हैं।",
     "loading": "समुदाय डेटा लोड हो रहा है...",
     "membersOnline": "ऑनलाइन सदस्य",
+    "noAchievements": "अभी तक कोई उपलब्धियाँ नहीं",
+    "noCommunityActivity": "कोई सामुदायिक गतिविधि नहीं",
+    "noUpcomingEvents": "कोई आगामी कार्यक्रम नहीं",
     "rsvp": "आरएसवीपी",
     "title": "निर्माण",
     "titleHighlight": "साथ मिलकर",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "विरुद्ध",
+      "cancel": "रद्द करें",
       "checkBack": "नई सामुदायिक निर्णयों के लिए जल्द ही वापस आएं",
+      "createForm": {
+        "categories": {
+          "community": "समुदाय",
+          "expansion": "विस्तार",
+          "general": "सामान्य",
+          "policy": "नीति",
+          "technical": "तकनीकी"
+        },
+        "categoryLabel": "श्रेणी",
+        "creating": "बनाना...",
+        "descriptionLabel": "विवरण",
+        "descriptionPlaceholder": "अपने प्रस्ताव का विस्तार से वर्णन करें",
+        "submit": "प्रस्ताव सबमिट करें",
+        "title": "नया प्रस्ताव बनाएं",
+        "titleLabel": "शीर्षक",
+        "titlePlaceholder": "प्रस्ताव शीर्षक दर्ज करें"
+      },
+      "createNew": "नया प्रस्ताव बनाएं",
       "description": "समुदाय के निर्णयों और प्रस्तावों पर वोट करें",
       "ended": "समाप्त",
       "for": "के लिए",
@@ -743,6 +765,7 @@
     "merchant8Name": "संपत्ति और आवास",
     "merchants": "व्यापारी",
     "noMerchants": "कोई व्यापारी नहीं मिला",
+    "noMerchantsAvailable": "कोई व्यापारी उपलब्ध नहीं है",
     "ratings": {
       "excellent": "उत्कृष्ट",
       "fair": "उचित",

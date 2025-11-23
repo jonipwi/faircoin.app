@@ -49,6 +49,9 @@
     "joinDesc": "与志同道合的人联系，他们相信公平、透明和经济正义。我们共同构建更美好的金融未来。",
     "loading": "正在加载社区数据...",
     "membersOnline": "在线成员",
+    "noAchievements": "尚无成就",
+    "noCommunityActivity": "没有社区活动",
+    "noUpcomingEvents": "没有即将举行的活动",
     "rsvp": "回复",
     "title": "构建",
     "titleHighlight": "一起",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "反对",
+      "cancel": "取消",
       "checkBack": "请稍后查看新的社区决策",
+      "createForm": {
+        "categories": {
+          "community": "社区",
+          "expansion": "扩展",
+          "general": "一般",
+          "policy": "政策",
+          "technical": "技术"
+        },
+        "categoryLabel": "类别",
+        "creating": "创建中...",
+        "descriptionLabel": "描述",
+        "descriptionPlaceholder": "详细描述您的提案",
+        "submit": "提交提案",
+        "title": "创建新提案",
+        "titleLabel": "标题",
+        "titlePlaceholder": "输入提案标题"
+      },
+      "createNew": "创建新提案",
       "description": "对社区决策和提案进行投票",
       "ended": "结束",
       "for": "为",
@@ -743,6 +765,7 @@
     "merchant8Name": "物业与住房",
     "merchants": "商家",
     "noMerchants": "未找到商户",
+    "noMerchantsAvailable": "没有可用的商家",
     "ratings": {
       "excellent": "优秀",
       "fair": "公平",

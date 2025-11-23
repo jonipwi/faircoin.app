@@ -49,6 +49,9 @@
     "joinDesc": "Verbind met gelijkgestemde individuen die geloven in eerlijkheid, transparantie en economische rechtvaardigheid. Samen bouwen we aan een betere financiële toekomst.",
     "loading": "Gemeenschapsgegevens laden...",
     "membersOnline": "Leden online",
+    "noAchievements": "Nog geen prestaties",
+    "noCommunityActivity": "Geen gemeenschapsactiviteit",
+    "noUpcomingEvents": "Geen aankomende evenementen",
     "rsvp": "RSVP",
     "title": "Bouwen",
     "titleHighlight": "Samen",
@@ -559,7 +562,26 @@
     },
     "proposals": {
       "against": "Tegen",
+      "cancel": "Annuleren",
       "checkBack": "Kom snel terug voor nieuwe gemeenschapsbeslissingen",
+      "createForm": {
+        "categories": {
+          "community": "Gemeenschap",
+          "expansion": "Uitbreiding",
+          "general": "Algemeen",
+          "policy": "Beleid",
+          "technical": "Technisch"
+        },
+        "categoryLabel": "Categorie",
+        "creating": "Aan het maken...",
+        "descriptionLabel": "Beschrijving",
+        "descriptionPlaceholder": "Beschrijf uw voorstel in detail",
+        "submit": "Voorstel indienen",
+        "title": "Nieuwe Voorstel Aanmaken",
+        "titleLabel": "Titel",
+        "titlePlaceholder": "Voer de titel van het voorstel in"
+      },
+      "createNew": "Nieuwe Voorstel Aanmaken",
       "description": "Stem op gemeenschapsbeslissingen en voorstellen",
       "ended": "Einde",
       "for": "Voor",
@@ -743,6 +765,7 @@
     "merchant8Name": "Eigendom \u0026 Huisvesting",
     "merchants": "Handelaren",
     "noMerchants": "Geen Handelaren Gevonden",
+    "noMerchantsAvailable": "Geen verkopers beschikbaar",
     "ratings": {
       "excellent": "Uitstekend",
       "fair": "Eerlijk",
