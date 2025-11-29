@@ -1,6 +1,7 @@
 "use client"
 
-import { Heart, Shield, Copy, CheckCircle2, ExternalLink } from 'lucide-react'
+import Link from 'next/link'
+import { Heart, Shield, Copy, CheckCircle2, ExternalLink, BookOpen } from 'lucide-react'
 import { useState } from 'react'
 import { JACOB_YELLOW_BRIDGE_URL } from '@/lib/constants'
 import { useLanguage } from '@/lib/i18n/LanguageContext'
@@ -50,6 +51,31 @@ export function DonationSection() {
               </a>
               {t('donation.description2')}
             </p>
+
+            {/* Sponsor Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                href="https://github.com/sponsors/jonipwi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-lg flex items-center gap-2"
+              >
+                <Heart className="w-5 h-5" />
+                Sponsors via GitHub
+                <ExternalLink className="w-4 h-4" />
+              </Link>
+              <Link
+                href="https://github.com/jonipwi/faircoin.app/blob/main/SPONSORSHIP_PROPOSAL.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline btn-lg flex items-center gap-2"
+              >
+                <BookOpen className="w-5 h-5" />
+                Proposal for Sponsors
+                <ExternalLink className="w-4 h-4" />
+              </Link>
+            </div>
+
           </div>
 
           {/* Donation Card */}
@@ -123,6 +149,7 @@ export function DonationSection() {
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
