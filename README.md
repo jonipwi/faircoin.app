@@ -37,6 +37,10 @@ A community-driven fair transaction system built on principles of transparency, 
 > - ✅ https://faircoin-app.vercel.app (staging)
 > - ✅ https://github.com/jonipwi/faircoin.app (repository)
 
+> 📱 **DEVELOPMENT UPDATE: Mobile View [Simple & User Friendly] at https://sobatam.com**
+> 
+> **Date**: November 29, 2025
+
 > ⚠️ **STAGING PROJECT - NOT FOR COMMERCIAL USE**
 > 
 > This project is currently in **staging/development mode** and is **NOT intended for commercial use or production deployment**. 
