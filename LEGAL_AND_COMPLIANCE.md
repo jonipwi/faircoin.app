@@ -1,4 +1,5 @@
 # Faircoin Legal & Compliance Overview (Indonesia)
+Notice: Update coming (for build system transparancy without using crypto functional as recording pfi)
 
 ## 1. Introduction
 Faircoin is a **social fairness engine**, not a financial platform. It records **PFI★ scores** (fairness points) to ensure transparent and ethical distribution of community contributions. Faircoin does *not* store, receive, or distribute money.
