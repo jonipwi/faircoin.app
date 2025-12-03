@@ -1,5 +1,4 @@
 # Faircoin Legal & Compliance Overview (Indonesia)
-Notice: Update coming (for build system transparancy without using crypto functional as recording pfi)
 
 ## 1. Introduction
 Faircoin is a **social fairness engine**, not a financial platform. It records **PFI★ scores** (fairness points) to ensure transparent and ethical distribution of community contributions. Faircoin does *not* store, receive, or distribute money.
@@ -151,23 +150,30 @@ PFI★ is not:
 
 ## 8. Legal Risk Areas to Avoid
 Avoid using words like:
-- "Investment"
-- "Profit"
-- "Return"
-- "Withdrawal"
-- "Exchange"
-- "Faircoin value increases"
 
 Avoid features like:
-- Token trading
-- Token selling
-- On-chain swap
-- Buying PFI with money
 
 Avoid implications such as:
-- PFI = money
-- PFI can be converted
-- PFI is a financial instrument
+
+## 9. Clarification: Non-Financial Use of DLT (Distributed Ledger Technology)
+
+Not every "crypto" or DLT-based system is primarily a financial or trading platform. Blockchain and other distributed ledger technologies are fundamentally distributed databases that provide immutability, transparency, and verifiability. These core properties make them useful for recording many kinds of non-financial information.
+
+Key concepts:
+- Blockchain is a distributed database that stores information in cryptographically linked blocks.
+- Data recorded on a blockchain is difficult to change, creating a permanent, tamper-resistant record (an "immutable ledger").
+- While cryptocurrencies were the first widespread use case, the underlying technology can record any form of digital information, not just payments.
+
+Non-financial applications (examples):
+- Supply chain tracking: provenance and authenticity of goods (food, medicine, components).
+- Academic records and certificates: verifiable diplomas and professional credentials.
+- Digital identity and public records: resilient identity, land/title records, post-disaster documentation.
+- Intellectual property: timestamping and evidence of creation, rights assignment, and provenance.
+- Healthcare: secure, auditable patient records with controlled access.
+- Voting systems: transparent and tamper-evident vote recording and tallying.
+- Smart contracts: automated execution of agreements or business logic without intermediaries; can be used for many non-financial workflows.
+
+In short, DLT can be used as a secure, transparent record-keeping layer for PFI★ scores and related governance data without itself becoming a means of payment or financial instrument. Careful design — for example, avoiding on-chain value transfer capabilities, not storing or custodially managing private keys that can be used to move value, and publishing only hashes or proofs rather than raw financial data — helps maintain the legal-safe posture described in this document.
 
 ---
 
